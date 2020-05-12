@@ -4,46 +4,77 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="100dp"
     android:orientation="vertical"
     tools:context=".activity.HomeActivity">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:text="Username"
-        android:textSize="25sp"
-        android:layout_height="35dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="50dp"/>
+        android:layout_height="match_parent"
+        android:paddingTop="50dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/txt_username"
-        android:background="@color/colorAccent"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_margin="20dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:text="Username"
+                android:textSize="25sp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="50dp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:text="Email"
-        android:textSize="25sp"
-        android:layout_height="35dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="50dp"/>
+            <TextView
+                android:id="@+id/txt_username"
+                android:background="@color/colorAccent"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"/>
 
-    <TextView
-        android:id="@+id/txt_useremail"
-        android:background="@color/colorAccent"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_margin="20dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:text="Email"
+                android:textSize="25sp"
+                android:layout_height="35dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="50dp"/>
 
-    <Button
-        android:id="@+id/btn_logout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:text="Logout"/>
+            <TextView
+                android:id="@+id/txt_useremail"
+                android:background="@color/colorAccent"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"/>
+
+            <Button
+                android:id="@+id/btn_logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Logout"/>
+
+            <Button
+                android:id="@+id/btn_towallet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Wallet"/>
+
+            <Button
+                android:id="@+id/btn_toaddlelang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add New Lelang"/>
+
+            <Button
+                android:id="@+id/btn_tolistlelang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="List Lelang"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
 
 </LinearLayout>

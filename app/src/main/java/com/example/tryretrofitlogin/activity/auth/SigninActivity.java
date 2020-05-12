@@ -15,7 +15,8 @@ import com.example.tryretrofitlogin.activity.HomeActivity;
 import com.example.tryretrofitlogin.api.APIService;
 import com.example.tryretrofitlogin.api.APIUrl;
 import com.example.tryretrofitlogin.helper.SharedPrefManager;
-import com.example.tryretrofitlogin.models.AuthResponse;
+import com.example.tryretrofitlogin.responses.login.LoginResponse;
+
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -51,7 +52,7 @@ public class SigninActivity extends AppCompatActivity {
     private void userLogin(){
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
-        Toast.makeText(this,"email" + email + "password" + password ,  Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this,"email" + email + "password" + password ,  Toast.LENGTH_SHORT).show();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(APIUrl.BASE_URL)
@@ -61,24 +62,29 @@ public class SigninActivity extends AppCompatActivity {
         APIService service = retrofit.create(APIService.class);
 
 
-        Call<AuthResponse> call = service.loginUser(email, password);
+        Call<LoginResponse> call = service.loginUser(email, password);
         Log.d("responebody",service.loginUser(email,password).toString());
 
-        call.enqueue(new Callback<AuthResponse>() {
+        call.enqueue(new Callback<LoginResponse>() {
             @Override
-            public void onResponse(Call<AuthResponse> call, Response<AuthResponse> response) {
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if (response.body() !=null) {
-                    SharedPrefManager.getInstance(getApplicationContext()).userLogin(response.body().getUser());
+                    SharedPrefManager.getInstance(getApplicationContext()).userLogin(
+                            response.body().getSuccess().getId(),
+                            response.body().getSuccess().getToken(),
+                            response.body().getSuccess().getName(),
+                            response.body().getSuccess().getEmail());
+                    Toast.makeText(SigninActivity.this, "velue" + response.body().getSuccess().getName()
+                            + response.body().getSuccess().getId() + "sdsd", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                     finish();
                 } else {
                     Toast.makeText(getApplicationContext(), "Invalid email or password", Toast.LENGTH_LONG).show();
-
                 }
             }
 
             @Override
-            public void onFailure(Call<AuthResponse> call, Throwable t) {
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });

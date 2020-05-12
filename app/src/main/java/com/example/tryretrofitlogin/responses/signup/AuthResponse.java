@@ -1,5 +1,6 @@
-package com.example.tryretrofitlogin.models;
+package com.example.tryretrofitlogin.responses.signup;
 
+import com.example.tryretrofitlogin.models.User;
 import com.google.gson.annotations.SerializedName;
 
 public class AuthResponse {

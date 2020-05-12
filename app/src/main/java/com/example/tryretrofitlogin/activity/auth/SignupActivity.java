@@ -2,6 +2,7 @@ package com.example.tryretrofitlogin.activity.auth;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,9 +10,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.tryretrofitlogin.R;
+import com.example.tryretrofitlogin.activity.WalletActivity;
 import com.example.tryretrofitlogin.api.APIService;
 import com.example.tryretrofitlogin.api.APIUrl;
-import com.example.tryretrofitlogin.models.AuthResponse;
+import com.example.tryretrofitlogin.responses.signup.AuthResponse;
 import com.example.tryretrofitlogin.models.User;
 
 import retrofit2.Call;
@@ -77,6 +79,8 @@ public class SignupActivity extends AppCompatActivity {
 
                 //displaying the message from the response as toast
                 Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
+                startActivity(new Intent(getApplicationContext(), WalletActivity.class));
+                finish();
             }
 
             @Override
