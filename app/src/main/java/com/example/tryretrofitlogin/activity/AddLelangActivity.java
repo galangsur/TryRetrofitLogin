@@ -65,7 +65,8 @@ public class AddLelangActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedHewan = parent.getItemAtPosition(position).toString();
                 idhewan = hewans.get(position).getId();
-                Toast.makeText(AddLelangActivity.this, selectedHewan + "di pilih dengan id" + idhewan, Toast.LENGTH_SHORT).show();
+                jenishewan = hewans.get(position).getJenis();
+                Toast.makeText(AddLelangActivity.this, selectedHewan + "di pilih dengan id" + idhewan +"jenis " +jenishewan, Toast.LENGTH_SHORT).show();
             }
 
             @Override

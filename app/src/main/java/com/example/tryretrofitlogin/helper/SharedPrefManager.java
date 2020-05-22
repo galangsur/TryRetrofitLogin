@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.telecom.Call;
 
+import com.example.tryretrofitlogin.models.Lelang;
 import com.example.tryretrofitlogin.models.User;
 import com.example.tryretrofitlogin.models.Wallet;
 
@@ -22,6 +23,9 @@ public class SharedPrefManager {
     private static final String KEY_USER_EMAIL = "keyuseremail";
     private static final String KEY_USER_PASSWORD = "keyuserpassword";
     private static final String KEY_USER_CPASSWORD = "keyusercpassword";
+    private static final String KEY_REQ_ID = "keyreqid";
+    private static final String KEY_ID_PENGIRIM = "keyuserpengirim";
+    private static final String KEY_LELANG_ID = "keylelangid";
 
     private SharedPrefManager(Context context) {
         mCtx = context;
@@ -41,6 +45,34 @@ public class SharedPrefManager {
         editor.putString(KEY_USER_TOKEN, token);
         editor.putString(KEY_USER_NAME, name);
         editor.putString(KEY_USER_EMAIL, email);
+        editor.apply();
+        return true;
+    }
+
+    public boolean sendLelanginfo (int id, int user_id, int pengirim_id, int lelang_id){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME,Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(KEY_REQ_ID,id);
+        editor.putInt(KEY_USER_ID,user_id);
+        editor.putInt(KEY_ID_PENGIRIM,pengirim_id);
+        editor.putInt(KEY_LELANG_ID,lelang_id);
+        editor.apply();
+        return true;
+    }
+
+    public User getUserProfile(){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return new User(
+                sharedPreferences.getString(KEY_USER_ID,null),
+                sharedPreferences.getString(KEY_USER_NAME, null),
+                sharedPreferences.getString(KEY_USER_EMAIL, null)
+        );
+    }
+
+    public boolean logout() {
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
         editor.apply();
         return true;
     }
@@ -72,15 +104,6 @@ public class SharedPrefManager {
         );
     }
 
-    public User getUserProfile(){
-        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        return new User(
-                sharedPreferences.getString(KEY_USER_ID,null),
-                sharedPreferences.getString(KEY_USER_NAME, null),
-                sharedPreferences.getString(KEY_USER_EMAIL, null)
-        );
-    }
-
     public Wallet getWalletInfo(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return new Wallet(
@@ -97,11 +120,4 @@ public class SharedPrefManager {
         return sendwalletinfo(user_id,saldo);
     }
 
-    public boolean logout() {
-        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.clear();
-        editor.apply();
-        return true;
-    }
 }

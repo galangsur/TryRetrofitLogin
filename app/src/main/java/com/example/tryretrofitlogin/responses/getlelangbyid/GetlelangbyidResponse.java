@@ -1,8 +1,8 @@
-package com.example.tryretrofitlogin.responses.wallet;
+package com.example.tryretrofitlogin.responses.getlelangbyid;
 
 import com.google.gson.annotations.SerializedName;
 
-public class TopupResponse{
+public class GetlelangbyidResponse{
 
 	@SerializedName("success")
 	private Success success;
@@ -18,7 +18,7 @@ public class TopupResponse{
 	@Override
  	public String toString(){
 		return 
-			"TopupResponse{" + 
+			"GetlelangbyidResponse{" + 
 			"success = '" + success + '\'' + 
 			"}";
 		}

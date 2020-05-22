@@ -14,7 +14,7 @@ import com.example.tryretrofitlogin.api.APIService;
 import com.example.tryretrofitlogin.api.APIUrl;
 import com.example.tryretrofitlogin.helper.SharedPrefManager;
 import com.example.tryretrofitlogin.responses.getwalletinfo.GetWalletInfoResponse;
-import com.example.tryretrofitlogin.responses.wallet.TopupResponse;
+import com.example.tryretrofitlogin.responses.topupwallet.TopupResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -103,10 +103,10 @@ public class WalletActivity extends AppCompatActivity {
         call.enqueue(new Callback<GetWalletInfoResponse>() {
             @Override
             public void onResponse(Call<GetWalletInfoResponse> call, Response<GetWalletInfoResponse> response) {
-                if (response.body() !=null) {
-                    Toast.makeText(WalletActivity.this, "idwallet" + response.body().getUserId()+
-                            "wallet" + response.body().getSaldo(), Toast.LENGTH_LONG).show();
                     txtusersaldo.setText(response.body().getSaldo());
+                    if (response.body() !=null) {
+                        Toast.makeText(WalletActivity.this, "idwallet" + response.body().getUserId()+
+                                "wallet" + response.body().getSaldo(), Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getApplicationContext(), "Invalid get wallet info", Toast.LENGTH_LONG).show();
                 }

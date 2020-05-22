@@ -1,15 +1,15 @@
 package com.example.tryretrofitlogin.api;
 
-import com.example.tryretrofitlogin.models.Lelang;
 import com.example.tryretrofitlogin.responses.addlelang.AddLelangResponse;
+import com.example.tryretrofitlogin.responses.gethewanbyid.GethewanbyidResponse;
 import com.example.tryretrofitlogin.responses.getlelang.GetlelangResponse;
+import com.example.tryretrofitlogin.responses.getuserbyname.GetuseridResponse;
+import com.example.tryretrofitlogin.responses.newwallet.WalletResponse;
 import com.example.tryretrofitlogin.responses.signup.AuthResponse;
 import com.example.tryretrofitlogin.responses.gethewaninfo.HewanResponse;
 import com.example.tryretrofitlogin.responses.getwalletinfo.GetWalletInfoResponse;
 import com.example.tryretrofitlogin.responses.login.LoginResponse;
-import com.example.tryretrofitlogin.responses.wallet.TopupResponse;
-
-import java.util.List;
+import com.example.tryretrofitlogin.responses.topupwallet.TopupResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -47,6 +47,12 @@ public interface APIService {
     );
 
     @FormUrlEncoded
+    @POST("wallet")
+    Call<WalletResponse> createWallet(
+            @Field("user_id") String user_id
+    );
+
+    @FormUrlEncoded
     @PUT("tambahsaldo/{id}")
     Call<TopupResponse> saldotambah(
             @Path("id") String id,
@@ -59,6 +65,18 @@ public interface APIService {
             @Query("saldo") String saldo
     );
 
+    @GET("getuserbyname/{name}")
+    Call<GetuseridResponse> getUserid(
+            @Path("name") String name,
+            @Query("id") String id
+    );
+
+    @GET("gethewanbyid/{id}")
+    Call<GethewanbyidResponse> gethewanjenis(
+            @Path("id") String id,
+            @Query("jenis") String jenis
+    );
+
     @GET("hewan")
     Call<HewanResponse> gethewan(
     );
@@ -66,6 +84,8 @@ public interface APIService {
     @GET("alllelang")
     Call<GetlelangResponse> getlelang(
     );
+
+
 
 
 }

@@ -1,4 +1,4 @@
-package com.example.tryretrofitlogin.responses.wallet;
+package com.example.tryretrofitlogin.responses.newwallet;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -8,16 +8,16 @@ public class Success{
 	private String updatedAt;
 
 	@SerializedName("user_id")
-	private int userId;
+	private String userId;
 
 	@SerializedName("created_at")
 	private String createdAt;
 
-	@SerializedName("id")
-	private int id;
-
 	@SerializedName("saldo")
 	private int saldo;
+
+	@SerializedName("id")
+	private int id;
 
 	public void setUpdatedAt(String updatedAt){
 		this.updatedAt = updatedAt;
@@ -27,11 +27,11 @@ public class Success{
 		return updatedAt;
 	}
 
-	public void setUserId(int userId){
+	public void setUserId(String userId){
 		this.userId = userId;
 	}
 
-	public int getUserId(){
+	public String getUserId(){
 		return userId;
 	}
 
@@ -43,20 +43,20 @@ public class Success{
 		return createdAt;
 	}
 
-	public void setId(int id){
-		this.id = id;
-	}
-
-	public int getId(){
-		return id;
-	}
-
 	public void setSaldo(int saldo){
 		this.saldo = saldo;
 	}
 
 	public int getSaldo(){
 		return saldo;
+	}
+
+	public void setId(int id){
+		this.id = id;
+	}
+
+	public int getId(){
+		return id;
 	}
 
 	@Override
@@ -66,8 +66,8 @@ public class Success{
 			"updated_at = '" + updatedAt + '\'' + 
 			",user_id = '" + userId + '\'' + 
 			",created_at = '" + createdAt + '\'' + 
-			",id = '" + id + '\'' + 
 			",saldo = '" + saldo + '\'' + 
+			",id = '" + id + '\'' + 
 			"}";
 		}
 }

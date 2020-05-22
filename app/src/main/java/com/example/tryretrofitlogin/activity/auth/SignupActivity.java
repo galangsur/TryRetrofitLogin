@@ -4,13 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.tryretrofitlogin.R;
-import com.example.tryretrofitlogin.activity.WalletActivity;
+import com.example.tryretrofitlogin.activity.WalletCreateActivity;
 import com.example.tryretrofitlogin.api.APIService;
 import com.example.tryretrofitlogin.api.APIUrl;
 import com.example.tryretrofitlogin.responses.signup.AuthResponse;
@@ -47,7 +48,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private void userSignUp() {
-        String name = editTextName.getText().toString().trim();
+        final String name = editTextName.getText().toString().trim();
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
 
@@ -69,18 +70,16 @@ public class SignupActivity extends AppCompatActivity {
                 user.getName(),
                 user.getEmail(),
                 user.getPassword(),
-                user.getC_password());
+                user.getC_password() );
 
         //calling the api
         call.enqueue(new Callback<AuthResponse>() {
             @Override
             public void onResponse(Call<AuthResponse> call, Response<AuthResponse> response) {
-                //hiding progress dialog
-
-                //displaying the message from the response as toast
-                Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
-                startActivity(new Intent(getApplicationContext(), WalletActivity.class));
-                finish();
+                Log.i("JaniInfo", "clicicon: " + response.body().toString());
+                Intent intent = new Intent(SignupActivity.this, WalletCreateActivity.class);
+                intent.putExtra("username", name);
+                startActivity(intent);
             }
 
             @Override
@@ -88,5 +87,9 @@ public class SignupActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void walletCreate() {
+
     }
 }

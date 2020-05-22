@@ -1,6 +1,8 @@
 package com.example.tryretrofitlogin.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,8 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tryretrofitlogin.R;
+import com.example.tryretrofitlogin.activity.DetailLelangActivity;
+import com.example.tryretrofitlogin.activity.ListLelangActivity;
 import com.example.tryretrofitlogin.responses.getlelang.SuccessItem;
 
 import java.util.ArrayList;
@@ -35,14 +39,17 @@ public class RVadapter extends RecyclerView.Adapter<RVadapter.MyViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
         holder.comment.setText(result.get(position).getComment());
         holder.harga.setText(result.get(position).getHarga());
 
         holder.toDaftarform.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Log.d("tag", "clickon: " + result.get(position).getId());
+                Intent adaptintent = new Intent(context, DetailLelangActivity.class);
+                adaptintent.putExtra("lelid",result.get(position).getId());
+                context.startActivity(adaptintent);
             }
         });
     }
@@ -53,7 +60,7 @@ public class RVadapter extends RecyclerView.Adapter<RVadapter.MyViewHolder> {
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView comment, harga;
+        TextView comment, harga, id;
         Button toDaftarform;
 
         public MyViewHolder(View view) {

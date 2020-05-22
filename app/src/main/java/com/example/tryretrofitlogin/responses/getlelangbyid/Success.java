@@ -1,10 +1,8 @@
-package com.example.tryretrofitlogin.responses.getlelang;
+package com.example.tryretrofitlogin.responses.getlelangbyid;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
-
-public class SuccessItem{
+public class Success{
 
 	@SerializedName("harga")
 	private String harga;
@@ -25,9 +23,7 @@ public class SuccessItem{
 	private String comment;
 
 	@SerializedName("id")
-	private String id;
-
-	private ArrayList<SuccessItem> suksesitem =new ArrayList<>();
+	private int id;
 
 	public void setHarga(String harga){
 		this.harga = harga;
@@ -77,18 +73,18 @@ public class SuccessItem{
 		return comment;
 	}
 
-	public void setId(String id){
+	public void setId(int id){
 		this.id = id;
 	}
 
-	public String getId(){
+	public int getId(){
 		return id;
 	}
 
 	@Override
  	public String toString(){
 		return 
-			"SuccessItem{" + 
+			"Success{" + 
 			"harga = '" + harga + '\'' + 
 			",updated_at = '" + updatedAt + '\'' + 
 			",user_id = '" + userId + '\'' + 
