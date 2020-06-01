@@ -71,6 +71,12 @@
                 android:layout_height="wrap_content"
                 android:text="List Lelang"/>
 
+            <Button
+                android:id="@+id/btn_toreqlel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Requset Lelang"/>
+
         </LinearLayout>
     </ScrollView>
 

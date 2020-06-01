@@ -11,10 +11,10 @@ public class Success{
 	private String updatedAt;
 
 	@SerializedName("user_id")
-	private int userId;
+	private String userId;
 
 	@SerializedName("hewan_id")
-	private int hewanId;
+	private String hewanId;
 
 	@SerializedName("created_at")
 	private String createdAt;
@@ -23,7 +23,7 @@ public class Success{
 	private String comment;
 
 	@SerializedName("id")
-	private int id;
+	private String id;
 
 	public void setHarga(String harga){
 		this.harga = harga;
@@ -41,19 +41,19 @@ public class Success{
 		return updatedAt;
 	}
 
-	public void setUserId(int userId){
+	public void setUserId(String userId){
 		this.userId = userId;
 	}
 
-	public int getUserId(){
+	public String getUserId(){
 		return userId;
 	}
 
-	public void setHewanId(int hewanId){
+	public void setHewanId(String hewanId){
 		this.hewanId = hewanId;
 	}
 
-	public int getHewanId(){
+	public String getHewanId(){
 		return hewanId;
 	}
 
@@ -73,11 +73,11 @@ public class Success{
 		return comment;
 	}
 
-	public void setId(int id){
+	public void setId(String id){
 		this.id = id;
 	}
 
-	public int getId(){
+	public String getId(){
 		return id;
 	}
 

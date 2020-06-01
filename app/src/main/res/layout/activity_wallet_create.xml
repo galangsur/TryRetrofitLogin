@@ -31,6 +31,12 @@
         android:hint="sat ne ye"/>
 
     <TextView
+        android:id="@+id/txt_nominalawal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible" />
+
+    <TextView
         android:id="@+id/text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

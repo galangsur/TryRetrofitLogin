@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.DetailLelangActivity"></activity>
+        <activity android:name=".activity.DetailReqlelActivity"></activity>
+        <activity android:name=".activity.LelreqlistActivity" />
+        <activity android:name=".activity.DetailLelangActivity" />
         <activity android:name=".activity.WalletCreateActivity" />
         <activity android:name=".activity.ListLelangActivity" />
         <activity android:name=".activity.AddLelangActivity" />

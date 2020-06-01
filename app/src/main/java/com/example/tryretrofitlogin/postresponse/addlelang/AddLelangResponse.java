@@ -1,4 +1,4 @@
-package com.example.tryretrofitlogin.responses.addlelang;
+package com.example.tryretrofitlogin.postresponse.addlelang;
 
 import com.google.gson.annotations.SerializedName;
 

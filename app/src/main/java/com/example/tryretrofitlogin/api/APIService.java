@@ -1,13 +1,18 @@
 package com.example.tryretrofitlogin.api;
 
-import com.example.tryretrofitlogin.responses.addlelang.AddLelangResponse;
+import com.example.tryretrofitlogin.postresponse.addrequestlelang.AddreqlelangResponse;
+import com.example.tryretrofitlogin.postresponse.addlelang.AddLelangResponse;
+import com.example.tryretrofitlogin.postresponse.addwallet.AddWalletResponse;
 import com.example.tryretrofitlogin.responses.gethewanbyid.GethewanbyidResponse;
 import com.example.tryretrofitlogin.responses.getlelang.GetlelangResponse;
+import com.example.tryretrofitlogin.responses.getlelangbyid.GetlelangbyidResponse;
+import com.example.tryretrofitlogin.responses.getreqlel.GetReqlelResponse;
+import com.example.tryretrofitlogin.responses.getreqlelbyuser.GetreqlelbyuserResponse;
+import com.example.tryretrofitlogin.responses.getuserbyid.GetusernamebyidResponse;
 import com.example.tryretrofitlogin.responses.getuserbyname.GetuseridResponse;
-import com.example.tryretrofitlogin.responses.newwallet.WalletResponse;
 import com.example.tryretrofitlogin.responses.signup.AuthResponse;
-import com.example.tryretrofitlogin.responses.gethewaninfo.HewanResponse;
-import com.example.tryretrofitlogin.responses.getwalletinfo.GetWalletInfoResponse;
+import com.example.tryretrofitlogin.responses.gethewan.HewanResponse;
+import com.example.tryretrofitlogin.responses.getwallet.GetWalletInfoResponse;
 import com.example.tryretrofitlogin.responses.login.LoginResponse;
 import com.example.tryretrofitlogin.responses.topupwallet.TopupResponse;
 
@@ -48,8 +53,17 @@ public interface APIService {
 
     @FormUrlEncoded
     @POST("wallet")
-    Call<WalletResponse> createWallet(
-            @Field("user_id") String user_id
+    Call<AddWalletResponse> createWallet(
+            @Field("user_id") String user_id,
+            @Field("saldo") String saldo
+            );
+
+    @FormUrlEncoded
+    @POST("reqlelang")
+    Call<AddreqlelangResponse> reqLelang(
+            @Field("pengirim_id") String pengirimId,
+            @Field("user_id") String userId,
+            @Field("lelang_id") String lelangId
     );
 
     @FormUrlEncoded
@@ -71,10 +85,30 @@ public interface APIService {
             @Query("id") String id
     );
 
+    @GET("getreqlelbyuser/{user_id}")
+    Call<GetreqlelbyuserResponse> getReqlelbyuser(
+            @Path("user_id") String user_id
+    );
+
     @GET("gethewanbyid/{id}")
     Call<GethewanbyidResponse> gethewanjenis(
             @Path("id") String id,
             @Query("jenis") String jenis
+    );
+
+    @GET("getuserbyid/{id}")
+    Call<GetusernamebyidResponse> getUsername(
+            @Path("id") String id,
+            @Query("name") String name
+    );
+
+    @GET("getlelangbyid/{id}")
+    Call<GetlelangbyidResponse> getdetlelang(
+            @Path("id") String id,
+            @Query("user_id") String user_id,
+            @Query("hewan_id") String hewan_id,
+            @Query("comment") String comment,
+            @Query("harga") String harga
     );
 
     @GET("hewan")
@@ -83,6 +117,10 @@ public interface APIService {
 
     @GET("alllelang")
     Call<GetlelangResponse> getlelang(
+    );
+
+    @GET("allreqlel")
+    Call<GetReqlelResponse> getreqlel(
     );
 
 

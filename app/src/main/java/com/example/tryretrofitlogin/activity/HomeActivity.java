@@ -15,7 +15,7 @@ import com.example.tryretrofitlogin.helper.SharedPrefManager;
 public class HomeActivity extends AppCompatActivity {
 
     private TextView txtusername, txtuseremail;
-    private Button btnlogout, btnwallet, btntolelang, btntolistlel;
+    private Button btnlogout, btnwallet, btntolelang, btntolistlel, btntoreqlel;
     private String username, useremail;
     private String userid;
 
@@ -30,6 +30,7 @@ public class HomeActivity extends AppCompatActivity {
         btnwallet = (Button) findViewById(R.id.btn_towallet);
         btntolelang = (Button) findViewById(R.id.btn_toaddlelang);
         btntolistlel = (Button) findViewById(R.id.btn_tolistlelang);
+        btntoreqlel = (Button) findViewById(R.id.btn_toreqlel);
 
         userid = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getId();
         username = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getName();
@@ -65,6 +66,13 @@ public class HomeActivity extends AppCompatActivity {
                 toListlelang();
             }
         });
+
+        btntoreqlel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toReqlelang();
+            }
+        });
     }
 
     private void userLogout(){
@@ -86,6 +94,11 @@ public class HomeActivity extends AppCompatActivity {
 
     private void toListlelang(){
         Intent intent = new Intent(HomeActivity.this, ListLelangActivity.class);
+        startActivity(intent);
+    }
+
+    private void toReqlelang(){
+        Intent intent = new Intent(HomeActivity.this, LelreqlistActivity.class);
         startActivity(intent);
     }
 }

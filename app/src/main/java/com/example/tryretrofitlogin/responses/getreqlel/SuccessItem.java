@@ -1,8 +1,8 @@
-package com.example.tryretrofitlogin.responses.newwallet;
+package com.example.tryretrofitlogin.responses.getreqlel;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Success{
+public class SuccessItem{
 
 	@SerializedName("updated_at")
 	private String updatedAt;
@@ -10,11 +10,14 @@ public class Success{
 	@SerializedName("user_id")
 	private String userId;
 
+	@SerializedName("pengirim_id")
+	private String pengirimId;
+
+	@SerializedName("lelang_id")
+	private String lelangId;
+
 	@SerializedName("created_at")
 	private String createdAt;
-
-	@SerializedName("saldo")
-	private int saldo;
 
 	@SerializedName("id")
 	private int id;
@@ -35,20 +38,28 @@ public class Success{
 		return userId;
 	}
 
+	public void setPengirimId(String pengirimId){
+		this.pengirimId = pengirimId;
+	}
+
+	public String getPengirimId(){
+		return pengirimId;
+	}
+
+	public void setLelangId(String lelangId){
+		this.lelangId = lelangId;
+	}
+
+	public String getLelangId(){
+		return lelangId;
+	}
+
 	public void setCreatedAt(String createdAt){
 		this.createdAt = createdAt;
 	}
 
 	public String getCreatedAt(){
 		return createdAt;
-	}
-
-	public void setSaldo(int saldo){
-		this.saldo = saldo;
-	}
-
-	public int getSaldo(){
-		return saldo;
 	}
 
 	public void setId(int id){
@@ -62,11 +73,12 @@ public class Success{
 	@Override
  	public String toString(){
 		return 
-			"Success{" + 
+			"SuccessItem{" + 
 			"updated_at = '" + updatedAt + '\'' + 
 			",user_id = '" + userId + '\'' + 
+			",pengirim_id = '" + pengirimId + '\'' + 
+			",lelang_id = '" + lelangId + '\'' + 
 			",created_at = '" + createdAt + '\'' + 
-			",saldo = '" + saldo + '\'' + 
 			",id = '" + id + '\'' + 
 			"}";
 		}

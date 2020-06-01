@@ -2,10 +2,8 @@ package com.example.tryretrofitlogin.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,11 +17,10 @@ import com.example.tryretrofitlogin.R;
 import com.example.tryretrofitlogin.api.APIService;
 import com.example.tryretrofitlogin.api.APIUrl;
 import com.example.tryretrofitlogin.helper.SharedPrefManager;
-import com.example.tryretrofitlogin.models.Hewan;
 import com.example.tryretrofitlogin.models.Lelang;
-import com.example.tryretrofitlogin.responses.addlelang.AddLelangResponse;
-import com.example.tryretrofitlogin.responses.gethewaninfo.HewanResponse;
-import com.example.tryretrofitlogin.responses.gethewaninfo.SuccessItem;
+import com.example.tryretrofitlogin.postresponse.addlelang.AddLelangResponse;
+import com.example.tryretrofitlogin.responses.gethewan.HewanResponse;
+import com.example.tryretrofitlogin.responses.gethewan.SuccessItem;
 
 import java.util.ArrayList;
 import java.util.List;

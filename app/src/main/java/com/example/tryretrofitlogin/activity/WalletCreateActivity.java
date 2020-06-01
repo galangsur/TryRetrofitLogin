@@ -11,12 +11,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tryretrofitlogin.R;
-import com.example.tryretrofitlogin.activity.auth.SignupActivity;
 import com.example.tryretrofitlogin.api.APIService;
 import com.example.tryretrofitlogin.api.APIUrl;
 import com.example.tryretrofitlogin.models.Wallet;
+import com.example.tryretrofitlogin.postresponse.addwallet.AddWalletResponse;
 import com.example.tryretrofitlogin.responses.getuserbyname.GetuseridResponse;
-import com.example.tryretrofitlogin.responses.newwallet.WalletResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,7 +26,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class WalletCreateActivity extends AppCompatActivity {
 
     private Button btncreatewallet;
-    private TextView namauser,iduser;
+    private TextView namauser,iduser, nominalawal;
     private String username;
     private String userid;
 
@@ -39,6 +38,8 @@ public class WalletCreateActivity extends AppCompatActivity {
         btncreatewallet = (Button) findViewById(R.id.btn_createwallet);
         namauser = (TextView) findViewById(R.id.txt_namauser);
         iduser = (TextView) findViewById(R.id.txt_iduser);
+        nominalawal = (TextView) findViewById(R.id.txt_nominalawal);
+        nominalawal.setText("0");
 
         Intent intent = getIntent();
         username = intent.getStringExtra("username");
@@ -58,6 +59,8 @@ public class WalletCreateActivity extends AppCompatActivity {
 
     private void createwallet(){
         String keyid = iduser.getText().toString().trim();
+        String nominalkey = nominalawal.getText().toString().trim();
+        Toast.makeText(this, "kyid" + keyid + nominalkey, Toast.LENGTH_SHORT).show();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(APIUrl.BASE_URL)
@@ -66,19 +69,21 @@ public class WalletCreateActivity extends AppCompatActivity {
 
         APIService service = retrofit.create(APIService.class);
 
-        Wallet wallet = new Wallet(keyid);
+        Call<AddWalletResponse> call = service.createWallet(keyid,nominalkey);
 
-        Call<WalletResponse> call = service.createWallet(keyid);
-
-        call.enqueue(new Callback<WalletResponse>() {
+        call.enqueue(new Callback<AddWalletResponse>() {
             @Override
-            public void onResponse(Call<WalletResponse> call, Response<WalletResponse> response) {
-                Intent intent = new Intent(WalletCreateActivity.this, MainActivity.class);
-                startActivity(intent);
+            public void onResponse(Call<AddWalletResponse> call, Response<AddWalletResponse> response) {
+                if (response.isSuccessful()){
+                    Intent intent = new Intent(WalletCreateActivity.this, MainActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(WalletCreateActivity.this, "gk", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
-            public void onFailure(Call<WalletResponse> call, Throwable t) {
+            public void onFailure(Call<AddWalletResponse> call, Throwable t) {
 
             }
         });

@@ -13,7 +13,7 @@ import com.example.tryretrofitlogin.R;
 import com.example.tryretrofitlogin.api.APIService;
 import com.example.tryretrofitlogin.api.APIUrl;
 import com.example.tryretrofitlogin.helper.SharedPrefManager;
-import com.example.tryretrofitlogin.responses.getwalletinfo.GetWalletInfoResponse;
+import com.example.tryretrofitlogin.responses.getwallet.GetWalletInfoResponse;
 import com.example.tryretrofitlogin.responses.topupwallet.TopupResponse;
 
 import retrofit2.Call;

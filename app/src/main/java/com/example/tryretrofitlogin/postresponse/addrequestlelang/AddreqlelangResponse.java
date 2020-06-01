@@ -1,8 +1,8 @@
-package com.example.tryretrofitlogin.responses.newwallet;
+package com.example.tryretrofitlogin.postresponse.addrequestlelang;
 
 import com.google.gson.annotations.SerializedName;
 
-public class WalletResponse{
+public class AddreqlelangResponse{
 
 	@SerializedName("success")
 	private Success success;
@@ -18,7 +18,7 @@ public class WalletResponse{
 	@Override
  	public String toString(){
 		return 
-			"WalletResponse{" + 
+			"AddreqlelangResponse{" + 
 			"success = '" + success + '\'' + 
 			"}";
 		}

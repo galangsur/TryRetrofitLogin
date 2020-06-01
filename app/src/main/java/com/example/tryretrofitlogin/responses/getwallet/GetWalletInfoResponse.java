@@ -1,4 +1,4 @@
-package com.example.tryretrofitlogin.responses.getwalletinfo;
+package com.example.tryretrofitlogin.responses.getwallet;
 
 import com.google.gson.annotations.SerializedName;
 

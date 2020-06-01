@@ -76,7 +76,6 @@ public class SignupActivity extends AppCompatActivity {
         call.enqueue(new Callback<AuthResponse>() {
             @Override
             public void onResponse(Call<AuthResponse> call, Response<AuthResponse> response) {
-                Log.i("JaniInfo", "clicicon: " + response.body().toString());
                 Intent intent = new Intent(SignupActivity.this, WalletCreateActivity.class);
                 intent.putExtra("username", name);
                 startActivity(intent);

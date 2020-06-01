@@ -2,6 +2,7 @@ package com.example.tryretrofitlogin.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -65,7 +66,6 @@ public class RVadapter extends RecyclerView.Adapter<RVadapter.MyViewHolder> {
 
         public MyViewHolder(View view) {
             super(view);
-
             comment = view.findViewById(R.id.lelcomment);
             harga = view.findViewById(R.id.lelharga);
             toDaftarform = view.findViewById(R.id.btndftarform);
