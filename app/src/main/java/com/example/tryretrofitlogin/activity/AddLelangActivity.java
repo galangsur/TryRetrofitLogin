@@ -1,5 +1,6 @@
 package com.example.tryretrofitlogin.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -21,6 +22,10 @@ import com.example.tryretrofitlogin.models.Lelang;
 import com.example.tryretrofitlogin.postresponse.addlelang.AddLelangResponse;
 import com.example.tryretrofitlogin.responses.gethewan.HewanResponse;
 import com.example.tryretrofitlogin.responses.gethewan.SuccessItem;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,9 +42,10 @@ public class AddLelangActivity extends AppCompatActivity {
     private TextView txtuserid;
     private Spinner spinhewanid;
     private Button btnbacktohome, btnaddlelang;
-    private String userid, jenishewan;
+    private String userid, jenishewan, groupname;
     private int idhewan;
     public List<SuccessItem> hewans;
+    private DatabaseReference rootRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +62,8 @@ public class AddLelangActivity extends AppCompatActivity {
         userid = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getId();
         txtuserid.setText(userid);
 
+        rootRef = FirebaseDatabase.getInstance().getReference();
+
         initSpinnerHewan();
         spinhewanid.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -65,7 +73,6 @@ public class AddLelangActivity extends AppCompatActivity {
                 jenishewan = hewans.get(position).getJenis();
                 Toast.makeText(AddLelangActivity.this, selectedHewan + "di pilih dengan id" + idhewan +"jenis " +jenishewan, Toast.LENGTH_SHORT).show();
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -75,7 +82,9 @@ public class AddLelangActivity extends AppCompatActivity {
         btnaddlelang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                groupname = rootRef.push().getKey();
                 uploadLelang();
+                newGroup(groupname);
             }
         });
     }
@@ -118,12 +127,9 @@ public class AddLelangActivity extends AppCompatActivity {
         });
     }
 
-    //senin jam 8// nama android job schedular retrofit dan frontjob schedular
-
-
     private void uploadLelang(){
         String iduser = txtuserid.getText().toString().trim();
-        String lelcomment = edttxtcomment.getText().toString().trim();
+        final String lelcomment = edttxtcomment.getText().toString().trim();
         String lelharga = edttxtharga.getText().toString().trim();
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -136,15 +142,18 @@ public class AddLelangActivity extends AppCompatActivity {
         Lelang lelang = new Lelang(iduser, idhewan, lelharga, lelcomment);
 
         Call<AddLelangResponse> call = service.createLelang(
-                iduser, idhewan, lelharga, lelcomment
+                iduser, idhewan, lelharga, lelcomment,groupname
         );
 
         call.enqueue(new Callback<AddLelangResponse>() {
             @Override
             public void onResponse(Call<AddLelangResponse> call, Response<AddLelangResponse> response) {
-                Toast.makeText(AddLelangActivity.this, "respon" + response.body().getSuccess(), Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                finish();
+                if (response.isSuccessful()){
+
+                    Toast.makeText(AddLelangActivity.this, "respon" + response.body().getSuccess(), Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                    finish();
+                }
             }
 
             @Override
@@ -154,5 +163,18 @@ public class AddLelangActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    private void newGroup(String groupname){
+
+
+        rootRef.child("Groups").child(groupname).setValue("")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                        }
+                    }
+                });
     }
 }

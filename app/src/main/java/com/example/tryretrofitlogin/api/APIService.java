@@ -1,12 +1,16 @@
 package com.example.tryretrofitlogin.api;
 
-import com.example.tryretrofitlogin.postresponse.addrequestlelang.AddreqlelangResponse;
 import com.example.tryretrofitlogin.postresponse.addlelang.AddLelangResponse;
+import com.example.tryretrofitlogin.postresponse.addlelpesertamanager.AddlelpesertamanagerResponse;
+import com.example.tryretrofitlogin.postresponse.addrequestlelang.AddreqlelangResponse;
 import com.example.tryretrofitlogin.postresponse.addwallet.AddWalletResponse;
+import com.example.tryretrofitlogin.responses.deletereqlel.DeletereqlelResponse;
 import com.example.tryretrofitlogin.responses.gethewanbyid.GethewanbyidResponse;
 import com.example.tryretrofitlogin.responses.getlelang.GetlelangResponse;
 import com.example.tryretrofitlogin.responses.getlelangbyid.GetlelangbyidResponse;
 import com.example.tryretrofitlogin.responses.getreqlel.GetReqlelResponse;
+import com.example.tryretrofitlogin.responses.getreqlelbyid.GetreqlelbyidResponse;
+import com.example.tryretrofitlogin.responses.getreqlelbysender.GetreqlelbysenderResponse;
 import com.example.tryretrofitlogin.responses.getreqlelbyuser.GetreqlelbyuserResponse;
 import com.example.tryretrofitlogin.responses.getuserbyid.GetusernamebyidResponse;
 import com.example.tryretrofitlogin.responses.getuserbyname.GetuseridResponse;
@@ -48,7 +52,8 @@ public interface APIService {
             @Field("user_id") String user_id,
             @Field("hewan_id") int hewan_id,
             @Field("harga") String harga,
-            @Field("comment") String comment
+            @Field("comment") String comment,
+            @Field("gchat_id") String gchat_id
     );
 
     @FormUrlEncoded
@@ -64,6 +69,13 @@ public interface APIService {
             @Field("pengirim_id") String pengirimId,
             @Field("user_id") String userId,
             @Field("lelang_id") String lelangId
+    );
+
+    @FormUrlEncoded
+    @POST("accreqlel")
+    Call<AddlelpesertamanagerResponse> accPeserta(
+            @Field("peserta_id") String peserta_id,
+            @Field("lelang_id") String lelang_id
     );
 
     @FormUrlEncoded
@@ -88,6 +100,21 @@ public interface APIService {
     @GET("getreqlelbyuser/{user_id}")
     Call<GetreqlelbyuserResponse> getReqlelbyuser(
             @Path("user_id") String user_id
+    );
+
+    @GET("getreqlelbypengirim/{pengirim_id}")
+    Call<GetreqlelbysenderResponse> getReqlelbysender(
+            @Path("pengirim_id") String pengirim_id
+    );
+
+    @GET("deletereq/{id}")
+    Call<DeletereqlelResponse> deleteReqlel(
+            @Path("id") String id
+    );
+
+    @GET("getreqlelbyid/{id}")
+    Call<GetreqlelbyidResponse> getReqlelbyid(
+            @Path("id") String id
     );
 
     @GET("gethewanbyid/{id}")

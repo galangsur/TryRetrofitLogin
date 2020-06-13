@@ -14,7 +14,7 @@ public class Success{
 	private String userId;
 
 	@SerializedName("hewan_id")
-	private int hewanId;
+	private String hewanId;
 
 	@SerializedName("created_at")
 	private String createdAt;
@@ -24,6 +24,9 @@ public class Success{
 
 	@SerializedName("id")
 	private int id;
+
+	@SerializedName("gchat_id")
+	private String gchatId;
 
 	public void setHarga(String harga){
 		this.harga = harga;
@@ -49,11 +52,11 @@ public class Success{
 		return userId;
 	}
 
-	public void setHewanId(int hewanId){
+	public void setHewanId(String hewanId){
 		this.hewanId = hewanId;
 	}
 
-	public int getHewanId(){
+	public String getHewanId(){
 		return hewanId;
 	}
 
@@ -81,6 +84,14 @@ public class Success{
 		return id;
 	}
 
+	public void setGchatId(String gchatId){
+		this.gchatId = gchatId;
+	}
+
+	public String getGchatId(){
+		return gchatId;
+	}
+
 	@Override
  	public String toString(){
 		return 
@@ -92,6 +103,7 @@ public class Success{
 			",created_at = '" + createdAt + '\'' + 
 			",comment = '" + comment + '\'' + 
 			",id = '" + id + '\'' + 
+			",gchat_id = '" + gchatId + '\'' + 
 			"}";
 		}
 }

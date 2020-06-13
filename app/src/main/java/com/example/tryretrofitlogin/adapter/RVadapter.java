@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tryretrofitlogin.R;
 import com.example.tryretrofitlogin.activity.DetailLelangActivity;
-import com.example.tryretrofitlogin.activity.ListLelangActivity;
 import com.example.tryretrofitlogin.responses.getlelang.SuccessItem;
 
 import java.util.ArrayList;

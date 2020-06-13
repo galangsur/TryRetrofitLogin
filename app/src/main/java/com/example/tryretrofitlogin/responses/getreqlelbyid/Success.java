@@ -1,8 +1,8 @@
-package com.example.tryretrofitlogin.responses.getreqlelbyuser;
+package com.example.tryretrofitlogin.responses.getreqlelbyid;
 
 import com.google.gson.annotations.SerializedName;
 
-public class SuccessItem{
+public class Success{
 
 	@SerializedName("updated_at")
 	private String updatedAt;
@@ -73,7 +73,7 @@ public class SuccessItem{
 	@Override
  	public String toString(){
 		return 
-			"SuccessItem{" + 
+			"Success{" + 
 			"updated_at = '" + updatedAt + '\'' + 
 			",user_id = '" + userId + '\'' + 
 			",pengirim_id = '" + pengirimId + '\'' + 

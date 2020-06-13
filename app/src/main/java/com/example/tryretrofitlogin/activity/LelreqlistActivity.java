@@ -13,10 +13,12 @@ import android.widget.TextView;
 
 import com.example.tryretrofitlogin.R;
 import com.example.tryretrofitlogin.adapter.ReqlelRVadapt;
+import com.example.tryretrofitlogin.adapter.ReqlelsenderRVadapt;
 import com.example.tryretrofitlogin.api.APIService;
 import com.example.tryretrofitlogin.api.APIUrl;
 import com.example.tryretrofitlogin.helper.SharedPrefManager;
 import com.example.tryretrofitlogin.responses.getreqlel.GetReqlelResponse;
+import com.example.tryretrofitlogin.responses.getreqlelbysender.GetreqlelbysenderResponse;
 import com.example.tryretrofitlogin.responses.getreqlelbyuser.GetreqlelbyuserResponse;
 
 import retrofit2.Call;
@@ -46,10 +48,13 @@ public class LelreqlistActivity extends AppCompatActivity {
                 this, LinearLayoutManager.VERTICAL,false);
         reqlelrview.setLayoutManager(layoutManager);
         reqlelrview.setHasFixedSize(true);
-        getDataReqlel();
+
+        getDataReqlelbyuser();
+        getDataReqlelbysender();
+
     }
 
-    public void getDataReqlel(){
+    public void getDataReqlelbyuser(){
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(APIUrl.BASE_URL)
@@ -71,6 +76,32 @@ public class LelreqlistActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<GetreqlelbyuserResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void getDataReqlelbysender(){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(APIUrl.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        APIService service = retrofit.create(APIService.class);
+
+        Call<GetreqlelbysenderResponse> call = service.getReqlelbysender(
+                reqlelFilter.getText().toString().trim());
+
+        call.enqueue(new Callback<GetreqlelbysenderResponse>() {
+            @Override
+            public void onResponse(Call<GetreqlelbysenderResponse> call, Response<GetreqlelbysenderResponse> response) {
+                ReqlelsenderRVadapt reqlelsenderRVadapt = new ReqlelsenderRVadapt(LelreqlistActivity.this,response.body().getSuccess());
+                reqlelsenderRVadapt.notifyDataSetChanged();
+                reqlelrview.setAdapter(reqlelsenderRVadapt);
+            }
+
+            @Override
+            public void onFailure(Call<GetreqlelbysenderResponse> call, Throwable t) {
 
             }
         });

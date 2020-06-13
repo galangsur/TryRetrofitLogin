@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.GroupchatActivity">
+    
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_messagelist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/input_linlayout">
+    </androidx.recyclerview.widget.RecyclerView>
+    
+    <LinearLayout
+        android:id="@+id/input_linlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true">
+        <EditText
+            android:id="@+id/input_edtxt"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:hint="write text here..."
+            android:padding="17dp"/>
+
+        <ImageButton
+            android:id="@+id/send_imgbtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/ic_launcher"/>
+    </LinearLayout>
+
+</RelativeLayout>

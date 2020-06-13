@@ -15,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tryretrofitlogin.R;
-import com.example.tryretrofitlogin.activity.DetailLelangActivity;
 import com.example.tryretrofitlogin.activity.DetailReqlelActivity;
 import com.example.tryretrofitlogin.responses.getreqlelbyuser.SuccessItem;
 

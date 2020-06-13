@@ -1,4 +1,4 @@
-package com.example.tryretrofitlogin.responses.getreqlelbyuser;
+package com.example.tryretrofitlogin.responses.getreqlelbysender;
 
 import com.google.gson.annotations.SerializedName;
 

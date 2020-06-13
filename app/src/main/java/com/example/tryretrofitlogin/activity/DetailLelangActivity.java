@@ -101,7 +101,7 @@ public class DetailLelangActivity extends AppCompatActivity {
                     getNamaUser();
 
                     inviscond = tmpidpelelang.getText().toString().trim();
-                    if (userid.equals(inviscond)){//kondisinya login dengan user id "31"
+                    if (userid.equals(inviscond)){
                         Toast.makeText(DetailLelangActivity.this, "pemilik lelang", Toast.LENGTH_SHORT).show();
                         btnDaftar.setVisibility(View.INVISIBLE);
                     }else {

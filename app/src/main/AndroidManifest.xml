@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.DetailReqlelActivity"></activity>
+        <activity android:name=".activity.GroupchatActivity"></activity>
+        <activity android:name=".activity.DetailReqlelActivity" />
         <activity android:name=".activity.LelreqlistActivity" />
         <activity android:name=".activity.DetailLelangActivity" />
         <activity android:name=".activity.WalletCreateActivity" />

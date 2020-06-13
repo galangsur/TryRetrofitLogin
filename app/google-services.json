@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "241538399825",
+    "firebase_url": "https://tryretrofitlogin.firebaseio.com",
+    "project_id": "tryretrofitlogin",
+    "storage_bucket": "tryretrofitlogin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241538399825:android:298800cbca5e71ee888270",
+        "android_client_info": {
+          "package_name": "com.example.tryretrofitlogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "241538399825-tk5pjvv4t4brr9ctq9okh74el1b6sos4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9TqzEpL5jJldeEnx-QI0gwg1CPNPD62c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "241538399825-tk5pjvv4t4brr9ctq9okh74el1b6sos4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

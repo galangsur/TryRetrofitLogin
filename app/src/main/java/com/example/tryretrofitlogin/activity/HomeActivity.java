@@ -15,7 +15,7 @@ import com.example.tryretrofitlogin.helper.SharedPrefManager;
 public class HomeActivity extends AppCompatActivity {
 
     private TextView txtusername, txtuseremail;
-    private Button btnlogout, btnwallet, btntolelang, btntolistlel, btntoreqlel;
+    private Button btnlogout, btnwallet, btntolelang, btntolistlel, btntoreqlel, btntogroupcht;
     private String username, useremail;
     private String userid;
 
@@ -31,6 +31,7 @@ public class HomeActivity extends AppCompatActivity {
         btntolelang = (Button) findViewById(R.id.btn_toaddlelang);
         btntolistlel = (Button) findViewById(R.id.btn_tolistlelang);
         btntoreqlel = (Button) findViewById(R.id.btn_toreqlel);
+        btntogroupcht = (Button) findViewById(R.id.btn_togroupcht);
 
         userid = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getId();
         username = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getName();
@@ -73,6 +74,13 @@ public class HomeActivity extends AppCompatActivity {
                 toReqlelang();
             }
         });
+
+        btntogroupcht.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toGroupchat();
+            }
+        });
     }
 
     private void userLogout(){
@@ -99,6 +107,11 @@ public class HomeActivity extends AppCompatActivity {
 
     private void toReqlelang(){
         Intent intent = new Intent(HomeActivity.this, LelreqlistActivity.class);
+        startActivity(intent);
+    }
+
+    private void toGroupchat(){
+        Intent intent = new Intent(HomeActivity.this, GroupchatActivity.class);
         startActivity(intent);
     }
 }
