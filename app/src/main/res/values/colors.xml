@@ -3,6 +3,18 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="red">#fc0303</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="whiteTrans">#eeeeee</color>
+    <color name="brown">#ad6534</color>
+    <color name="brownlight">#ebe4dd</color>
+    <color name="greenmoney">#0b6b1e</color>
+    <color name="greenone">#008577</color>
+    <color name="greentwo">#00574B</color>
+    <color name="red">#e82330</color>
+    <color name="creamhome">#b7b1ae</color>
+    <color name="brownhome">#754838</color>
+    <color name="oldbrownhome">#584838</color>
+
 
 </resources>

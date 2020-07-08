@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.GroupchatActivity"></activity>
+        <activity android:name=".activity.ListLelangayamActivity"></activity>
+        <activity android:name=".activity.ListLelangsapiActivity" />
+        <activity android:name=".activity.LelangResultActivity" />
+        <activity android:name=".activity.GroupchatActivity" />
         <activity android:name=".activity.DetailReqlelActivity" />
         <activity android:name=".activity.LelreqlistActivity" />
         <activity android:name=".activity.DetailLelangActivity" />

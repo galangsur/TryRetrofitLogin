@@ -58,8 +58,6 @@ public class WalletActivity extends AppCompatActivity {
         super.onStart();
         Toast.makeText(this, "iser" + userid, Toast.LENGTH_SHORT).show();
         getSaldo();
-
-
     }
 
     private void fungsitambah(){

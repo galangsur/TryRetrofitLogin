@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,22 +42,20 @@ public class Messageadapt extends RecyclerView.Adapter<Messageadapt.MessageViewH
     @Override
     public void onBindViewHolder(@NonNull final MessageViewHolder holder, int position) {
         Message message = userMessageList.get(position);
-
         String fromUserid = message.getFromId();
-        Log.d("fromfirebase", "id" + fromUserid);
 
         currentUserId = SharedPrefManager.getInstance(mCtx).getUserProfile().getId();
         String userRef = currentUserId.trim();
-        Log.d("fromshared", "id" + userRef);
 
 
-        if (fromUserid.equals(userRef)){
-            holder.recieverMessagetxt.setVisibility(View.INVISIBLE);
-            holder.msgBody.setVisibility(View.INVISIBLE);
+        if (fromUserid.equals(userRef)) {
             holder.senderMessagetxt.setBackgroundResource(R.drawable.sender_message_layout);
             holder.senderMessagetxt.setText(message.getMessage());
-        }else {
+        } else {
             holder.senderMessagetxt.setVisibility(View.INVISIBLE);
+
+            holder.recieverMessagetxt.setVisibility(View.VISIBLE);
+
             holder.recieverMessagetxt.setBackgroundResource(R.drawable.reciever_message_layout);
             holder.recieverMessagetxt.setText(message.getMessage());
             holder.fromMessagetxt.setText(message.getFromName());
@@ -64,6 +63,9 @@ public class Messageadapt extends RecyclerView.Adapter<Messageadapt.MessageViewH
             holder.timeMessagetxt.setText(message.getTime());
         }
 
+        if (holder.recieverMessagetxt.getText().toString().equals("r")){
+            holder.recieverMessagetxt.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override
@@ -74,7 +76,6 @@ public class Messageadapt extends RecyclerView.Adapter<Messageadapt.MessageViewH
     public class MessageViewHolder extends RecyclerView.ViewHolder{
 
         public TextView senderMessagetxt,recieverMessagetxt,fromMessagetxt,dateMessagetxt,timeMessagetxt;
-        public LinearLayout msgBody;
 
         public MessageViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -83,7 +84,6 @@ public class Messageadapt extends RecyclerView.Adapter<Messageadapt.MessageViewH
             fromMessagetxt = (TextView) itemView.findViewById(R.id.txt_fromname);
             dateMessagetxt = (TextView) itemView.findViewById(R.id.txt_date);
             timeMessagetxt = (TextView) itemView.findViewById(R.id.txt_sendtime);
-            msgBody = (LinearLayout) itemView.findViewById(R.id.msg_body);
         }
     }
 }

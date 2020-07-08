@@ -79,6 +79,7 @@ public class SignupActivity extends AppCompatActivity {
                 Intent intent = new Intent(SignupActivity.this, WalletCreateActivity.class);
                 intent.putExtra("username", name);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
 
             @Override
@@ -88,7 +89,9 @@ public class SignupActivity extends AppCompatActivity {
         });
     }
 
-    private void walletCreate() {
-
+    @Override
+    public void onBackPressed() {
+        SignupActivity.super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
 }

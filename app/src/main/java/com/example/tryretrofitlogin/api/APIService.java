@@ -7,6 +7,7 @@ import com.example.tryretrofitlogin.postresponse.addwallet.AddWalletResponse;
 import com.example.tryretrofitlogin.responses.deletereqlel.DeletereqlelResponse;
 import com.example.tryretrofitlogin.responses.gethewanbyid.GethewanbyidResponse;
 import com.example.tryretrofitlogin.responses.getlelang.GetlelangResponse;
+import com.example.tryretrofitlogin.responses.getlelangbyhewan.GetlelangbyhewanResponse;
 import com.example.tryretrofitlogin.responses.getlelangbyid.GetlelangbyidResponse;
 import com.example.tryretrofitlogin.responses.getreqlel.GetReqlelResponse;
 import com.example.tryretrofitlogin.responses.getreqlelbyid.GetreqlelbyidResponse;
@@ -114,6 +115,11 @@ public interface APIService {
 
     @GET("getreqlelbyid/{id}")
     Call<GetreqlelbyidResponse> getReqlelbyid(
+            @Path("id") String id
+    );
+
+    @GET("getlelangbyhewan/{id}")
+    Call<GetlelangbyhewanResponse> getLelbyhewan(
             @Path("id") String id
     );
 

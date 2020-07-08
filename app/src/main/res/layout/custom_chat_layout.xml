@@ -4,14 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:id="@+id/msg_body"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:background="@drawable/reciever_message_layout"
-        android:orientation="vertical">
-
         <TextView
             android:id="@+id/txt_fromname"
             android:layout_width="wrap_content"
@@ -19,22 +11,24 @@
             android:textSize="11sp"
             android:layout_marginLeft="13dp"
             android:textStyle="bold"/>
+
         <TextView
             android:id="@+id/txt_recievermsg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:text="reciever message here"
+            android:layout_marginLeft="5dp"
+            android:text="r"
+            android:layout_below="@id/txt_fromname"
+            android:background="@drawable/reciever_message_layout"
             android:padding="10dp"
             android:textSize="14sp"
             android:textStyle="bold"/>
-    </LinearLayout>
 
     <TextView
         android:id="@+id/txt_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/msg_body"
+        android:layout_below="@id/txt_recievermsg"
         android:textSize="11sp"
         android:textStyle="bold"/>
 
@@ -42,8 +36,8 @@
         android:id="@+id/txt_sendtime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/msg_body"
         android:layout_toRightOf="@id/txt_date"
+        android:layout_below="@id/txt_recievermsg"
         android:layout_marginLeft="10dp"
         android:textSize="11sp"
         android:textStyle="bold"/>
@@ -56,9 +50,8 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="15dp"
         android:layout_marginRight="5dp"
-        android:layout_alignParentTop="@+id/msg_body"
+        android:layout_alignParentTop="@+id/txt_recievermsg"
         android:background="@drawable/sender_message_layout"
-        android:text="sender message"
         android:textSize="14sp"
         android:padding="10dp"
         android:textStyle="bold"/>

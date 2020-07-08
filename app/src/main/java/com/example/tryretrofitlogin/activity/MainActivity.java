@@ -41,9 +41,16 @@ public class MainActivity extends AppCompatActivity {
     private void toSignin(){
         Intent sigin = new Intent(MainActivity.this, SigninActivity.class);
         startActivity(sigin);
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
     private void toSignup(){
         Intent sigup = new Intent(MainActivity.this, SignupActivity.class);
         startActivity(sigup);
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+    }
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
     }
 }

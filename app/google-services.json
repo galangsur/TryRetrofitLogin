@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "241538399825-rbh55b7vm6tknuokiv029u11cv86db5j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tryretrofitlogin",
+            "certificate_hash": "aab4cc13aa867e2f3071b97b9f28b5eb70ac0b76"
+          }
+        },
+        {
           "client_id": "241538399825-tk5pjvv4t4brr9ctq9okh74el1b6sos4.apps.googleusercontent.com",
           "client_type": 3
         }

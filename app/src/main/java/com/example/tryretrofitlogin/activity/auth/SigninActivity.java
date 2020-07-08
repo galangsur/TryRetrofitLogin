@@ -47,6 +47,14 @@ public class SigninActivity extends AppCompatActivity {
             }
         });
 
+
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        SigninActivity.super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
     }
 
     private void userLogin(){

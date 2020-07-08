@@ -57,6 +57,11 @@ public class WalletCreateActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+    }
+
     private void createwallet(){
         String keyid = iduser.getText().toString().trim();
         String nominalkey = nominalawal.getText().toString().trim();
@@ -77,6 +82,7 @@ public class WalletCreateActivity extends AppCompatActivity {
                 if (response.isSuccessful()){
                     Intent intent = new Intent(WalletCreateActivity.this, MainActivity.class);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
                 } else {
                     Toast.makeText(WalletCreateActivity.this, "gk", Toast.LENGTH_SHORT).show();
                 }
