@@ -38,6 +38,11 @@ public class LelangResultActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+    }
+
+    @Override
     protected void onStart() {
         super.onStart();
 
@@ -62,4 +67,6 @@ public class LelangResultActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

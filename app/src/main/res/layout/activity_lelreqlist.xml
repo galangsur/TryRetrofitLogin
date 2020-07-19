@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,15 +7,43 @@
     android:orientation="vertical"
     tools:context=".activity.LelreqlistActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@drawable/reqlelasset_a"/>
+
+    <ImageView
+        android:id="@+id/btn_backreqlist"
+        android:layout_width="25dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="23dp"
+        android:src="@drawable/ic_baseline_arrowwhite_24"/>
+    <TextView
+        android:layout_width="140dp"
+        android:layout_height="100dp"
+        android:text="    Request  Pendaftaran"
+        android:layout_gravity="center"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_toRightOf="@id/btn_backreqlist"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="65dp"/>
+
     <TextView
         android:id="@+id/reqlel_filterkey"
         android:layout_width="match_parent"
-        android:layout_height="10dp"/>
+        android:layout_height="10dp"
+        android:textColor="@color/brown"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/reqlelRV"
+        android:layout_marginTop="130dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
     </androidx.recyclerview.widget.RecyclerView>
 
-</LinearLayout>
+</RelativeLayout>

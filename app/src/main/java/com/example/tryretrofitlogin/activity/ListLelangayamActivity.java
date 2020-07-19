@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +28,7 @@ public class ListLelangayamActivity extends AppCompatActivity {
     private RecyclerView lelayamrview;
     private TextView lelayamFilterkey;
     private String hewanid;
+    private ImageView btnAddlel,btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,8 @@ public class ListLelangayamActivity extends AppCompatActivity {
 
         lelayamrview = (RecyclerView) findViewById(R.id.lelangayamRV);
         lelayamFilterkey = (TextView)findViewById(R.id.lelayam_filterkey);
+        btnAddlel = (ImageView)findViewById(R.id.btn_pengajuanlel);
+        btnBack = (ImageView)findViewById(R.id.btn_backreqlist);
 
         Intent intenthewan = getIntent();
         hewanid = intenthewan.getStringExtra("ayamid");
@@ -46,6 +51,19 @@ public class ListLelangayamActivity extends AppCompatActivity {
         lelayamrview.setHasFixedSize(true);
 
         GetlelangAyam();
+        btnAddlel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toAddlelang();
+            }
+        });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
     @Override
@@ -79,5 +97,10 @@ public class ListLelangayamActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void toAddlelang(){
+        Intent intent = new Intent(ListLelangayamActivity.this, AddLelangActivity.class);
+        startActivity(intent);
     }
 }

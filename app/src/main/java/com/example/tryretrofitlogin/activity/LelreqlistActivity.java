@@ -50,7 +50,7 @@ public class LelreqlistActivity extends AppCompatActivity {
         reqlelrview.setHasFixedSize(true);
 
         getDataReqlelbyuser();
-        getDataReqlelbysender();
+//        getDataReqlelbysender();
 
     }
 

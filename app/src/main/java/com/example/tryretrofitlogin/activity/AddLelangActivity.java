@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,7 +42,8 @@ public class AddLelangActivity extends AppCompatActivity {
     private EditText edttxtcomment, edttxtharga;
     private TextView txtuserid;
     private Spinner spinhewanid;
-    private Button btnbacktohome, btnaddlelang;
+    private Button btnaddlelang;
+    private ImageView btnback;
     private String userid, jenishewan, groupname;
     private int idhewan;
     public List<SuccessItem> hewans;
@@ -57,7 +59,7 @@ public class AddLelangActivity extends AppCompatActivity {
         edttxtcomment = (EditText) findViewById(R.id.editTextcomment);
         edttxtharga = (EditText) findViewById(R.id.editTextharga);
         btnaddlelang = (Button) findViewById(R.id.btn_addlelang);
-        btnbacktohome = (Button) findViewById(R.id.btn_backtohome);
+        btnback = (ImageView) findViewById(R.id.btn_backtohome);
 
         userid = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getId();
         txtuserid.setText(userid);
@@ -82,9 +84,16 @@ public class AddLelangActivity extends AppCompatActivity {
         btnaddlelang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                groupname = rootRef.push().getKey();
+                groupname = "Belum Mulai";
                 uploadLelang();
-                newGroup(groupname);
+//                newGroup(groupname);
+            }
+        });
+
+        btnback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
             }
         });
     }
@@ -167,7 +176,6 @@ public class AddLelangActivity extends AppCompatActivity {
 
     private void newGroup(String groupname){
 
-
         rootRef.child("Groups").child(groupname).setValue("")
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -176,5 +184,10 @@ public class AddLelangActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

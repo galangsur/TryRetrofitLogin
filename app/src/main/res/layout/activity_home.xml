@@ -13,22 +13,71 @@
         android:paddingTop="50dp">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="250dp"
             android:orientation="vertical">
             <RelativeLayout
                 android:id="@+id/imageRellayout"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:background="@drawable/usericonframe"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp">
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/signasset_d">
+                <RelativeLayout
+                    android:id="@+id/imageFrame"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/signasset_c"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp">
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/usericon"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true"/>
+                </RelativeLayout>
+                <TextView
+                    android:id="@+id/txt_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="Username"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:layout_toRightOf="@id/imageFrame"/>
+                <TextView
+                    android:id="@+id/txt_useremail"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="username@gmail.com"
+                    android:textColor="#FFFFFF"
+                    android:layout_below="@id/txt_username"
+                    android:layout_toRightOf="@id/imageFrame"/>
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/usericon"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"/>
+                    android:id="@+id/smallwalleticon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/smallwalleticon"
+                    android:layout_toRightOf="@id/imageFrame"
+                    android:layout_below="@id/txt_useremail"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"/>
+                <TextView
+                    android:id="@+id/txt_homesaldo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/smallwalleticon"
+                    android:layout_below="@id/txt_useremail"
+                    android:text="5000.000"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginLeft="10dp"/>
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -50,53 +99,61 @@
                     android:background="#000000"
                     android:layout_below="@id/hometxt_1"
                     android:layout_centerHorizontal="true"/>
+
                 <RelativeLayout
                     android:id="@+id/pilihanlelang"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:layout_marginTop="90dp">
+
                     <ImageView
                         android:id="@+id/img_lelayam"
                         android:layout_width="150dp"
-                        android:layout_height="250dp"
-                        android:background="@drawable/homeasset_a"/>
+                        android:layout_height="210dp"
+                        android:background="@drawable/homeasset_a" />
+
                     <ImageView
                         android:id="@+id/img_lelsapi"
                         android:layout_width="150dp"
-                        android:layout_height="250dp"
-                        android:background="@drawable/homeasset_b"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_height="210dp"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/homeasset_b" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Lelang Ayam"
-                        android:textColor="#000000"
-                        android:textStyle="bold"
-                        android:textSize="20sp"
                         android:layout_marginLeft="20dp"
-                        android:layout_marginTop="10dp"/>
+                        android:layout_marginTop="10dp"
+                        android:text="Lelang Ayam"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="30dp"
                         android:text="Lelang Sapi"
                         android:textColor="@color/white"
-                        android:textStyle="bold"
                         android:textSize="20sp"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="30dp"
-                        android:layout_marginTop="10dp"/>
+                        android:textStyle="bold" />
+
                     <ImageView
                         android:layout_width="70dp"
                         android:layout_height="100dp"
-                        android:background="@drawable/iconayam"
-                        android:layout_marginTop="140dp"/>
+                        android:layout_marginTop="140dp"
+                        android:background="@drawable/iconayam" />
+
                     <ImageView
                         android:layout_width="70dp"
                         android:layout_height="100dp"
-                        android:background="@drawable/iconsapi"
                         android:layout_alignParentRight="true"
-                        android:layout_marginTop="140dp"/>
+                        android:layout_marginTop="140dp"
+                        android:background="@drawable/iconsapi" />
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -112,81 +169,24 @@
                         android:layout_height="wrap_content"
                         android:text="Wallet"/>
                     <Button
-                        android:id="@+id/btn_tolistlelang"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_below="@id/btn_towallet"
-                        android:text="List Lelang"/>
-                    <Button
-                        android:id="@+id/btn_togroupcht"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_below="@id/btn_tolistlelang"
-                        android:text="Group Chat"/>
-                    <Button
-                        android:id="@+id/btn_toaddlelang"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/btn_togroupcht"
-                        android:layout_marginTop="10dp"
-                        android:text="Add New Lelang"/>
-                    <Button
                         android:id="@+id/btn_toreqlel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:layout_below="@id/btn_toaddlelang"
+                        android:layout_below="@id/btn_towallet"
                         android:text="Requset Lelang"/>
                 </RelativeLayout>
             </RelativeLayout>
-            <TextView
-                android:id="@+id/txt_username"
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:text="Username"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:textColor="#000000"
-                android:layout_toRightOf="@id/imageRellayout"/>
-            <TextView
-                android:id="@+id/txt_useremail"
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_marginLeft="10dp"
-                android:text="username@gmail.com"
-                android:textColor="#000000"
-                android:layout_below="@id/txt_username"
-                android:layout_toRightOf="@id/imageRellayout"/>
-            <ImageView
-                android:id="@+id/smallwalleticon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/smallwalleticon"
-                android:layout_toRightOf="@id/imageRellayout"
-                android:layout_below="@id/txt_useremail"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"/>
-            <TextView
-                android:id="@+id/txt_homesaldo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/smallwalleticon"
-                android:layout_below="@id/txt_useremail"
-                android:text="5000.000"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:textColor="#000000"
-                android:layout_marginLeft="10dp"/>
+
             <ImageView
                 android:id="@+id/btn_logout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/logout"
+                android:layout_width="45dp"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:rotation="90"
+                android:layout_marginTop="25dp"
+                android:src="@drawable/ic_signout_24"
+                android:background="@drawable/homeasset_d"
                 android:layout_alignParentRight="true"/>
         </RelativeLayout>
     </ScrollView>

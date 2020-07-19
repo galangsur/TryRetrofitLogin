@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -62,7 +63,7 @@ public class ReqlelRVadapt extends RecyclerView.Adapter<ReqlelRVadapt.ReqlelView
 
     public class ReqlelViewHolder extends RecyclerView.ViewHolder {
         TextView lelid,pelelangid,pengirimid;
-        Button btnreqlel;
+        ImageView btnreqlel;
 
         public ReqlelViewHolder(View itemView) {
             super(itemView);

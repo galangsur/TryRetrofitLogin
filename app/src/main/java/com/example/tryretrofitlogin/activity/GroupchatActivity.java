@@ -72,8 +72,8 @@ public class GroupchatActivity extends AppCompatActivity {
         currentUserid = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getId();
         currentnameUser = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getName();
 
-        sendImgbtn = (ImageButton) findViewById(R.id.send_imgbtn);
-        inputEdtxt = (EditText) findViewById(R.id.input_edtxt);
+//        sendImgbtn = (ImageButton) findViewById(R.id.send_imgbtn);
+//        inputEdtxt = (EditText) findViewById(R.id.input_edtxt);
         timeTxt = (TextView) findViewById(R.id.timer_txt);
         bidsatuBid = (Button) findViewById(R.id.bid_satu);
         bidduaBid = (Button) findViewById(R.id.bid_dua);
@@ -96,10 +96,12 @@ public class GroupchatActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        displayMsg();
+
         sendImgbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayMsg();
+
             }
         });
 
@@ -107,6 +109,7 @@ public class GroupchatActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 computeBid1K();
+                resetTimer();
             }
         });
 
@@ -123,6 +126,8 @@ public class GroupchatActivity extends AppCompatActivity {
                 computeBid3K();
             }
         });
+
+
 
     }
 
@@ -262,21 +267,26 @@ public class GroupchatActivity extends AppCompatActivity {
                 timerRunning = false;
                 Toast.makeText(GroupchatActivity.this, "waktu habis", Toast.LENGTH_SHORT).show();
                 getlastItem();
+                bidsatuBid.setVisibility(View.INVISIBLE);
+                bidduaBid.setVisibility(View.INVISIBLE);
+                bidtigaBid.setVisibility(View.INVISIBLE);
             }
         }.start();
         timerRunning = true;
     }
 
     private void resetTimer(){
+        countDownTimer.cancel();
         timeleftinmilliSeconds = START_TIME_IN_MILLIS;
         updateCountdowntxt();
+        startTime();
     }
 
     private void updateCountdowntxt(){
         int minutes = (int) (timeleftinmilliSeconds/1000) / 60;
-        int second = (int) (timeleftinmilliSeconds/1000) % 60;
+        int seconds = (int) (timeleftinmilliSeconds/1000) % 60;
 
-        String timeLeftFormatted = String.format(Locale.getDefault(),"%02d:%02d", minutes,second);
+        String timeLeftFormatted = String.format(Locale.getDefault(),"%02d:%02d", minutes,seconds);
         timeTxt.setText(timeLeftFormatted);
     }
 

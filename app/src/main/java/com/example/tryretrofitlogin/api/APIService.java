@@ -4,6 +4,7 @@ import com.example.tryretrofitlogin.postresponse.addlelang.AddLelangResponse;
 import com.example.tryretrofitlogin.postresponse.addlelpesertamanager.AddlelpesertamanagerResponse;
 import com.example.tryretrofitlogin.postresponse.addrequestlelang.AddreqlelangResponse;
 import com.example.tryretrofitlogin.postresponse.addwallet.AddWalletResponse;
+import com.example.tryretrofitlogin.putresponse.putgchatid.UpdategchatidResponse;
 import com.example.tryretrofitlogin.responses.deletereqlel.DeletereqlelResponse;
 import com.example.tryretrofitlogin.responses.gethewanbyid.GethewanbyidResponse;
 import com.example.tryretrofitlogin.responses.getlelang.GetlelangResponse;
@@ -57,6 +58,8 @@ public interface APIService {
             @Field("gchat_id") String gchat_id
     );
 
+
+
     @FormUrlEncoded
     @POST("wallet")
     Call<AddWalletResponse> createWallet(
@@ -84,6 +87,13 @@ public interface APIService {
     Call<TopupResponse> saldotambah(
             @Path("id") String id,
             @Field("saldo") String saldo
+    );
+
+    @FormUrlEncoded
+    @PUT("mulailelang/{id}")
+    Call<UpdategchatidResponse> updatemulai(
+            @Path("id") String id,
+            @Field("gchat_id") String gchatId
     );
 
     @GET("getwallet/{user_id}")

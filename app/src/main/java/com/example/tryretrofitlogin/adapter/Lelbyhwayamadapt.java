@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -58,7 +59,7 @@ public class Lelbyhwayamadapt extends RecyclerView.Adapter<Lelbyhwayamadapt.LelA
 
     public class LelAyamViewHolder extends RecyclerView.ViewHolder {
         TextView lelayamid, lelayamharga, lelayamcomment;
-        Button btndetlelayam;
+        ImageView btndetlelayam;
 
         public LelAyamViewHolder(@NonNull View itemView) {
             super(itemView);

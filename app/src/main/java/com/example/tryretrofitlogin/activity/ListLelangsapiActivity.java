@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +27,7 @@ public class ListLelangsapiActivity extends AppCompatActivity {
     private RecyclerView lelsapirview;
     private TextView lelsapiFilterkey;
     private String hewanid;
+    private ImageView btnAddlel, btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,8 @@ public class ListLelangsapiActivity extends AppCompatActivity {
 
         lelsapirview = (RecyclerView) findViewById(R.id.lelangsapiRV);
         lelsapiFilterkey = (TextView)findViewById(R.id.lelsapi_filterkey);
+        btnAddlel = (ImageView)findViewById(R.id.btn_pengajuanlel);
+        btnBack = (ImageView)findViewById(R.id.btn_backreqlist);
 
         Intent intenthewan = getIntent();
         hewanid = intenthewan.getStringExtra("sapiid");
@@ -45,6 +50,19 @@ public class ListLelangsapiActivity extends AppCompatActivity {
         lelsapirview.setHasFixedSize(true);
 
         GetlelangSapi();
+        btnAddlel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toAddlelang();
+            }
+        });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
     @Override
@@ -79,4 +97,10 @@ public class ListLelangsapiActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void toAddlelang(){
+        Intent intent = new Intent(ListLelangsapiActivity.this, AddLelangActivity.class);
+        startActivity(intent);
+    }
+
 }

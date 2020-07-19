@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,74 +7,144 @@
     android:orientation="vertical"
     tools:context=".activity.LelangResultActivity">
 
-    <TextView
-        android:id="@+id/reslt_messageId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:background="@drawable/reqlelasset_a"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="120dp"
-        android:text="Pemenang"
-        android:textStyle="bold"
-        android:textSize="20dp"/>
+            <RelativeLayout
+                android:id="@+id/rellayPemenang"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="150dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/signasset_c">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:text="Username :"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:textSize="20dp"/>
+            </RelativeLayout>
 
-    <TextView
-        android:id="@+id/reslt_userId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+            <RelativeLayout
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="110dp"
+                android:layout_marginLeft="100dp"
+                android:background="@drawable/homeasset_e">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="Pemenang"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:textSize="20dp"/>
+            </RelativeLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="User :"/>
+            <RelativeLayout
+                android:id="@+id/rellayPelelang"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="110dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/signasset_c"
+                android:layout_below="@id/rellayPemenang">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:text="Username :"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:textSize="20dp"/>
+            </RelativeLayout>
 
-    <TextView
-        android:id="@+id/reslt_userName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+            <RelativeLayout
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="70dp"
+                android:layout_marginLeft="100dp"
+                android:background="@drawable/homeasset_e"
+                android:layout_below="@id/rellayPemenang">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="Pelelang"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:textSize="20dp"/>
+            </RelativeLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="120dp"
-        android:layout_marginTop="20dp"
-        android:text="Pelelang"
-        android:textStyle="bold"
-        android:textSize="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hasil Akhir Lelang"
+                android:layout_gravity="center"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="60dp"/>
 
-    <TextView
-        android:id="@+id/reslt_pelelangId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/reslt_messageId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="User :"/>
+            <TextView
+                android:id="@+id/reslt_userId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/reslt_pelelangName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User :"/>
 
-    <Button
-        android:id="@+id/reslt_btntobill"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="120dp"
-        android:layout_marginTop="40dp"
-        android:text="To Bill"/>
+            <TextView
+                android:id="@+id/reslt_userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
+            <TextView
+                android:id="@+id/reslt_pelelangId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User :"/>
 
+            <TextView
+                android:id="@+id/reslt_pelelangName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
+            <Button
+                android:id="@+id/reslt_tohome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="120dp"
+                android:layout_marginTop="30dp"
+                android:layout_below="@id/rellayPelelang"
+                android:text="ke menu"/>
+        </RelativeLayout>
+    </ScrollView>
 
-
-
-
-
-
-
-</LinearLayout>
+</RelativeLayout>

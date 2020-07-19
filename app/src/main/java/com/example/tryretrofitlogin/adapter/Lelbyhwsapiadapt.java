@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -59,7 +60,7 @@ public class Lelbyhwsapiadapt extends RecyclerView.Adapter<Lelbyhwsapiadapt.LelS
 
     public class LelSapiViewHolder extends RecyclerView.ViewHolder{
         TextView lelsapiid,lelsapiharga,lelsapicomment;
-        Button btndetlelsapi;
+        ImageView btndetlelsapi;
 
         public LelSapiViewHolder(@NonNull View itemView) {
             super(itemView);

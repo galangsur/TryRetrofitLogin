@@ -1,5 +1,6 @@
 package com.example.tryretrofitlogin.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -17,9 +18,14 @@ import com.example.tryretrofitlogin.api.APIUrl;
 import com.example.tryretrofitlogin.helper.SharedPrefManager;
 import com.example.tryretrofitlogin.models.Reqlelang;
 import com.example.tryretrofitlogin.postresponse.addrequestlelang.AddreqlelangResponse;
+import com.example.tryretrofitlogin.putresponse.putgchatid.UpdategchatidResponse;
 import com.example.tryretrofitlogin.responses.gethewanbyid.GethewanbyidResponse;
 import com.example.tryretrofitlogin.responses.getlelangbyid.GetlelangbyidResponse;
 import com.example.tryretrofitlogin.responses.getuserbyid.GetusernamebyidResponse;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,11 +35,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DetailLelangActivity extends AppCompatActivity {
 
-    private String lelangid, inviscond;
+    private String lelangid, inviscond, groupname;
     private String lelcomment, lelhewan, lelpelelang, lelharga, namahewan, namauser, userid;
     private TextView txtComment, txtHewan, txtPemilik, txtHarga;
     private TextView tmpidlelang, tmpidhewan, tmpidpelelang, tmpiduser;
-    private Button btnDaftar;
+    private Button btnDaftar, btnMulailel;
+    private DatabaseReference rootRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +57,9 @@ public class DetailLelangActivity extends AppCompatActivity {
         tmpiduser = (TextView) findViewById(R.id.tmp_iduser);
         btnDaftar = (Button) findViewById(R.id.btn_daftarlel);
         btnDaftar.setVisibility(View.VISIBLE);
+        btnMulailel = (Button) findViewById(R.id.btn_mulailel);
+
+        rootRef = FirebaseDatabase.getInstance().getReference();
 
         Intent lelintent = getIntent();
         lelangid = lelintent.getStringExtra("lelid");
@@ -70,6 +80,15 @@ public class DetailLelangActivity extends AppCompatActivity {
             public void onClick(View v) {
                 daftarLelang();
                 Toast.makeText(DetailLelangActivity.this, "test", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnMulailel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                groupname = rootRef.push().getKey();
+                mulailelang();
+                mulailelangFirebase(groupname);
             }
         });
 
@@ -104,6 +123,7 @@ public class DetailLelangActivity extends AppCompatActivity {
                     if (userid.equals(inviscond)){
                         Toast.makeText(DetailLelangActivity.this, "pemilik lelang", Toast.LENGTH_SHORT).show();
                         btnDaftar.setVisibility(View.INVISIBLE);
+                        btnMulailel.setVisibility(View.VISIBLE);
                     }else {
                         Toast.makeText(DetailLelangActivity.this, "pendaftar", Toast.LENGTH_SHORT).show();
                     }
@@ -212,5 +232,42 @@ public class DetailLelangActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void mulailelang(){
+        String lelang_id = tmpidlelang.getText().toString().trim();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(APIUrl.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        APIService service = retrofit.create(APIService.class);
+
+        Call<UpdategchatidResponse> call = service.updatemulai(lelang_id,groupname);
+
+        call.enqueue(new Callback<UpdategchatidResponse>() {
+            @Override
+            public void onResponse(Call<UpdategchatidResponse> call, Response<UpdategchatidResponse> response) {
+                Toast.makeText(getApplicationContext(), response.body().getSuccess().toString(), Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onFailure(Call<UpdategchatidResponse> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void mulailelangFirebase(String groupname){
+
+            rootRef.child("Groups").child(groupname).setValue("")
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()){
+                            }
+                        }
+                    });
     }
 }

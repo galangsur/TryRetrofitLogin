@@ -32,6 +32,7 @@
                 android:layout_height="wrap_content"
                 android:text="Harga Mulai"
                 android:textSize="20dp"
+                android:textStyle="bold"
                 android:textColor="#000000"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="5dp" />
@@ -39,32 +40,32 @@
                 android:id="@+id/txt_leldetharga"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#000000"
-                android:textStyle="bold"
                 android:textSize="40dp"
                 android:layout_marginLeft="10dp"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/txtdet4"/>
 
             <RelativeLayout
+                android:id="@+id/detRellay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="230dp"
                 android:padding="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:background="@drawable/detaillelasset_a">
                 <TextView
                     android:id="@+id/txtdet1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Tentang Hewan"
+                    android:text="Tambahan Pelelang :"
                     android:textColor="#000000"
+                    android:textStyle="bold"
                     android:layout_marginBottom="5dp"/>
                 <TextView
                     android:id="@+id/txt_leldetcomment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#000000"
-                    android:textStyle="bold"
                     android:layout_below="@id/txtdet1"
                     android:layout_marginBottom="15dp"/>
 
@@ -72,8 +73,9 @@
                     android:id="@+id/txtdet2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Hewan"
+                    android:text="Hewan :"
                     android:textColor="#000000"
+                    android:textStyle="bold"
                     android:layout_marginBottom="5dp"
                     android:layout_below="@id/txt_leldetcomment"/>
                 <TextView
@@ -81,8 +83,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
-                    android:textColor="#000000"
-                    android:textStyle="bold"
                     android:textSize="20dp"
                     android:layout_below="@id/txtdet2"/>
 
@@ -90,8 +90,9 @@
                     android:id="@+id/txtdet3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Pelelang"
+                    android:text="Pelelang :"
                     android:textColor="#000000"
+                    android:textStyle="bold"
                     android:layout_marginBottom="5dp"
                     android:layout_below="@id/txt_leldethewan"/>
                 <TextView
@@ -99,19 +100,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
-                    android:textColor="#000000"
-                    android:textStyle="bold"
                     android:textSize="20dp"
                     android:layout_below="@+id/txtdet3"/>
-
-                <Button
-                    android:id="@+id/btn_daftarlel"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:text="Daftar"
-                    android:layout_marginTop="50dp"
-                    android:layout_below="@id/txt_leldetnama"/>
 
             </RelativeLayout>
 
@@ -148,6 +138,29 @@
                     android:layout_toRightOf="@id/tmp_idpelelang"
                     android:textColor="@color/brownlight"/>
             </RelativeLayout>
+            <Button
+                android:id="@+id/btn_daftarlel"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_centerHorizontal="true"
+                android:text="Daftar"
+                android:textStyle="bold"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/signasset_c"
+                android:layout_below="@id/detRellay"/>
+
+            <Button
+                android:id="@+id/btn_mulailel"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:text="Mulai Lelang"
+                android:textColor="@color/white"
+                android:background="@color/red"
+                android:layout_marginTop="50dp"
+                android:visibility="invisible"
+                android:layout_below="@id/detRellay"/>
         </RelativeLayout>
 
     </ScrollView>

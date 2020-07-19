@@ -42,10 +42,10 @@ public class HomeActivity extends AppCompatActivity {
         imglelangayam = (ImageView) findViewById(R.id.img_lelayam);
         imglelangsapi =  (ImageView) findViewById(R.id.img_lelsapi);
         btnwallet = (Button) findViewById(R.id.btn_towallet);
-        btntolelang = (Button) findViewById(R.id.btn_toaddlelang);
-        btntolistlel = (Button) findViewById(R.id.btn_tolistlelang);
+//        btntolelang = (Button) findViewById(R.id.btn_toaddlelang);
+//        btntolistlel = (Button) findViewById(R.id.btn_tolistlelang);
         btntoreqlel = (Button) findViewById(R.id.btn_toreqlel);
-        btntogroupcht = (Button) findViewById(R.id.btn_togroupcht);
+//        btntogroupcht = (Button) findViewById(R.id.btn_togroupcht);
 
         userid = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getId();
         username = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getName();
@@ -67,28 +67,10 @@ public class HomeActivity extends AppCompatActivity {
                 toWallet();
             }
         });
-        btntolelang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toAddlelang();
-            }
-        });
-        btntolistlel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toListlelang();
-            }
-        });
         btntoreqlel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 toReqlelang();
-            }
-        });
-        btntogroupcht.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toGroupchat();
             }
         });
         imglelangsapi.setOnClickListener(new View.OnClickListener() {
