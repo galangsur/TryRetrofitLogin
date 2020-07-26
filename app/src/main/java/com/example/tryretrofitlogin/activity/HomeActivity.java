@@ -25,7 +25,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class HomeActivity extends AppCompatActivity {
 
     private TextView txtusername, txtuseremail, txthomesaldo;
-    private Button btnwallet, btntolelang, btntolistlel, btntoreqlel, btntogroupcht;
+    private Button btnwallet, btntolelang, btntolistlel, btntoreqlel, btntogroupcht, btntoimgtry;
     private String username, useremail;
     private String userid,usersaldo;
     private ImageView imglogout,imglelangsapi,imglelangayam;
@@ -42,9 +42,11 @@ public class HomeActivity extends AppCompatActivity {
         imglelangayam = (ImageView) findViewById(R.id.img_lelayam);
         imglelangsapi =  (ImageView) findViewById(R.id.img_lelsapi);
         btnwallet = (Button) findViewById(R.id.btn_towallet);
+        btntoreqlel = (Button) findViewById(R.id.btn_toreqlel);
+        btntoimgtry = (Button)findViewById(R.id.btn_toimgtry);
 //        btntolelang = (Button) findViewById(R.id.btn_toaddlelang);
 //        btntolistlel = (Button) findViewById(R.id.btn_tolistlelang);
-        btntoreqlel = (Button) findViewById(R.id.btn_toreqlel);
+
 //        btntogroupcht = (Button) findViewById(R.id.btn_togroupcht);
 
         userid = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getId();
@@ -71,6 +73,12 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 toReqlelang();
+            }
+        });
+        btntoimgtry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toImage();
             }
         });
         imglelangsapi.setOnClickListener(new View.OnClickListener() {
@@ -105,23 +113,13 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void toAddlelang(){
-        Intent intent = new Intent(HomeActivity.this, AddLelangActivity.class);
-        startActivity(intent);
-    }
-
-    private void toListlelang(){
-        Intent intent = new Intent(HomeActivity.this, ListLelangActivity.class);
-        startActivity(intent);
-    }
-
     private void toReqlelang(){
         Intent intent = new Intent(HomeActivity.this, LelreqlistActivity.class);
         startActivity(intent);
     }
 
-    private void toGroupchat(){
-        Intent intent = new Intent(HomeActivity.this, GroupchatActivity.class);
+    private void toImage(){
+        Intent intent = new Intent(HomeActivity.this,ImageRetrieveTry.class);
         startActivity(intent);
     }
 

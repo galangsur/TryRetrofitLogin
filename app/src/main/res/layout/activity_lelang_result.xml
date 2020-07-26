@@ -25,6 +25,7 @@
                 android:layout_marginTop="150dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
+                android:padding="15dp"
                 android:background="@drawable/signasset_c">
                 <TextView
                     android:layout_width="wrap_content"
@@ -60,6 +61,7 @@
                 android:layout_marginTop="110dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
+                android:padding="15dp"
                 android:background="@drawable/signasset_c"
                 android:layout_below="@id/rellayPemenang">
                 <TextView

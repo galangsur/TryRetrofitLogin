@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +33,7 @@ public class DetailReqlelActivity extends AppCompatActivity {
     private TextView tmpReqlelid, tmpReqiduser, tmpReqidpendaftar,tmpReqlelidlelang;
     private TextView txtLelang, txtUser, txtPendaftar;
     private Button btnReqaccept, btnReqreject;
+    private ImageView btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,7 @@ public class DetailReqlelActivity extends AppCompatActivity {
         tmpReqlelidlelang = (TextView) findViewById(R.id.tmp_reqlel_idlelang);
         btnReqaccept = (Button) findViewById(R.id.btn_reqlelaccept);
         btnReqreject = (Button) findViewById(R.id.btn_reqlelreject);
+        btnBack = (ImageView)findViewById(R.id.btn_backdetreqlist);
 
         Intent reqintent = getIntent();
         reqlelid = reqintent.getStringExtra("reqlelid");
@@ -75,6 +78,13 @@ public class DetailReqlelActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+            }
+        });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
             }
         });
     }
@@ -229,5 +239,10 @@ public class DetailReqlelActivity extends AppCompatActivity {
     private void toMain(){
         Intent intent = new Intent(DetailReqlelActivity.this, HomeActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

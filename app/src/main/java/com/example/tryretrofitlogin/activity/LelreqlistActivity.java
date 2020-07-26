@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.tryretrofitlogin.R;
@@ -32,6 +34,7 @@ public class LelreqlistActivity extends AppCompatActivity {
     public RecyclerView reqlelrview;
     private TextView reqlelFilter;
     private String userid;
+    private ImageView backreqlist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,7 @@ public class LelreqlistActivity extends AppCompatActivity {
 
         reqlelrview = (RecyclerView) findViewById(R.id.reqlelRV);
         reqlelFilter = (TextView) findViewById(R.id.reqlel_filterkey);
+        backreqlist = (ImageView) findViewById(R.id.btn_backreqlist);
 
         userid = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getId();
         reqlelFilter.setText(userid);
@@ -51,6 +55,13 @@ public class LelreqlistActivity extends AppCompatActivity {
 
         getDataReqlelbyuser();
 //        getDataReqlelbysender();
+
+        backreqlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
     }
 
@@ -105,5 +116,10 @@ public class LelreqlistActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

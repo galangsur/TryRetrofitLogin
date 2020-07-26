@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,8 +27,10 @@ public class WalletActivity extends AppCompatActivity {
 
     private TextView txtuserid, txtusersaldo;
     private EditText saldotmbh;
-    private Button btntambahsaldo;
+    private Button btntambahsaldo, btntopup_a, btntopup_b, btntopup_c;
+    private ImageView btn_back;
     private String usersaldo;
+    private String a,b,c;
     private String userid;
 
     @Override
@@ -39,11 +42,23 @@ public class WalletActivity extends AppCompatActivity {
         txtusersaldo = (TextView) findViewById(R.id.txt_saldoawal);
         saldotmbh = (EditText) findViewById(R.id.edtxt_saldotambah);
         btntambahsaldo = (Button) findViewById(R.id.btn_tambahsaldo);
+        btntopup_a = (Button)findViewById(R.id.btntmbh_a);
+        btntopup_b = (Button)findViewById(R.id.btntmbh_b);
+        btntopup_c = (Button)findViewById(R.id.btntmbh_c);
+        btn_back =  (ImageView)findViewById(R.id.btn_backtohome);
+        a = "500000";
+        b = "1000000";
+        c = "1500000";
 
         userid = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getId();
         txtuserid.setText(userid);
 
-
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         btntambahsaldo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,11 +73,30 @@ public class WalletActivity extends AppCompatActivity {
         super.onStart();
         Toast.makeText(this, "iser" + userid, Toast.LENGTH_SHORT).show();
         getSaldo();
+
+        btntopup_a.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saldotmbh.setText(a);
+            }
+        });
+        btntopup_b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saldotmbh.setText(b);
+            }
+        });
+        btntopup_c.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saldotmbh.setText(c);
+            }
+        });
     }
 
     private void fungsitambah(){
         String user_id = txtuserid.getText().toString().trim();
-        String nominal = saldotmbh.getText().toString().trim();
+//        String nominal = saldotmbh.getText().toString().trim();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(APIUrl.BASE_URL)
@@ -71,12 +105,13 @@ public class WalletActivity extends AppCompatActivity {
 
         APIService service = retrofit.create(APIService.class);
 
-        Call<TopupResponse> call = service.saldotambah(user_id, nominal);
+        Call<TopupResponse> call = service.saldotambah(user_id, saldotmbh.getText().toString());
 
         call.enqueue(new Callback<TopupResponse>() {
             @Override
             public void onResponse(Call<TopupResponse> call, Response<TopupResponse> response) {
                 Toast.makeText(getApplicationContext(), response.body().getSuccess().toString(), Toast.LENGTH_LONG).show();
+                onBackPressed();
             }
 
             @Override
@@ -115,5 +150,10 @@ public class WalletActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }
