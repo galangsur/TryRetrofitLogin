@@ -182,6 +182,20 @@
                         android:layout_marginTop="10dp"
                         android:layout_below="@id/btn_toreqlel"
                         android:text="Image List"/>
+                    <Button
+                        android:id="@+id/btn_pasarhewan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_below="@+id/btn_toimgtry"
+                        android:text="Pasar Hewan"/>
+                    <Button
+                        android:id="@+id/try_camera"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_below="@id/btn_pasarhewan"
+                        android:text="Try camera"/>
                 </RelativeLayout>
             </RelativeLayout>
 

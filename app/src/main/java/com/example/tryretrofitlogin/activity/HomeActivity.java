@@ -3,7 +3,10 @@ package com.example.tryretrofitlogin.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.text.format.Formatter;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -25,7 +28,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class HomeActivity extends AppCompatActivity {
 
     private TextView txtusername, txtuseremail, txthomesaldo;
-    private Button btnwallet, btntolelang, btntolistlel, btntoreqlel, btntogroupcht, btntoimgtry;
+    private Button btnwallet, btntolelang, btntolistlel, btntoreqlel,
+            btntogroupcht, btntoimgtry, btntopasar,btntrycamera;
     private String username, useremail;
     private String userid,usersaldo;
     private ImageView imglogout,imglelangsapi,imglelangayam;
@@ -44,6 +48,8 @@ public class HomeActivity extends AppCompatActivity {
         btnwallet = (Button) findViewById(R.id.btn_towallet);
         btntoreqlel = (Button) findViewById(R.id.btn_toreqlel);
         btntoimgtry = (Button)findViewById(R.id.btn_toimgtry);
+        btntopasar = (Button)findViewById(R.id.btn_pasarhewan);
+        btntrycamera = (Button)findViewById(R.id.try_camera);
 //        btntolelang = (Button) findViewById(R.id.btn_toaddlelang);
 //        btntolistlel = (Button) findViewById(R.id.btn_tolistlelang);
 
@@ -75,12 +81,25 @@ public class HomeActivity extends AppCompatActivity {
                 toReqlelang();
             }
         });
+        btntopasar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toPasar();
+            }
+        });
         btntoimgtry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 toImage();
             }
         });
+        btntrycamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toTrycamera();
+            }
+        });
+
         imglelangsapi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,6 +139,16 @@ public class HomeActivity extends AppCompatActivity {
 
     private void toImage(){
         Intent intent = new Intent(HomeActivity.this,ImageRetrieveTry.class);
+        startActivity(intent);
+    }
+
+    private void toPasar(){
+        Intent intent = new Intent(HomeActivity.this,ListProdukActivity.class);
+        startActivity(intent);
+    }
+
+    private void toTrycamera(){
+        Intent intent = new Intent(HomeActivity.this,ImageUploadActivity.class);
         startActivity(intent);
     }
 

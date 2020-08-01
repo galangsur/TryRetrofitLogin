@@ -2,7 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tryretrofitlogin">
 
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
 
     <application
         android:allowBackup="true"
@@ -12,7 +17,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.ImageRetrieveTry"></activity>
+        <activity android:name=".activity.ImageUploadActivity"></activity>
+        <activity android:name=".activity.AddProdukActivity" />
+        <activity android:name=".activity.ListProdukActivity" />
+        <activity android:name=".activity.ImageRetrieveTry" />
         <activity android:name=".activity.ListLelangayamActivity" />
         <activity android:name=".activity.ListLelangsapiActivity" />
         <activity android:name=".activity.LelangResultActivity" />

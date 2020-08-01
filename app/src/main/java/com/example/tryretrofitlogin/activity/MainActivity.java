@@ -3,9 +3,12 @@ package com.example.tryretrofitlogin.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.text.format.Formatter;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.tryretrofitlogin.R;
 import com.example.tryretrofitlogin.activity.auth.SigninActivity;
@@ -14,11 +17,16 @@ import com.example.tryretrofitlogin.activity.auth.SignupActivity;
 public class MainActivity extends AppCompatActivity {
 
     private Button buttonSignIn, buttonSignUp;
+    private String ip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        WifiManager manager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+//        ip= Formatter.formatIpAddress(manager.getConnectionInfo().getIpAddress());
+//        Toast.makeText(this, "hiya" + ip, Toast.LENGTH_SHORT).show();
 
         buttonSignIn = (Button) findViewById(R.id.buttonSignIn);
         buttonSignUp = (Button) findViewById(R.id.buttonSignUp);

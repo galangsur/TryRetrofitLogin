@@ -7,6 +7,7 @@ import com.example.tryretrofitlogin.postresponse.addwallet.AddWalletResponse;
 import com.example.tryretrofitlogin.putresponse.putgchatid.UpdategchatidResponse;
 import com.example.tryretrofitlogin.responses.deletereqlel.DeletereqlelResponse;
 import com.example.tryretrofitlogin.responses.getallimage.GetAllImageResponse;
+import com.example.tryretrofitlogin.responses.getallproduk.GetallprodukResponse;
 import com.example.tryretrofitlogin.responses.gethewanbyid.GethewanbyidResponse;
 import com.example.tryretrofitlogin.responses.getlelang.GetlelangResponse;
 import com.example.tryretrofitlogin.responses.getlelangbyhewan.GetlelangbyhewanResponse;
@@ -165,6 +166,10 @@ public interface APIService {
 
     @GET("getallimage")
     Call<GetAllImageResponse> getimage(
+    );
+
+    @GET("allproduk")
+    Call<GetallprodukResponse> getproduk(
     );
 
     @GET("allreqlel")
