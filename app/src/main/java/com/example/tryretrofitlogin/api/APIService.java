@@ -2,6 +2,7 @@ package com.example.tryretrofitlogin.api;
 
 import com.example.tryretrofitlogin.postresponse.addlelang.AddLelangResponse;
 import com.example.tryretrofitlogin.postresponse.addlelpesertamanager.AddlelpesertamanagerResponse;
+import com.example.tryretrofitlogin.postresponse.addphoto.PostphotoResponse;
 import com.example.tryretrofitlogin.postresponse.addrequestlelang.AddreqlelangResponse;
 import com.example.tryretrofitlogin.postresponse.addwallet.AddWalletResponse;
 import com.example.tryretrofitlogin.putresponse.putgchatid.UpdategchatidResponse;
@@ -24,12 +25,16 @@ import com.example.tryretrofitlogin.responses.getwallet.GetWalletInfoResponse;
 import com.example.tryretrofitlogin.responses.login.LoginResponse;
 import com.example.tryretrofitlogin.responses.topupwallet.TopupResponse;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -83,6 +88,23 @@ public interface APIService {
             @Field("peserta_id") String peserta_id,
             @Field("lelang_id") String lelang_id
     );
+
+    //jika mengirim file saja pakai cara ini
+    @Multipart
+    @POST("imagepost")
+    Call<PostphotoResponse> postPhoto(
+            @Part MultipartBody.Part map
+    );
+
+    //jika mengirim file berisi string atau int, pakai cara berikut
+//    @Multipart
+//    @POST("imagepost")
+//    Call<PostphotoResponse> postPhoto(
+//            @Part ("jumlah") RequestBody jumlah
+//            @Part ("deskripsi") RequestBody deskripsi,
+//            @Part MultipartBody.Part map
+//    );
+    // walaupun tipe string atau int, tetap pakai RequestBody
 
     @FormUrlEncoded
     @PUT("tambahsaldo/{id}")

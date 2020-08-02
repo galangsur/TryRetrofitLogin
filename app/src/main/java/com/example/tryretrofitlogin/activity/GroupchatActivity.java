@@ -5,7 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+//import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -55,7 +55,7 @@ public class GroupchatActivity extends AppCompatActivity {
     private LinearLayoutManager linearLayoutManager;
     private Messageadapt messageadapt;
     private RecyclerView userMessagelist;
-    private SwipeRefreshLayout swipeRefreshLayout;
+    //    private SwipeRefreshLayout swipeRefreshLayout;
 
     private CountDownTimer countDownTimer;
     private long timeleftinmilliSeconds = START_TIME_IN_MILLIS;
@@ -290,15 +290,15 @@ public class GroupchatActivity extends AppCompatActivity {
         timeTxt.setText(timeLeftFormatted);
     }
 
-    private void swipeRefresh(){
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                    Messageadapt messageadapt = new Messageadapt(messageList);
-                    userMessagelist.setAdapter(messageadapt);
-            }
-        });
-    }
+//    private void swipeRefresh(){
+//        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                    Messageadapt messageadapt = new Messageadapt(messageList);
+//                    userMessagelist.setAdapter(messageadapt);
+//            }
+//        });
+//    }
 
     private void computeBid1K(){
         int hargatambah500 = 500000;

@@ -44,7 +44,7 @@ public class HorizImageRVadapt extends RecyclerView.Adapter<HorizImageRVadapt.Vi
         holder.url.setText(imageresult.get(position).getPhoto());
         Picasso.with(imgContext)
                 .load(ImageURL+imageresult.get(position).getPhoto())
-                .resize(300, 130)
+                .fit()
                 .centerInside()
                 .into(holder.image);
     }
