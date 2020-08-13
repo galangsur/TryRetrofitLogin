@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green1"
+    tools:context=".activity.ImageUploadtwoActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:id="@+id/imgupload_rel1"
+                android:layout_width="match_parent"
+                android:layout_height="460dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:padding="10dp"
+                android:background="@drawable/signasset_c">
+                <ImageView
+                    android:id="@+id/imagedisplaytwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"/>
+                <ImageView
+                    android:id="@+id/btn_pickgallery"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/imagedisplaytwo"
+                    android:background="@drawable/ic_baseline_add_photo_alternate_24"/>
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btn_imguploadtwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Upload Image"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textColor="@color/white"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/imgupload_rel1"
+                android:background="@drawable/btnasset"/>
+
+            <TextView
+                android:id="@+id/imageUri"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/green1"/>
+            <TextView
+                android:id="@+id/txtdetrasn1_lel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Upload Bukti Transaksi"
+                android:layout_gravity="center"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginTop="25dp"
+                android:layout_centerHorizontal="true"/>
+            <TextView
+                android:id="@+id/pickcount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bukti 2"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/white"
+                android:layout_below="@id/txtdetrasn1_lel"/>
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

@@ -13,6 +13,7 @@ import com.example.tryretrofitlogin.adapter.RVadapter;
 import com.example.tryretrofitlogin.api.APIService;
 import com.example.tryretrofitlogin.api.APIUrl;
 import com.example.tryretrofitlogin.responses.getallimage.GetAllImageResponse;
+import com.example.tryretrofitlogin.responses.getimgbyparent.GetimgbyparentResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,13 +33,15 @@ public class ImageRetrieveTry extends AppCompatActivity {
         imgRecView = (RecyclerView) findViewById(R.id.RV_hori);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(
-                this, LinearLayoutManager.VERTICAL,false);
+                this, LinearLayoutManager.HORIZONTAL,false);
         imgRecView.setLayoutManager(layoutManager);
         imgRecView.setHasFixedSize(true);
         getAllImage();
     }
 
     public void getAllImage(){
+        String key = "2";
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(APIUrl.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -46,11 +49,13 @@ public class ImageRetrieveTry extends AppCompatActivity {
 
         APIService service = retrofit.create(APIService.class);
 
-        Call<GetAllImageResponse> call = service.getimage();
+        Call<GetimgbyparentResponse> call = service.getimgbyparent(
+                key.trim()
+        );
 
-        call.enqueue(new Callback<GetAllImageResponse>() {
+        call.enqueue(new Callback<GetimgbyparentResponse>() {
             @Override
-            public void onResponse(Call<GetAllImageResponse> call, Response<GetAllImageResponse> response) {
+            public void onResponse(Call<GetimgbyparentResponse> call, Response<GetimgbyparentResponse> response) {
                 if (response.isSuccessful()){
                     HorizImageRVadapt horizImageRVadapt =  new HorizImageRVadapt(ImageRetrieveTry.this,response.body()
                             .getSuccess());
@@ -60,7 +65,7 @@ public class ImageRetrieveTry extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<GetAllImageResponse> call, Throwable t) {
+            public void onFailure(Call<GetimgbyparentResponse> call, Throwable t) {
                 Toast.makeText(ImageRetrieveTry.this, "gkkeget", Toast.LENGTH_SHORT).show();
             }
         });

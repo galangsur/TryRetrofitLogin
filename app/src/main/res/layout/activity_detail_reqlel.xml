@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/brownlight"
+    android:background="@color/green1"
     tools:context=".activity.DetailReqlelActivity">
     
     <ScrollView
@@ -20,7 +20,7 @@
                 android:layout_height="wrap_content"
                 android:text="Detail Calon Peserta"
                 android:textStyle="bold"
-                android:textColor="#000000"
+                android:textColor="@color/white"
                 android:textSize="25dp"
                 android:layout_marginTop="25dp"
                 android:layout_centerHorizontal="true"/>
@@ -71,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mendaftar Pada Lelang"
-                android:textColor="#000000"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:layout_below="@id/detreqrl_one"
@@ -170,7 +170,7 @@
                 android:layout_height="35dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="23dp"
-                android:src="@drawable/ic_baseline_arrow_back_ios_24"/>
+                android:src="@drawable/ic_baseline_arrowwhite_24"/>
 
 
         </RelativeLayout>

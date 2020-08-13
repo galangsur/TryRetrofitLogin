@@ -1,18 +1,24 @@
 package com.example.tryretrofitlogin.api;
 
 import com.example.tryretrofitlogin.postresponse.addlelang.AddLelangResponse;
+import com.example.tryretrofitlogin.postresponse.addlelangberlangsung.AddLelangberlangsungResponse;
 import com.example.tryretrofitlogin.postresponse.addlelpesertamanager.AddlelpesertamanagerResponse;
 import com.example.tryretrofitlogin.postresponse.addphoto.PostphotoResponse;
 import com.example.tryretrofitlogin.postresponse.addrequestlelang.AddreqlelangResponse;
 import com.example.tryretrofitlogin.postresponse.addwallet.AddWalletResponse;
-import com.example.tryretrofitlogin.putresponse.putgchatid.UpdategchatidResponse;
+import com.example.tryretrofitlogin.putresponse.putgchatid.UpdategchatResponse;
 import com.example.tryretrofitlogin.responses.deletereqlel.DeletereqlelResponse;
 import com.example.tryretrofitlogin.responses.getallimage.GetAllImageResponse;
 import com.example.tryretrofitlogin.responses.getallproduk.GetallprodukResponse;
 import com.example.tryretrofitlogin.responses.gethewanbyid.GethewanbyidResponse;
+import com.example.tryretrofitlogin.responses.getimgbyparent.GetimgbyparentResponse;
 import com.example.tryretrofitlogin.responses.getlelang.GetlelangResponse;
 import com.example.tryretrofitlogin.responses.getlelangbyhewan.GetlelangbyhewanResponse;
 import com.example.tryretrofitlogin.responses.getlelangbyid.GetlelangbyidResponse;
+import com.example.tryretrofitlogin.responses.getlelbrjalanbyid.GetlelbrjalanbyidResponse;
+import com.example.tryretrofitlogin.responses.getlelbrjalanbyuser.GetlelbrjalanbyuserResponse;
+import com.example.tryretrofitlogin.responses.getlistleltransbypeserta.GetListLelbypesertaResponse;
+import com.example.tryretrofitlogin.responses.getpesrtmanagerbyuser.GetpesrtmanagerbyuserResponse;
 import com.example.tryretrofitlogin.responses.getreqlel.GetReqlelResponse;
 import com.example.tryretrofitlogin.responses.getreqlelbyid.GetreqlelbyidResponse;
 import com.example.tryretrofitlogin.responses.getreqlelbysender.GetreqlelbysenderResponse;
@@ -61,11 +67,18 @@ public interface APIService {
             @Field("user_id") String user_id,
             @Field("hewan_id") int hewan_id,
             @Field("harga") String harga,
+            @Field("comment") String comment
+    );
+
+    @FormUrlEncoded
+    @POST("lelbrjalan")
+    Call<AddLelangberlangsungResponse> createlelberjalan(
+            @Field("user_id") String user_id,
+            @Field("hewan_id") int hewan_id,
+            @Field("harga") String harga,
             @Field("comment") String comment,
             @Field("gchat_id") String gchat_id
     );
-
-
 
     @FormUrlEncoded
     @POST("wallet")
@@ -86,24 +99,23 @@ public interface APIService {
     @POST("accreqlel")
     Call<AddlelpesertamanagerResponse> accPeserta(
             @Field("peserta_id") String peserta_id,
-            @Field("lelang_id") String lelang_id
+            @Field("lelbrjalan_id") String lelbrjalan_id
     );
 
     //jika mengirim file saja pakai cara ini
-    @Multipart
-    @POST("imagepost")
-    Call<PostphotoResponse> postPhoto(
-            @Part MultipartBody.Part map
-    );
-
-    //jika mengirim file berisi string atau int, pakai cara berikut
 //    @Multipart
 //    @POST("imagepost")
 //    Call<PostphotoResponse> postPhoto(
-//            @Part ("jumlah") RequestBody jumlah
-//            @Part ("deskripsi") RequestBody deskripsi,
 //            @Part MultipartBody.Part map
 //    );
+
+    //jika mengirim file berisi string atau int, pakai cara berikut
+    @Multipart
+    @POST("imagepost")
+    Call<PostphotoResponse> postPhoto(
+            @Part ("imgparent") RequestBody imgparent,
+            @Part MultipartBody.Part map
+    );
     // walaupun tipe string atau int, tetap pakai RequestBody
 
     @FormUrlEncoded
@@ -114,8 +126,8 @@ public interface APIService {
     );
 
     @FormUrlEncoded
-    @PUT("mulailelang/{id}")
-    Call<UpdategchatidResponse> updatemulai(
+    @PUT("mulailelbrjalan/{id}")
+    Call<UpdategchatResponse> updatemulai(
             @Path("id") String id,
             @Field("gchat_id") String gchatId
     );
@@ -157,6 +169,11 @@ public interface APIService {
             @Path("id") String id
     );
 
+    @GET("getlelbrjalanbyuser/{user_id}")
+    Call<GetlelbrjalanbyuserResponse> getlelbrjlanbyuser(
+            @Path("user_id") String id
+    );
+
     @GET("gethewanbyid/{id}")
     Call<GethewanbyidResponse> gethewanjenis(
             @Path("id") String id,
@@ -177,6 +194,35 @@ public interface APIService {
             @Query("comment") String comment,
             @Query("harga") String harga
     );
+
+    @GET("getlelbrjalanbyid/{id}")
+    Call<GetlelbrjalanbyidResponse> getlelbrjalanbyid(
+            @Path("id") String id,
+            @Query("user_id") String user_id,
+            @Query("hewan_id") String hewan_id,
+            @Query("comment") String comment,
+            @Query("harga") String harga,
+            @Query("gchat_id") String gchat_id
+    );
+
+    @GET("getimgbyparent/{imgparent}")
+    Call<GetimgbyparentResponse> getimgbyparent(
+            @Path("imgparent") String id
+    );
+
+    @GET("gethlelangbypeserta/{peserta_id}")
+    Call<GetListLelbypesertaResponse> getlistleltrans(
+            @Path("peserta_id") String id
+    );
+
+    @GET("getleldiikuti/{peserta_id}")
+    Call<GetpesrtmanagerbyuserResponse> psrtmanagerbyuser(
+            @Path("peserta_id") String id
+    );
+
+
+
+
 
     @GET("hewan")
     Call<HewanResponse> gethewan(

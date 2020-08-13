@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:background="@color/green1"
     tools:context=".activity.auth.SigninActivity">
 
     <RelativeLayout
@@ -43,6 +43,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@drawable/signasset_c"
+        android:backgroundTint="@color/green1"
         android:layout_marginTop="105dp"
         android:layout_alignParentRight="true"
         android:layout_marginRight="20dp">
@@ -52,7 +53,8 @@
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:textSize="20dp"
-            android:text="SIGN IN PAGE"
+            android:text="Sign In Page"
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:gravity="center_horizontal" />
     </RelativeLayout>
@@ -68,6 +70,7 @@
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:hint="Enter email "
             android:inputType="textEmailAddress"/>
 
@@ -76,6 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter password "
+            android:textColor="@color/white"
             android:inputType="textPassword"
             android:layout_marginTop="20dp"/>
 

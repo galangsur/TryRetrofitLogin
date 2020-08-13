@@ -1,9 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:orientation="vertical"
+    android:background="@color/green1"
     tools:context=".activity.AddProdukActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/btn_backtolist"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/ic_baseline_arrowwhite_24"/>
+            <TextView
+                android:layout_width="240dp"
+                android:layout_height="100dp"
+                android:text="            Form
+                                    Pengajuan Produk"
+                android:layout_gravity="center"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:layout_marginLeft="70dp"/>
+
+            <LinearLayout
+                android:id="@+id/prdlinear1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="100dp"
+                android:padding="10dp"
+                android:orientation="vertical"
+                android:background="@drawable/homeasset_e">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="UserId :"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:textColor="@color/green1"/>
+                <TextView
+                    android:id="@+id/txtTextuserId"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:hint="Enter id "
+                    android:inputType="text"
+                    android:textColor="@color/green1"
+                    android:layout_marginBottom="20dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="HewanId :"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/green1"/>
+                <Spinner
+                    android:id="@+id/spinHewanId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter id "
+                    android:inputType="text"
+                    android:layout_marginBottom="20dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tambahan Penjual :"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/green1"/>
+                <EditText
+                    android:id="@+id/editTextcomment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter comment "
+                    android:inputType="text"
+                    android:layout_marginBottom="20dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Harga :"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/green1"/>
+                <EditText
+                    android:id="@+id/editTextharga"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter harga "
+                    android:inputType="text"
+                    android:layout_marginBottom="30dp"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_addlelang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
+                android:text="Ajukan Produk"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_below="@id/prdlinear1"
+                android:background="@drawable/btnasset"
+                android:layout_marginTop="50dp"/>
+        </RelativeLayout>
+
+
+
+    </ScrollView>
+
+</LinearLayout>

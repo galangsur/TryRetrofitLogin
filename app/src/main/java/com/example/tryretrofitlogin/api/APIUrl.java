@@ -4,8 +4,7 @@ public class APIUrl {
 
     //url hp
     public static final String BASE_URL = "http://192.168.43.6:8000/api/";
-
-    //base image url
+    //base image url hp
     public static final String IMAGE_URL = "http://192.168.43.6:8000/";
 
 }
@@ -22,7 +21,7 @@ public class APIUrl {
 //    public static final String BASE_URL = "http://10.0.2.2:8000/api/";
 
 //url untuk connet degan hp
-//  public static final String BASE_URL = "http://127.0.0.1:8000/api/";
+//  public static final String BASE_URL = "http://10.0.2.2:8000/api/";
 
     //url hp
 //    public static final String BASE_URL = "http://192.168.43.6:8000/api/";

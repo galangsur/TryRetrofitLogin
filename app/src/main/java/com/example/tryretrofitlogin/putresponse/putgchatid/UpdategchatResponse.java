@@ -2,7 +2,7 @@ package com.example.tryretrofitlogin.putresponse.putgchatid;
 
 import com.google.gson.annotations.SerializedName;
 
-public class UpdategchatidResponse {
+public class UpdategchatResponse{
 
 	@SerializedName("success")
 	private Success success;
@@ -18,7 +18,7 @@ public class UpdategchatidResponse {
 	@Override
  	public String toString(){
 		return 
-			"ResponseUpdategchatid{" + 
+			"UpdategchatResponse{" + 
 			"success = '" + success + '\'' + 
 			"}";
 		}

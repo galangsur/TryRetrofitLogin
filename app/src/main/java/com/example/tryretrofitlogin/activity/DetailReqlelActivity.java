@@ -207,8 +207,6 @@ public class DetailReqlelActivity extends AppCompatActivity {
         });
     }
 
-    private void rejectReq(){}
-
     private void deleteReq(){
         String reqkey = tmpReqlelid.getText().toString().trim();
 

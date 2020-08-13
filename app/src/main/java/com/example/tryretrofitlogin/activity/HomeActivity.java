@@ -32,10 +32,10 @@ public class HomeActivity extends AppCompatActivity {
 
     private TextView txtusername, txtuseremail, txthomesaldo;
     private Button btnwallet, btntolelang, btntolistlel, btntoreqlel,
-            btntogroupcht, btntoimgtry, btntopasar,btntrycamera;
+            btntogroupcht, btntoimgtry, btntopasar,btntrycamera,btnlistlelaspeserta, btnlistlelaspelelang;
     private String username, useremail;
     private String userid,usersaldo;
-    private ImageView imglogout,imglelangsapi,imglelangayam;
+    private ImageView imglogout,imglelangsapi,imglelangayam,imglisttranslel,imglisttransprdk;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +53,10 @@ public class HomeActivity extends AppCompatActivity {
         btntoimgtry = (Button)findViewById(R.id.btn_toimgtry);
         btntopasar = (Button)findViewById(R.id.btn_pasarhewan);
         btntrycamera = (Button)findViewById(R.id.try_camera);
+        btnlistlelaspeserta = (Button)findViewById(R.id.sebagaipeserta);
+        btnlistlelaspelelang = (Button)findViewById(R.id.sebagaipelelang);
+        imglisttranslel = (ImageView)findViewById(R.id.pilihantranslel);
+        imglisttransprdk = (ImageView)findViewById(R.id.pilihantransprdk);
 //        btntolelang = (Button) findViewById(R.id.btn_toaddlelang);
 //        btntolistlel = (Button) findViewById(R.id.btn_tolistlelang);
 
@@ -70,6 +74,12 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 userLogout();
+            }
+        });
+        imglisttranslel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toListleltrans();
             }
         });
         btnwallet.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +110,18 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 toTrycamera();
+            }
+        });
+        btnlistlelaspeserta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toListlelaspeserta();
+            }
+        });
+        btnlistlelaspelelang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toListlelaspelelang();
             }
         });
 
@@ -163,6 +185,28 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(HomeActivity.this,ImageUploadActivity.class);
         startActivity(intent);
     }
+
+    private void toListleltrans(){
+        Intent intent = new Intent(HomeActivity.this,ListLelTransaksi.class);
+        startActivity(intent);
+    }
+
+    private void toListprdktrans(){
+        Intent intent = new Intent(HomeActivity.this,ImageUploadActivity.class);
+        startActivity(intent);
+    }
+
+    private void toListlelaspeserta(){
+        Intent intent = new Intent(HomeActivity.this,ListLelangAsPeserta.class);
+        startActivity(intent);
+    }
+
+    private void toListlelaspelelang(){
+        Intent intent = new Intent(HomeActivity.this,ListLelangAsPelelang.class);
+        startActivity(intent);
+    }
+
+
 
     private void homeGetsaldo(){
         Retrofit retrofit = new Retrofit.Builder()

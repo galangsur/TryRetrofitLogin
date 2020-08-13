@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.DetailTransaksiProduk">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:background="@drawable/reqlelasset_a"/>
+
+            <RelativeLayout
+                android:id="@+id/rellayPemenang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="170dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:padding="15dp"
+                android:background="@drawable/signasset_c">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Penjual"
+                    android:textColor="@color/green1"
+                    android:textStyle="bold"
+                    android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/txt_result1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="70dp"
+                    android:text="Username :"
+                    android:textColor="@color/green1"
+                    android:textStyle="bold"
+                    android:textSize="16dp"/>
+                <EditText
+                    android:id="@+id/rslt_namapemenang"
+                    android:layout_width="290dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:layout_below="@+id/txt_result1"/>
+                <TextView
+                    android:id="@+id/txt_result2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:text="Nilai Akhir :"
+                    android:textColor="@color/green1"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:layout_below="@id/rslt_namapemenang"/>
+                <EditText
+                    android:id="@+id/rslt_nilaiakhir"
+                    android:layout_width="290dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:layout_below="@+id/txt_result2"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rellayPelelang"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:padding="15dp"
+                android:background="@drawable/signasset_c"
+                android:layout_below="@id/rellayPemenang">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Pembeli"
+                    android:textColor="@color/green1"
+                    android:textStyle="bold"
+                    android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/txt_result8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:text="Username :"
+                    android:textColor="@color/green1"
+                    android:textStyle="bold"
+                    android:textSize="16dp"/>
+                <EditText
+                    android:id="@+id/rslt_namapelelang"
+                    android:layout_width="290dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:layout_below="@+id/txt_result8"/>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/txtdetrasn1_lel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Detail Transaksi"
+                android:layout_gravity="center"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="80dp"/>
+            <TextView
+                android:id="@+id/txtdetrasn2_lel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Produk"
+                android:layout_gravity="center"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/txtdetrasn1_lel"/>
+
+            <TextView
+                android:id="@+id/reslt_messageId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/reslt_userId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User :"/>
+
+            <TextView
+                android:id="@+id/reslt_userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/reslt_pelelangId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User :"/>
+
+            <TextView
+                android:id="@+id/reslt_pelelangName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/reslt_tohome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="120dp"
+                android:layout_marginTop="30dp"
+                android:layout_below="@id/rellayPelelang"
+                android:text="ke menu"/>
+            <ImageView
+                android:id="@+id/btn_backreqlist"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="23dp"
+                android:src="@drawable/ic_baseline_arrowwhite_24"/>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

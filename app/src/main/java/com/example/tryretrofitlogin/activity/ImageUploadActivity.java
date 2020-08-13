@@ -43,9 +43,9 @@ import retrofit2.http.Multipart;
 
 public class ImageUploadActivity extends AppCompatActivity {
 
-    private Button btnPickgallery, btnUploadimg;
-    private ImageView imageDiplay;
-    private TextView eventAttachment;
+    private Button btnUploadimg;
+    private ImageView imageDiplay, btnPickgallery;
+    private TextView eventAttachment,txt_pickcount;
     private File attachment;
     public static final int REQUEST_IMAGE_CAPTURE = 1;
 
@@ -69,9 +69,10 @@ public class ImageUploadActivity extends AppCompatActivity {
         setContentView(R.layout.activity_image_upload);
 
         btnUploadimg = (Button) findViewById(R.id.btn_imgupload);
-        btnPickgallery = (Button)findViewById(R.id.btn_pickgallery);
+        btnPickgallery = (ImageView)findViewById(R.id.btn_pickgallery);
         imageDiplay = (ImageView) findViewById(R.id.imagedisplay);
         eventAttachment = (TextView) findViewById(R.id.imageUri);
+        txt_pickcount = (TextView)findViewById(R.id.pickcount);
 
         btnUploadimg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +81,7 @@ public class ImageUploadActivity extends AppCompatActivity {
                 uploadImg(attachment);
             }
         });
+
         btnPickgallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,7 +118,14 @@ public class ImageUploadActivity extends AppCompatActivity {
     private void uploadImg(File attachment){
         Toast.makeText(this, "tastos", Toast.LENGTH_SHORT).show();
         RequestBody requestBody = RequestBody.create(MediaType.parse("*/*"),attachment);
-        MultipartBody.Part param =  MultipartBody.Part.createFormData("photo",attachment.getName(),requestBody);
+        String a = "3";
+        String b = "5";
+        String Imgparent = a+b;
+
+
+        MultipartBody.Part photo =  MultipartBody.Part.createFormData("photo",attachment.getName(),requestBody);
+        RequestBody imgparent = RequestBody.create(MediaType.parse("multipart/form-data"),Imgparent);
+
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(APIUrl.BASE_URL)
@@ -126,13 +135,15 @@ public class ImageUploadActivity extends AppCompatActivity {
         APIService service = retrofit.create(APIService.class);
 
         Call<PostphotoResponse> call = service.postPhoto(
-                param
+                imgparent,photo
         );
 
         call.enqueue(new Callback<PostphotoResponse>() {
             @Override
             public void onResponse(Call<PostphotoResponse> call, Response<PostphotoResponse> response) {
                 Toast.makeText(ImageUploadActivity.this, "berhasil", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ImageUploadActivity.this, ImageUploadtwoActivity.class);
+                startActivity(intent);
             }
 
             @Override
@@ -143,5 +154,10 @@ public class ImageUploadActivity extends AppCompatActivity {
 
 
     }
+
+    private void pickcountthree(){
+        txt_pickcount.setText("2");
+    }
+
 
 }

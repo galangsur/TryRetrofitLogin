@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
 
+<!--    //version1-->
     <color name="white">#FFFFFF</color>
     <color name="whiteTrans">#eeeeee</color>
     <color name="brown">#ad6534</color>
@@ -16,6 +17,17 @@
     <color name="brownhome">#754838</color>
     <color name="oldbrownhome">#584838</color>
     <color name="orangelight">#ffdaad</color>
+
+<!--    //version2-->
+    <color name="green1">#468e83</color>
+    <color name="green2">#78ada9</color>
+    <color name="green3">#f0fffd</color>
+    <color name="green4">#9fd1cf</color>
+    <color name="orange5">#ffb96a</color>
+    <color name="red6">#f08d8d</color>
+
+
+
 
 
 

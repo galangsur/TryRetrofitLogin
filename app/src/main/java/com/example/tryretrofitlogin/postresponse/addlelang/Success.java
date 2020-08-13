@@ -25,9 +25,6 @@ public class Success{
 	@SerializedName("id")
 	private int id;
 
-	@SerializedName("gchat_id")
-	private String gchatId;
-
 	public void setHarga(String harga){
 		this.harga = harga;
 	}
@@ -84,14 +81,6 @@ public class Success{
 		return id;
 	}
 
-	public void setGchatId(String gchatId){
-		this.gchatId = gchatId;
-	}
-
-	public String getGchatId(){
-		return gchatId;
-	}
-
 	@Override
  	public String toString(){
 		return 
@@ -102,8 +91,7 @@ public class Success{
 			",hewan_id = '" + hewanId + '\'' + 
 			",created_at = '" + createdAt + '\'' + 
 			",comment = '" + comment + '\'' + 
-			",id = '" + id + '\'' + 
-			",gchat_id = '" + gchatId + '\'' + 
+			",id = '" + id + '\'' +
 			"}";
 		}
 }

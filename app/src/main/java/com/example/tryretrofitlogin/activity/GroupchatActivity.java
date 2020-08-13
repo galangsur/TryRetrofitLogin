@@ -98,12 +98,12 @@ public class GroupchatActivity extends AppCompatActivity {
 
         displayMsg();
 
-        sendImgbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+//        sendImgbtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
 
         bidsatuBid.setOnClickListener(new View.OnClickListener() {
             @Override

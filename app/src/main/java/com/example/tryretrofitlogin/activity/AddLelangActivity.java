@@ -21,6 +21,7 @@ import com.example.tryretrofitlogin.api.APIUrl;
 import com.example.tryretrofitlogin.helper.SharedPrefManager;
 import com.example.tryretrofitlogin.models.Lelang;
 import com.example.tryretrofitlogin.postresponse.addlelang.AddLelangResponse;
+import com.example.tryretrofitlogin.postresponse.addlelangberlangsung.AddLelangberlangsungResponse;
 import com.example.tryretrofitlogin.responses.gethewan.HewanResponse;
 import com.example.tryretrofitlogin.responses.gethewan.SuccessItem;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -86,6 +87,7 @@ public class AddLelangActivity extends AppCompatActivity {
             public void onClick(View v) {
                 groupname = "Belum Mulai";
                 uploadLelang();
+                uploadLelbrjalan();
 //                newGroup(groupname);
             }
         });
@@ -138,7 +140,7 @@ public class AddLelangActivity extends AppCompatActivity {
 
     private void uploadLelang(){
         String iduser = txtuserid.getText().toString().trim();
-        final String lelcomment = edttxtcomment.getText().toString().trim();
+        String lelcomment = edttxtcomment.getText().toString().trim();
         String lelharga = edttxtharga.getText().toString().trim();
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -151,7 +153,7 @@ public class AddLelangActivity extends AppCompatActivity {
         Lelang lelang = new Lelang(iduser, idhewan, lelharga, lelcomment);
 
         Call<AddLelangResponse> call = service.createLelang(
-                iduser, idhewan, lelharga, lelcomment,groupname
+                iduser, idhewan, lelharga, lelcomment
         );
 
         call.enqueue(new Callback<AddLelangResponse>() {
@@ -172,6 +174,34 @@ public class AddLelangActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    private void uploadLelbrjalan(){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(APIUrl.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        APIService service = retrofit.create(APIService.class);
+
+        Call<AddLelangberlangsungResponse> call = service.createlelberjalan(
+                txtuserid.getText().toString().trim(),
+                idhewan,
+                edttxtcomment.getText().toString().trim(),
+                edttxtharga.getText().toString().trim(),
+                groupname);
+
+        call.enqueue(new Callback<AddLelangberlangsungResponse>() {
+            @Override
+            public void onResponse(Call<AddLelangberlangsungResponse> call, Response<AddLelangberlangsungResponse> response) {
+                Toast.makeText(getApplicationContext(), response.body().getSuccess().toString(), Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onFailure(Call<AddLelangberlangsungResponse> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void newGroup(String groupname){

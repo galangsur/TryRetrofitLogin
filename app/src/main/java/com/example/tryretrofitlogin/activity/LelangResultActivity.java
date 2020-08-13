@@ -19,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class LelangResultActivity extends AppCompatActivity {
     private TextView resltMsgid, resltUserid, resltUsername, resltPelelangid, resltPelelangname;
-    private Button resltBtntobill;
+    private Button resltBtntohome;
     private String messageId;
 
     @Override
@@ -30,6 +30,7 @@ public class LelangResultActivity extends AppCompatActivity {
         resltMsgid = (TextView) findViewById(R.id.reslt_messageId);
         resltUserid = (TextView) findViewById(R.id.reslt_userId);
         resltUsername = (TextView) findViewById(R.id.reslt_userName);
+        resltBtntohome = (Button) findViewById(R.id.reslt_tohome);
 
         Intent gcIntent = getIntent();
         messageId = gcIntent.getStringExtra("messageId");

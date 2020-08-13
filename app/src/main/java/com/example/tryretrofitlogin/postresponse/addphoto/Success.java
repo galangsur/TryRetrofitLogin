@@ -7,6 +7,9 @@ public class Success{
 	@SerializedName("updated_at")
 	private String updatedAt;
 
+	@SerializedName("imgparent")
+	private String imgparent;
+
 	@SerializedName("photo")
 	private String photo;
 
@@ -22,6 +25,14 @@ public class Success{
 
 	public String getUpdatedAt(){
 		return updatedAt;
+	}
+
+	public void setImgparent(String imgparent){
+		this.imgparent = imgparent;
+	}
+
+	public String getImgparent(){
+		return imgparent;
 	}
 
 	public void setPhoto(String photo){

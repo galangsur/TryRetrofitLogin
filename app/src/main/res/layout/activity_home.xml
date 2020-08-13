@@ -5,23 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/green3"
     tools:context=".activity.HomeActivity">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="50dp">
+        android:layout_height="wrap_content">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:background="@drawable/homeasset_h"/>
+
             <RelativeLayout
                 android:id="@+id/imageRellayout"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:background="@drawable/signasset_d">
+                android:layout_marginTop="50dp"
+                android:background="@drawable/signasset_c">
                 <RelativeLayout
                     android:id="@+id/imageFrame"
                     android:layout_width="70dp"
@@ -45,15 +51,15 @@
                     android:text="Username"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/green1"
                     android:layout_toRightOf="@id/imageFrame"/>
                 <TextView
                     android:id="@+id/txt_useremail"
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="username@gmail.com"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/green1"
                     android:layout_below="@id/txt_username"
                     android:layout_toRightOf="@id/imageFrame"/>
                 <ImageView
@@ -74,7 +80,7 @@
                     android:text="5000.000"
                     android:textSize="22sp"
                     android:textStyle="bold"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/green1"
                     android:layout_marginLeft="10dp"/>
             </RelativeLayout>
 
@@ -92,7 +98,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_margin="10dp"
                     android:textStyle="bold"
-                    android:textColor="#000000"/>
+                    android:textColor="@color/white"/>
                 <LinearLayout
                     android:layout_width="200dp"
                     android:layout_height="5dp"
@@ -155,10 +161,74 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/pilihantransaksi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/homeasset_c"
+                    android:backgroundTint="@color/green1"
                     android:layout_below="@+id/pilihanlelang"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="30dp"
+                    android:padding="10dp">
+                    <TextView
+                        android:id="@+id/hometxt_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Riwayat Transaksi"
+                        android:textSize="25dp"
+                        android:layout_centerHorizontal="true"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"/>
+                    <ImageView
+                        android:id="@+id/pilihantranslel"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_below="@+id/hometxt_2"
+                        android:src="@drawable/auction"
+                        android:padding="20dp"
+                        android:layout_marginTop="25dp"
+                        android:background="@drawable/signasset_c"/>
+                    <ImageView
+                        android:id="@+id/pilihantransprdk"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_below="@+id/hometxt_2"
+                        android:src="@drawable/product"
+                        android:padding="25dp"
+                        android:layout_toRightOf="@id/pilihantranslel"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/signasset_c"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/pilihanaktifitas"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_below="@+id/pilihantransaksi"
+                    android:layout_marginTop="30dp"
+                    android:background="@color/green1">
+                    <Button
+                        android:id="@+id/sebagaipelelang"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="sebagai pelelang"/>
+
+                    <Button
+                        android:id="@+id/sebagaipeserta"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="sebagai peserta"
+                        android:layout_below="@id/sebagaipelelang"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/homeasset_c"
+                    android:backgroundTint="@color/green1"
+                    android:layout_below="@+id/pilihanaktifitas"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="30dp"
@@ -197,6 +267,7 @@
                         android:layout_below="@id/btn_pasarhewan"
                         android:text="Try camera"/>
                 </RelativeLayout>
+
             </RelativeLayout>
 
             <ImageView
@@ -205,7 +276,8 @@
                 android:layout_height="50dp"
                 android:padding="5dp"
                 android:rotation="90"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="55dp"
+                android:layout_marginRight="30dp"
                 android:src="@drawable/ic_signout_24"
                 android:background="@drawable/homeasset_d"
                 android:layout_alignParentRight="true"/>

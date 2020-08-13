@@ -4,22 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/brown"
+    android:orientation="horizontal"
+    android:background="@color/green1"
     tools:context=".activity.ImageRetrieveTry">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/RV_hori"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:scrollbars="horizontal"
                 android:background="@drawable/signasset_c"/>
         </RelativeLayout>
-    </ScrollView>
 </LinearLayout>

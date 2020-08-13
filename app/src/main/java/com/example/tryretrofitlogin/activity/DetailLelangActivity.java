@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,8 +16,9 @@ import com.example.tryretrofitlogin.api.APIService;
 import com.example.tryretrofitlogin.api.APIUrl;
 import com.example.tryretrofitlogin.helper.SharedPrefManager;
 import com.example.tryretrofitlogin.models.Reqlelang;
+import com.example.tryretrofitlogin.postresponse.addlelangberlangsung.AddLelangberlangsungResponse;
 import com.example.tryretrofitlogin.postresponse.addrequestlelang.AddreqlelangResponse;
-import com.example.tryretrofitlogin.putresponse.putgchatid.UpdategchatidResponse;
+import com.example.tryretrofitlogin.putresponse.putgchatid.UpdategchatResponse;
 import com.example.tryretrofitlogin.responses.gethewanbyid.GethewanbyidResponse;
 import com.example.tryretrofitlogin.responses.getlelangbyid.GetlelangbyidResponse;
 import com.example.tryretrofitlogin.responses.getuserbyid.GetusernamebyidResponse;
@@ -38,7 +38,7 @@ public class DetailLelangActivity extends AppCompatActivity {
     private String lelangid, inviscond, groupname;
     private String lelcomment, lelhewan, lelpelelang, lelharga, namahewan, namauser, userid;
     private TextView txtComment, txtHewan, txtPemilik, txtHarga;
-    private TextView tmpidlelang, tmpidhewan, tmpidpelelang, tmpiduser;
+    private TextView tmpidlelang, tmpidhewan, tmpidpelelang, tmpiduser,tmpidlelbrjalan;
     private Button btnDaftar, btnMulailel;
     private DatabaseReference rootRef;
 
@@ -55,6 +55,7 @@ public class DetailLelangActivity extends AppCompatActivity {
         tmpidhewan = (TextView) findViewById(R.id.tmp_idhewan);
         tmpidpelelang = (TextView) findViewById(R.id.tmp_idpelelang);
         tmpiduser = (TextView) findViewById(R.id.tmp_iduser);
+        tmpidlelbrjalan = (TextView) findViewById(R.id.tmp_idlelbrjalan);
         btnDaftar = (Button) findViewById(R.id.btn_daftarlel);
         btnDaftar.setVisibility(View.VISIBLE);
         btnMulailel = (Button) findViewById(R.id.btn_mulailel);
@@ -136,6 +137,10 @@ public class DetailLelangActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void getLelbrjalan(){
+
     }
 
     private void getNamaHewan(){
@@ -235,7 +240,6 @@ public class DetailLelangActivity extends AppCompatActivity {
     }
 
     private void mulailelang(){
-        String lelang_id = tmpidlelang.getText().toString().trim();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(APIUrl.BASE_URL)
@@ -244,16 +248,18 @@ public class DetailLelangActivity extends AppCompatActivity {
 
         APIService service = retrofit.create(APIService.class);
 
-        Call<UpdategchatidResponse> call = service.updatemulai(lelang_id,groupname);
+        Call<UpdategchatResponse> call = service.updatemulai(
+                tmpidlelang.getText().toString().trim(),
+                groupname);
 
-        call.enqueue(new Callback<UpdategchatidResponse>() {
+        call.enqueue(new Callback<UpdategchatResponse>() {
             @Override
-            public void onResponse(Call<UpdategchatidResponse> call, Response<UpdategchatidResponse> response) {
+            public void onResponse(Call<UpdategchatResponse> call, Response<UpdategchatResponse> response) {
                 Toast.makeText(getApplicationContext(), response.body().getSuccess().toString(), Toast.LENGTH_LONG).show();
             }
 
             @Override
-            public void onFailure(Call<UpdategchatidResponse> call, Throwable t) {
+            public void onFailure(Call<UpdategchatResponse> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });

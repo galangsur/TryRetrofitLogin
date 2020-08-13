@@ -54,7 +54,6 @@ public class LelreqlistActivity extends AppCompatActivity {
         reqlelrview.setHasFixedSize(true);
 
         getDataReqlelbyuser();
-//        getDataReqlelbysender();
 
         backreqlist.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +62,11 @@ public class LelreqlistActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
 
     public void getDataReqlelbyuser(){
@@ -87,7 +91,7 @@ public class LelreqlistActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<GetreqlelbyuserResponse> call, Throwable t) {
-
+                getDataReqlelbysender();
             }
         });
     }

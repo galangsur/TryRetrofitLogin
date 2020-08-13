@@ -8,7 +8,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,7 +16,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.ImageUploadActivity"></activity>
+        <activity android:name=".activity.DetailLelbrjalan"></activity>
+        <activity android:name=".activity.ListLelangAsPelelang" />
+        <activity android:name=".activity.ListLelangAsPeserta" />
+        <activity android:name=".activity.ListLelTransaksi" />
+        <activity android:name=".activity.ImageUploadthreeActivity" />
+        <activity android:name=".activity.ImageUploadtwoActivity" />
+        <activity android:name=".activity.DetailTransaksiProduk" />
+        <activity android:name=".activity.DetailTransaksiLelang" />
+        <activity android:name=".activity.ImageUploadActivity" />
         <activity android:name=".activity.AddProdukActivity" />
         <activity android:name=".activity.ListProdukActivity" />
         <activity android:name=".activity.ImageRetrieveTry" />
@@ -41,13 +48,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- [START fcm_default_channel] -->
+        </activity> <!-- [START fcm_default_channel] -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
-            android:value="@string/app_name" />
-        <!-- [END fcm_default_channel] -->
+            android:value="@string/app_name" /> <!-- [END fcm_default_channel] -->
         <!-- [START firebase_service] -->
         <service
             android:name=".fcmservices.MyFirebaseMessagingService"
@@ -56,7 +60,6 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <!-- [END firebase_service] -->
     </application>
 
 </manifest>

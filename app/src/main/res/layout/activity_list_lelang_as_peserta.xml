@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.ListLelangAsPeserta">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@drawable/reqlelasset_a"/>
+
+    <ImageView
+        android:id="@+id/btnback_lelaspeserta"
+        android:layout_width="25dp"
+        android:layout_height="35dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="23dp"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_round_arrow_forwardwhite_ios_24"/>
+
+    <TextView
+        android:id="@+id/lelaspel_txt1"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="List Lelang"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="20dp"/>
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Yang Diikuti"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_below="@id/lelaspel_txt1"
+        android:layout_marginRight="20dp"/>
+
+    <TextView
+        android:id="@+id/lelaspeserta_filterkey"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:textColor="@color/brown"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lelaspesertaRV"
+        android:layout_marginTop="130dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </androidx.recyclerview.widget.RecyclerView>
+
+</RelativeLayout>

@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.tryretrofitlogin.R;
 import com.example.tryretrofitlogin.api.APIUrl;
-import com.example.tryretrofitlogin.responses.getallimage.SuccessItem;
+import com.example.tryretrofitlogin.responses.getimgbyparent.SuccessItem;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
