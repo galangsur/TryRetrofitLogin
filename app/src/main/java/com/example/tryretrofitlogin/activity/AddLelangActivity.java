@@ -19,9 +19,10 @@ import com.example.tryretrofitlogin.R;
 import com.example.tryretrofitlogin.api.APIService;
 import com.example.tryretrofitlogin.api.APIUrl;
 import com.example.tryretrofitlogin.helper.SharedPrefManager;
+import com.example.tryretrofitlogin.models.LelBerlangsung;
 import com.example.tryretrofitlogin.models.Lelang;
 import com.example.tryretrofitlogin.postresponse.addlelang.AddLelangResponse;
-import com.example.tryretrofitlogin.postresponse.addlelangberlangsung.AddLelangberlangsungResponse;
+import com.example.tryretrofitlogin.postresponse.addlelangberlangsung.AddlelbrlangsungResponse;
 import com.example.tryretrofitlogin.responses.gethewan.HewanResponse;
 import com.example.tryretrofitlogin.responses.gethewan.SuccessItem;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -85,9 +86,10 @@ public class AddLelangActivity extends AppCompatActivity {
         btnaddlelang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                groupname = "Belum Mulai";
-                uploadLelang();
+                Toast.makeText(AddLelangActivity.this, "btntst", Toast.LENGTH_SHORT).show();
                 uploadLelbrjalan();
+                uploadLelang();
+
 //                newGroup(groupname);
             }
         });
@@ -177,6 +179,12 @@ public class AddLelangActivity extends AppCompatActivity {
     }
 
     private void uploadLelbrjalan(){
+        Toast.makeText(this, "fncttst", Toast.LENGTH_SHORT).show();
+//        groupname = "Belum Mulai";
+        String lelbr_iduser = txtuserid.getText().toString().trim();
+        String lelbr_lelcomment = edttxtcomment.getText().toString().trim();
+        String lelbr_lelharga = edttxtharga.getText().toString().trim();
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(APIUrl.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -184,21 +192,19 @@ public class AddLelangActivity extends AppCompatActivity {
 
         APIService service = retrofit.create(APIService.class);
 
-        Call<AddLelangberlangsungResponse> call = service.createlelberjalan(
-                txtuserid.getText().toString().trim(),
-                idhewan,
-                edttxtcomment.getText().toString().trim(),
-                edttxtharga.getText().toString().trim(),
-                groupname);
+        Call<AddlelbrlangsungResponse> call = service.lelbrlngsung(
+                lelbr_iduser, idhewan, lelbr_lelcomment, lelbr_lelharga, lelbr_lelcomment);
 
-        call.enqueue(new Callback<AddLelangberlangsungResponse>() {
+        call.enqueue(new Callback<AddlelbrlangsungResponse>() {
             @Override
-            public void onResponse(Call<AddLelangberlangsungResponse> call, Response<AddLelangberlangsungResponse> response) {
-                Toast.makeText(getApplicationContext(), response.body().getSuccess().toString(), Toast.LENGTH_LONG).show();
+            public void onResponse(Call<AddlelbrlangsungResponse> call, Response<AddlelbrlangsungResponse> response) {
+                if (response.isSuccessful()){
+                    Toast.makeText(AddLelangActivity.this, "ddf" +response.body().getSuccess(), Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
-            public void onFailure(Call<AddLelangberlangsungResponse> call, Throwable t) {
+            public void onFailure(Call<AddlelbrlangsungResponse> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });

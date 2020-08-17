@@ -1,7 +1,8 @@
 package com.example.tryretrofitlogin.models;
 
-public class Message {
-    private String date, fromId,fromName, message, time;
+public class
+Message {
+    private String date, fromId,fromName, message, time, gcId;
 
     public Message(String date, String fromId, String fromName, String message, String time) {
         this.date = date;
@@ -9,6 +10,15 @@ public class Message {
         this.fromName = fromName;
         this.message = message;
         this.time = time;
+    }
+
+    public Message(String date, String fromId, String fromName, String message, String time, String gcId) {
+        this.date = date;
+        this.fromId = fromId;
+        this.fromName = fromName;
+        this.message = message;
+        this.time = time;
+        this.gcId = gcId;
     }
 
     public Message() {
@@ -53,5 +63,13 @@ public class Message {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getGcId() {
+        return gcId;
+    }
+
+    public void setGcId(String gcId) {
+        this.gcId = gcId;
     }
 }

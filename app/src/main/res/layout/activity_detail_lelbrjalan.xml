@@ -136,7 +136,7 @@
                 android:layout_height="wrap_content"/>
 
             <Button
-                android:id="@+id/reslt_tohome"
+                android:id="@+id/btnto_gchat"
                 android:layout_width="200dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="120dp"

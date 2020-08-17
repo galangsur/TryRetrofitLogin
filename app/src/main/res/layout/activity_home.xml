@@ -175,7 +175,7 @@
                         android:id="@+id/hometxt_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Riwayat Transaksi"
+                        android:text="Aktifitas Transaksi"
                         android:textSize="25dp"
                         android:layout_centerHorizontal="true"
                         android:textStyle="bold"
@@ -209,11 +209,22 @@
                     android:layout_below="@+id/pilihantransaksi"
                     android:layout_marginTop="30dp"
                     android:background="@color/green1">
+                    <TextView
+                        android:id="@+id/hometxt_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Aktifitas Lelang"
+                        android:textSize="25dp"
+                        android:layout_centerHorizontal="true"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"/>
                     <Button
                         android:id="@+id/sebagaipelelang"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="sebagai pelelang"/>
+                        android:text="sebagai pelelang"
+                        android:layout_marginTop="20dp"
+                        android:layout_below="@id/hometxt_4"/>
 
                     <Button
                         android:id="@+id/sebagaipeserta"
@@ -266,6 +277,13 @@
                         android:layout_marginTop="10dp"
                         android:layout_below="@id/btn_pasarhewan"
                         android:text="Try camera"/>
+                    <Button
+                        android:id="@+id/togc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_below="@id/try_camera"
+                        android:text="togc"/>
                 </RelativeLayout>
 
             </RelativeLayout>

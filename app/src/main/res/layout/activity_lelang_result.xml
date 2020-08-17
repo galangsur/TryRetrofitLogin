@@ -92,12 +92,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
-                    android:text="Username :"
+                    android:text="Harga Awal :"
                     android:textColor="@color/green1"
                     android:textStyle="bold"
                     android:textSize="16dp"/>
                 <EditText
-                    android:id="@+id/rslt_namapelelang"
+                    android:id="@+id/rslt_hargaawal"
                     android:layout_width="290dp"
                     android:layout_height="wrap_content"
                     android:inputType="none"
@@ -116,7 +116,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:text="Pelelang"
+                    android:text="Lelang"
                     android:textColor="@color/green1"
                     android:textStyle="bold"
                     android:textSize="16dp"/>
@@ -144,9 +144,19 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
+                android:id="@+id/txtstatshasilawalid"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="User :"/>
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txtstatshasilawal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/reslt_hewanid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
             <TextView
                 android:id="@+id/reslt_userName"
@@ -159,12 +169,34 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
+                android:id="@+id/reslt_pesertaId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/lelbrjalankey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="User :"/>
+                android:textColor="@color/green1"/>
 
             <TextView
                 android:id="@+id/reslt_pelelangName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/statusrsltkey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/statusrslt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/rsltidpelelang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/rsltidlelbrjalan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 

@@ -1,13 +1,15 @@
 package com.example.tryretrofitlogin.api;
 
+import com.example.tryretrofitlogin.postresponse.addhasillelang.AddHasillelangResponse;
 import com.example.tryretrofitlogin.postresponse.addlelang.AddLelangResponse;
-import com.example.tryretrofitlogin.postresponse.addlelangberlangsung.AddLelangberlangsungResponse;
+import com.example.tryretrofitlogin.postresponse.addlelangberlangsung.AddlelbrlangsungResponse;
 import com.example.tryretrofitlogin.postresponse.addlelpesertamanager.AddlelpesertamanagerResponse;
 import com.example.tryretrofitlogin.postresponse.addphoto.PostphotoResponse;
 import com.example.tryretrofitlogin.postresponse.addrequestlelang.AddreqlelangResponse;
 import com.example.tryretrofitlogin.postresponse.addwallet.AddWalletResponse;
 import com.example.tryretrofitlogin.putresponse.putgchatid.UpdategchatResponse;
 import com.example.tryretrofitlogin.responses.deletereqlel.DeletereqlelResponse;
+import com.example.tryretrofitlogin.responses.detlelbrjalanbyid.DetlelbrjalanbyidResponse;
 import com.example.tryretrofitlogin.responses.getallimage.GetAllImageResponse;
 import com.example.tryretrofitlogin.responses.getallproduk.GetallprodukResponse;
 import com.example.tryretrofitlogin.responses.gethewanbyid.GethewanbyidResponse;
@@ -15,6 +17,7 @@ import com.example.tryretrofitlogin.responses.getimgbyparent.GetimgbyparentRespo
 import com.example.tryretrofitlogin.responses.getlelang.GetlelangResponse;
 import com.example.tryretrofitlogin.responses.getlelangbyhewan.GetlelangbyhewanResponse;
 import com.example.tryretrofitlogin.responses.getlelangbyid.GetlelangbyidResponse;
+import com.example.tryretrofitlogin.responses.getlelbrjalanbygc.GetlelbrjalanbygcResponse;
 import com.example.tryretrofitlogin.responses.getlelbrjalanbyid.GetlelbrjalanbyidResponse;
 import com.example.tryretrofitlogin.responses.getlelbrjalanbyuser.GetlelbrjalanbyuserResponse;
 import com.example.tryretrofitlogin.responses.getlistleltransbypeserta.GetListLelbypesertaResponse;
@@ -72,11 +75,11 @@ public interface APIService {
 
     @FormUrlEncoded
     @POST("lelbrjalan")
-    Call<AddLelangberlangsungResponse> createlelberjalan(
+    Call<AddlelbrlangsungResponse> lelbrlngsung(
             @Field("user_id") String user_id,
             @Field("hewan_id") int hewan_id,
-            @Field("harga") String harga,
             @Field("comment") String comment,
+            @Field("harga") String harga,
             @Field("gchat_id") String gchat_id
     );
 
@@ -94,6 +97,20 @@ public interface APIService {
             @Field("user_id") String userId,
             @Field("lelang_id") String lelangId
     );
+
+    @FormUrlEncoded
+    @POST("hasillelang")
+    Call<AddHasillelangResponse> hasilLelang(
+            @Field("statushasil_id") String statushasil_id,
+            @Field("statustrans") String statustrans,
+            @Field("peserta_id") String peserta_id,
+            @Field("pelelang_id") String pelelang_id,
+            @Field("lelbrjalan_id") String lelbrjalan_id,
+            @Field("hewan_id") String hewan_id,
+            @Field("harga_lelang") String harga_lelang,
+            @Field("nilai_akhir") String nilai_akhir
+    );
+
 
     @FormUrlEncoded
     @POST("accreqlel")
@@ -136,6 +153,15 @@ public interface APIService {
     Call<GetWalletInfoResponse> getinfosaldo(
             @Path("user_id") String user_id,
             @Query("saldo") String saldo
+    );
+
+    @GET("getlelbrjalanbygc/{gchat_id}")
+    Call<GetlelbrjalanbygcResponse> getlelbrjalanbygc(
+            @Path("gchat_id") String gchat_id,
+            @Query("user_id") String user_id,
+            @Query("hewan_id") String hewan_id,
+            @Query("harga") String harga,
+            @Query("comment") String comment
     );
 
     @GET("getuserbyname/{name}")
@@ -202,6 +228,16 @@ public interface APIService {
             @Query("hewan_id") String hewan_id,
             @Query("comment") String comment,
             @Query("harga") String harga,
+            @Query("gchat_id") String gchat_id
+    );
+
+    @GET("detlelbrjalanbyid/{id}")
+    Call<DetlelbrjalanbyidResponse> detletbrjalanbyid(
+            @Path("id") String id,
+//            @Query("user_id") String user_id,
+//            @Query("hewan_id") String hewan_id,
+//            @Query("comment") String comment,
+//            @Query("harga") String harga,
             @Query("gchat_id") String gchat_id
     );
 

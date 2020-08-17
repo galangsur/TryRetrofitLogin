@@ -1,23 +1,23 @@
-package com.example.tryretrofitlogin.postresponse.addhasillelang;
+package com.example.tryretrofitlogin.responses.gethlelangbypeserta;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Success{
+public class SuccessItem{
 
 	@SerializedName("statushasil_id")
-	private String statushasilId;
+	private int statushasilId;
 
 	@SerializedName("peserta_id")
-	private String pesertaId;
+	private int pesertaId;
 
 	@SerializedName("updated_at")
 	private String updatedAt;
 
 	@SerializedName("lelbrjalan_id")
-	private String lelbrjalanId;
+	private int lelbrjalanId;
 
 	@SerializedName("hewan_id")
-	private String hewanId;
+	private int hewanId;
 
 	@SerializedName("nilai_akhir")
 	private String nilaiAkhir;
@@ -29,7 +29,7 @@ public class Success{
 	private int id;
 
 	@SerializedName("pelelang_id")
-	private String pelelangId;
+	private int pelelangId;
 
 	@SerializedName("harga_lelang")
 	private String hargaLelang;
@@ -40,19 +40,19 @@ public class Success{
 	@SerializedName("statustrans")
 	private String statustrans;
 
-	public void setStatushasilId(String statushasilId){
+	public void setStatushasilId(int statushasilId){
 		this.statushasilId = statushasilId;
 	}
 
-	public String getStatushasilId(){
+	public int getStatushasilId(){
 		return statushasilId;
 	}
 
-	public void setPesertaId(String pesertaId){
+	public void setPesertaId(int pesertaId){
 		this.pesertaId = pesertaId;
 	}
 
-	public String getPesertaId(){
+	public int getPesertaId(){
 		return pesertaId;
 	}
 
@@ -64,19 +64,19 @@ public class Success{
 		return updatedAt;
 	}
 
-	public void setLelbrjalanId(String lelbrjalanId){
+	public void setLelbrjalanId(int lelbrjalanId){
 		this.lelbrjalanId = lelbrjalanId;
 	}
 
-	public String getLelbrjalanId(){
+	public int getLelbrjalanId(){
 		return lelbrjalanId;
 	}
 
-	public void setHewanId(String hewanId){
+	public void setHewanId(int hewanId){
 		this.hewanId = hewanId;
 	}
 
-	public String getHewanId(){
+	public int getHewanId(){
 		return hewanId;
 	}
 
@@ -104,11 +104,11 @@ public class Success{
 		return id;
 	}
 
-	public void setPelelangId(String pelelangId){
+	public void setPelelangId(int pelelangId){
 		this.pelelangId = pelelangId;
 	}
 
-	public String getPelelangId(){
+	public int getPelelangId(){
 		return pelelangId;
 	}
 
@@ -139,7 +139,7 @@ public class Success{
 	@Override
  	public String toString(){
 		return 
-			"Success{" + 
+			"SuccessItem{" + 
 			"statushasil_id = '" + statushasilId + '\'' + 
 			",peserta_id = '" + pesertaId + '\'' + 
 			",updated_at = '" + updatedAt + '\'' + 

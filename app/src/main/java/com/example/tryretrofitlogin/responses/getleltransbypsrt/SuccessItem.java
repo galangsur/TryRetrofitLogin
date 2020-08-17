@@ -1,8 +1,8 @@
-package com.example.tryretrofitlogin.postresponse.addhasillelang;
+package com.example.tryretrofitlogin.responses.getleltransbypsrt;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Success{
+public class SuccessItem{
 
 	@SerializedName("statushasil_id")
 	private String statushasilId;
@@ -13,12 +13,6 @@ public class Success{
 	@SerializedName("updated_at")
 	private String updatedAt;
 
-	@SerializedName("lelbrjalan_id")
-	private String lelbrjalanId;
-
-	@SerializedName("hewan_id")
-	private String hewanId;
-
 	@SerializedName("nilai_akhir")
 	private String nilaiAkhir;
 
@@ -28,17 +22,20 @@ public class Success{
 	@SerializedName("id")
 	private int id;
 
+	@SerializedName("hasillelang_token")
+	private String hasillelangToken;
+
+	@SerializedName("statushasil")
+	private String statushasil;
+
 	@SerializedName("pelelang_id")
 	private String pelelangId;
 
 	@SerializedName("harga_lelang")
 	private String hargaLelang;
 
-	@SerializedName("hasillelangs_token")
-	private String hasillelangsToken;
-
-	@SerializedName("statustrans")
-	private String statustrans;
+	@SerializedName("hewan")
+	private String hewan;
 
 	public void setStatushasilId(String statushasilId){
 		this.statushasilId = statushasilId;
@@ -62,22 +59,6 @@ public class Success{
 
 	public String getUpdatedAt(){
 		return updatedAt;
-	}
-
-	public void setLelbrjalanId(String lelbrjalanId){
-		this.lelbrjalanId = lelbrjalanId;
-	}
-
-	public String getLelbrjalanId(){
-		return lelbrjalanId;
-	}
-
-	public void setHewanId(String hewanId){
-		this.hewanId = hewanId;
-	}
-
-	public String getHewanId(){
-		return hewanId;
 	}
 
 	public void setNilaiAkhir(String nilaiAkhir){
@@ -104,6 +85,22 @@ public class Success{
 		return id;
 	}
 
+	public void setHasillelangToken(String hasillelangToken){
+		this.hasillelangToken = hasillelangToken;
+	}
+
+	public String getHasillelangToken(){
+		return hasillelangToken;
+	}
+
+	public void setStatushasil(String statushasil){
+		this.statushasil = statushasil;
+	}
+
+	public String getStatushasil(){
+		return statushasil;
+	}
+
 	public void setPelelangId(String pelelangId){
 		this.pelelangId = pelelangId;
 	}
@@ -120,38 +117,29 @@ public class Success{
 		return hargaLelang;
 	}
 
-	public void setHasillelangsToken(String hasillelangsToken){
-		this.hasillelangsToken = hasillelangsToken;
+	public void setHewan(String hewan){
+		this.hewan = hewan;
 	}
 
-	public String getHasillelangsToken(){
-		return hasillelangsToken;
-	}
-
-	public void setStatustrans(String statustrans){
-		this.statustrans = statustrans;
-	}
-
-	public String getStatustrans(){
-		return statustrans;
+	public String getHewan(){
+		return hewan;
 	}
 
 	@Override
  	public String toString(){
 		return 
-			"Success{" + 
+			"SuccessItem{" + 
 			"statushasil_id = '" + statushasilId + '\'' + 
 			",peserta_id = '" + pesertaId + '\'' + 
 			",updated_at = '" + updatedAt + '\'' + 
-			",lelbrjalan_id = '" + lelbrjalanId + '\'' + 
-			",hewan_id = '" + hewanId + '\'' + 
 			",nilai_akhir = '" + nilaiAkhir + '\'' + 
 			",created_at = '" + createdAt + '\'' + 
 			",id = '" + id + '\'' + 
+			",hasillelang_token = '" + hasillelangToken + '\'' + 
+			",statushasil = '" + statushasil + '\'' + 
 			",pelelang_id = '" + pelelangId + '\'' + 
 			",harga_lelang = '" + hargaLelang + '\'' + 
-			",hasillelangs_token = '" + hasillelangsToken + '\'' + 
-			",statustrans = '" + statustrans + '\'' + 
+			",hewan = '" + hewan + '\'' + 
 			"}";
 		}
 }

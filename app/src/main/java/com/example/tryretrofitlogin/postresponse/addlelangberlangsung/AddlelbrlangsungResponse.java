@@ -2,7 +2,7 @@ package com.example.tryretrofitlogin.postresponse.addlelangberlangsung;
 
 import com.google.gson.annotations.SerializedName;
 
-public class AddLelangberlangsungResponse{
+public class AddlelbrlangsungResponse{
 
 	@SerializedName("success")
 	private Success success;
@@ -18,7 +18,7 @@ public class AddLelangberlangsungResponse{
 	@Override
  	public String toString(){
 		return 
-			"AddLelangberlangsungResponse{" + 
+			"AddlelbrlangsungResponse{" + 
 			"success = '" + success + '\'' + 
 			"}";
 		}

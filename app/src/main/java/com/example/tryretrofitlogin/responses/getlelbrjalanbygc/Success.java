@@ -1,4 +1,4 @@
-package com.example.tryretrofitlogin.postresponse.addlelangberlangsung;
+package com.example.tryretrofitlogin.responses.getlelbrjalanbygc;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -23,7 +23,7 @@ public class Success{
 	private String comment;
 
 	@SerializedName("id")
-	private int id;
+	private String id;
 
 	@SerializedName("gchat_id")
 	private String gchatId;
@@ -76,11 +76,11 @@ public class Success{
 		return comment;
 	}
 
-	public void setId(int id){
+	public void setId(String id){
 		this.id = id;
 	}
 
-	public int getId(){
+	public String getId(){
 		return id;
 	}
 

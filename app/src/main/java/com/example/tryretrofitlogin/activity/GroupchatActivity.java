@@ -46,8 +46,8 @@ public class GroupchatActivity extends AppCompatActivity {
     private ImageButton sendImgbtn;
     private EditText inputEdtxt;
     private Button bidsatuBid, bidduaBid, bidtigaBid;
-    private TextView timeTxt;
-    private String currentDate,currentTime,currentUserid,currentnameUser;
+    private TextView timeTxt,gcidTxt;
+    private String currentDate,currentTime,currentUserid,currentnameUser,gcid;
     private int hargaAwallelang, bidInput;
     private DatabaseReference groupRef,groupmsgKeyref;
 
@@ -68,16 +68,25 @@ public class GroupchatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_groupchat);
 
+        timeTxt = (TextView) findViewById(R.id.timer_txt);
+        bidsatuBid = (Button) findViewById(R.id.bid_satu);
+        bidduaBid = (Button) findViewById(R.id.bid_dua);
+        bidtigaBid = (Button) findViewById(R.id.bid_tiga);
+        gcidTxt = (TextView)findViewById(R.id.txtgcid);
+
+
+        Intent intenthewan = getIntent();
+        gcid = intenthewan.getStringExtra("gchattoken");
+        gcidTxt.setText(gcid);
+        Toast.makeText(this, gcid, Toast.LENGTH_SHORT).show();
+
         groupRef = FirebaseDatabase.getInstance().getReference().child("Groups").child("yeye");
         currentUserid = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getId();
         currentnameUser = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getName();
 
 //        sendImgbtn = (ImageButton) findViewById(R.id.send_imgbtn);
 //        inputEdtxt = (EditText) findViewById(R.id.input_edtxt);
-        timeTxt = (TextView) findViewById(R.id.timer_txt);
-        bidsatuBid = (Button) findViewById(R.id.bid_satu);
-        bidduaBid = (Button) findViewById(R.id.bid_dua);
-        bidtigaBid = (Button) findViewById(R.id.bid_tiga);
+
 
         messageadapt = new Messageadapt(messageList);
         userMessagelist = (RecyclerView) findViewById(R.id.rv_messagelist);
@@ -109,6 +118,7 @@ public class GroupchatActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 computeBid1K();
+                saveBid();
                 resetTimer();
             }
         });
@@ -135,7 +145,8 @@ public class GroupchatActivity extends AppCompatActivity {
         String msg = inputEdtxt.getText().toString().trim();
         String msgKey = groupRef.push().getKey();
         String fromId = currentUserid.trim();
-        String fromName= currentnameUser.trim();
+        String fromName = currentnameUser.trim();
+        String gcId = gcidTxt.getText().toString().trim();
 
         if (TextUtils.isEmpty(msg)){
             inputEdtxt.setVisibility(View.INVISIBLE);
@@ -157,6 +168,7 @@ public class GroupchatActivity extends AppCompatActivity {
                 msgInfomap.put("fromName",fromName);
                 msgInfomap.put("fromId",fromId);
                 msgInfomap.put("message", msg);
+                msgInfomap.put("gcId",gcId);
                 msgInfomap.put("date",currentDate);
                 msgInfomap.put("time",currentTime);
             groupmsgKeyref.updateChildren(msgInfomap);
@@ -165,9 +177,10 @@ public class GroupchatActivity extends AppCompatActivity {
 
     private void saveBid(){
         bidInput = hargaAwallelang;
-        String msgKey = groupRef.push().getKey();
-        String fromId = currentUserid.trim();
-        String fromName= currentnameUser.trim();
+        String bidmsgKey = groupRef.push().getKey();
+        String bidfromId = currentUserid.trim();
+        String bidfromName= currentnameUser.trim();
+        String bidgcId = gcidTxt.getText().toString().trim();
 
             Calendar calForDate = Calendar.getInstance();
             SimpleDateFormat currentDformat = new SimpleDateFormat("MMM dd,yyyy");
@@ -180,12 +193,13 @@ public class GroupchatActivity extends AppCompatActivity {
             HashMap<String, Object> groupmsgKey = new HashMap<>();
             groupRef.updateChildren(groupmsgKey);
 
-            groupmsgKeyref = groupRef.child(msgKey);
+            groupmsgKeyref = groupRef.child(bidmsgKey);
 
             HashMap<String, Object> msgInfomap = new HashMap<>();
-            msgInfomap.put("fromName",fromName);
-            msgInfomap.put("fromId",fromId);
-            msgInfomap.put("value", bidInput + "");
+            msgInfomap.put("fromName",bidfromName);
+            msgInfomap.put("fromId",bidfromId);
+            msgInfomap.put("gcId",gcid);
+            msgInfomap.put("message", bidInput + "");
             msgInfomap.put("date",currentDate);
             msgInfomap.put("time",currentTime);
             groupmsgKeyref.updateChildren(msgInfomap);

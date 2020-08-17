@@ -23,7 +23,7 @@ public class SuccessItem{
 	private String comment;
 
 	@SerializedName("id")
-	private int id;
+	private String id;
 
 	@SerializedName("gchat_id")
 	private String gchatId;
@@ -76,11 +76,11 @@ public class SuccessItem{
 		return comment;
 	}
 
-	public void setId(int id){
+	public void setId(String id){
 		this.id = id;
 	}
 
-	public int getId(){
+	public String getId(){
 		return id;
 	}
 

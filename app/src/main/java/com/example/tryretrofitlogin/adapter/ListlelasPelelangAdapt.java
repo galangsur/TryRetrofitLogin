@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -44,6 +45,7 @@ public class ListlelasPelelangAdapt extends RecyclerView.Adapter<ListlelasPelela
         holder.btn_tolelroom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(lelbrjalanContex, "sds" + getlelbrjalan.get(position).getGchatId(), Toast.LENGTH_SHORT).show();
                 Intent lelaspelelang = new Intent(lelbrjalanContex, GroupchatActivity.class);
                 lelaspelelang.putExtra("gchattoken",getlelbrjalan.get(position).getGchatId());
                 lelbrjalanContex.startActivity(lelaspelelang);

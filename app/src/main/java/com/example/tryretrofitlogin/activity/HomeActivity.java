@@ -53,6 +53,7 @@ public class HomeActivity extends AppCompatActivity {
         btntoimgtry = (Button)findViewById(R.id.btn_toimgtry);
         btntopasar = (Button)findViewById(R.id.btn_pasarhewan);
         btntrycamera = (Button)findViewById(R.id.try_camera);
+        btntogroupcht = (Button)findViewById(R.id.togc);
         btnlistlelaspeserta = (Button)findViewById(R.id.sebagaipeserta);
         btnlistlelaspelelang = (Button)findViewById(R.id.sebagaipelelang);
         imglisttranslel = (ImageView)findViewById(R.id.pilihantranslel);
@@ -122,6 +123,12 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 toListlelaspelelang();
+            }
+        });
+        btntogroupcht.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                togc();
             }
         });
 
@@ -203,6 +210,11 @@ public class HomeActivity extends AppCompatActivity {
 
     private void toListlelaspelelang(){
         Intent intent = new Intent(HomeActivity.this,ListLelangAsPelelang.class);
+        startActivity(intent);
+    }
+
+    private void togc(){
+        Intent intent = new Intent(HomeActivity.this,GroupchatActivity.class);
         startActivity(intent);
     }
 
