@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -14,8 +15,9 @@ import com.example.tryretrofitlogin.R;
 import com.example.tryretrofitlogin.api.APIService;
 import com.example.tryretrofitlogin.api.APIUrl;
 import com.example.tryretrofitlogin.helper.SharedPrefManager;
-import com.example.tryretrofitlogin.postresponse.addlelpesertamanager.AddlelpesertamanagerResponse;
+import com.example.tryretrofitlogin.postresponse.addlelpesertamanager.AddlelpsrtmanagerResponse;
 import com.example.tryretrofitlogin.responses.deletereqlel.DeletereqlelResponse;
+import com.example.tryretrofitlogin.responses.gethewanbyid.GethewanbyidResponse;
 import com.example.tryretrofitlogin.responses.getlelangbyid.GetlelangbyidResponse;
 import com.example.tryretrofitlogin.responses.getreqlelbyid.GetreqlelbyidResponse;
 import com.example.tryretrofitlogin.responses.getuserbyid.GetusernamebyidResponse;
@@ -30,8 +32,8 @@ public class DetailReqlelActivity extends AppCompatActivity {
 
     private String reqlelid,userid,namauser,namapendaftar;
     private String lelcomment, lelhewan, lelpelelang, lelharga;
-    private TextView tmpReqlelid, tmpReqiduser, tmpReqidpendaftar,tmpReqlelidlelang;
-    private TextView txtLelang, txtUser, txtPendaftar;
+    private TextView tmpReqlelid, tmpReqiduser, tmpReqidpendaftar,tmpReqlelidlelang,tmpHewanid;
+    private TextView txtLelang, txtUser, txtPendaftar, txtHewan;
     private Button btnReqaccept, btnReqreject;
     private ImageView btnBack;
 
@@ -43,10 +45,12 @@ public class DetailReqlelActivity extends AppCompatActivity {
         txtLelang = (TextView) findViewById(R.id.txt_reqlelid);
         txtUser = (TextView) findViewById(R.id.txt_reqleluser);
         txtPendaftar = (TextView) findViewById(R.id.txt_reqlelpengirim);
+        txtHewan = (TextView)findViewById(R.id.reqlel_txt3);
         tmpReqlelid = (TextView) findViewById(R.id.tmp_reqlelid);
         tmpReqiduser = (TextView) findViewById(R.id.tmp_reqlel_iduser);
         tmpReqidpendaftar = (TextView) findViewById(R.id.tmp_reqlel_idpendaftar);
         tmpReqlelidlelang = (TextView) findViewById(R.id.tmp_reqlel_idlelang);
+        tmpHewanid = (TextView) findViewById(R.id.tmphewanidreqlel);
         btnReqaccept = (Button) findViewById(R.id.btn_reqlelaccept);
         btnReqreject = (Button) findViewById(R.id.btn_reqlelreject);
         btnBack = (ImageView)findViewById(R.id.btn_backdetreqlist);
@@ -166,6 +170,7 @@ public class DetailReqlelActivity extends AppCompatActivity {
             public void onResponse(Call<GetlelangbyidResponse> call, Response<GetlelangbyidResponse> response) {
                 if (response.isSuccessful()){
                     txtLelang.setText(response.body().getSuccess().getComment());
+                    tmpHewanid.setText(response.body().getSuccess().getHewanId());
                 }
             }
 
@@ -179,6 +184,7 @@ public class DetailReqlelActivity extends AppCompatActivity {
     private void acceptReq(){
         String lelkey = tmpReqlelidlelang.getText().toString().trim();
         String pesertakey = tmpReqidpendaftar.getText().toString().trim();
+        String hewan = txtHewan.getText().toString().trim();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(APIUrl.BASE_URL)
@@ -187,13 +193,13 @@ public class DetailReqlelActivity extends AppCompatActivity {
 
         APIService service = retrofit.create(APIService.class);
 
-        Call<AddlelpesertamanagerResponse> call = service.accPeserta(
-                pesertakey,lelkey
+        Call<AddlelpsrtmanagerResponse> call = service.accPeserta(
+                pesertakey,lelkey,hewan
         );
 
-        call.enqueue(new Callback<AddlelpesertamanagerResponse>() {
+        call.enqueue(new Callback<AddlelpsrtmanagerResponse>() {
             @Override
-            public void onResponse(Call<AddlelpesertamanagerResponse> call, Response<AddlelpesertamanagerResponse> response) {
+            public void onResponse(Call<AddlelpsrtmanagerResponse> call, Response<AddlelpsrtmanagerResponse> response) {
                 if (response.isSuccessful()){
                     deleteReq();
                     toMain();
@@ -201,7 +207,7 @@ public class DetailReqlelActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<AddlelpesertamanagerResponse> call, Throwable t) {
+            public void onFailure(Call<AddlelpsrtmanagerResponse> call, Throwable t) {
 
             }
         });
@@ -237,6 +243,36 @@ public class DetailReqlelActivity extends AppCompatActivity {
     private void toMain(){
         Intent intent = new Intent(DetailReqlelActivity.this, HomeActivity.class);
         startActivity(intent);
+    }
+
+    private void getNamaHewan(){
+        String hkey = tmpHewanid.getText().toString().trim();
+        Log.d("hkey", hkey);
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(APIUrl.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        APIService service = retrofit.create(APIService.class);
+
+        Call<GethewanbyidResponse> call = service.gethewanjenis(
+                hkey, lelhewan
+        );
+
+        call.enqueue(new Callback<GethewanbyidResponse>() {
+            @Override
+            public void onResponse(Call<GethewanbyidResponse> call, Response<GethewanbyidResponse> response) {
+                if (response.isSuccessful()){
+                    txtHewan.setText(response.body().getSuccess().getJenis());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GethewanbyidResponse> call, Throwable t) {
+
+            }
+        });
     }
 
     @Override

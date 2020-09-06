@@ -63,15 +63,15 @@ public class ImageUploadtwoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_image_uploadtwo);
 
         btnUploadimg = (Button) findViewById(R.id.btn_imguploadtwo);
-        btnPickgallery = (ImageView)findViewById(R.id.btn_pickgallery);
+        btnPickgallery = (ImageView)findViewById(R.id.btn_pickgallerytwo);
         imageDiplay = (ImageView) findViewById(R.id.imagedisplaytwo);
-        eventAttachment = (TextView) findViewById(R.id.imageUri);
+        eventAttachment = (TextView) findViewById(R.id.imageUritwo);
         txt_pickcount = (TextView)findViewById(R.id.pickcount);
 
         btnUploadimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ImageUploadtwoActivity.this, "tos", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(ImageUploadtwoActivity.this, "tos", Toast.LENGTH_SHORT).show();
                 uploadImg(attachment);
             }
         });
@@ -110,7 +110,7 @@ public class ImageUploadtwoActivity extends AppCompatActivity {
     }
 
     private void uploadImg(File attachment){
-        Toast.makeText(this, "tastos", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "tastos", Toast.LENGTH_SHORT).show();
         RequestBody requestBody = RequestBody.create(MediaType.parse("*/*"),attachment);
         String a = "3";
         String b = "5";
@@ -135,7 +135,11 @@ public class ImageUploadtwoActivity extends AppCompatActivity {
         call.enqueue(new Callback<PostphotoResponse>() {
             @Override
             public void onResponse(Call<PostphotoResponse> call, Response<PostphotoResponse> response) {
-                Toast.makeText(ImageUploadtwoActivity.this, "berhasil", Toast.LENGTH_SHORT).show();
+                if (response.isSuccessful()){
+                    Toast.makeText(ImageUploadtwoActivity.this, "berhasil", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(ImageUploadtwoActivity.this, ImageUploadthreeActivity.class);
+                    startActivity(intent);
+                }
             }
 
             @Override

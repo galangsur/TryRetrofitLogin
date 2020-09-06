@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.example.tryretrofitlogin.R;
@@ -38,6 +40,13 @@ public class ListProdukActivity extends AppCompatActivity {
         prdkRView.setHasFixedSize(true);
 
         Getallproduk();
+
+        btnAddprdk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toAddprdk();
+            }
+        });
     }
 
     @Override
@@ -69,5 +78,10 @@ public class ListProdukActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void toAddprdk(){
+        Intent intent = new Intent(ListProdukActivity.this, AddProdukActivity.class);
+        startActivity(intent);
     }
 }

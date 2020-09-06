@@ -43,7 +43,7 @@ public class ListLelangayamActivity extends AppCompatActivity {
         Intent intenthewan = getIntent();
         hewanid = intenthewan.getStringExtra("ayamid");
         lelayamFilterkey.setText(hewanid);
-        Toast.makeText(this, hewanid, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, hewanid, Toast.LENGTH_SHORT).show();
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(
                 this, LinearLayoutManager.VERTICAL,false);

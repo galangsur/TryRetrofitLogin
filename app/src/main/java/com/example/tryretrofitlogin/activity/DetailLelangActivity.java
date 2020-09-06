@@ -57,7 +57,6 @@ public class DetailLelangActivity extends AppCompatActivity {
         tmpidlelbrjalan = (TextView) findViewById(R.id.tmp_idlelbrjalan);
         btnDaftar = (Button) findViewById(R.id.btn_daftarlel);
         btnDaftar.setVisibility(View.VISIBLE);
-        btnMulailel = (Button) findViewById(R.id.btn_mulailel);
 
         rootRef = FirebaseDatabase.getInstance().getReference();
 
@@ -79,16 +78,6 @@ public class DetailLelangActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 daftarLelang();
-                Toast.makeText(DetailLelangActivity.this, "test", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        btnMulailel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                groupname = rootRef.push().getKey();
-                mulailelang();
-                mulailelangFirebase(groupname);
             }
         });
 
@@ -111,7 +100,6 @@ public class DetailLelangActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<GetlelangbyidResponse> call, Response<GetlelangbyidResponse> response) {
                 if (response.isSuccessful()){
-                    Toast.makeText(DetailLelangActivity.this, "res" +response.body().getSuccess().toString(), Toast.LENGTH_SHORT).show();
                     txtComment.setText(response.body().getSuccess().getComment());
                     tmpidhewan.setText(response.body().getSuccess().getHewanId());
                     tmpidpelelang.setText(response.body().getSuccess().getUserId());
@@ -123,7 +111,7 @@ public class DetailLelangActivity extends AppCompatActivity {
                     if (userid.equals(inviscond)){
                         Toast.makeText(DetailLelangActivity.this, "pemilik lelang", Toast.LENGTH_SHORT).show();
                         btnDaftar.setVisibility(View.INVISIBLE);
-                        btnMulailel.setVisibility(View.VISIBLE);
+//                        btnMulailel.setVisibility(View.VISIBLE);
                     }else {
                         Toast.makeText(DetailLelangActivity.this, "pendaftar", Toast.LENGTH_SHORT).show();
                     }
@@ -136,10 +124,6 @@ public class DetailLelangActivity extends AppCompatActivity {
 
             }
         });
-    }
-
-    private void getLelbrjalan(){
-
     }
 
     private void getNamaHewan(){
@@ -227,7 +211,7 @@ public class DetailLelangActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<AddreqlelangResponse> call, Response<AddreqlelangResponse> response) {
                 if (response.isSuccessful()){
-                    Toast.makeText(DetailLelangActivity.this, "toast" +response.body().getSuccess().toString(), Toast.LENGTH_SHORT).show();
+                    tohome();
                 }
             }
 
@@ -262,7 +246,7 @@ public class DetailLelangActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-    }
+    } //fungsi mulainya taruh di detaaillelberjaan//
 
     private void mulailelangFirebase(String groupname){
 
@@ -274,5 +258,10 @@ public class DetailLelangActivity extends AppCompatActivity {
                             }
                         }
                     });
+    }
+
+    private void tohome(){
+        Intent intent = new Intent(DetailLelangActivity.this,HomeActivity.class);
+        startActivity(intent);
     }
 }

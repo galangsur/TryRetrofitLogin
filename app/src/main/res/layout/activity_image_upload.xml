@@ -84,6 +84,7 @@
                 android:text="Bukti 1"
                 android:textSize="15sp"
                 android:textStyle="bold"
+                android:layout_marginTop="10dp"
                 android:layout_centerHorizontal="true"
                 android:textColor="@color/white"
                 android:layout_below="@id/txtdetrasn1_lel"/>

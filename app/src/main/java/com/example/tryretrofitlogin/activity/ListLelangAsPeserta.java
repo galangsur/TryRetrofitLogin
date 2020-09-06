@@ -10,14 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.tryretrofitlogin.R;
-import com.example.tryretrofitlogin.adapter.ListlelasPelelangAdapt;
 import com.example.tryretrofitlogin.adapter.ListlelasPesertaAdapt;
 import com.example.tryretrofitlogin.api.APIService;
 import com.example.tryretrofitlogin.api.APIUrl;
 import com.example.tryretrofitlogin.helper.SharedPrefManager;
-import com.example.tryretrofitlogin.responses.getlelaspeserta.GetlelAsPesertaResponse;
-import com.example.tryretrofitlogin.responses.getlelbrjalanbyuser.GetlelbrjalanbyuserResponse;
-import com.example.tryretrofitlogin.responses.getpesrtmanagerbyuser.GetpesrtmanagerbyuserResponse;
+import com.example.tryretrofitlogin.responses.getpesrtmanagerbyuser.GetpsrtmanagerbyuserResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -65,19 +62,19 @@ public class ListLelangAsPeserta extends AppCompatActivity {
 
         APIService service = retrofit.create(APIService.class);
 
-        Call<GetpesrtmanagerbyuserResponse> call = service.psrtmanagerbyuser(
+        Call<GetpsrtmanagerbyuserResponse> call = service.psrtmanagerbyuser(
                 lelaspesertaFilterkey.getText().toString().trim());
 
-        call.enqueue(new Callback<GetpesrtmanagerbyuserResponse>() {
+        call.enqueue(new Callback<GetpsrtmanagerbyuserResponse>() {
             @Override
-            public void onResponse(Call<GetpesrtmanagerbyuserResponse> call, Response<GetpesrtmanagerbyuserResponse> response) {
+            public void onResponse(Call<GetpsrtmanagerbyuserResponse> call, Response<GetpsrtmanagerbyuserResponse> response) {
                 ListlelasPesertaAdapt lelaspeserta = new ListlelasPesertaAdapt(ListLelangAsPeserta.this,response.body().getSuccess());
                 lelaspeserta.notifyDataSetChanged();
                 aspesertaRV.setAdapter(lelaspeserta);
             }
 
             @Override
-            public void onFailure(Call<GetpesrtmanagerbyuserResponse> call, Throwable t) {
+            public void onFailure(Call<GetpsrtmanagerbyuserResponse> call, Throwable t) {
 
             }
         });

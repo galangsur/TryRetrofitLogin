@@ -12,7 +12,8 @@
         android:layout_height="wrap_content">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
@@ -32,7 +33,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
-                    android:text="Username :"
+                    android:text="Nama Pemenang :"
                     android:textColor="@color/green1"
                     android:textStyle="bold"
                     android:textSize="16dp"/>
@@ -134,44 +135,58 @@
                 android:layout_marginLeft="70dp"/>
 
             <TextView
+                android:id="@+id/reslelimgprnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/green1"/>
+
+            <TextView
                 android:id="@+id/reslt_messageId"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="@color/green1"/>
 
             <TextView
                 android:id="@+id/reslt_userId"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="@color/green1"/>
 
             <TextView
                 android:id="@+id/txtstatshasilawalid"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="@color/green1"/>
 
             <TextView
                 android:id="@+id/txtstatshasilawal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="@color/green1"/>
 
             <TextView
                 android:id="@+id/reslt_hewanid"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="@color/green1"/>
 
             <TextView
                 android:id="@+id/reslt_userName"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="@color/green1"/>
 
             <TextView
                 android:id="@+id/reslt_pelelangId"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="@color/green1"/>
 
             <TextView
                 android:id="@+id/reslt_pesertaId"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="@color/green1"/>
 
             <TextView
                 android:id="@+id/lelbrjalankey"
@@ -182,23 +197,28 @@
             <TextView
                 android:id="@+id/reslt_pelelangName"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="@color/green1"/>
             <TextView
                 android:id="@+id/statusrsltkey"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="@color/green1"/>
             <TextView
                 android:id="@+id/statusrslt"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="@color/green1"/>
             <TextView
                 android:id="@+id/rsltidpelelang"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="@color/green1"/>
             <TextView
                 android:id="@+id/rsltidlelbrjalan"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="@color/green1"/>
 
             <Button
                 android:id="@+id/reslt_tohome"

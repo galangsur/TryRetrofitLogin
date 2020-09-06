@@ -2,7 +2,7 @@ package com.example.tryretrofitlogin.postresponse.addlelpesertamanager;
 
 import com.google.gson.annotations.SerializedName;
 
-public class AddlelpesertamanagerResponse{
+public class AddlelpsrtmanagerResponse{
 
 	@SerializedName("success")
 	private Success success;
@@ -18,7 +18,7 @@ public class AddlelpesertamanagerResponse{
 	@Override
  	public String toString(){
 		return 
-			"AddlelpesertamanagerResponse{" + 
+			"AddlelpsrtmanagerResponse{" + 
 			"success = '" + success + '\'' + 
 			"}";
 		}

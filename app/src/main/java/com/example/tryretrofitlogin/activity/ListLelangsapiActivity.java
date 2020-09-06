@@ -42,7 +42,7 @@ public class ListLelangsapiActivity extends AppCompatActivity {
         Intent intenthewan = getIntent();
         hewanid = intenthewan.getStringExtra("sapiid");
         lelsapiFilterkey.setText(hewanid);
-        Toast.makeText(this, lelsapiFilterkey.getText().toString(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, lelsapiFilterkey.getText().toString(), Toast.LENGTH_SHORT).show();
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(
                 this, LinearLayoutManager.VERTICAL,false);

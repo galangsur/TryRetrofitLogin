@@ -19,6 +19,9 @@ public class SuccessItem{
 	@SerializedName("id")
 	private String id;
 
+	@SerializedName("hewan")
+	private String hewan;
+
 	public void setPesertaId(String pesertaId){
 		this.pesertaId = pesertaId;
 	}
@@ -59,6 +62,14 @@ public class SuccessItem{
 		return id;
 	}
 
+	public void setHewan(String hewan){
+		this.hewan = hewan;
+	}
+
+	public String getHewan(){
+		return hewan;
+	}
+
 	@Override
  	public String toString(){
 		return 
@@ -68,6 +79,7 @@ public class SuccessItem{
 			",lelbrjalan_id = '" + lelbrjalanId + '\'' + 
 			",created_at = '" + createdAt + '\'' + 
 			",id = '" + id + '\'' + 
+			",hewan = '" + hewan + '\'' + 
 			"}";
 		}
 }

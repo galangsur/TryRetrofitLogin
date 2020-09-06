@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class GetpesrtmanagerbyuserResponse{
+public class GetpsrtmanagerbyuserResponse{
 
 	@SerializedName("success")
 	private ArrayList<SuccessItem> success;
@@ -20,7 +20,7 @@ public class GetpesrtmanagerbyuserResponse{
 	@Override
  	public String toString(){
 		return 
-			"GetpesrtmanagerbyuserResponse{" + 
+			"GetpsrtmanagerbyuserResponse{" + 
 			"success = '" + success + '\'' + 
 			"}";
 		}

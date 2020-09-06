@@ -26,7 +26,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class SignupActivity extends AppCompatActivity {
 
     private Button btnSignup;
-    private EditText editTextName, editTextEmail, editTextPassword;
+    private EditText editTextName, editTextEmail, editTextPassword, editTextTlp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +38,17 @@ public class SignupActivity extends AppCompatActivity {
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
+        editTextTlp = (EditText) findViewById(R.id.editTextTlp);
 
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userSignUp();
+                if (editTextTlp.getText().toString().trim().length() < 10){
+                    Toast.makeText(SignupActivity.this, "nomor anda kurang", Toast.LENGTH_SHORT).show();
+                } else{
+                    userSignUp();
+                }
+
             }
         });
     }
@@ -51,6 +57,7 @@ public class SignupActivity extends AppCompatActivity {
         final String name = editTextName.getText().toString().trim();
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
+        String tlp = editTextTlp.getText().toString().trim();
 
 
         //building retrofit object
@@ -63,12 +70,13 @@ public class SignupActivity extends AppCompatActivity {
         APIService service = retrofit.create(APIService.class);
 
         //Defining the user object as we need to pass it with the call
-        User user = new User(name, email, password, password);
+        User user = new User(name, email, tlp, password, password);
 
         //defining the call
         Call<AuthResponse> call = service.createUser(
                 user.getName(),
                 user.getEmail(),
+                user.getTlp(),
                 user.getPassword(),
                 user.getC_password() );
 

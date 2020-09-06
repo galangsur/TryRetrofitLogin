@@ -82,12 +82,12 @@ public class SigninActivity extends AppCompatActivity {
                             response.body().getSuccess().getToken(),
                             response.body().getSuccess().getName(),
                             response.body().getSuccess().getEmail());
-                    Toast.makeText(SigninActivity.this, "velue" + response.body().getSuccess().getName()
-                            + response.body().getSuccess().getId() + "sdsd", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(SigninActivity.this, "velue" + response.body().getSuccess().getName()
+//                            + response.body().getSuccess().getId() + "sdsd", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                     finish();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Invalid email or password", Toast.LENGTH_LONG).show();
+//                    Toast.makeText(getApplicationContext(), "Invalid email or password", Toast.LENGTH_LONG).show();
                 }
             }
 

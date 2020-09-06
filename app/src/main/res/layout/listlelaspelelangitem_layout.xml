@@ -16,32 +16,21 @@
             android:layout_alignParentBottom="true"
             android:background="@drawable/cowcardview"/>
         <TextView
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_width="wrap_content"
+            android:layout_width="245dp"
             android:layout_height="wrap_content"
-            android:text="Pelelang:"
-            android:textColor="#000000"
+            android:text="Peserta lelang sudah menunggu anda untuk memulai lelang.."
+            android:textColor="@color/orange5"
             android:textStyle="bold"
-            android:textSize="20dp"/>
-        <TextView
-            android:id="@+id/id_aspelelang"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="125dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="id as peserta"
-            android:textSize="18dp"/>
+            android:layout_marginLeft="20sp"
+            android:layout_marginTop="20dp"/>
 
         <TextView
+            android:id="@+id/id_aspelelang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:layout_marginLeft="110dp"
-            android:layout_marginTop="70dp"
-            android:text="lelang yg di ikuti"
-            android:textColor="#000000"
-            android:textSize="10dp"
-            android:textStyle="bold" />
+            android:layout_below="@id/idlelang_aspelelang"/>
         <TextView
             android:id="@+id/idlelang_aspelelang"
             android:layout_marginTop="90dp"
@@ -49,7 +38,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="lelang yg di ikuti"
-            android:textSize="12dp" />
+            android:textSize="12dp"
+            android:textColor="@color/white"/>
         <TextView
             android:id="@+id/gchattoken_key"
             android:layout_marginLeft="110dp"

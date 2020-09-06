@@ -6,12 +6,14 @@ public class User implements Serializable {
     private String id;
     private String name;
     private String email;
+    private String tlp;
     private String password;
     private String c_password;
 
-    public User(String name, String email, String password, String c_password) {
+    public User(String name, String email,String tlp, String password, String c_password) {
         this.name = name;
         this.email = email;
+        this.tlp = tlp;
         this.password = password;
         this.c_password = c_password;
     }
@@ -44,6 +46,14 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getTlp() {
+        return tlp;
+    }
+
+    public void setTlp(String tlp) {
+        this.tlp = tlp;
     }
 
     public String getPassword() {

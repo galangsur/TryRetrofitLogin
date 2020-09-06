@@ -3,13 +3,22 @@ package com.example.tryretrofitlogin.api;
 import com.example.tryretrofitlogin.postresponse.addhasillelang.AddHasillelangResponse;
 import com.example.tryretrofitlogin.postresponse.addlelang.AddLelangResponse;
 import com.example.tryretrofitlogin.postresponse.addlelangberlangsung.AddlelbrlangsungResponse;
-import com.example.tryretrofitlogin.postresponse.addlelpesertamanager.AddlelpesertamanagerResponse;
+import com.example.tryretrofitlogin.postresponse.addlelpesertamanager.AddlelpsrtmanagerResponse;
+import com.example.tryretrofitlogin.postresponse.addleltrans.AddleltransResponse;
+import com.example.tryretrofitlogin.postresponse.addlprdktrans.AddprdktransResponse;
 import com.example.tryretrofitlogin.postresponse.addphoto.PostphotoResponse;
+import com.example.tryretrofitlogin.postresponse.addproduk.AddprodukResponse;
+import com.example.tryretrofitlogin.postresponse.addreqtopup.AddtopupreqResponse;
 import com.example.tryretrofitlogin.postresponse.addrequestlelang.AddreqlelangResponse;
 import com.example.tryretrofitlogin.postresponse.addwallet.AddWalletResponse;
+import com.example.tryretrofitlogin.postresponse.createleltrans.LeltransAddResponse;
+import com.example.tryretrofitlogin.putresponse.kurangisaldo.KurangisaldoResponse;
 import com.example.tryretrofitlogin.putresponse.putgchatid.UpdategchatResponse;
+import com.example.tryretrofitlogin.putresponse.putleltransstat.UpdateleltransstatResponse;
+import com.example.tryretrofitlogin.putresponse.putprdktransstat.UpdateprdktransstatResponse;
 import com.example.tryretrofitlogin.responses.deletereqlel.DeletereqlelResponse;
 import com.example.tryretrofitlogin.responses.detlelbrjalanbyid.DetlelbrjalanbyidResponse;
+import com.example.tryretrofitlogin.responses.getalldatauserbyid.GetalldatauserbyidResponse;
 import com.example.tryretrofitlogin.responses.getallimage.GetAllImageResponse;
 import com.example.tryretrofitlogin.responses.getallproduk.GetallprodukResponse;
 import com.example.tryretrofitlogin.responses.gethewanbyid.GethewanbyidResponse;
@@ -20,8 +29,14 @@ import com.example.tryretrofitlogin.responses.getlelangbyid.GetlelangbyidRespons
 import com.example.tryretrofitlogin.responses.getlelbrjalanbygc.GetlelbrjalanbygcResponse;
 import com.example.tryretrofitlogin.responses.getlelbrjalanbyid.GetlelbrjalanbyidResponse;
 import com.example.tryretrofitlogin.responses.getlelbrjalanbyuser.GetlelbrjalanbyuserResponse;
+import com.example.tryretrofitlogin.responses.getleltransbyid.GetleltransbyidResponse;
+import com.example.tryretrofitlogin.responses.getleltransbypllg.GetleltransbypllgResponse;
+import com.example.tryretrofitlogin.responses.getleltransbypsrt.GetleltransbypsrtResponse;
 import com.example.tryretrofitlogin.responses.getlistleltransbypeserta.GetListLelbypesertaResponse;
-import com.example.tryretrofitlogin.responses.getpesrtmanagerbyuser.GetpesrtmanagerbyuserResponse;
+import com.example.tryretrofitlogin.responses.getpesrtmanagerbyuser.GetpsrtmanagerbyuserResponse;
+import com.example.tryretrofitlogin.responses.getprdktransbyid.GetprdktransbyidResponse;
+import com.example.tryretrofitlogin.responses.getprdktransbypmbl.GetprdktransbypmblResponse;
+import com.example.tryretrofitlogin.responses.getprdktransbypnjl.GetprdktransbypnjlResponse;
 import com.example.tryretrofitlogin.responses.getreqlel.GetReqlelResponse;
 import com.example.tryretrofitlogin.responses.getreqlelbyid.GetreqlelbyidResponse;
 import com.example.tryretrofitlogin.responses.getreqlelbysender.GetreqlelbysenderResponse;
@@ -53,6 +68,7 @@ public interface APIService {
     Call<AuthResponse> createUser(
             @Field("name") String name,
             @Field("email") String email,
+            @Field("tlp") String tlp,
             @Field("password") String password,
             @Field("c_password") String c_password
     );
@@ -84,11 +100,57 @@ public interface APIService {
     );
 
     @FormUrlEncoded
+    @POST("produk")
+    Call<AddprodukResponse> createproduk(
+            @Field("user_id") String user_id,
+            @Field("hewan_id") int hewan_id,
+            @Field("tentang_produk") String tentang_produk,
+            @Field("jumlah_produk") String jumlah_produk,
+            @Field("harga_produk") String harga_produk
+    );
+
+    @FormUrlEncoded
     @POST("wallet")
     Call<AddWalletResponse> createWallet(
             @Field("user_id") String user_id,
             @Field("saldo") String saldo
             );
+
+    @FormUrlEncoded
+    @POST("addtopupreq")
+    Call<AddtopupreqResponse> createTopupreq(
+            @Field("user_id") String user_id,
+            @Field("wallet_id") String wallet_id,
+            @Field("nama_user") String nama_user,
+            @Field("reqnominal") String reqnominal
+    );
+
+    @FormUrlEncoded
+    @POST("leltrans")
+    Call<LeltransAddResponse> addLeltransak(
+            @Field("hasillelang_token") String hasillelang_token,
+            @Field("statushasil_id") String statushasil_id,
+            @Field("statushasil") String statushasil,
+            @Field("peserta_id") String peserta_id,
+            @Field("pelelang_id") String pelelang_id,
+            @Field("hewan") String hewan,
+            @Field("harga_lelang") String harga_lelang,
+            @Field("nilai_akhir") String nilai_akhir
+    );
+
+    @FormUrlEncoded
+    @POST("prdktrans")
+    Call<AddprdktransResponse> addprdktrans(
+            @Field("produk_id") String produk_id,
+            @Field("prdktrans_token") String prdktrans_token,
+            @Field("statushasil_id") String statushasil_id,
+            @Field("statushasil") String statushasil,
+            @Field("pembeli_id") String pembeli_id,
+            @Field("penjual_id") String penjual_id,
+            @Field("hewan") String hewan,
+            @Field("jumlah") String jumlah,
+            @Field("harga_produk") String harga_produk
+    );
 
     @FormUrlEncoded
     @POST("reqlelang")
@@ -111,12 +173,13 @@ public interface APIService {
             @Field("nilai_akhir") String nilai_akhir
     );
 
-
     @FormUrlEncoded
     @POST("accreqlel")
-    Call<AddlelpesertamanagerResponse> accPeserta(
+    Call<AddlelpsrtmanagerResponse> accPeserta(
             @Field("peserta_id") String peserta_id,
-            @Field("lelbrjalan_id") String lelbrjalan_id
+            @Field("lelbrjalan_id") String lelbrjalan_id,
+            @Field("hewan") String hewan
+
     );
 
     //jika mengirim file saja pakai cara ini
@@ -140,6 +203,29 @@ public interface APIService {
     Call<TopupResponse> saldotambah(
             @Path("id") String id,
             @Field("saldo") String saldo
+    );
+
+    @FormUrlEncoded
+    @PUT("kurangisaldo/{id}")
+    Call<KurangisaldoResponse> saldokurang(
+            @Path("id") String id,
+            @Field("saldo") String saldo
+    );
+
+    @FormUrlEncoded
+    @PUT("ubahstatustrans/{id}")
+    Call<UpdateleltransstatResponse> ubahstattrans(
+            @Path("id") String id,
+            @Field("statushasil_id") String statushasil_id,
+            @Field("statushasil") String statushasil
+    );
+
+    @FormUrlEncoded
+    @PUT("ubahstattransprdk/{id}")
+    Call<UpdateprdktransstatResponse> ubahstattransprdk(
+            @Path("id") String id,
+            @Field("statushasil_id") String statushasil_id,
+            @Field("statushasil") String statushasil
     );
 
     @FormUrlEncoded
@@ -200,6 +286,36 @@ public interface APIService {
             @Path("user_id") String id
     );
 
+
+    //translel/////////////////////////////////////////////////
+    @GET("getleltransbypsrt/{id}")
+    Call<GetleltransbypsrtResponse> leltransbypsrt(
+            @Path("id") String id
+    );
+    @GET("getleltransbypllg/{id}")
+    Call<GetleltransbypllgResponse> leltransbypllg(
+            @Path("id") String id
+    );
+    @GET("getleltransbyid/{id}")
+    Call<GetleltransbyidResponse> leltransbyid(
+            @Path("id") String id
+    );
+
+    //transprdk/////////////////////////////////////////////////
+    @GET("getprdktransbypnjl/{id}")
+    Call<GetprdktransbypnjlResponse> prdktransbypnjl(
+            @Path("id") String id
+    );
+    @GET("getprdktransbypmbl/{id}")
+    Call<GetprdktransbypmblResponse> prdktransbypmbl(
+            @Path("id") String id
+    );
+    @GET("getprdktransbyid/{id}")
+    Call<GetprdktransbyidResponse> prdktransbyid(
+            @Path("id") String id
+    );
+
+
     @GET("gethewanbyid/{id}")
     Call<GethewanbyidResponse> gethewanjenis(
             @Path("id") String id,
@@ -210,6 +326,11 @@ public interface APIService {
     Call<GetusernamebyidResponse> getUsername(
             @Path("id") String id,
             @Query("name") String name
+    );
+
+    @GET("getusername/{id}")
+    Call<GetalldatauserbyidResponse> getalldatauserbyid(
+            @Path("id") String id
     );
 
     @GET("getlelangbyid/{id}")
@@ -252,12 +373,9 @@ public interface APIService {
     );
 
     @GET("getleldiikuti/{peserta_id}")
-    Call<GetpesrtmanagerbyuserResponse> psrtmanagerbyuser(
+    Call<GetpsrtmanagerbyuserResponse> psrtmanagerbyuser(
             @Path("peserta_id") String id
     );
-
-
-
 
 
     @GET("hewan")

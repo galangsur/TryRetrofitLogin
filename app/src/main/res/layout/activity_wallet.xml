@@ -35,6 +35,13 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="50dp"/>
+                <TextView
+                    android:id="@+id/tmpwlt_namauser"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"/>
 
             </RelativeLayout>
             <RelativeLayout
@@ -48,7 +55,7 @@
                     android:id="@+id/txt_saldoawal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="5000000"
+                    android:text="0"
                     android:textSize="30sp"
                     android:textStyle="bold"
                     android:textColor="#000000"
@@ -214,16 +221,17 @@
                 android:layout_marginTop="30dp"
                 android:layout_centerHorizontal="true"/>
             <Button
-        android:id="@+id/btn_tambahsaldo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="50dp"
-        android:layout_below="@+id/rellaysalTambahan"
-        android:background="@drawable/homeasset_e"
-        android:text="Tambah"/>
+                android:id="@+id/btn_tambahsaldo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="50dp"
+                android:textColor="@color/white"
+                android:layout_below="@+id/rellaysalTambahan"
+                android:background="@drawable/btnasset"
+                android:text="Req Topup"/>
             <ImageView
                 android:id="@+id/btn_backtohome"
                 android:layout_width="30dp"

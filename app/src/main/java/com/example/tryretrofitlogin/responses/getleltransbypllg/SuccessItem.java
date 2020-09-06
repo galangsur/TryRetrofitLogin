@@ -20,7 +20,7 @@ public class SuccessItem{
 	private String createdAt;
 
 	@SerializedName("id")
-	private int id;
+	private String id;
 
 	@SerializedName("hasillelang_token")
 	private String hasillelangToken;
@@ -77,11 +77,11 @@ public class SuccessItem{
 		return createdAt;
 	}
 
-	public void setId(int id){
+	public void setId(String id){
 		this.id = id;
 	}
 
-	public int getId(){
+	public String getId(){
 		return id;
 	}
 

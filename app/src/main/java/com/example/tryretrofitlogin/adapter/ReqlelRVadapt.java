@@ -63,7 +63,7 @@ public class ReqlelRVadapt extends RecyclerView.Adapter<ReqlelRVadapt.ReqlelView
 
     public class ReqlelViewHolder extends RecyclerView.ViewHolder {
         TextView lelid,pelelangid,pengirimid;
-        ImageView btnreqlel;
+        Button btnreqlel;
 
         public ReqlelViewHolder(View itemView) {
             super(itemView);

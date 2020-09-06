@@ -61,4 +61,7 @@ dependencies {
     //imagepicker
     implementation 'gun0912.ted:tedimagepicker:1.0.5'
 
+    //collapsetxtview
+    implementation  'com.ms-square:expandableTextView:0.1.4'
+
 }

@@ -5,14 +5,13 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tryretrofitlogin.R;
-import com.example.tryretrofitlogin.activity.DetailLelangActivity;
 import com.example.tryretrofitlogin.activity.DetailLelbrjalan;
 import com.example.tryretrofitlogin.responses.getpesrtmanagerbyuser.SuccessItem;
 
@@ -40,7 +39,7 @@ public class ListlelasPesertaAdapt extends RecyclerView.Adapter<ListlelasPeserta
     public void onBindViewHolder(@NonNull LelAsPesertaViewHolder holder, final int position) {
         holder.psrtmanager_id.setText(getpsrtmanager.get(position).getId());
         holder.peserta_id.setText(getpsrtmanager.get(position).getPesertaId());
-        holder.lelbrjalan_id.setText(getpsrtmanager.get(position).getLelbrjalanId());
+        holder.lelbrjalan_id.setText(getpsrtmanager.get(position).getHewan());
 
         holder.btndettolelbrjalan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +58,7 @@ public class ListlelasPesertaAdapt extends RecyclerView.Adapter<ListlelasPeserta
 
     public class LelAsPesertaViewHolder extends RecyclerView.ViewHolder {
         TextView psrtmanager_id, lelbrjalan_id, peserta_id;
-        ImageView btndettolelbrjalan;
+        Button btndettolelbrjalan;
 
         public LelAsPesertaViewHolder(@NonNull View itemView) {
             super(itemView);

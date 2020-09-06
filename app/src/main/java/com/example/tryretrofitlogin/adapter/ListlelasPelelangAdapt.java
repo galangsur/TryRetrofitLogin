@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tryretrofitlogin.R;
+import com.example.tryretrofitlogin.activity.DetailLelbrjalan;
 import com.example.tryretrofitlogin.activity.GroupchatActivity;
 import com.example.tryretrofitlogin.responses.getlelbrjalanbyuser.SuccessItem;
 
@@ -27,8 +28,7 @@ public class ListlelasPelelangAdapt extends RecyclerView.Adapter<ListlelasPelela
         this.lelbrjalanContex = lelbrjalanContex;
         this.getlelbrjalan = getlelbrjalan;
     }
-
-
+    
     @NonNull
     @Override
     public ListlelasPelelangAdapt.LelAsPelelangViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -45,12 +45,21 @@ public class ListlelasPelelangAdapt extends RecyclerView.Adapter<ListlelasPelela
         holder.btn_tolelroom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(lelbrjalanContex, "sds" + getlelbrjalan.get(position).getGchatId(), Toast.LENGTH_SHORT).show();
-                Intent lelaspelelang = new Intent(lelbrjalanContex, GroupchatActivity.class);
-                lelaspelelang.putExtra("gchattoken",getlelbrjalan.get(position).getGchatId());
-                lelbrjalanContex.startActivity(lelaspelelang);
+                Intent aspelelang = new Intent(lelbrjalanContex, DetailLelbrjalan.class);
+                aspelelang.putExtra("idlelbrjalan",getlelbrjalan.get(position).getId());
+                lelbrjalanContex.startActivity(aspelelang);
             }
         });
+
+//        holder.btn_tolelroom.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(lelbrjalanContex, "sds" + getlelbrjalan.get(position).getGchatId(), Toast.LENGTH_SHORT).show();
+//                Intent lelaspelelang = new Intent(lelbrjalanContex, GroupchatActivity.class);
+//                lelaspelelang.putExtra("gchattoken",getlelbrjalan.get(position).getGchatId());
+//                lelbrjalanContex.startActivity(lelaspelelang);
+//            }
+//        });
 
 
     }

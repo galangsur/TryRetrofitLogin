@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -23,15 +24,19 @@ import com.example.tryretrofitlogin.models.LelBerlangsung;
 import com.example.tryretrofitlogin.models.Lelang;
 import com.example.tryretrofitlogin.postresponse.addlelang.AddLelangResponse;
 import com.example.tryretrofitlogin.postresponse.addlelangberlangsung.AddlelbrlangsungResponse;
+import com.example.tryretrofitlogin.postresponse.addreqtopup.AddtopupreqResponse;
+import com.example.tryretrofitlogin.putresponse.kurangisaldo.KurangisaldoResponse;
 import com.example.tryretrofitlogin.responses.gethewan.HewanResponse;
 import com.example.tryretrofitlogin.responses.gethewan.SuccessItem;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.ms.square.android.expandabletextview.ExpandableTextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -42,11 +47,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class AddLelangActivity extends AppCompatActivity {
 
     private EditText edttxtcomment, edttxtharga;
-    private TextView txtuserid;
+    private TextView txtuserid,txtusernama;
     private Spinner spinhewanid;
     private Button btnaddlelang;
     private ImageView btnback;
-    private String userid, jenishewan, groupname;
+    private String userid, jenishewan, groupname, lelimgparent, usernama;
     private int idhewan;
     public List<SuccessItem> hewans;
     private DatabaseReference rootRef;
@@ -57,6 +62,7 @@ public class AddLelangActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_lelang);
 
         txtuserid = (TextView) findViewById(R.id.txtTextuserId);
+        txtusernama = (TextView) findViewById(R.id.txtTextuserNama);
         spinhewanid = (Spinner) findViewById(R.id.spinHewanId);
         edttxtcomment = (EditText) findViewById(R.id.editTextcomment);
         edttxtharga = (EditText) findViewById(R.id.editTextharga);
@@ -64,6 +70,8 @@ public class AddLelangActivity extends AppCompatActivity {
         btnback = (ImageView) findViewById(R.id.btn_backtohome);
 
         userid = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getId();
+        usernama = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getName();
+        txtusernama.setText(usernama);
         txtuserid.setText(userid);
 
         rootRef = FirebaseDatabase.getInstance().getReference();
@@ -86,8 +94,8 @@ public class AddLelangActivity extends AppCompatActivity {
         btnaddlelang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(AddLelangActivity.this, "btntst", Toast.LENGTH_SHORT).show();
-                uploadLelbrjalan();
+//                Toast.makeText(AddLelangActivity.this, "btntst", Toast.LENGTH_SHORT).show();
+                kurangisaldo();
                 uploadLelang();
 
 //                newGroup(groupname);
@@ -162,10 +170,7 @@ public class AddLelangActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<AddLelangResponse> call, Response<AddLelangResponse> response) {
                 if (response.isSuccessful()){
-
-                    Toast.makeText(AddLelangActivity.this, "respon" + response.body().getSuccess(), Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                    finish();
+                    touploadimg();
                 }
             }
 
@@ -178,9 +183,9 @@ public class AddLelangActivity extends AppCompatActivity {
 
     }
 
-    private void uploadLelbrjalan(){
-        Toast.makeText(this, "fncttst", Toast.LENGTH_SHORT).show();
-//        groupname = "Belum Mulai";
+    private void uploadLelbrjalan() {
+//        Toast.makeText(this, "fncttst", Toast.LENGTH_SHORT).show();
+        groupname = "Belum Mulai";
         String lelbr_iduser = txtuserid.getText().toString().trim();
         String lelbr_lelcomment = edttxtcomment.getText().toString().trim();
         String lelbr_lelharga = edttxtharga.getText().toString().trim();
@@ -193,13 +198,12 @@ public class AddLelangActivity extends AppCompatActivity {
         APIService service = retrofit.create(APIService.class);
 
         Call<AddlelbrlangsungResponse> call = service.lelbrlngsung(
-                lelbr_iduser, idhewan, lelbr_lelcomment, lelbr_lelharga, lelbr_lelcomment);
+                lelbr_iduser, idhewan, lelbr_lelcomment, lelbr_lelharga, groupname);
 
         call.enqueue(new Callback<AddlelbrlangsungResponse>() {
             @Override
             public void onResponse(Call<AddlelbrlangsungResponse> call, Response<AddlelbrlangsungResponse> response) {
                 if (response.isSuccessful()){
-                    Toast.makeText(AddLelangActivity.this, "ddf" +response.body().getSuccess(), Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -226,4 +230,56 @@ public class AddLelangActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
     }
+
+    private static final String ALLOWED_CHARACTERS ="0123456789qwertyuiopasdfghjklzxcvbnm";
+    private static String lelimgparent(){
+        int targetStringLength = 5;
+        Random random = new Random();
+        StringBuilder stringBuilder = new StringBuilder(targetStringLength);
+        for (int i = 0; i < targetStringLength; i++){
+            stringBuilder.append(ALLOWED_CHARACTERS.charAt(random.nextInt(ALLOWED_CHARACTERS.length())));
+        }
+
+        return stringBuilder.toString();
+    }
+
+    private void touploadimg(){
+        Intent intent = new Intent(AddLelangActivity.this, Uploadhewan.class);
+        intent.putExtra("imghw", lelimgparent());
+        startActivity(intent);
+    }
+
+    private void kurangisaldo(){
+        String user_id = txtuserid.getText().toString().trim();
+        String pengurang = "50000";
+//        String nominal = saldotmbh.getText().toString().trim();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(APIUrl.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        APIService service = retrofit.create(APIService.class);
+
+        Call<KurangisaldoResponse> call = service.saldokurang(
+                user_id ,pengurang);
+
+        call.enqueue(new Callback<KurangisaldoResponse>() {
+            @Override
+            public void onResponse(Call<KurangisaldoResponse> call, Response<KurangisaldoResponse> response) {
+                if (response.isSuccessful()){
+                    uploadLelbrjalan();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<KurangisaldoResponse> call, Throwable t) {
+                Toast.makeText(AddLelangActivity.this, "Saldo anda kurang", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
 }
+
+//cara nyimpan imgparent, jalanin lelimgparent dulu biar dapat idimgparent baru nnti get dia sebagai key untuk ngeget img

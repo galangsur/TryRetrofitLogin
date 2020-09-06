@@ -50,14 +50,14 @@ public class Messageadapt extends RecyclerView.Adapter<Messageadapt.MessageViewH
 
         if (fromUserid.equals(userRef)) {
             holder.senderMessagetxt.setBackgroundResource(R.drawable.sender_message_layout);
-            holder.senderMessagetxt.setText(message.getMessage());
+            holder.senderMessagetxt.setText("Melakukan penawaran menjadi " + message.getMessage());
         } else {
             holder.senderMessagetxt.setVisibility(View.INVISIBLE);
 
             holder.recieverMessagetxt.setVisibility(View.VISIBLE);
 
             holder.recieverMessagetxt.setBackgroundResource(R.drawable.reciever_message_layout);
-            holder.recieverMessagetxt.setText(message.getMessage());
+            holder.recieverMessagetxt.setText("Melakukan penawaran menjadi " + message.getMessage());
             holder.fromMessagetxt.setText(message.getFromName());
             holder.dateMessagetxt.setText(message.getDate());
             holder.timeMessagetxt.setText(message.getTime());

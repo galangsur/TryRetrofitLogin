@@ -17,7 +17,10 @@ public class Success{
 	private String createdAt;
 
 	@SerializedName("id")
-	private int id;
+	private String id;
+
+	@SerializedName("hewan")
+	private String hewan;
 
 	public void setPesertaId(String pesertaId){
 		this.pesertaId = pesertaId;
@@ -51,12 +54,20 @@ public class Success{
 		return createdAt;
 	}
 
-	public void setId(int id){
+	public void setId(String id){
 		this.id = id;
 	}
 
-	public int getId(){
+	public String getId(){
 		return id;
+	}
+
+	public void setHewan(String hewan){
+		this.hewan = hewan;
+	}
+
+	public String getHewan(){
+		return hewan;
 	}
 
 	@Override
@@ -68,6 +79,7 @@ public class Success{
 			",lelbrjalan_id = '" + lelbrjalanId + '\'' + 
 			",created_at = '" + createdAt + '\'' + 
 			",id = '" + id + '\'' + 
+			",hewan = '" + hewan + '\'' + 
 			"}";
 		}
 }

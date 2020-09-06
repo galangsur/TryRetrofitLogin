@@ -21,6 +21,7 @@ public class SharedPrefManager {
     private static final String KEY_USER_TOKEN = "keyusertoken";
     private static final String KEY_USER_NAME = "keyusername";
     private static final String KEY_USER_EMAIL = "keyuseremail";
+    private static final String KEY_USER_TLP = "keyuseretlp";
     private static final String KEY_USER_PASSWORD = "keyuserpassword";
     private static final String KEY_USER_CPASSWORD = "keyusercpassword";
     private static final String KEY_REQ_ID = "keyreqid";
@@ -99,6 +100,7 @@ public class SharedPrefManager {
         return new User(
                 sharedPreferences.getString(KEY_USER_NAME, null),
                 sharedPreferences.getString(KEY_USER_EMAIL, null),
+                sharedPreferences.getString(KEY_USER_TLP, null),
                 sharedPreferences.getString(KEY_USER_PASSWORD, null),
                 sharedPreferences.getString(KEY_USER_CPASSWORD,null)
         );

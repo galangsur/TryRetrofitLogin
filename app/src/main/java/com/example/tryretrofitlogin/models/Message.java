@@ -1,7 +1,6 @@
 package com.example.tryretrofitlogin.models;
 
-public class
-Message {
+public class Message {
     private String date, fromId,fromName, message, time, gcId;
 
     public Message(String date, String fromId, String fromName, String message, String time) {

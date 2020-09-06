@@ -2,15 +2,18 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:layout_marginTop="5dp">
 
         <TextView
             android:id="@+id/txt_fromname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="11sp"
-            android:layout_marginLeft="13dp"
-            android:textStyle="bold"/>
+            android:textSize="14sp"
+            android:layout_marginLeft="12dp"
+            android:textStyle="bold"
+            android:textColor="@color/green1"/>
 
         <TextView
             android:id="@+id/txt_recievermsg"
@@ -29,8 +32,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/txt_recievermsg"
-        android:textSize="11sp"
-        android:textStyle="bold"/>
+        android:textSize="12sp"
+        android:layout_marginLeft="5dp"
+        android:textStyle="bold"
+        android:textColor="@color/green1"/>
 
     <TextView
         android:id="@+id/txt_sendtime"
@@ -40,7 +45,8 @@
         android:layout_below="@id/txt_recievermsg"
         android:layout_marginLeft="10dp"
         android:textSize="11sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textColor="@color/green1"/>
 
 
     <TextView
@@ -53,6 +59,7 @@
         android:layout_alignParentTop="@+id/txt_recievermsg"
         android:background="@drawable/sender_message_layout"
         android:textSize="14sp"
+        android:text="r"
         android:padding="10dp"
         android:textStyle="bold"/>
 

@@ -14,7 +14,7 @@
             android:layout_height="200dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="160dp"
-            android:src="@drawable/auction"
+            android:src="@drawable/logoa"
             android:background="@drawable/logoasset_a">
         </ImageView>
 
@@ -46,7 +46,7 @@
             android:layout_width="150dp"
             android:layout_height="80dp"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="450dp"
+            android:layout_marginTop="500dp"
             android:background="@drawable/mainasset_c"
             android:text="Sign Up"
             android:textColor="@color/white"/>

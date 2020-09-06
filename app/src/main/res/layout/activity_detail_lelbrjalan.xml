@@ -12,11 +12,38 @@
         android:layout_height="wrap_content">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
+            <TextView
+                android:id="@+id/tmppelelang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/green1"/>
+            <TextView
+                android:id="@+id/tmpgcidgenerated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/green1"/>
+            <Button
+                android:id="@+id/btn_mulailelang"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/btnasset"
+                android:backgroundTint="@color/red6"
+                android:text="Mulai Lelang"
+                android:visibility="invisible"
+                android:textColor="@color/white"
+                android:layout_below="@id/txtdetrasn1_lel"/>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:background="@drawable/reqlelasset_a"/>
+                android:background="@drawable/reqlelasset_a" />
+
             <RelativeLayout
                 android:id="@+id/rellayPemenang"
                 android:layout_width="match_parent"
@@ -27,25 +54,18 @@
                 android:padding="15dp"
                 android:background="@drawable/signasset_c">
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:text="Pemenang"
-                    android:textColor="@color/green1"
-                    android:textStyle="bold"
-                    android:textSize="20dp"/>
-                <TextView
                     android:id="@+id/txt_result1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
-                    android:text="Username :"
+                    android:text="Hewan yang dilelangkan :"
                     android:textColor="@color/green1"
                     android:textStyle="bold"
                     android:textSize="16dp"/>
                 <EditText
-                    android:id="@+id/rslt_namapemenang"
+                    android:id="@+id/edtxtlelbrjln_hewan"
                     android:layout_width="290dp"
+                    android:textColor="#000000"
                     android:layout_height="wrap_content"
                     android:inputType="none"
                     android:layout_below="@+id/txt_result1"/>
@@ -54,16 +74,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
-                    android:text="Nilai Akhir :"
+                    android:text="Start Harga Lelang :"
                     android:textColor="@color/green1"
                     android:textStyle="bold"
                     android:textSize="16dp"
-                    android:layout_below="@id/rslt_namapemenang"/>
+                    android:layout_below="@id/edtxtlelbrjln_hewan"/>
                 <EditText
-                    android:id="@+id/rslt_nilaiakhir"
+                    android:id="@+id/edtxtlbrjln_nilaiawal"
                     android:layout_width="290dp"
                     android:layout_height="wrap_content"
                     android:inputType="none"
+                    android:textColor="#000000"
                     android:layout_below="@+id/txt_result2"/>
             </RelativeLayout>
 
@@ -78,72 +99,57 @@
                 android:textColor="@color/white"
                 android:layout_marginTop="25dp"
                 android:layout_centerHorizontal="true"/>
+
             <TextView
-                android:id="@+id/txtdetrasn2_lel"
+                android:id="@+id/tmplelbrjln_idhewan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Yang Diikuti"
-                android:layout_gravity="center"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/txtdetrasn1_lel"/>
+                android:textColor="@color/green1"/>
 
             <TextView
-                android:id="@+id/reslt_messageId"
+                android:id="@+id/tmplelbrjln_userId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
-                android:id="@+id/reslt_userId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
+                android:id="@+id/tmplelbrjln_userName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="User :"/>
+                android:textColor="@color/green1"/>
 
             <TextView
-                android:id="@+id/reslt_userName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:id="@+id/reslt_pelelangId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
+                android:id="@+id/tmplelbrjln_pelelangId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="User :"/>
+                android:textColor="@color/green1"/>
 
             <TextView
-                android:id="@+id/reslt_pelelangName"
+                android:id="@+id/tmplelbrjln_pelelangName"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="@color/green1"/>
 
             <TextView
                 android:id="@+id/gctoken"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="@color/green1"/>
 
             <TextView
                 android:id="@+id/tmp_idlelbrjalan"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="@color/green1"/>
 
             <Button
                 android:id="@+id/btnto_gchat"
                 android:layout_width="200dp"
                 android:layout_height="50dp"
-                android:layout_marginLeft="120dp"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="30dp"
                 android:layout_below="@id/rellayPemenang"
                 android:background="@drawable/btnasset"
-                android:text="ke menu"
+                android:text="Lelang Room"
                 android:textColor="@color/white"/>
 
             <ImageView

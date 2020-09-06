@@ -44,14 +44,14 @@ public class WalletCreateActivity extends AppCompatActivity {
         Intent intent = getIntent();
         username = intent.getStringExtra("username");
         namauser.setText(username);
-        Toast.makeText(this, "user " +username, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "user " +username, Toast.LENGTH_SHORT).show();
         getUseridbyname();
 
 
         btncreatewallet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(WalletCreateActivity.this, "id :" +iduser.getText().toString() , Toast.LENGTH_SHORT).show();
+//                Toast.makeText(WalletCreateActivity.this, "id :" +iduser.getText().toString() , Toast.LENGTH_SHORT).show();
                 createwallet();
             }
         });
@@ -65,7 +65,7 @@ public class WalletCreateActivity extends AppCompatActivity {
     private void createwallet(){
         String keyid = iduser.getText().toString().trim();
         String nominalkey = nominalawal.getText().toString().trim();
-        Toast.makeText(this, "kyid" + keyid + nominalkey, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "kyid" + keyid + nominalkey, Toast.LENGTH_SHORT).show();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(APIUrl.BASE_URL)
@@ -84,7 +84,7 @@ public class WalletCreateActivity extends AppCompatActivity {
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
                 } else {
-                    Toast.makeText(WalletCreateActivity.this, "gk", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(WalletCreateActivity.this, "Wallet gagal membuat", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -112,7 +112,7 @@ public class WalletCreateActivity extends AppCompatActivity {
             public void onResponse(Call<GetuseridResponse> call, Response<GetuseridResponse> response) {
                 iduser.setText(response.body().getId());
                 if (response.isSuccessful()){
-                    Toast.makeText(WalletCreateActivity.this, "respn" + response.body().getId(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(WalletCreateActivity.this, "respn" + response.body().getId(), Toast.LENGTH_SHORT).show();
                 }
                 Log.i("id", "idgan: " + response.body().toString());
             }

@@ -18,7 +18,15 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="10dp">
+
+            <TextView
+                android:id="@+id/txtTextuserId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/green1"/>
             <ImageView
                 android:id="@+id/btn_backtohome"
                 android:layout_width="30dp"
@@ -48,12 +56,12 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="UserId :"
+                    android:text="Pelelang :"
                     android:textStyle="bold"
                     android:textSize="20dp"
                     android:textColor="@color/green1"/>
                 <TextView
-                    android:id="@+id/txtTextuserId"
+                    android:id="@+id/txtTextuserNama"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:hint="Enter id "
@@ -64,7 +72,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="HewanId :"
+                    android:text="Hewan :"
                     android:textSize="20dp"
                     android:textStyle="bold"
                     android:textColor="@color/green1"/>
@@ -103,22 +111,45 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Enter harga "
-                    android:inputType="text"
+                    android:inputType="phone"
                     android:layout_marginBottom="30dp"/>
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btn_addlelang"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="60dp"
-                android:layout_marginRight="60dp"
-                android:text="Ajukan Lelang"
-                android:textStyle="bold"
-                android:textColor="@color/white"
                 android:layout_below="@id/lelang1"
-                android:background="@drawable/btnasset"
-                android:layout_marginTop="50dp"/>
+                android:layout_marginTop="30dp"
+                android:padding="10dp"
+                android:orientation="vertical"
+                android:background="@drawable/homeasset_e">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tentang Pengajuan Lelang :"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/green1"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Biaya pengajuan lelang per sekali lelangnya akan dikenakan biaya sebesar 50000 dan sudah termasuk biaya balik nama hewan."
+                    android:textSize="18sp"
+                    android:textColor="@color/green1"/>
+                <Button
+                    android:id="@+id/btn_addlelang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginRight="60dp"
+                    android:text="Ajukan Lelang"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:background="@drawable/btnasset"
+                    android:layout_marginTop="50dp"/>
+            </LinearLayout>
+
+
         </RelativeLayout>
     </ScrollView>
 </LinearLayout>

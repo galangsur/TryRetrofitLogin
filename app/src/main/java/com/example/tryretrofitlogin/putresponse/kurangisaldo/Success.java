@@ -8,7 +8,7 @@ public class Success{
 	private String updatedAt;
 
 	@SerializedName("user_id")
-	private int userId;
+	private String userId;
 
 	@SerializedName("created_at")
 	private String createdAt;
@@ -17,7 +17,7 @@ public class Success{
 	private int id;
 
 	@SerializedName("saldo")
-	private int saldo;
+	private String saldo;
 
 	public void setUpdatedAt(String updatedAt){
 		this.updatedAt = updatedAt;
@@ -27,11 +27,11 @@ public class Success{
 		return updatedAt;
 	}
 
-	public void setUserId(int userId){
+	public void setUserId(String userId){
 		this.userId = userId;
 	}
 
-	public int getUserId(){
+	public String getUserId(){
 		return userId;
 	}
 
@@ -51,11 +51,11 @@ public class Success{
 		return id;
 	}
 
-	public void setSaldo(int saldo){
+	public void setSaldo(String saldo){
 		this.saldo = saldo;
 	}
 
-	public int getSaldo(){
+	public String getSaldo(){
 		return saldo;
 	}
 

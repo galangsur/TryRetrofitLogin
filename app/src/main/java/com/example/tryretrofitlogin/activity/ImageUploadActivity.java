@@ -74,10 +74,12 @@ public class ImageUploadActivity extends AppCompatActivity {
         eventAttachment = (TextView) findViewById(R.id.imageUri);
         txt_pickcount = (TextView)findViewById(R.id.pickcount);
 
+
+
         btnUploadimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ImageUploadActivity.this, "tos", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(ImageUploadActivity.this, "tos", Toast.LENGTH_SHORT).show();
                 uploadImg(attachment);
             }
         });
@@ -116,7 +118,7 @@ public class ImageUploadActivity extends AppCompatActivity {
     }
 
     private void uploadImg(File attachment){
-        Toast.makeText(this, "tastos", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "tastos", Toast.LENGTH_SHORT).show();
         RequestBody requestBody = RequestBody.create(MediaType.parse("*/*"),attachment);
         String a = "3";
         String b = "5";
@@ -141,9 +143,11 @@ public class ImageUploadActivity extends AppCompatActivity {
         call.enqueue(new Callback<PostphotoResponse>() {
             @Override
             public void onResponse(Call<PostphotoResponse> call, Response<PostphotoResponse> response) {
-                Toast.makeText(ImageUploadActivity.this, "berhasil", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(ImageUploadActivity.this, ImageUploadtwoActivity.class);
-                startActivity(intent);
+                if (response.isSuccessful()){
+                    Toast.makeText(ImageUploadActivity.this, "berhasil", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(ImageUploadActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                }
             }
 
             @Override

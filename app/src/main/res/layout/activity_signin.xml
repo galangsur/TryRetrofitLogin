@@ -35,7 +35,7 @@
     <RelativeLayout
         android:id="@+id/rl_two"
         android:layout_width="30dp"
-        android:layout_height="450dp"
+        android:layout_height="460dp"
         android:background="@drawable/signasset_b"
         android:layout_below="@+id/rl_one"
         android:layout_alignParentRight="true"/>

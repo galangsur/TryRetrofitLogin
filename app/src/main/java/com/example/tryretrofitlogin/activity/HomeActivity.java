@@ -35,7 +35,8 @@ public class HomeActivity extends AppCompatActivity {
             btntogroupcht, btntoimgtry, btntopasar,btntrycamera,btnlistlelaspeserta, btnlistlelaspelelang;
     private String username, useremail;
     private String userid,usersaldo;
-    private ImageView imglogout,imglelangsapi,imglelangayam,imglisttranslel,imglisttransprdk;
+    private ImageView imglogout,imglelangsapi,imglelangayam,
+            imglisttransprdkpnjl,imglisttransprdkpmbl,imglisttranslelpnwr,imglisttranslelpllg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,14 +51,16 @@ public class HomeActivity extends AppCompatActivity {
         imglelangsapi =  (ImageView) findViewById(R.id.img_lelsapi);
         btnwallet = (Button) findViewById(R.id.btn_towallet);
         btntoreqlel = (Button) findViewById(R.id.btn_toreqlel);
-        btntoimgtry = (Button)findViewById(R.id.btn_toimgtry);
+//        btntoimgtry = (Button)findViewById(R.id.btn_toimgtry);
         btntopasar = (Button)findViewById(R.id.btn_pasarhewan);
-        btntrycamera = (Button)findViewById(R.id.try_camera);
-        btntogroupcht = (Button)findViewById(R.id.togc);
+//        btntrycamera = (Button)findViewById(R.id.try_camera);
+//        btntogroupcht = (Button)findViewById(R.id.togc);
         btnlistlelaspeserta = (Button)findViewById(R.id.sebagaipeserta);
         btnlistlelaspelelang = (Button)findViewById(R.id.sebagaipelelang);
-        imglisttranslel = (ImageView)findViewById(R.id.pilihantranslel);
-        imglisttransprdk = (ImageView)findViewById(R.id.pilihantransprdk);
+        imglisttransprdkpnjl = (ImageView)findViewById(R.id.plihntransprdkpnjl);
+//        imglisttransprdkpmbl = (ImageView)findViewById(R.id.plihntransprdkpmbl);
+        imglisttranslelpnwr = (ImageView)findViewById(R.id.plihantranspnwr);
+//        imglisttranslelpllg = (ImageView)findViewById(R.id.plihantranspllg);
 //        btntolelang = (Button) findViewById(R.id.btn_toaddlelang);
 //        btntolistlel = (Button) findViewById(R.id.btn_tolistlelang);
 
@@ -69,7 +72,7 @@ public class HomeActivity extends AppCompatActivity {
 
         txtusername.setText(username);
         txtuseremail.setText(useremail);
-        homeGetsaldo();
+
 
         imglogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,12 +80,20 @@ public class HomeActivity extends AppCompatActivity {
                 userLogout();
             }
         });
-        imglisttranslel.setOnClickListener(new View.OnClickListener() {
+
+        imglisttranslelpnwr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 toListleltrans();
             }
         });
+        imglisttransprdkpnjl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toListprdktrans();
+            }
+        });
+
         btnwallet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,18 +112,19 @@ public class HomeActivity extends AppCompatActivity {
                 toPasar();
             }
         });
-        btntoimgtry.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toImage();
-            }
-        });
-        btntrycamera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toTrycamera();
-            }
-        });
+//        btntoimgtry.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                toImage();
+//            }
+//        });
+//        btntrycamera.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                toTrycamera();
+//            }
+//        });
+
         btnlistlelaspeserta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,12 +137,13 @@ public class HomeActivity extends AppCompatActivity {
                 toListlelaspelelang();
             }
         });
-        btntogroupcht.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                togc();
-            }
-        });
+
+//        btntogroupcht.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                togc();
+//            }
+//        });
 
         imglelangsapi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,16 +168,22 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onSuccess(InstanceIdResult instanceIdResult) {
                 String newToken = instanceIdResult.getToken();
-                Toast.makeText(HomeActivity.this, "token" + newToken, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(HomeActivity.this, "token" + newToken, Toast.LENGTH_SHORT).show();
                 Log.d("token",newToken);
             }
         });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        homeGetsaldo();
+    }
+
     private void userLogout(){
         SharedPrefManager.getInstance(this).logout();
         finish();
-        Toast.makeText(this, "logoutsucces", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Log out", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, MainActivity.class));
     }
 
@@ -199,7 +218,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void toListprdktrans(){
-        Intent intent = new Intent(HomeActivity.this,ImageUploadActivity.class);
+        Intent intent = new Intent(HomeActivity.this,ListPrdkTransaksi.class);
         startActivity(intent);
     }
 
@@ -235,10 +254,10 @@ public class HomeActivity extends AppCompatActivity {
             public void onResponse(Call<GetWalletInfoResponse> call, Response<GetWalletInfoResponse> response) {
                 txthomesaldo.setText(response.body().getSaldo());
                 if (response.body() !=null) {
-                    Toast.makeText(HomeActivity.this, "idwallet" + response.body().getUserId()+
-                            "wallet" + response.body().getSaldo(), Toast.LENGTH_LONG).show();
+//                    Toast.makeText(HomeActivity.this, "idwallet" + response.body().getUserId()+
+//                            "wallet" + response.body().getSaldo(), Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Invalid get wallet info", Toast.LENGTH_LONG).show();
+//                    Toast.makeText(getApplicationContext(), "Invalid get wallet info", Toast.LENGTH_LONG).show();
                 }
             }
 

@@ -14,6 +14,7 @@ import com.example.tryretrofitlogin.R;
 import com.example.tryretrofitlogin.api.APIService;
 import com.example.tryretrofitlogin.api.APIUrl;
 import com.example.tryretrofitlogin.helper.SharedPrefManager;
+import com.example.tryretrofitlogin.postresponse.addreqtopup.AddtopupreqResponse;
 import com.example.tryretrofitlogin.responses.getwallet.GetWalletInfoResponse;
 import com.example.tryretrofitlogin.responses.topupwallet.TopupResponse;
 
@@ -25,13 +26,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class WalletActivity extends AppCompatActivity {
 
-    private TextView txtuserid, txtusersaldo;
+    private TextView txtuserid, txtusersaldo, txtusernama;
     private EditText saldotmbh;
     private Button btntambahsaldo, btntopup_a, btntopup_b, btntopup_c;
     private ImageView btn_back;
     private String usersaldo;
     private String a,b,c;
-    private String userid;
+    private String userid,usernama;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class WalletActivity extends AppCompatActivity {
 
         txtuserid = (TextView) findViewById(R.id.txt_userid);
         txtusersaldo = (TextView) findViewById(R.id.txt_saldoawal);
+        txtusernama = (TextView) findViewById(R.id.tmpwlt_namauser);
         saldotmbh = (EditText) findViewById(R.id.edtxt_saldotambah);
         btntambahsaldo = (Button) findViewById(R.id.btn_tambahsaldo);
         btntopup_a = (Button)findViewById(R.id.btntmbh_a);
@@ -51,7 +53,9 @@ public class WalletActivity extends AppCompatActivity {
         c = "1500000";
 
         userid = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getId();
+        usernama = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getName();
         txtuserid.setText(userid);
+        txtusernama.setText(usernama);
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +75,7 @@ public class WalletActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Toast.makeText(this, "iser" + userid, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "iser" + userid, Toast.LENGTH_SHORT).show();
         getSaldo();
 
         btntopup_a.setOnClickListener(new View.OnClickListener() {
@@ -96,6 +100,7 @@ public class WalletActivity extends AppCompatActivity {
 
     private void fungsitambah(){
         String user_id = txtuserid.getText().toString().trim();
+        String user_nama = txtusernama.getText().toString().trim();
 //        String nominal = saldotmbh.getText().toString().trim();
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -105,17 +110,21 @@ public class WalletActivity extends AppCompatActivity {
 
         APIService service = retrofit.create(APIService.class);
 
-        Call<TopupResponse> call = service.saldotambah(user_id, saldotmbh.getText().toString());
+        Call<AddtopupreqResponse> call = service.createTopupreq(
+                user_id ,user_id, user_nama, saldotmbh.getText().toString());
 
-        call.enqueue(new Callback<TopupResponse>() {
+        call.enqueue(new Callback<AddtopupreqResponse>() {
             @Override
-            public void onResponse(Call<TopupResponse> call, Response<TopupResponse> response) {
-                Toast.makeText(getApplicationContext(), response.body().getSuccess().toString(), Toast.LENGTH_LONG).show();
-                onBackPressed();
+            public void onResponse(Call<AddtopupreqResponse> call, Response<AddtopupreqResponse> response) {
+                if (response.isSuccessful()){
+//                    Toast.makeText(WalletActivity.this, "yea", Toast.LENGTH_SHORT).show();
+                    onBackPressed();
+                }
+
             }
 
             @Override
-            public void onFailure(Call<TopupResponse> call, Throwable t) {
+            public void onFailure(Call<AddtopupreqResponse> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
 
             }
@@ -138,8 +147,8 @@ public class WalletActivity extends AppCompatActivity {
             public void onResponse(Call<GetWalletInfoResponse> call, Response<GetWalletInfoResponse> response) {
                     txtusersaldo.setText(response.body().getSaldo());
                     if (response.body() !=null) {
-                        Toast.makeText(WalletActivity.this, "idwallet" + response.body().getUserId()+
-                                "wallet" + response.body().getSaldo(), Toast.LENGTH_LONG).show();
+//                        Toast.makeText(WalletActivity.this, "idwallet" + response.body().getUserId()+
+//                                "wallet" + response.body().getSaldo(), Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getApplicationContext(), "Invalid get wallet info", Toast.LENGTH_LONG).show();
                 }

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">TryRetrofitLogin</string>
+
+    <string name="textforpelelang">
+        Ketentuan Mengajukan Lelang :\u0020 1. Biaya pengajuan lelang per sekali lelangnya akan dikenakan biaya 50000 yang sudah termasuk dengan
+           biaya balik nama.
+    </string>
 </resources>

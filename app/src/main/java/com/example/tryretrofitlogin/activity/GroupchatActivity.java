@@ -24,7 +24,10 @@ import android.widget.Toast;
 import com.example.tryretrofitlogin.R;
 import com.example.tryretrofitlogin.adapter.Messageadapt;
 import com.example.tryretrofitlogin.helper.SharedPrefManager;
+import com.example.tryretrofitlogin.models.Harga;
 import com.example.tryretrofitlogin.models.Message;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -44,12 +47,12 @@ import java.util.Locale;
 public class GroupchatActivity extends AppCompatActivity {
 
     private ImageButton sendImgbtn;
-    private EditText inputEdtxt;
+    private EditText inputEdtxt,hargaInpt;
     private Button bidsatuBid, bidduaBid, bidtigaBid;
-    private TextView timeTxt,gcidTxt;
-    private String currentDate,currentTime,currentUserid,currentnameUser,gcid;
+    private TextView timeTxt,gcidTxt,hargaOutpt;
+    private String currentDate,currentTime,currentUserid,currentnameUser,gcid,harga,hrgbid;
     private int hargaAwallelang, bidInput;
-    private DatabaseReference groupRef,groupmsgKeyref;
+    private DatabaseReference groupRef,groupmsgKeyref,hargaRef,lelhargaKeyref;
 
     private final List<Message> messageList = new ArrayList<>();
     private LinearLayoutManager linearLayoutManager;
@@ -70,17 +73,21 @@ public class GroupchatActivity extends AppCompatActivity {
 
         timeTxt = (TextView) findViewById(R.id.timer_txt);
         bidsatuBid = (Button) findViewById(R.id.bid_satu);
-        bidduaBid = (Button) findViewById(R.id.bid_dua);
-        bidtigaBid = (Button) findViewById(R.id.bid_tiga);
         gcidTxt = (TextView)findViewById(R.id.txtgcid);
+        hargaOutpt = (TextView)findViewById(R.id.txthargacounter);
+        hargaInpt = (EditText)findViewById(R.id.hargainput);
+
+        //bidduaBid = (Button) findViewById(R.id.bid_dua);
+        //bidtigaBid = (Button) findViewById(R.id.bid_tiga);
 
 
         Intent intenthewan = getIntent();
         gcid = intenthewan.getStringExtra("gchattoken");
         gcidTxt.setText(gcid);
-        Toast.makeText(this, gcid, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, gcid, Toast.LENGTH_SHORT).show();
 
-        groupRef = FirebaseDatabase.getInstance().getReference().child("Groups").child("yeye");
+        groupRef = FirebaseDatabase.getInstance().getReference().child("Groups").child(gcid);
+        hargaRef = FirebaseDatabase.getInstance().getReference().child("LelHargaMng").child(gcid);
         currentUserid = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getId();
         currentnameUser = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getName();
 
@@ -95,17 +102,18 @@ public class GroupchatActivity extends AppCompatActivity {
         userMessagelist.setLayoutManager(linearLayoutManager);
         userMessagelist.setAdapter(messageadapt);
 
-        hargaAwallelang = 1000;
-
         displayMsg();
         startTime();
+        displayHrga();
+//        gethargaawal();
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        displayMsg();
+//        displayMsg();
 
 //        sendImgbtn.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -114,30 +122,16 @@ public class GroupchatActivity extends AppCompatActivity {
 //            }
 //        });
 
+        harga = hargaOutpt.getText().toString().trim();
+
         bidsatuBid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 computeBid1K();
                 saveBid();
-                resetTimer();
+//                resetTimer();
             }
         });
-
-        bidduaBid.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                computeBid2K();
-            }
-        });
-
-        bidtigaBid.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                computeBid3K();
-            }
-        });
-
-
 
     }
 
@@ -177,6 +171,7 @@ public class GroupchatActivity extends AppCompatActivity {
 
     private void saveBid(){
         bidInput = hargaAwallelang;
+        String bidstring = Integer.toString(bidInput);
         String bidmsgKey = groupRef.push().getKey();
         String bidfromId = currentUserid.trim();
         String bidfromName= currentnameUser.trim();
@@ -190,11 +185,12 @@ public class GroupchatActivity extends AppCompatActivity {
             SimpleDateFormat currentTformat = new SimpleDateFormat("hh:mm");
             currentTime = currentTformat.format(calForTime.getTime());
 
+            //untukchildmsg
             HashMap<String, Object> groupmsgKey = new HashMap<>();
             groupRef.updateChildren(groupmsgKey);
 
             groupmsgKeyref = groupRef.child(bidmsgKey);
-
+            //untukisivaluemsg
             HashMap<String, Object> msgInfomap = new HashMap<>();
             msgInfomap.put("fromName",bidfromName);
             msgInfomap.put("fromId",bidfromId);
@@ -203,6 +199,10 @@ public class GroupchatActivity extends AppCompatActivity {
             msgInfomap.put("date",currentDate);
             msgInfomap.put("time",currentTime);
             groupmsgKeyref.updateChildren(msgInfomap);
+
+        String valuetoSend = Integer.toString(bidInput);
+        hargaRef.child("harga").setValue(valuetoSend);
+
     }
 
     private void displayMsg(){
@@ -215,6 +215,7 @@ public class GroupchatActivity extends AppCompatActivity {
                     userMessagelist.smoothScrollToPosition(userMessagelist.getAdapter().getItemCount());
                     Messageadapt messageadapt = new Messageadapt(messageList);
                     userMessagelist.setAdapter(messageadapt);
+                    resetTimer();
                 }
 
             }
@@ -245,17 +246,41 @@ public class GroupchatActivity extends AppCompatActivity {
         });
     }
 
+    private void displayHrga(){
+        DatabaseReference hargal = hargaRef.child("harga");
+
+        hargal.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //nampilin di textview
+                hargaInpt.setText(snapshot.getValue(String.class));
+                String inpt = hargaInpt.getText().toString();
+                hargaOutpt.setText(inpt);
+
+                //ubah ke int biar bisa dihitung
+                hrgbid = snapshot.getValue(String.class);
+                hargaAwallelang = Integer.parseInt(hrgbid);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
     private void getlastItem(){
         DatabaseReference itemref = FirebaseDatabase.getInstance().getReference().child("Groups");
-        Query lastQuery = itemref.child("yeye").orderByKey().limitToLast(1);
+        Query lastQuery = itemref.child(gcid).orderByKey().limitToLast(1);
         lastQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     String name = dataSnapshot1.getKey();
-                    Toast.makeText(GroupchatActivity.this, "name" + name, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(GroupchatActivity.this, "name" + name, Toast.LENGTH_SHORT).show();
                     Intent resLel = new Intent(GroupchatActivity.this,LelangResultActivity.class);
                     resLel.putExtra("messageId", name);
+                    resLel.putExtra("groupId",gcid);
                     startActivity(resLel);
                 }
 
@@ -282,8 +307,8 @@ public class GroupchatActivity extends AppCompatActivity {
                 Toast.makeText(GroupchatActivity.this, "waktu habis", Toast.LENGTH_SHORT).show();
                 getlastItem();
                 bidsatuBid.setVisibility(View.INVISIBLE);
-                bidduaBid.setVisibility(View.INVISIBLE);
-                bidtigaBid.setVisibility(View.INVISIBLE);
+//                bidduaBid.setVisibility(View.INVISIBLE);
+//                bidtigaBid.setVisibility(View.INVISIBLE);
             }
         }.start();
         timerRunning = true;
@@ -304,6 +329,32 @@ public class GroupchatActivity extends AppCompatActivity {
         timeTxt.setText(timeLeftFormatted);
     }
 
+    private void computeBid1K(){
+//        final String s = hargatxt.getText().toString().trim();
+//        final int har = Integer.parseInt(s);
+
+        int hargatambah500 = 500000;
+        hargaAwallelang = hargaAwallelang + hargatambah500;
+        Toast.makeText(this, String.valueOf(hargaAwallelang), Toast.LENGTH_SHORT).show();
+    }
+
+//    private void gethargaawal(){
+//        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference();
+//        DatabaseReference getharga = dbref.child("LelHargaMng").child(gcid);
+//
+//        getharga.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                hargatxt.setText(dataSnapshot.getValue(String.class));
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//    }
+
 //    private void swipeRefresh(){
 //        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 //            @Override
@@ -314,22 +365,5 @@ public class GroupchatActivity extends AppCompatActivity {
 //        });
 //    }
 
-    private void computeBid1K(){
-        int hargatambah500 = 500000;
-        hargaAwallelang = hargaAwallelang + hargatambah500;
-        Toast.makeText(this, String.valueOf(hargaAwallelang), Toast.LENGTH_SHORT).show();
-    }
-
-    private void computeBid2K(){
-        int hargatambah500 = 500000;
-        hargaAwallelang = hargaAwallelang + hargatambah500;
-        Toast.makeText(this, String.valueOf(hargaAwallelang), Toast.LENGTH_SHORT).show();
-    }
-
-    private void computeBid3K(){
-        int hargatambah500 = 500000;
-        hargaAwallelang = hargaAwallelang + hargatambah500;
-        Toast.makeText(this, String.valueOf(hargaAwallelang), Toast.LENGTH_SHORT).show();
-    }
 
 }

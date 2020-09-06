@@ -40,7 +40,9 @@
                 android:id="@+id/txt_leldetharga"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:textSize="40dp"
+                android:textStyle="bold"
                 android:layout_marginLeft="10dp"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/txtdet4"/>
@@ -157,19 +159,6 @@
                 android:textColor="@color/white"
                 android:layout_marginTop="40dp"
                 android:background="@drawable/btnasset"
-                android:layout_below="@id/detRellay"/>
-
-            <Button
-                android:id="@+id/btn_mulailel"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="10dp"
-                android:text="Mulai Lelang"
-                android:textColor="@color/white"
-                android:background="@color/red"
-                android:layout_marginTop="50dp"
-                android:visibility="invisible"
                 android:layout_below="@id/detRellay"/>
         </RelativeLayout>
 
