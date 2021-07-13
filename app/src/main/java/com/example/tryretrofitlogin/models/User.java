@@ -9,13 +9,15 @@ public class User implements Serializable {
     private String tlp;
     private String password;
     private String c_password;
+    private String nikktp;
 
-    public User(String name, String email,String tlp, String password, String c_password) {
+    public User(String name, String email,String tlp, String password, String c_password,String nikktp) {
         this.name = name;
         this.email = email;
         this.tlp = tlp;
         this.password = password;
         this.c_password = c_password;
+        this.nikktp = nikktp;
     }
 
     public User(String id, String name, String email) {
@@ -70,5 +72,13 @@ public class User implements Serializable {
 
     public void setC_password(String c_password) {
         this.c_password = c_password;
+    }
+
+    public String getNikktp() {
+        return nikktp;
+    }
+
+    public void setNikktp(String nikktp) {
+        this.nikktp = nikktp;
     }
 }

@@ -17,7 +17,7 @@
             android:layout_marginTop="10dp"
             android:padding="20dp"
             android:layout_below="@id/hargahewan"
-            android:src="@drawable/auction"
+            android:src="@drawable/product"
             android:background="@drawable/signasset_c"/>
         <TextView
             android:layout_marginTop="20dp"

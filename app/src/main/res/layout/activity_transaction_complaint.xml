@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green1"
+    tools:context=".activity.TransactionComplaintActivity">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+        <TextView
+            android:id="@+id/txtuserIdcomplaint"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:textColor="@color/green1"/>
+
+        <TextView
+            android:id="@+id/transcompimgtokenget"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:textColor="@color/green1"/>
+
+        <TextView
+            android:id="@+id/transcompimgtokenupload"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:textColor="@color/green1"/>
+
+        <TextView
+            android:id="@+id/txttranscompIdtransaksi"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:textColor="@color/green1"/>
+
+        <ImageView
+            android:id="@+id/btncomplaintback"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/ic_baseline_arrowwhite_24"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pengajuan Komplain"
+            android:layout_gravity="center"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="60dp"/>
+
+        <LinearLayout
+            android:id="@+id/complaint1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:padding="10dp"
+            android:orientation="vertical"
+            android:background="@drawable/homeasset_e">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Yang mengajukan Komplain :"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textColor="@color/green1"/>
+            <TextView
+                android:id="@+id/txtuserNamacomplaint"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:inputType="text"
+                android:paddingLeft="5dp"
+                android:textColor="@color/black"
+                android:layout_marginBottom="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Alasan Komplain :"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/green1"/>
+            <Spinner
+                android:id="@+id/spinAlasancomplaint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:layout_marginBottom="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Solusi Komplain :"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/green1"/>
+            <Spinner
+                android:id="@+id/spinSolusicomplaint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:layout_marginBottom="20dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/complaint2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:orientation="vertical"
+            android:layout_below="@id/complaint1"
+            android:background="@drawable/homeasset_e">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/green1"
+                android:text="Dengan mengirim komplain ini, saya setuju untuk membayar 150% dari nilai akhir lelang jika laporan yang saya sampaikan tidak benar."/>
+
+            <Button
+                android:id="@+id/btn_transcomp_addimage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Tambah Bukti Komplain"
+                android:textColor="@color/white"
+                android:padding="10dp"
+                android:background="@drawable/btnasset"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+
+
+</LinearLayout>

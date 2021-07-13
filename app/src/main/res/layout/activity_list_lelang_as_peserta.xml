@@ -49,7 +49,7 @@
         android:id="@+id/lelaspeserta_filterkey"
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:textColor="@color/brown"/>
+        android:textColor="@color/green1"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lelaspesertaRV"

@@ -10,12 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.tryretrofitlogin.R;
-import com.example.tryretrofitlogin.adapter.Lelbyhwsapiadapt;
 import com.example.tryretrofitlogin.adapter.ListlelasPelelangAdapt;
 import com.example.tryretrofitlogin.api.APIService;
 import com.example.tryretrofitlogin.api.APIUrl;
 import com.example.tryretrofitlogin.helper.SharedPrefManager;
-import com.example.tryretrofitlogin.responses.getlelangbyhewan.GetlelangbyhewanResponse;
 import com.example.tryretrofitlogin.responses.getlelbrjalanbyuser.GetlelbrjalanbyuserResponse;
 
 import retrofit2.Call;

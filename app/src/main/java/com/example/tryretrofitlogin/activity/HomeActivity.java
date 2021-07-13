@@ -17,10 +17,14 @@ import com.example.tryretrofitlogin.R;
 import com.example.tryretrofitlogin.api.APIService;
 import com.example.tryretrofitlogin.api.APIUrl;
 import com.example.tryretrofitlogin.helper.SharedPrefManager;
+import com.example.tryretrofitlogin.models.Wallet;
 import com.example.tryretrofitlogin.responses.getwallet.GetWalletInfoResponse;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
+
+import java.text.NumberFormat;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,12 +35,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class HomeActivity extends AppCompatActivity {
 
     private TextView txtusername, txtuseremail, txthomesaldo;
-    private Button btnwallet, btntolelang, btntolistlel, btntoreqlel,
+    private Button btnwallet, btntolelang, btntolistlel, btntoreqlel, btnrolepelelang,
             btntogroupcht, btntoimgtry, btntopasar,btntrycamera,btnlistlelaspeserta, btnlistlelaspelelang;
     private String username, useremail;
-    private String userid,usersaldo;
+    private String userid,usersaldo,saldovalidate;
     private ImageView imglogout,imglelangsapi,imglelangayam,
             imglisttransprdkpnjl,imglisttransprdkpmbl,imglisttranslelpnwr,imglisttranslelpllg;
+    private int saldobeforeformat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,24 +52,13 @@ public class HomeActivity extends AppCompatActivity {
         txtuseremail = (TextView) findViewById(R.id.txt_useremail);
         txthomesaldo = (TextView) findViewById(R.id.txt_homesaldo);
         imglogout = (ImageView) findViewById(R.id.btn_logout);
-        imglelangayam = (ImageView) findViewById(R.id.img_lelayam);
-        imglelangsapi =  (ImageView) findViewById(R.id.img_lelsapi);
         btnwallet = (Button) findViewById(R.id.btn_towallet);
         btntoreqlel = (Button) findViewById(R.id.btn_toreqlel);
-//        btntoimgtry = (Button)findViewById(R.id.btn_toimgtry);
-        btntopasar = (Button)findViewById(R.id.btn_pasarhewan);
-//        btntrycamera = (Button)findViewById(R.id.try_camera);
-//        btntogroupcht = (Button)findViewById(R.id.togc);
+        btntolelang = (Button)findViewById(R.id.btn_pasarlelang);
+        btnrolepelelang = (Button) findViewById(R.id.btn_switchroletopelelang);
+        imglisttranslelpnwr = (ImageView)findViewById(R.id.plihantranspnwr);
         btnlistlelaspeserta = (Button)findViewById(R.id.sebagaipeserta);
         btnlistlelaspelelang = (Button)findViewById(R.id.sebagaipelelang);
-        imglisttransprdkpnjl = (ImageView)findViewById(R.id.plihntransprdkpnjl);
-//        imglisttransprdkpmbl = (ImageView)findViewById(R.id.plihntransprdkpmbl);
-        imglisttranslelpnwr = (ImageView)findViewById(R.id.plihantranspnwr);
-//        imglisttranslelpllg = (ImageView)findViewById(R.id.plihantranspllg);
-//        btntolelang = (Button) findViewById(R.id.btn_toaddlelang);
-//        btntolistlel = (Button) findViewById(R.id.btn_tolistlelang);
-
-//        btntogroupcht = (Button) findViewById(R.id.btn_togroupcht);
 
         userid = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getId();
         username = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getName();
@@ -87,12 +81,12 @@ public class HomeActivity extends AppCompatActivity {
                 toListleltrans();
             }
         });
-        imglisttransprdkpnjl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toListprdktrans();
-            }
-        });
+//        imglisttransprdkpnjl.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                toListprdktrans();
+//            }
+//        });
 
         btnwallet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,12 +100,25 @@ public class HomeActivity extends AppCompatActivity {
                 toReqlelang();
             }
         });
-        btntopasar.setOnClickListener(new View.OnClickListener() {
+//        btntopasar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                toPasar();
+//            }
+//        });
+        btntolelang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toPasar();
+                toLelang();
             }
         });
+        btnrolepelelang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toswitchrolePelelang();
+            }
+        });
+
 //        btntoimgtry.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -145,24 +152,24 @@ public class HomeActivity extends AppCompatActivity {
 //            }
 //        });
 
-        imglelangsapi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, ListLelangsapiActivity.class);
-                intent.putExtra("sapiid", "1");
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
-            }
-        });
-        imglelangayam.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, ListLelangayamActivity.class);
-                intent.putExtra("ayamid", "2");
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
-            }
-        });
+//        imglelangsapi.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(HomeActivity.this, ListLelangsapiActivity.class);
+//                intent.putExtra("sapiid", "1");
+//                startActivity(intent);
+//                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+//            }
+//        });
+//        imglelangayam.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(HomeActivity.this, ListLelangayamActivity.class);
+//                intent.putExtra("ayamid", "2");
+//                startActivity(intent);
+//                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+//            }
+//        });
 
         FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(HomeActivity.this, new OnSuccessListener<InstanceIdResult>() {
             @Override
@@ -197,28 +204,14 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void toImage(){
-        Intent intent = new Intent(HomeActivity.this,ImageRetrieveTry.class);
-        startActivity(intent);
-    }
-
-    private void toPasar(){
-        Intent intent = new Intent(HomeActivity.this,ListProdukActivity.class);
-        startActivity(intent);
-    }
-
-    private void toTrycamera(){
-        Intent intent = new Intent(HomeActivity.this,ImageUploadActivity.class);
+    private void toLelang(){
+        Intent intent = new Intent(HomeActivity.this,PilihanlelActivity.class);
+        intent.putExtra("userid",userid);
         startActivity(intent);
     }
 
     private void toListleltrans(){
         Intent intent = new Intent(HomeActivity.this,ListLelTransaksi.class);
-        startActivity(intent);
-    }
-
-    private void toListprdktrans(){
-        Intent intent = new Intent(HomeActivity.this,ListPrdkTransaksi.class);
         startActivity(intent);
     }
 
@@ -232,11 +225,11 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void togc(){
-        Intent intent = new Intent(HomeActivity.this,GroupchatActivity.class);
+    private void toswitchrolePelelang(){
+        Intent intent = new Intent(HomeActivity.this, HomepelelangActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
-
 
 
     private void homeGetsaldo(){
@@ -252,13 +245,34 @@ public class HomeActivity extends AppCompatActivity {
         call.enqueue(new Callback<GetWalletInfoResponse>() {
             @Override
             public void onResponse(Call<GetWalletInfoResponse> call, Response<GetWalletInfoResponse> response) {
-                txthomesaldo.setText(response.body().getSaldo());
-                if (response.body() !=null) {
+
+                if(response.isSuccessful()){
+                    saldobeforeformat = response.body().getSaldo();
+                } else{
+                    Toast.makeText(getApplicationContext(), "Belum memiliki wallet", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(HomeActivity.this, WalletCreateActivity.class);
+                    intent.putExtra("username", username);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+                }
+//                txthomesaldo.setText(response.body().getSaldo());
+
+                //ubahformat Rp.
+                Locale localID = new Locale("in","ID");
+
+                NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localID);
+                txthomesaldo.setText(formatRupiah.format((double)saldobeforeformat));
+
+
+//                if (response.body() !=null) {
 //                    Toast.makeText(HomeActivity.this, "idwallet" + response.body().getUserId()+
 //                            "wallet" + response.body().getSaldo(), Toast.LENGTH_LONG).show();
-                } else {
+//                } else {
 //                    Toast.makeText(getApplicationContext(), "Invalid get wallet info", Toast.LENGTH_LONG).show();
-                }
+//                    Intent intent = new Intent(HomeActivity.this, WalletCreateActivity.class);
+//                    startActivity(intent);
+//                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+//                }
             }
 
             @Override

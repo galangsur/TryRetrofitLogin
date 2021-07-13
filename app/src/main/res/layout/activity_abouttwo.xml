@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.AbouttwoActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/backgroundabout2">
+
+        <ImageView
+            android:id="@+id/imgabout2"
+            android:layout_width="310dp"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="150dp"
+            android:src="@drawable/about2"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="'' Anda dapat melihat siapa yang melakukan bid dan kapan bid itu dilakukan dalam satu room lelang ,,"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textStyle="italic"
+            android:padding="10dp"
+            android:layout_above="@+id/backbtn_ab2"
+            android:layout_centerHorizontal="true"/>
+
+        <Button
+            android:id="@+id/nextbtn_ab2"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/mainasset_c"
+            android:backgroundTint="@color/orange5"
+            android:layout_weight="1"
+            android:text="Next"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/backbtn_ab2"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/mainasset_b"
+            android:backgroundTint="@color/orange5"
+            android:layout_weight="1"
+            android:text="Back"
+            android:layout_marginTop="60dp"
+            android:textColor="@color/white"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

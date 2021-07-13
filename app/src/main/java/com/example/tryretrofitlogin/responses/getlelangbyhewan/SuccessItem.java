@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 public class SuccessItem{
 
 	@SerializedName("harga")
-	private String harga;
+	private int harga;
 
 	@SerializedName("updated_at")
 	private String updatedAt;
@@ -28,11 +28,11 @@ public class SuccessItem{
 	@SerializedName("gchat_id")
 	private String gchatId;
 
-	public void setHarga(String harga){
+	public void setHarga(int harga){
 		this.harga = harga;
 	}
 
-	public String getHarga(){
+	public int getHarga(){
 		return harga;
 	}
 

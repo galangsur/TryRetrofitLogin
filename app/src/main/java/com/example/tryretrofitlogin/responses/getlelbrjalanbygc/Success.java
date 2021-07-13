@@ -4,8 +4,11 @@ import com.google.gson.annotations.SerializedName;
 
 public class Success{
 
+	@SerializedName("req_nominalperbid")
+	private int reqNominalperbid;
+
 	@SerializedName("harga")
-	private String harga;
+	private int harga;
 
 	@SerializedName("updated_at")
 	private String updatedAt;
@@ -25,14 +28,25 @@ public class Success{
 	@SerializedName("id")
 	private String id;
 
+	@SerializedName("req_waktuperbid")
+	private int reqWaktuperbid;
+
 	@SerializedName("gchat_id")
 	private String gchatId;
 
-	public void setHarga(String harga){
+	public void setReqNominalperbid(int reqNominalperbid){
+		this.reqNominalperbid = reqNominalperbid;
+	}
+
+	public int getReqNominalperbid(){
+		return reqNominalperbid;
+	}
+
+	public void setHarga(int harga){
 		this.harga = harga;
 	}
 
-	public String getHarga(){
+	public int getHarga(){
 		return harga;
 	}
 
@@ -84,6 +98,14 @@ public class Success{
 		return id;
 	}
 
+	public void setReqWaktuperbid(int reqWaktuperbid){
+		this.reqWaktuperbid = reqWaktuperbid;
+	}
+
+	public int getReqWaktuperbid(){
+		return reqWaktuperbid;
+	}
+
 	public void setGchatId(String gchatId){
 		this.gchatId = gchatId;
 	}
@@ -96,13 +118,15 @@ public class Success{
  	public String toString(){
 		return 
 			"Success{" + 
-			"harga = '" + harga + '\'' + 
+			"req_nominalperbid = '" + reqNominalperbid + '\'' + 
+			",harga = '" + harga + '\'' + 
 			",updated_at = '" + updatedAt + '\'' + 
 			",user_id = '" + userId + '\'' + 
 			",hewan_id = '" + hewanId + '\'' + 
 			",created_at = '" + createdAt + '\'' + 
 			",comment = '" + comment + '\'' + 
 			",id = '" + id + '\'' + 
+			",req_waktuperbid = '" + reqWaktuperbid + '\'' + 
 			",gchat_id = '" + gchatId + '\'' + 
 			"}";
 		}

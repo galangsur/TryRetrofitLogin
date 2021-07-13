@@ -31,6 +31,10 @@ public class Messageadapt extends RecyclerView.Adapter<Messageadapt.MessageViewH
         this.userMessageList = userMessageList;
     }
 
+    public void removeLastitem(){
+        userMessageList.remove(userMessageList.size()-1);
+    }
+
     @NonNull
     @Override
     public MessageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -47,25 +51,25 @@ public class Messageadapt extends RecyclerView.Adapter<Messageadapt.MessageViewH
         currentUserId = SharedPrefManager.getInstance(mCtx).getUserProfile().getId();
         String userRef = currentUserId.trim();
 
+        holder.recieverMessagetxt.setBackgroundResource(R.drawable.reciever_message_layout);
+        holder.recieverMessagetxt.setText("Melakukan penawaran menjadi " + message.getMessage());
+        holder.fromMessagetxt.setText(message.getFromName());
+        holder.dateMessagetxt.setText(message.getDate());
+        holder.timeMessagetxt.setText(message.getTime());
+        holder.senderMessagetxt.setVisibility(View.INVISIBLE);
 
-        if (fromUserid.equals(userRef)) {
-            holder.senderMessagetxt.setBackgroundResource(R.drawable.sender_message_layout);
-            holder.senderMessagetxt.setText("Melakukan penawaran menjadi " + message.getMessage());
-        } else {
-            holder.senderMessagetxt.setVisibility(View.INVISIBLE);
+//        if (fromUserid.equals(userRef)) {
+//            holder.senderMessagetxt.setBackgroundResource(R.drawable.sender_message_layout);
+//            holder.senderMessagetxt.setText("Melakukan penawaran menjadi " + message.getMessage());
+//        } else {
+//            holder.senderMessagetxt.setVisibility(View.INVISIBLE);
+//
+//            holder.recieverMessagetxt.setVisibility(View.VISIBLE);
+//
+//
+//        }
 
-            holder.recieverMessagetxt.setVisibility(View.VISIBLE);
 
-            holder.recieverMessagetxt.setBackgroundResource(R.drawable.reciever_message_layout);
-            holder.recieverMessagetxt.setText("Melakukan penawaran menjadi " + message.getMessage());
-            holder.fromMessagetxt.setText(message.getFromName());
-            holder.dateMessagetxt.setText(message.getDate());
-            holder.timeMessagetxt.setText(message.getTime());
-        }
-
-        if (holder.recieverMessagetxt.getText().toString().equals("r")){
-            holder.recieverMessagetxt.setVisibility(View.INVISIBLE);
-        }
     }
 
     @Override

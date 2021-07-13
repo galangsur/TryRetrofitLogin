@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green3"
+    android:orientation="vertical"
+    tools:context=".activity.HomepelelangActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:background="@drawable/homeasset_h" />
+
+            <Button
+                android:id="@+id/btn_towalletpelelang"
+                android:layout_width="110dp"
+                android:layout_height="30dp"
+                android:layout_below="@id/imageRellayout"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="40dp"
+                android:layout_toLeftOf="@id/btn_switchroletopembeli"
+                android:background="@drawable/btnasset"
+                android:drawableLeft="@drawable/ic_plusround_control_point_24"
+                android:paddingLeft="10dp"
+                android:text="Top Up"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_switchroletopembeli"
+                android:layout_width="140dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/imageRellayout"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/btnasset"
+                android:backgroundTint="@color/green2"
+                android:drawableRight="@drawable/ic_baseline_switchaccount_white_24"
+                android:padding="10dp"
+                android:text="Menu Pengunjung"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+
+            <RelativeLayout
+                android:id="@+id/imageRellayout"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/signasset_c">
+
+                <RelativeLayout
+                    android:id="@+id/imageFrame"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/signasset_c">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/userpelelangimg" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/txt_usernamepl"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/imageFrame"
+                    android:text="Username"
+                    android:textColor="@color/green1"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txt_useremailpl"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_usernamepl"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/imageFrame"
+                    android:text="username@gmail.com"
+                    android:textColor="@color/green1" />
+
+                <ImageView
+                    android:id="@+id/smallwalleticon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@id/txt_useremailpl"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/imageFrame"
+                    android:background="@drawable/coinrp" />
+
+                <TextView
+                    android:id="@+id/txt_homesaldopl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_useremailpl"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/smallwalleticon"
+                    android:text="0"
+                    android:textColor="@color/green1"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageRellayout"
+                android:layout_marginTop="120dp">
+                <!--                <TextView-->
+                <!--                    android:id="@+id/hometxt_1"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="Lelang"-->
+                <!--                    android:textSize="30dp"-->
+                <!--                    android:layout_centerHorizontal="true"-->
+                <!--                    android:layout_margin="10dp"-->
+                <!--                    android:textStyle="bold"-->
+                <!--                    android:textColor="@color/green1"/>-->
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="200dp"-->
+                <!--                    android:layout_height="5dp"-->
+                <!--                    android:background="@drawable/homeasset_g"-->
+                <!--                    android:backgroundTint="@color/green1"-->
+                <!--                    android:layout_below="@id/hometxt_1"-->
+                <!--                    android:layout_centerHorizontal="true"/>-->
+
+                <RelativeLayout
+                    android:id="@+id/pilihanlelang"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/homeasset_c"
+                    android:backgroundTint="@color/orange1"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp">
+
+                    <ImageView
+                        android:id="@+id/imgpl1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="150dp"
+                        android:layout_marginTop="34dp"
+                        android:src="@drawable/addlelangilus" />
+
+                    <TextView
+                        android:id="@+id/hometxt_0"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="Cukup melalui aplikasi, sekarang anda sudah dapat mengajukan sebuah lelang.."
+                        android:textColor="@color/green1"
+                        android:textSize="13dp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btn_pengajuanlelang"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/btnasset"
+                        android:text="Pengajuan Lelang"
+                        android:textColor="@color/white" />
+
+                </RelativeLayout>
+
+                <!--                <RelativeLayout-->
+                <!--                    android:id="@+id/pilihanmarket"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="300dp"-->
+                <!--                    android:background="@color/green1"-->
+                <!--                    android:layout_below="@+id/pilihanlelang"-->
+                <!--                    android:layout_marginTop="20dp"-->
+                <!--                    android:paddingTop="10dp"-->
+                <!--                    android:paddingBottom="10dp">-->
+
+                <!--                    <TextView-->
+                <!--                        android:id="@+id/hometxt_5"-->
+                <!--                        android:layout_width="300dp"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:text="Ayo lihat hewan ternak yang dijual hari ini.."-->
+                <!--                        android:textSize="18dp"-->
+                <!--                        android:textStyle="bold"-->
+                <!--                        android:layout_marginLeft="15dp"-->
+                <!--                        android:textColor="@color/green3"/>-->
+
+                <!--                    <ImageView-->
+                <!--                        android:id="@+id/imgmrktimg"-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="200dp"-->
+                <!--                        android:src="@drawable/mrktcondition"-->
+                <!--                        android:layout_marginTop="50dp"/>-->
+
+                <!--                    <Button-->
+                <!--                        android:id="@+id/btn_pasarhewan"-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginTop="10dp"-->
+                <!--                        android:layout_alignParentBottom="true"-->
+                <!--                        android:background="@drawable/btnasset"-->
+                <!--                        android:text="Lihat Pasar"-->
+                <!--                        android:layout_marginLeft="20dp"-->
+                <!--                        android:layout_marginRight="20dp"-->
+                <!--                        android:textColor="@color/white"/>-->
+                <!--                </RelativeLayout>-->
+
+                <RelativeLayout
+                    android:id="@+id/pilihantransaksi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/pilihanaktifitas"
+                    android:layout_marginTop="30dp"
+                    android:background="@color/green1"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/hometxt_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:text="Aktifitas Transaksi"
+                        android:textColor="@color/white"
+                        android:textSize="25dp"
+                        android:textStyle="bold" />
+                    <!--                    relaktransprdk-->
+                    <!--                    <RelativeLayout-->
+                    <!--                        android:id="@+id/relaktransprdk"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="200dp"-->
+                    <!--                        android:layout_marginRight="15dp"-->
+                    <!--                        android:layout_marginTop="50dp"-->
+                    <!--                        android:paddingTop="10dp"-->
+                    <!--                        android:paddingRight="10dp"-->
+                    <!--                        android:paddingBottom="10dp"-->
+                    <!--                        android:background="@drawable/homeasset_a"-->
+                    <!--                        android:backgroundTint="@color/green1">-->
+
+                    <!--                        <ImageView-->
+                    <!--                            android:id="@+id/imgshopilus"-->
+                    <!--                            android:layout_width="100dp"-->
+                    <!--                            android:layout_height="100dp"-->
+                    <!--                            android:layout_centerVertical="true"-->
+                    <!--                            android:layout_marginLeft="40dp"-->
+                    <!--                            android:src="@drawable/shopiluss" />-->
+
+                    <!--                        <TextView-->
+                    <!--                            android:id="@+id/txtimgshop"-->
+                    <!--                            android:layout_width="170dp"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:layout_alignParentRight="true"-->
+                    <!--                            android:text="Pantau terus aktifitas transaksi pembelian atau penjualan yang anda lakukan.."-->
+                    <!--                            android:textColor="@color/white"-->
+                    <!--                            android:textStyle="bold"-->
+                    <!--                            android:layout_marginTop="20dp"-->
+                    <!--                            android:layout_marginLeft="20dp"-->
+                    <!--                            android:layout_toRightOf="@id/imgshopilus"/>-->
+                    <!--                        <ImageView-->
+                    <!--                            android:id="@+id/plihntransprdkpnjl"-->
+                    <!--                            android:layout_width="50dp"-->
+                    <!--                            android:layout_height="50dp"-->
+                    <!--                            android:src="@drawable/transactionicon"-->
+                    <!--                            android:layout_marginTop="15dp"-->
+                    <!--                            android:layout_marginLeft="80dp"-->
+                    <!--                            android:layout_below="@id/txtimgshop"-->
+                    <!--                            android:layout_toRightOf="@id/imgshopilus"-->
+                    <!--                            android:background="@drawable/homeasset_c"-->
+                    <!--                            android:backgroundTint="@color/blue1"/>-->
+                    <!--                        <TextView-->
+                    <!--                            android:layout_width="wrap_content"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:layout_below="@+id/plihntransprdkpnjl"-->
+                    <!--                            android:text="Cek Aktiftas Transaksi"-->
+                    <!--                            android:textStyle="bold"-->
+                    <!--                            android:textSize="10sp"-->
+                    <!--                            android:layout_marginRight="35dp"-->
+                    <!--                            android:layout_alignParentRight="true"-->
+                    <!--                            android:textColor="@color/white"/>-->
+                    <!--                    </RelativeLayout>-->
+                    <!--                    relaktranslel-->
+                    <RelativeLayout
+                        android:id="@+id/relaktranslel"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="50dp"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/homeasset_a"
+                        android:backgroundTint="@color/orange1"
+                        android:padding="15dp">
+
+                        <ImageView
+                            android:id="@+id/imgauctionilus"
+                            android:layout_width="150dp"
+                            android:layout_height="150dp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/auctionilus" />
+
+                        <TextView
+                            android:id="@+id/txtimglel"
+                            android:layout_width="170dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="17dp"
+                            android:layout_toRightOf="@id/imgauctionilus"
+                            android:text="Jangan lupa aktifitas transaksi lelang yang anda lakukan terakhir kali ya.."
+                            android:textColor="@color/green1"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/plihantranspnwr"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_below="@id/txtimglel"
+                            android:layout_marginLeft="59dp"
+                            android:layout_marginTop="9dp"
+                            android:layout_toRightOf="@id/imgauctionilus"
+                            android:background="@drawable/homeasset_c"
+                            android:backgroundTint="@color/blue1"
+                            android:src="@drawable/transactionicon" />
+
+                        <TextView
+                            android:id="@+id/txtforpnwr"
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/plihantranspnwr"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="10dp"
+                            android:text="Cek Aktifitas Transaksi Lelang"
+                            android:textAlignment="center"
+                            android:textColor="@color/green1"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/pilihanaktifitas"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_below="@+id/rellayreqlel"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/homeasset_c"
+                    android:backgroundTint="@color/orange1"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp">
+
+                    <ImageView
+                        android:id="@+id/imgaucimg"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="90dp"
+                        android:src="@drawable/waitasst" />
+
+                    <TextView
+                        android:id="@+id/hometxt_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="Peserta lelang anda menunggu anda, ayo mulai lelang anda"
+                        android:textColor="@color/green1"
+                        android:textSize="18dp"
+
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/sebagaipelelang"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/imgaucimg"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/btnasset"
+                        android:padding="10dp"
+                        android:text="Cek Lelang Anda"
+                        android:textColor="@color/white" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rellayreqlel"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_below="@+id/pilihanlelang"
+                    android:layout_marginTop="30dp"
+                    android:background="@color/green1"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/hometxt_6"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="Ada yang mendaftar pada lelang anda hari ini?"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imgilusreq"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/hometxt_6"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="15dp"
+                        android:src="@drawable/request" />
+
+                    <Button
+                        android:id="@+id/btn_toreqlel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/imgilusreq"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/btnasset"
+                        android:text="Cek Requset Lelang"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+                    <!--                    <Button-->
+                    <!--                        android:id="@+id/btn_toimgtry"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_marginTop="10dp"-->
+                    <!--                        android:layout_below="@id/btn_toreqlel"-->
+                    <!--                        android:text="Image List"/>-->
+                    <!--                    <Button-->
+                    <!--                        android:id="@+id/try_camera"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_marginTop="10dp"-->
+                    <!--                        android:layout_below="@id/btn_toimgtry"-->
+                    <!--                        android:text="Try camera"/>-->
+                    <!--                    <Button-->
+                    <!--                        android:id="@+id/togc"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_marginTop="10dp"-->
+                    <!--                        android:layout_below="@id/try_camera"-->
+                    <!--                        android:text="togc"/>-->
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>

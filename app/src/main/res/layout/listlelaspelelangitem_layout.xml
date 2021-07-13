@@ -14,7 +14,7 @@
             android:layout_width="100dp"
             android:layout_height="80dp"
             android:layout_alignParentBottom="true"
-            android:background="@drawable/cowcardview"/>
+            android:background="@drawable/waitasst"/>
         <TextView
             android:layout_width="245dp"
             android:layout_height="wrap_content"

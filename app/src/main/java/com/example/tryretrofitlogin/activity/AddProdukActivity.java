@@ -36,7 +36,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class AddProdukActivity extends AppCompatActivity {
 
     private EditText edttxtcomment, edttxtharga, edttxtjmlhhwn;
-    private TextView txtuserid,txtnamauser;
+    private TextView txtuserid,txtnamauser, txtimgtokenprdk;
     private Spinner spinhewanid;
     private Button btnaddprdk;
     private ImageView btnback;
@@ -51,6 +51,7 @@ public class AddProdukActivity extends AppCompatActivity {
 
         txtuserid = (TextView) findViewById(R.id.txtTextuserIdprdk);
         txtnamauser = (TextView) findViewById(R.id.txtTextNamauserprdk);
+        txtimgtokenprdk = (TextView) findViewById(R.id.prdkimgtoken);
         spinhewanid = (Spinner) findViewById(R.id.spinHewanIdprdk);
         edttxtcomment = (EditText) findViewById(R.id.editTextcommentprdk);
         edttxtharga = (EditText) findViewById(R.id.editTexthargaprdk);
@@ -62,6 +63,8 @@ public class AddProdukActivity extends AppCompatActivity {
         namauser = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getName();
         txtuserid.setText(userid);
         txtnamauser.setText(namauser);
+        txtimgtokenprdk.setText(prdkimgparent());
+        prdkimgparent = txtimgtokenprdk.getText().toString().trim();
 
         initSpinnerHewan();
         spinhewanid.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -158,7 +161,7 @@ public class AddProdukActivity extends AppCompatActivity {
 
     private void touploadimg(){
         Intent intent = new Intent(AddProdukActivity.this, Uploadhewan.class);
-        intent.putExtra("imghw", prdkimgparent());
+        intent.putExtra("imghw", prdkimgparent);
         startActivity(intent);
     }
 

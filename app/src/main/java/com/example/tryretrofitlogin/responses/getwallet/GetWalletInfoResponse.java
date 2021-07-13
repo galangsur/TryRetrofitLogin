@@ -11,7 +11,7 @@ public class GetWalletInfoResponse{
 	private int id;
 
 	@SerializedName("saldo")
-	private String saldo;
+	private int saldo;
 
 	public void setUserId(int userId){
 		this.userId = userId;
@@ -29,11 +29,11 @@ public class GetWalletInfoResponse{
 		return id;
 	}
 
-	public void setSaldo(String saldo){
+	public void setSaldo(int saldo){
 		this.saldo = saldo;
 	}
 
-	public String getSaldo(){
+	public int getSaldo(){
 		return saldo;
 	}
 

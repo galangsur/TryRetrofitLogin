@@ -1,16 +1,20 @@
 package com.example.tryretrofitlogin.activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -20,24 +24,30 @@ import com.example.tryretrofitlogin.R;
 import com.example.tryretrofitlogin.api.APIService;
 import com.example.tryretrofitlogin.api.APIUrl;
 import com.example.tryretrofitlogin.helper.SharedPrefManager;
-import com.example.tryretrofitlogin.models.LelBerlangsung;
-import com.example.tryretrofitlogin.models.Lelang;
-import com.example.tryretrofitlogin.postresponse.addlelang.AddLelangResponse;
+import com.example.tryretrofitlogin.postresponse.addReqlelangtoadmin.AddReqlelangtoadminResponse;
 import com.example.tryretrofitlogin.postresponse.addlelangberlangsung.AddlelbrlangsungResponse;
-import com.example.tryretrofitlogin.postresponse.addreqtopup.AddtopupreqResponse;
+import com.example.tryretrofitlogin.postresponse.addphoto.PostphotoResponse;
 import com.example.tryretrofitlogin.putresponse.kurangisaldo.KurangisaldoResponse;
 import com.example.tryretrofitlogin.responses.gethewan.HewanResponse;
 import com.example.tryretrofitlogin.responses.gethewan.SuccessItem;
+import com.example.tryretrofitlogin.responses.getwallet.GetWalletInfoResponse;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.ms.square.android.expandabletextview.ExpandableTextView;
+import com.google.firebase.database.annotations.NotNull;
+import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import gun0912.tedimagepicker.builder.TedImagePicker;
+import gun0912.tedimagepicker.builder.listener.OnSelectedListener;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -46,15 +56,54 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AddLelangActivity extends AppCompatActivity {
 
-    private EditText edttxtcomment, edttxtharga;
-    private TextView txtuserid,txtusernama;
+    private EditText edttxtcomment, edttxtharga,edttxtwarnabulu;
+    private TextView txtuserid,txtusernama, txtimgtokenlel,pilihtxthargaperbid,pilihtxtwktdisply,
+            pilihtxtwkttrue,txtsaldocek,txtsaldokurang,txtsertiftokenlel,txtwarnabulu;
     private Spinner spinhewanid;
-    private Button btnaddlelang;
+    private Button btnaddlelang, btnaddsertif, btn_bidwaktuA, btn_bidwaktuB, btn_bidwaktuC,
+            btn_bidhargaA, btn_bidhargaB, btn_bidhargaC;
     private ImageView btnback;
-    private String userid, jenishewan, groupname, lelimgparent, usernama;
-    private int idhewan;
+    private String userid, jenishewan, groupname, lelimgparent,lelsertifparent, usernama, usersaldo;
+    private String displaywktA, displaywktB, displaywktC, truewktA, truewktB, truewktC;
+    private String harga_a, harga_b, harga_c;
+    private int idhewan,saldoWallet;
     public List<SuccessItem> hewans;
     private DatabaseReference rootRef;
+
+    //untuk image picker
+    private ImageView fotoDiplay, btnPickfoto, fotosertifDisplay, btnPickfotosertif;
+    private File attachment,attachsertif;
+    private TextView eventAttachment,imgparent,sertifAttachment;
+    private String imgparenthw,fotoprtkey;
+
+    private String getRealPathFromURI(Uri contentURI) {
+        String result;
+        Cursor cursor = getApplicationContext().getContentResolver().query(contentURI, null, null, null, null);
+        if (cursor == null) { // Source is Dropbox or other similar local file path
+            result = contentURI.getPath();
+        } else {
+            cursor.moveToFirst();
+            int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+            result = cursor.getString(idx);
+            cursor.close();
+        }
+        return result;
+    }
+
+    private String getRealPathsertifFromURI(Uri contentURI) {
+        String result;
+        Cursor cursor = getApplicationContext().getContentResolver().query(contentURI, null, null, null, null);
+        if (cursor == null) { // Source is Dropbox or other similar local file path
+            result = contentURI.getPath();
+        } else {
+            cursor.moveToFirst();
+            int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+            result = cursor.getString(idx);
+            cursor.close();
+        }
+        return result;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,18 +112,58 @@ public class AddLelangActivity extends AppCompatActivity {
 
         txtuserid = (TextView) findViewById(R.id.txtTextuserId);
         txtusernama = (TextView) findViewById(R.id.txtTextuserNama);
+        txtimgtokenlel = (TextView) findViewById(R.id.lelimgtoken);
+        txtsaldocek = (TextView) findViewById(R.id.usersaldocek);
+        txtsaldokurang = (TextView) findViewById(R.id.txtsaldokurang);
+        txtwarnabulu = (TextView) findViewById(R.id.titleTextwarnabulu);
         spinhewanid = (Spinner) findViewById(R.id.spinHewanId);
         edttxtcomment = (EditText) findViewById(R.id.editTextcomment);
         edttxtharga = (EditText) findViewById(R.id.editTextharga);
+        edttxtwarnabulu = (EditText) findViewById(R.id.editTextwarnabulu);
+        pilihtxtwktdisply = (TextView) findViewById(R.id.txt_waktubid);
+        pilihtxthargaperbid = (TextView) findViewById(R.id.txt_jmlhperbid);
+        pilihtxtwkttrue = (TextView) findViewById(R.id.waktutruepick);
         btnaddlelang = (Button) findViewById(R.id.btn_addlelang);
+        btnaddsertif = (Button) findViewById(R.id.btn_addfotosertif);
         btnback = (ImageView) findViewById(R.id.btn_backtohome);
+        btn_bidwaktuA = (Button)findViewById(R.id.btn_waktu1);
+        btn_bidwaktuB = (Button)findViewById(R.id.btn_waktu2);
+        btn_bidwaktuC = (Button)findViewById(R.id.btn_waktu3);
+        btn_bidhargaA = (Button)findViewById(R.id.btn_bid1);
+        btn_bidhargaB = (Button)findViewById(R.id.btn_bid2);
+        btn_bidhargaC = (Button)findViewById(R.id.btn_bid3);
+        displaywktA = "12";
+        displaywktB = "24";
+        displaywktC = "48";
+        truewktA = "7200000";
+        truewktB = "3600000";
+        truewktC = "1200000";
+        harga_a = "25000";
+        harga_b = "50000";
+        harga_c = "100000";
+
+        //untuk image picker
+        btnPickfoto = (ImageView)findViewById(R.id.btn_pickfotohw);
+        fotoDiplay = (ImageView) findViewById(R.id.fotodisplayhw);
+        eventAttachment = (TextView) findViewById(R.id.fotoattachmenturi);
+
+        btnPickfotosertif = (ImageView) findViewById(R.id.btn_pickfotosertif);
+        fotosertifDisplay = (ImageView) findViewById(R.id.sertifdisplayhw);
+        sertifAttachment = (TextView) findViewById(R.id.sertifattachmenturi);
+        txtsertiftokenlel = (TextView) findViewById(R.id.lelsertifimgtoken);
 
         userid = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getId();
         usernama = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getName();
-        txtusernama.setText(usernama);
         txtuserid.setText(userid);
+        txtusernama.setText(usernama);
+
+        //get randomkey id for image
+
+
+//        lelsertifparent = txtsertiftokenlel.getText().toString().trim();
 
         rootRef = FirebaseDatabase.getInstance().getReference();
+        ceksaldo();
 
         initSpinnerHewan();
         spinhewanid.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -96,9 +185,16 @@ public class AddLelangActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                Toast.makeText(AddLelangActivity.this, "btntst", Toast.LENGTH_SHORT).show();
                 kurangisaldo();
-                uploadLelang();
+                uploadLelang(attachment);
 
 //                newGroup(groupname);
+            }
+        });
+
+        btnaddsertif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uploadImg(attachsertif);
             }
         });
 
@@ -106,6 +202,68 @@ public class AddLelangActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+            }
+        });
+
+        btnPickfoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectImgfromDevice();
+
+            }
+        });
+
+        btnPickfotosertif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectImgsertiffromDevice();
+
+            }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        btn_bidwaktuA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pilihtxtwktdisply.setText(displaywktA);
+                pilihtxtwkttrue.setText(truewktA);
+            }
+        });
+        btn_bidwaktuB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pilihtxtwktdisply.setText(displaywktB);
+                pilihtxtwkttrue.setText(truewktB);
+            }
+        });
+        btn_bidwaktuC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pilihtxtwktdisply.setText(displaywktC);
+                pilihtxtwkttrue.setText(truewktC);
+            }
+        });
+
+        btn_bidhargaA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pilihtxthargaperbid.setText(harga_a);
+            }
+        });
+        btn_bidhargaB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pilihtxthargaperbid.setText(harga_b);
+            }
+        });
+        btn_bidhargaC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pilihtxthargaperbid.setText(harga_c);
             }
         });
     }
@@ -148,40 +306,53 @@ public class AddLelangActivity extends AppCompatActivity {
         });
     }
 
-    private void uploadLelang(){
-        String iduser = txtuserid.getText().toString().trim();
-        String lelcomment = edttxtcomment.getText().toString().trim();
-        String lelharga = edttxtharga.getText().toString().trim();
+    private void uploadLelang(File attachment){
+        RequestBody requestBody = RequestBody.create(MediaType.parse("*/*"),attachment);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(APIUrl.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+            RequestBody iduser = RequestBody.create(MediaType.parse("text/plain"),txtuserid.getText().toString());
+            RequestBody idhewan = RequestBody.create(MediaType.parse("text/plain"),txtuserid.getText().toString());
+            RequestBody lelharga = RequestBody.create(MediaType.parse("text/plain"),edttxtharga.getText().toString());
+            RequestBody lelcomment = RequestBody.create(MediaType.parse("text/plain"),edttxtcomment.getText().toString().trim());
+            MultipartBody.Part imgtoken =  MultipartBody.Part.createFormData("img_lelang",attachment.getName(),requestBody);
+            RequestBody lelimgparent = RequestBody.create(MediaType.parse("text/plain"),txtimgtokenlel.getText().toString().trim());
+            RequestBody lelsertifparent = RequestBody.create(MediaType.parse("text/plain"),txtsertiftokenlel.getText().toString().trim());
+            RequestBody reqwaktuperbid = RequestBody.create(MediaType.parse("text/plain"),pilihtxtwkttrue.getText().toString().trim());
+            RequestBody reqnominalperbid = RequestBody.create(MediaType.parse("text/plain"),pilihtxthargaperbid.getText().toString().trim());
 
-        APIService service = retrofit.create(APIService.class);
+            Toast.makeText(this, "tosat"+iduser+idhewan+lelharga+lelcomment+reqwaktuperbid+reqnominalperbid+imgtoken , Toast.LENGTH_SHORT).show();
 
-        Lelang lelang = new Lelang(iduser, idhewan, lelharga, lelcomment);
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(APIUrl.BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
 
-        Call<AddLelangResponse> call = service.createLelang(
-                iduser, idhewan, lelharga, lelcomment
-        );
+            APIService service = retrofit.create(APIService.class);
 
-        call.enqueue(new Callback<AddLelangResponse>() {
-            @Override
-            public void onResponse(Call<AddLelangResponse> call, Response<AddLelangResponse> response) {
-                if (response.isSuccessful()){
-                    touploadimg();
+            Call<AddReqlelangtoadminResponse> call = service.requestLelangtoAdmin(
+                    iduser, idhewan, lelharga, lelcomment, imgtoken, lelimgparent, lelsertifparent, reqwaktuperbid, reqnominalperbid
+            );
+
+            call.enqueue(new Callback<AddReqlelangtoadminResponse>() {
+                @Override
+                public void onResponse(Call<AddReqlelangtoadminResponse> call, Response<AddReqlelangtoadminResponse> response) {
+                    if (response.isSuccessful()){
+                        Toast.makeText(AddLelangActivity.this, "suskes", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<AddLelangResponse> call, Throwable t) {
+                @Override
+                public void onFailure(Call<AddReqlelangtoadminResponse> call, Throwable t) {
 
-            }
-        });
+                }
+            });
+        }
 
-
-    }
+//        String param1 = txtuserid.getText().toString().trim();
+//        String param2 = String.valueOf(idhewan);
+//        String param3 = edttxtharga.getText().toString().trim();
+//        String param4 = edttxtcomment.getText().toString().trim();
+//        String param6 = pilihtxtwkttrue.getText().toString().trim();
+//        String param7 = pilihtxthargaperbid.getText().toString().trim();
 
     private void uploadLelbrjalan() {
 //        Toast.makeText(this, "fncttst", Toast.LENGTH_SHORT).show();
@@ -243,15 +414,27 @@ public class AddLelangActivity extends AppCompatActivity {
         return stringBuilder.toString();
     }
 
+    private static final String ALLOWED_SERTIFCHARACTERS ="qwerty";
+    private static String lelsertifparent(){
+        int targetStringLength = 5;
+        Random random = new Random();
+        StringBuilder stringBuilder = new StringBuilder(targetStringLength);
+        for (int i = 0; i < targetStringLength; i++){
+            stringBuilder.append(ALLOWED_SERTIFCHARACTERS.charAt(random.nextInt(ALLOWED_SERTIFCHARACTERS.length())));
+        }
+
+        return stringBuilder.toString();
+    }
+
     private void touploadimg(){
         Intent intent = new Intent(AddLelangActivity.this, Uploadhewan.class);
-        intent.putExtra("imghw", lelimgparent());
+        intent.putExtra("imghw", lelimgparent);
         startActivity(intent);
     }
 
     private void kurangisaldo(){
         String user_id = txtuserid.getText().toString().trim();
-        String pengurang = "50000";
+        String pengurang = "300000";
 //        String nominal = saldotmbh.getText().toString().trim();
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -280,6 +463,143 @@ public class AddLelangActivity extends AppCompatActivity {
             }
         });
     }
+    private void ceksaldo(){
+        String userwoi = txtuserid.getText().toString().trim();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(APIUrl.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        APIService service = retrofit.create(APIService.class);
+
+        Call<GetWalletInfoResponse> call = service.getinfosaldo(userwoi,usersaldo);
+
+        call.enqueue(new Callback<GetWalletInfoResponse>() {
+            @Override
+            public void onResponse(Call<GetWalletInfoResponse> call, Response<GetWalletInfoResponse> response) {
+                saldoWallet = response.body().getSaldo();
+                String saldo = String.valueOf(saldoWallet);
+                txtsaldocek.setText(saldo);
+
+                if (saldoWallet >= 300000){
+                    txtsaldokurang.setVisibility(View.INVISIBLE);
+                }else if (saldoWallet <= 300000){
+                    btnaddlelang.setVisibility(View.INVISIBLE);
+                    btnaddlelang.setEnabled(false);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<GetWalletInfoResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
+    //untuk imagepicker
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        Bitmap bitmap = (Bitmap)data.getExtras().get("data");
+        Bitmap sertifbitmap = (Bitmap)data.getExtras().get("sertifdata");
+        fotoDiplay.setImageBitmap(bitmap);
+        fotosertifDisplay.setImageBitmap(sertifbitmap);
+
+//        if (fotoDiplay.getDrawable().equals(bitmap)&&(fotosertifDisplay.getDrawable().equals(sertifbitmap))){
+//            txtimgtokenlel.setText(lelimgparent());
+//            lelimgparent = txtimgtokenlel.getText().toString().trim();
+//            txtsertiftokenlel.setText(lelsertifparent());
+//            lelsertifparent = txtsertiftokenlel.getText().toString().trim();
+//            Toast.makeText(this, "gambar ada", Toast.LENGTH_SHORT).show();
+//        } else {
+//            Toast.makeText(this, "kosong gan", Toast.LENGTH_SHORT).show();
+//        }
+
+    }
+
+    private void selectImgfromDevice(){
+        TedImagePicker.with(AddLelangActivity.this)
+                .start(new OnSelectedListener() {
+                    @Override
+                    public void onSelected(@NotNull Uri uri) {
+                        attachment  = new File(getRealPathFromURI(uri));
+                        eventAttachment.setText(attachment.getName());
+
+                        Picasso.with(AddLelangActivity.this)
+                                .load(uri)
+                                .fit()
+                                .centerInside()
+                                .into(fotoDiplay);
+
+                        Toast.makeText(AddLelangActivity.this, "namafile"+eventAttachment+attachment, Toast.LENGTH_SHORT).show();
+                        txtimgtokenlel.setText(lelimgparent());
+                    }
+                });
+    }
+
+    private void selectImgsertiffromDevice(){
+        TedImagePicker.with(AddLelangActivity.this)
+                .start(new OnSelectedListener() {
+                    @Override
+                    public void onSelected(@NotNull Uri urisertif) {
+                        attachsertif  = new File(getRealPathsertifFromURI(urisertif));
+                        sertifAttachment.setText(attachsertif.getName());
+
+                        Picasso.with(AddLelangActivity.this)
+                                .load(urisertif)
+                                .fit()
+                                .centerInside()
+                                .into(fotosertifDisplay);
+
+                        Toast.makeText(AddLelangActivity.this, "namafile"+sertifAttachment+attachsertif, Toast.LENGTH_SHORT).show();
+                        txtsertiftokenlel.setText(lelsertifparent());
+                    }
+                });
+    }
+
+    private void uploadImg(File attachmentsertif){
+//        Toast.makeText(this, "tastos", Toast.LENGTH_SHORT).show();
+        RequestBody requestsertifBody = RequestBody.create(MediaType.parse("*/*"),attachmentsertif);
+        String a = "3";
+        String b = "5";
+        String ImgParent = txtsertiftokenlel.getText().toString().trim();
+
+
+        MultipartBody.Part photo =  MultipartBody.Part.createFormData("photo",attachmentsertif.getName(),requestsertifBody);
+        RequestBody imgparent = RequestBody.create(MediaType.parse("multipart/form-data"),ImgParent);
+
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(APIUrl.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        APIService service = retrofit.create(APIService.class);
+
+        Call<PostphotoResponse> call = service.postPhoto(
+                imgparent,photo
+        );
+
+        call.enqueue(new Callback<PostphotoResponse>() {
+            @Override
+            public void onResponse(Call<PostphotoResponse> call, Response<PostphotoResponse> response) {
+                if (response.isSuccessful()){
+                    Toast.makeText(AddLelangActivity.this, "sertif masuk", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PostphotoResponse> call, Throwable t) {
+                Toast.makeText(AddLelangActivity.this, "gagal", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
 }
+
 
 //cara nyimpan imgparent, jalanin lelimgparent dulu biar dapat idimgparent baru nnti get dia sebagai key untuk ngeget img

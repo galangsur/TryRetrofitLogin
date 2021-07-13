@@ -4,7 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tryretrofitlogin.R;
@@ -24,6 +28,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ImageRetrieveTry extends AppCompatActivity {
 
     private RecyclerView imgRecView;
+    private String imgprtretriv;
+    private TextView keyImgretrieve;
+    private ImageView btntoadmin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,16 +38,34 @@ public class ImageRetrieveTry extends AppCompatActivity {
         setContentView(R.layout.activity_image_retrieve_try);
 
         imgRecView = (RecyclerView) findViewById(R.id.RV_hori);
+        keyImgretrieve = (TextView) findViewById(R.id.tmpkeyimgretrieve);
+        btntoadmin = (ImageView) findViewById(R.id.btntocomplaint);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(
                 this, LinearLayoutManager.HORIZONTAL,false);
         imgRecView.setLayoutManager(layoutManager);
         imgRecView.setHasFixedSize(true);
+        
+        Intent buktilama = getIntent();
+        imgprtretriv = buktilama.getStringExtra("imgbuktilama");
+        keyImgretrieve.setText(imgprtretriv);
+        Toast.makeText(this, "" + keyImgretrieve.getText().toString().trim(), Toast.LENGTH_SHORT).show();
+
         getAllImage();
+
+        btntoadmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String imgparenttoken = keyImgretrieve.getText().toString().trim();
+                Intent intent = new Intent(ImageRetrieveTry.this, TransactionComplaintActivity.class);
+                intent.putExtra("imgparenttoken", imgparenttoken );
+                startActivity(intent);
+            }
+        });
     }
 
     public void getAllImage(){
-        String key = "2";
+        String key = keyImgretrieve.getText().toString().trim();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(APIUrl.BASE_URL)
@@ -50,7 +75,7 @@ public class ImageRetrieveTry extends AppCompatActivity {
         APIService service = retrofit.create(APIService.class);
 
         Call<GetimgbyparentResponse> call = service.getimgbyparent(
-                key.trim()
+                key
         );
 
         call.enqueue(new Callback<GetimgbyparentResponse>() {

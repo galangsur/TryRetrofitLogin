@@ -33,7 +33,7 @@ public class DetailTransaksiLelang extends AppCompatActivity {
     private TextView tmpiddettranslel,tmpoldstatid,tmpoldstat,tmpnewstatid,tmpnewstat;
     private TextView tmpidusernow,tmpidpsrt,tmpidpllg,tmpimgparenttoken;
     private EditText nilaiakhir,usrnamepllg,usrnamepemenang;
-    private Button submittrans,submitfinish;
+    private Button submittrans,submitfinish,tobukti;
     private ImageView btnback;
 
     @Override
@@ -55,6 +55,7 @@ public class DetailTransaksiLelang extends AppCompatActivity {
         usrnamepemenang = (EditText) findViewById(R.id.rslt_namapemenang);
         submittrans = (Button)findViewById(R.id.leltrans_submit);
         submitfinish = (Button)findViewById(R.id.leltrans_finishtrans);
+        tobukti = (Button)findViewById(R.id.btntobukti);
         btnback = (ImageView) findViewById(R.id.btn_backdettranslel);
 
         nilaiakhir.setKeyListener(null);
@@ -89,6 +90,16 @@ public class DetailTransaksiLelang extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+            }
+        });
+
+        tobukti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String imgparentbuktilama = tmpimgparenttoken.getText().toString().trim();
+                Intent intent = new Intent(DetailTransaksiLelang.this, ImageRetrieveTry.class);
+                intent.putExtra("imgbuktilama", imgparentbuktilama );
+                startActivity(intent);
             }
         });
     }
@@ -242,6 +253,9 @@ public class DetailTransaksiLelang extends AppCompatActivity {
         String iddettranskey = tmpiddettranslel.getText().toString().trim();
         String newstatidkey = tmpnewstatid.getText().toString().trim();
         String newstatkey = tmpnewstat.getText().toString().trim();
+        String imgparentaa = tmpimgparenttoken.getText().toString().trim();
+        String imgparnetbb = tmpoldstatid.getText().toString().trim();
+        String imgparentbuktitranss = imgparentaa+imgparnetbb;
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(APIUrl.BASE_URL)
@@ -252,8 +266,10 @@ public class DetailTransaksiLelang extends AppCompatActivity {
 
         Call<UpdateleltransstatResponse> call = service.ubahstattrans(
                 iddettranskey,
+                imgparentbuktitranss,
                 newstatidkey,
                 newstatkey
+
         );
 
         call.enqueue(new Callback<UpdateleltransstatResponse>() {
@@ -267,13 +283,15 @@ public class DetailTransaksiLelang extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<UpdateleltransstatResponse> call, Throwable t) {
-
+                Toast.makeText(DetailTransaksiLelang.this, "cek ada yg kurang", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private void touploadbuktitrans(){
-        String imgparentbuktitrans = tmpimgparenttoken.getText().toString().trim();
+        String imgparenta = tmpimgparenttoken.getText().toString().trim();
+        String imgparnetb = tmpoldstatid.getText().toString().trim();
+        String imgparentbuktitrans = imgparenta+imgparnetb;
         Intent intent = new Intent(DetailTransaksiLelang.this, ImageUploadActivity.class);
         intent.putExtra("imgbuktitrans", imgparentbuktitrans );
         startActivity(intent);
@@ -305,5 +323,9 @@ public class DetailTransaksiLelang extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void tambahratingnreview(){
+
     }
 }

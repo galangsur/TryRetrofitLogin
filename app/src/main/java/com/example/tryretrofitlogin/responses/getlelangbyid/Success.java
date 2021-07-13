@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 public class Success{
 
 	@SerializedName("harga")
-	private String harga;
+	private int harga;
 
 	@SerializedName("updated_at")
 	private String updatedAt;
@@ -22,14 +22,25 @@ public class Success{
 	@SerializedName("comment")
 	private String comment;
 
+	@SerializedName("img_lelang")
+	private String img_lelang;
+
 	@SerializedName("id")
 	private String id;
 
-	public void setHarga(String harga){
+	public String getImg_lelang() {
+		return img_lelang;
+	}
+
+	public void setImg_lelang(String img_lelang) {
+		this.img_lelang = img_lelang;
+	}
+
+	public void setHarga(int harga){
 		this.harga = harga;
 	}
 
-	public String getHarga(){
+	public int getHarga(){
 		return harga;
 	}
 

@@ -12,28 +12,39 @@
         android:layout_height="wrap_content">
         <ImageView
             android:layout_width="100dp"
-            android:layout_height="80dp"
+            android:layout_height="140dp"
             android:layout_alignParentBottom="true"
-            android:background="@drawable/cowcardview"/>
+            android:background="@drawable/leliconstengah"/>
         <TextView
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"
+            android:id="@+id/txtcupang1"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="110dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Buka harga:"
+            android:text="Mulai dari"
             android:textColor="#000000"
             android:textStyle="bold"
             android:textSize="20dp"/>
+        <ImageView
+            android:id="@+id/smallwalleticoncpng"
+            android:layout_width="21dp"
+            android:layout_height="21dp"
+            android:background="@drawable/coinrp"
+            android:layout_below="@id/txtcupang1"
+            android:layout_marginLeft="110dp"
+            android:layout_marginTop="5dp"/>
         <TextView
-            android:id="@+id/hargasapi"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="125dp"
+            android:id="@+id/hargacupang"
+            android:layout_marginTop="55dp"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/smallwalleticoncpng"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="id as peserta"
+            android:text="mulai harga"
             android:textSize="18dp"/>
         <TextView
-            android:layout_marginTop="70dp"
+            android:id="@+id/txtcupang2"
+            android:layout_marginTop="100dp"
             android:layout_marginLeft="110dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -42,15 +53,16 @@
             android:textStyle="bold"
             android:textSize="10dp"/>
         <TextView
-            android:id="@+id/commentsapi"
-            android:layout_marginTop="90dp"
+            android:id="@+id/commentcupang"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="110dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="lelang yg di ikuti"
+            android:layout_below="@id/txtcupang2"
+            android:text="tambahan"
             android:textSize="12dp" />
         <TextView
-            android:id="@+id/idsapi"
+            android:id="@+id/idcupang"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
@@ -64,7 +76,7 @@
             android:background="@drawable/signasset_d"
             android:gravity="center_horizontal|center_vertical" />
         <ImageView
-            android:id="@+id/btn_detailsapi"
+            android:id="@+id/btn_detailcupang"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginRight="10dp"

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green1"
+    android:padding="10dp"
+    tools:context=".activity.AdmincomplaintActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="15dp"
+        android:drawableLeft="@drawable/ic_baseline_arrow_left_24"
+        android:text="back"
+        android:textColor="@color/white"
+        android:background="@drawable/signasset_c"
+        android:backgroundTint="@color/orange5"/>
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/adminpnground"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@drawable/signasset_c">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Admin : Jadi.. Ada yang bisa kami bantu..?"
+            android:textColor="@color/green1"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="Ketik disini keluhan anda.."
+            android:textSize="16sp"
+            android:layout_marginTop="20dp"/>
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:drawableRight="@drawable/ic_baseline_arrow_right_24"
+        android:text="send"
+        android:textColor="@color/white"
+        android:background="@drawable/signasset_c"
+        android:backgroundTint="@color/orange5"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentRight="true" />
+</RelativeLayout>

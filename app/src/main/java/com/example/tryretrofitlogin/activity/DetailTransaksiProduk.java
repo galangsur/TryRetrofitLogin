@@ -145,7 +145,7 @@ public class DetailTransaksiProduk extends AppCompatActivity {
         Call<UpdateleltransstatResponse> call = service.ubahstattrans(
                 iddettranskey,
                 newstatidkey,
-                newstatkey
+                newstatkey,newstatkey
         );
 
         call.enqueue(new Callback<UpdateleltransstatResponse>() {

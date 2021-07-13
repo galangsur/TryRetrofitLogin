@@ -6,19 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".activity.GroupchatActivity">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_messagelist"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@id/input_linlayout"
-            android:layout_below="@id/gcRelLay">
-        </androidx.recyclerview.widget.RecyclerView>
-
     <RelativeLayout
         android:id="@+id/gcRelLay"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="400dp"
         android:layout_centerHorizontal="true"
+        android:layout_above="@id/messageswipe"
+        android:layout_alignParentTop="true"
         android:background="@color/green1">
         <EditText
             android:id="@+id/hargainput"
@@ -30,18 +24,29 @@
             android:id="@+id/hargatxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Harga"
+            android:text="Bid Display"
+            android:textSize="30sp"
             android:textStyle="bold"
             android:textColor="@color/white"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="60dp"
             android:layout_centerHorizontal="true"/>
+
+        <ImageView
+            android:id="@+id/smallwalleticoncpng"
+            android:layout_width="21dp"
+            android:layout_height="21dp"
+            android:background="@drawable/coinrp"
+            android:layout_below="@id/hargatxt"
+            android:layout_toLeftOf="@id/txthargacounter"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"/>
         <TextView
             android:id="@+id/txthargacounter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/hargatxt"
-            android:textSize="30sp"
+            android:textSize="35sp"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:layout_marginTop="5dp"/>
@@ -67,37 +72,95 @@
             android:layout_alignParentRight="true"
             android:textColor="@color/green1"
             android:textSize="15sp"/>
+
+        <RelativeLayout
+            android:id="@+id/Rellaywaktu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:background="@drawable/homeasset_e"
+            android:layout_below="@id/txthargacounter">
+            <RelativeLayout
+                android:id="@+id/imgtimer"
+                android:layout_width="100dp"
+                android:layout_height="45dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/bg_airdrop"
+                android:backgroundTint="@color/green1">
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/ic_baseline_timer_24"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"/>
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/timer_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="59:59:59"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/green1"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/imgtimer"
+                android:textSize="55sp"/>
+
+            <Button
+                android:id="@+id/btn_listpeserta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btnasset"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/timer_txt"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:text="List Peserta"/>
+        </RelativeLayout>
+
+
+
+
+
+
+
+
     </RelativeLayout>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/messageswipe"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_above="@id/input_linlayout">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_messagelist"
+            android:layout_width="match_parent"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_height="140dp"
+            android:layout_above="@id/input_linlayout"
+            android:layout_below="@id/gcRelLay">
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <RelativeLayout
         android:id="@+id/input_linlayout"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="100dp"
         android:layout_alignParentBottom="true"
         android:padding="5dp"
         android:background="@color/green1">
-        <ImageView
-            android:id="@+id/imgtimer"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_baseline_timer_24"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"/>
-        <TextView
-            android:id="@+id/timer_txt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="00:30"
-            android:layout_centerVertical="true"
-            android:textColor="@color/green3"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="50dp"
-            android:textSize="35sp"/>
+
         <Button
             android:id="@+id/bid_satu"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
+            android:layout_margin="10dp"
             android:text="Bid"
             android:textColor="@color/white"
             android:layout_alignParentRight="true"

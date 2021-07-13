@@ -15,11 +15,14 @@ import com.example.tryretrofitlogin.R;
 import com.example.tryretrofitlogin.activity.DetailTransaksiLelang;
 import com.example.tryretrofitlogin.responses.getleltransbypllg.SuccessItem;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class ListleltransPllgAdapt extends RecyclerView.Adapter<ListleltransPllgAdapt.LeltransPllgViewHolder> {
     ArrayList<SuccessItem> leltransbypllg;
     Context leltranspllgContex;
+    private int hargaakhirpllg;
 
     public ListleltransPllgAdapt (Context leltranspllgContex, ArrayList<SuccessItem> leltransbypllg){
         super();
@@ -41,6 +44,13 @@ public class ListleltransPllgAdapt extends RecyclerView.Adapter<ListleltransPllg
         holder.txtlelpllgstathslid.setText(leltransbypllg.get(position).getStatushasilId());
         holder.txtlelpllghsl.setText(leltransbypllg.get(position).getStatushasil());
 
+        hargaakhirpllg = leltransbypllg.get(position).getNilaiAkhir();
+        //ubahformat Rp.
+        Locale localID = new Locale("in","ID");
+
+        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localID);
+        holder.txtlelpllghslharga.setText(formatRupiah.format((double)hargaakhirpllg));
+
         holder.btndetlelpllg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,7 +67,7 @@ public class ListleltransPllgAdapt extends RecyclerView.Adapter<ListleltransPllg
     }
 
     public class LeltransPllgViewHolder extends RecyclerView.ViewHolder {
-        TextView txtlelpllgid,txtlelpllgstathslid,txtlelpllghsl;
+        TextView txtlelpllgid,txtlelpllgstathslid,txtlelpllghsl,txtlelpllghslharga;
         Button btndetlelpllg;
 
         public LeltransPllgViewHolder(@NonNull View itemView) {
@@ -65,6 +75,7 @@ public class ListleltransPllgAdapt extends RecyclerView.Adapter<ListleltransPllg
             txtlelpllgid = itemView.findViewById(R.id.lelpllgid);
             txtlelpllgstathslid = itemView.findViewById(R.id.lelpllgstathasilid);
             txtlelpllghsl = itemView.findViewById(R.id.lelpllgstathasil);
+            txtlelpllghslharga = itemView.findViewById(R.id.hargahewanpllg);
             btndetlelpllg = itemView.findViewById(R.id.lelpllgdetbtn);
         }
     }

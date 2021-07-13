@@ -18,6 +18,13 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/prdkimgtoken"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:textColor="@color/green1"/>
+
             <TextView
                 android:id="@+id/txtTextuserIdprdk"
                 android:layout_width="wrap_content"
@@ -119,13 +126,29 @@
                     android:textSize="20dp"
                     android:textStyle="bold"
                     android:textColor="@color/green1"/>
-                <EditText
-                    android:id="@+id/editTexthargaprdk"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Enter harga "
-                    android:inputType="phone"
-                    android:layout_marginBottom="30dp"/>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/smallwalleticoncpng"
+                        android:layout_width="31dp"
+                        android:layout_height="31dp"
+                        android:background="@drawable/coinrp"
+                        android:layout_toLeftOf="@id/editTexthargaprdk"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="10dp"/>
+
+                    <EditText
+                        android:id="@+id/editTexthargaprdk"
+                        android:layout_width="284dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="0dp"
+                        android:layout_marginBottom="30dp"
+                        android:hint="Enter harga "
+                        android:inputType="phone" />
+                </RelativeLayout>
+
             </LinearLayout>
 
             <Button

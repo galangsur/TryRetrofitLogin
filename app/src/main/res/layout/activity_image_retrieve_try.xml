@@ -1,23 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
     android:background="@color/green1"
     tools:context=".activity.ImageRetrieveTry">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp">
+            android:layout_height="match_parent"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tmpkeyimgretrieve"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:textColor="@color/green1">
+            </TextView>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/RV_hori"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:scrollbars="horizontal"
+                android:layout_above="@+id/RL_complaint"
                 android:background="@drawable/signasset_c"/>
+
+            <RelativeLayout
+                android:id="@+id/RL_complaint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:background="@drawable/signasset_c"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentBottom="true">
+
+                <ImageView
+                    android:id="@+id/btntocomplaint"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:src="@drawable/iconadmin"
+                    android:layout_alignParentRight="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/btntocomplaint"
+                    android:textStyle="bold"
+                    android:textColor="@color/green1"
+                    android:layout_centerVertical="true"
+                    android:text="Anda dapat melaporkan ke admin untuk bukti transaksi yang tidak sesuai dengan aslinya.."/>
+            </RelativeLayout>
+
         </RelativeLayout>
-</LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green1"
+    android:orientation="vertical"
+    tools:context=".activity.DetailProdukActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="50dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tmpimghwtoken"
+                android:layout_width="1dp"
+                android:layout_height="1dp"/>
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="110dp"
+                android:background="@drawable/iconsapi"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="110dp"/>
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="120dp"
+                android:background="@drawable/iconayam"/>
+            <TextView
+                android:id="@+id/txtdet4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Harga hewan"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="5dp" />
+
+            <ImageView
+                android:id="@+id/smallwalleticonbrng"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:background="@drawable/coinrp"
+                android:layout_toLeftOf="@id/txt_leldetharga"
+                android:layout_below="@id/txtdet4"
+                android:layout_marginLeft="110dp"
+                android:layout_marginTop="5dp"/>
+
+            <TextView
+                android:id="@+id/txt_leldetharga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="40dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/txtdet4"/>
+
+            <Button
+                android:id="@+id/btn_detlelfotohewan"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:text="Lihat Hewan"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:layout_marginTop="80dp"
+                android:background="@drawable/btnasset"
+                android:layout_below="@id/txt_leldetharga"/>
+
+            <RelativeLayout
+                android:id="@+id/detRellay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="230dp"
+                android:padding="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/homeasset_e">
+                <TextView
+                    android:id="@+id/txtdet1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tambahan Pelelang :"
+                    android:textColor="@color/green1"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="5dp"/>
+                <TextView
+                    android:id="@+id/txt_leldetcomment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtdet1"
+                    android:textColor="@color/green1"
+                    android:layout_marginBottom="15dp"/>
+
+                <TextView
+                    android:id="@+id/txtdet2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hewan :"
+                    android:textColor="@color/green1"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="5dp"
+                    android:layout_below="@id/txt_leldetcomment"/>
+                <TextView
+                    android:id="@+id/txt_leldethewan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:textSize="20dp"
+                    android:textColor="@color/green1"
+                    android:layout_below="@id/txtdet2"/>
+
+                <TextView
+                    android:id="@+id/txtdet3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pelelang :"
+                    android:textColor="@color/green1"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="5dp"
+                    android:layout_below="@id/txt_leldethewan"/>
+                <TextView
+                    android:id="@+id/txt_leldetnama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:textSize="20dp"
+                    android:textColor="@color/green1"
+                    android:layout_below="@+id/txtdet3"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tmp_idlelang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/green1"/>
+
+                <TextView
+                    android:id="@+id/tmp_idlelbrjalan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/green1"/>
+
+                <TextView
+                    android:id="@+id/tmp_idhewan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/tmp_idlelang"
+                    android:textColor="@color/green1"/>
+
+                <TextView
+                    android:id="@+id/tmp_idpelelang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/tmp_idhewan"
+                    android:textColor="@color/green1"/>
+
+                <TextView
+                    android:id="@+id/tmp_iduser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/tmp_idpelelang"
+                    android:textColor="@color/green1"/>
+            </RelativeLayout>
+            <Button
+                android:id="@+id/btn_daftarlel"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_centerHorizontal="true"
+                android:text="Daftar"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/btnasset"
+                android:layout_below="@id/detRellay"/>
+        </RelativeLayout>
+
+    </ScrollView>
+
+</LinearLayout>

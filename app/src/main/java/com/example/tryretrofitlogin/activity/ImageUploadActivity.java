@@ -45,9 +45,10 @@ public class ImageUploadActivity extends AppCompatActivity {
 
     private Button btnUploadimg;
     private ImageView imageDiplay, btnPickgallery;
-    private TextView eventAttachment,txt_pickcount;
+    private TextView eventAttachment,txt_pickcount,imgparentgetintent;
     private File attachment;
     public static final int REQUEST_IMAGE_CAPTURE = 1;
+    private String imgparentid;
 
     private String getRealPathFromURI(Uri contentURI) {
         String result;
@@ -72,7 +73,14 @@ public class ImageUploadActivity extends AppCompatActivity {
         btnPickgallery = (ImageView)findViewById(R.id.btn_pickgallery);
         imageDiplay = (ImageView) findViewById(R.id.imagedisplay);
         eventAttachment = (TextView) findViewById(R.id.imageUri);
+        imgparentgetintent = (TextView) findViewById(R.id.imagePrnt);
+
         txt_pickcount = (TextView)findViewById(R.id.pickcount);
+
+        Intent lelintent = getIntent();
+        imgparentid = lelintent.getStringExtra("imgbuktitrans");
+        imgparentgetintent.setText(imgparentid);
+        Toast.makeText(this, imgparentid, Toast.LENGTH_SHORT).show();
 
 
 
@@ -122,7 +130,7 @@ public class ImageUploadActivity extends AppCompatActivity {
         RequestBody requestBody = RequestBody.create(MediaType.parse("*/*"),attachment);
         String a = "3";
         String b = "5";
-        String Imgparent = a+b;
+        final String Imgparent = imgparentgetintent.getText().toString().trim();
 
 
         MultipartBody.Part photo =  MultipartBody.Part.createFormData("photo",attachment.getName(),requestBody);
@@ -144,8 +152,8 @@ public class ImageUploadActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<PostphotoResponse> call, Response<PostphotoResponse> response) {
                 if (response.isSuccessful()){
-                    Toast.makeText(ImageUploadActivity.this, "berhasil", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(ImageUploadActivity.this, HomeActivity.class);
+                    Toast.makeText(ImageUploadActivity.this, "berhasil" + Imgparent, Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(ImageUploadActivity.this, ListLelTransaksi.class);
                     startActivity(intent);
                 }
             }

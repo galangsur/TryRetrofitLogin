@@ -80,7 +80,7 @@ public class WalletCreateActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<AddWalletResponse> call, Response<AddWalletResponse> response) {
                 if (response.isSuccessful()){
-                    Intent intent = new Intent(WalletCreateActivity.this, MainActivity.class);
+                    Intent intent = new Intent(WalletCreateActivity.this, HomeActivity.class);
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
                 } else {

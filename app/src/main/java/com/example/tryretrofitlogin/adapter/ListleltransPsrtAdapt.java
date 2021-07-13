@@ -16,11 +16,14 @@ import com.example.tryretrofitlogin.R;
 import com.example.tryretrofitlogin.activity.DetailTransaksiLelang;
 import com.example.tryretrofitlogin.responses.getleltransbypsrt.SuccessItem;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class ListleltransPsrtAdapt extends RecyclerView.Adapter<ListleltransPsrtAdapt.LeltransPsrtViewHolder> {
     ArrayList<SuccessItem> leltransbypsrt;
     Context leltranspsrtContex;
+    private int hargaakhirpsrt;
 
     public ListleltransPsrtAdapt (Context leltranspsrtContex, ArrayList<SuccessItem> leltransbypsrt){
         super();
@@ -41,7 +44,13 @@ public class ListleltransPsrtAdapt extends RecyclerView.Adapter<ListleltransPsrt
         holder.txtlelpsrtid.setText(leltransbypsrt.get(position).getId());
         holder.txtlelpsrtstathslid.setText(leltransbypsrt.get(position).getStatushasilId());
         holder.txtlelpsrthsl.setText(leltransbypsrt.get(position).getStatushasil());
-        holder.txtlelpsrthslharga.setText(leltransbypsrt.get(position).getNilaiAkhir());
+
+        hargaakhirpsrt = leltransbypsrt.get(position).getNilaiAkhir();
+        //ubahformat Rp.
+        Locale localID = new Locale("in","ID");
+
+        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localID);
+        holder.txtlelpsrthslharga.setText(formatRupiah.format((double)hargaakhirpsrt));
 
         holder.btndetlelpsrt.setOnClickListener(new View.OnClickListener() {
             @Override

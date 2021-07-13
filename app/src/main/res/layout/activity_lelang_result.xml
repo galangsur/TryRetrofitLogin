@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/green1"
     tools:context=".activity.LelangResultActivity">
 
     <ScrollView
@@ -12,22 +13,26 @@
         android:layout_height="wrap_content">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="10dp">
+            android:layout_height="wrap_content">
             <RelativeLayout
+                android:id="@+id/RL_lelres"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:background="@drawable/reqlelasset_a"/>
+                android:layout_height="wrap_content"
+                android:background="@drawable/reqlelasset_a">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/winnerflat" />
+            </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/rellayPemenang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="150dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
                 android:padding="15dp"
-                android:background="@drawable/signasset_c">
+                android:layout_below="@id/RL_lelres"
+                android:background="@drawable/detaillelasset_a">
                 <TextView
                     android:id="@+id/txt_result1"
                     android:layout_width="wrap_content"
@@ -39,7 +44,7 @@
                     android:textSize="16dp"/>
                 <EditText
                     android:id="@+id/rslt_namapemenang"
-                    android:layout_width="290dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="none"
                     android:layout_below="@+id/txt_result1"/>
@@ -48,79 +53,81 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
-                    android:text="Nilai Akhir :"
+                    android:text="Harga Akhir Yang Dimenangkan :"
                     android:textColor="@color/green1"
                     android:textStyle="bold"
                     android:textSize="16dp"
                     android:layout_below="@id/rslt_namapemenang"/>
                 <EditText
                     android:id="@+id/rslt_nilaiakhir"
-                    android:layout_width="290dp"
+                    android:layout_width="292dp"
                     android:layout_height="wrap_content"
                     android:inputType="none"
+                    android:layout_alignParentRight="true"
                     android:layout_below="@+id/txt_result2"/>
-            </RelativeLayout>
+                <ImageView
+                    android:id="@+id/smallwalleticoncpng"
+                    android:layout_width="31dp"
+                    android:layout_height="31dp"
+                    android:background="@drawable/coinrp"
+                    android:layout_below="@id/txt_result2"
+                    android:layout_toLeftOf="@id/rslt_nilaiakhir"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="10dp"/>
 
-            <RelativeLayout
-                android:layout_width="150dp"
-                android:layout_height="70dp"
-                android:layout_marginTop="110dp"
-                android:layout_marginLeft="100dp"
-                android:background="@drawable/homeasset_e">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:text="Pemenang"
-                    android:textColor="@color/green1"
-                    android:textStyle="bold"
-                    android:textSize="20dp"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/rellayPelelang"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="110dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:padding="15dp"
-                android:background="@drawable/signasset_c"
-                android:layout_below="@id/rellayPemenang">
                 <TextView
                     android:id="@+id/txt_result8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
-                    android:text="Harga Awal :"
+                    android:text="Harga Awal Lelang :"
+                    android:layout_below="@id/rslt_nilaiakhir"
                     android:textColor="@color/green1"
                     android:textStyle="bold"
                     android:textSize="16dp"/>
                 <EditText
                     android:id="@+id/rslt_hargaawal"
-                    android:layout_width="290dp"
+                    android:layout_width="292dp"
                     android:layout_height="wrap_content"
                     android:inputType="none"
+                    android:layout_alignParentRight="true"
                     android:layout_below="@+id/txt_result8"/>
-            </RelativeLayout>
+                <ImageView
+                    android:id="@+id/smallwalleticoncpng1"
+                    android:layout_width="31dp"
+                    android:layout_height="31dp"
+                    android:background="@drawable/coinrp"
+                    android:layout_below="@id/txt_result8"
+                    android:layout_toLeftOf="@id/rslt_hargaawal"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="10dp"/>
 
-            <RelativeLayout
-                android:layout_width="150dp"
-                android:layout_height="70dp"
-                android:layout_marginTop="70dp"
-                android:layout_marginLeft="100dp"
-                android:background="@drawable/homeasset_e"
-                android:layout_below="@id/rellayPemenang">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:text="Lelang"
-                    android:textColor="@color/green1"
-                    android:textStyle="bold"
-                    android:textSize="16dp"/>
+                <Button
+                    android:id="@+id/reslt_tohome"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="100dp"
+                    android:text="ke menu"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:textColor="@color/white"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/rslt_hargaawal"
+                    android:background="@drawable/btnasset"
+                    android:layout_centerHorizontal="true"/>
+
+                <Button
+                    android:id="@+id/reslt_buattrans"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="100dp"
+                    android:text="Buat Nota"
+                    android:layout_marginRight="50dp"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/white"
+                    android:layout_below="@id/rslt_hargaawal"
+                    android:background="@drawable/btnasset"
+                    android:layout_centerHorizontal="true"/>
             </RelativeLayout>
 
             <TextView
@@ -128,11 +135,11 @@
                 android:layout_height="wrap_content"
                 android:text="Hasil Akhir Lelang"
                 android:layout_gravity="center"
+                android:layout_centerHorizontal="true"
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
-                android:layout_marginTop="25dp"
-                android:layout_marginLeft="70dp"/>
+                android:layout_marginTop="25dp" />
 
             <TextView
                 android:id="@+id/reslelimgprnt"
@@ -220,18 +227,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/green1"/>
 
-            <Button
-                android:id="@+id/reslt_tohome"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="30dp"
-                android:layout_below="@id/rellayPelelang"
-                android:text="ke menu"
-                android:layout_marginRight="50dp"
-                android:layout_marginLeft="50dp"
-                android:textColor="@color/white"
-                android:background="@drawable/btnasset"
-                android:layout_centerHorizontal="true"/>
+
         </RelativeLayout>
     </ScrollView>
 

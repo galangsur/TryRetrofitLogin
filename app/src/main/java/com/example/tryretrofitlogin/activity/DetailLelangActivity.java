@@ -2,7 +2,10 @@ package com.example.tryretrofitlogin.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tryretrofitlogin.R;
+import com.example.tryretrofitlogin.adapter.HorizImageRVadapt;
 import com.example.tryretrofitlogin.api.APIService;
 import com.example.tryretrofitlogin.api.APIUrl;
 import com.example.tryretrofitlogin.helper.SharedPrefManager;
@@ -19,12 +23,16 @@ import com.example.tryretrofitlogin.models.Reqlelang;
 import com.example.tryretrofitlogin.postresponse.addrequestlelang.AddreqlelangResponse;
 import com.example.tryretrofitlogin.putresponse.putgchatid.UpdategchatResponse;
 import com.example.tryretrofitlogin.responses.gethewanbyid.GethewanbyidResponse;
+import com.example.tryretrofitlogin.responses.getimgbyparent.GetimgbyparentResponse;
 import com.example.tryretrofitlogin.responses.getlelangbyid.GetlelangbyidResponse;
 import com.example.tryretrofitlogin.responses.getuserbyid.GetusernamebyidResponse;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.text.NumberFormat;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,12 +42,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DetailLelangActivity extends AppCompatActivity {
 
+    private AlertDialog.Builder dialoglihatfoto;
+    private AlertDialog dialogfoto;
+    private RecyclerView imageRvfotohewan;
     private String lelangid, inviscond, groupname;
-    private String lelcomment, lelhewan, lelpelelang, lelharga, namahewan, namauser, userid;
-    private TextView txtComment, txtHewan, txtPemilik, txtHarga;
-    private TextView tmpidlelang, tmpidhewan, tmpidpelelang, tmpiduser,tmpidlelbrjalan;
-    private Button btnDaftar, btnMulailel;
+    private String lelcomment, lelhewan, lelpelelang, lelharga, namahewan, namauser, userid, lelimgparent;
+    private TextView txtComment, txtHewan, txtPemilik, txtHarga, tmpfotoHewankey, tmpfotoSertifkey;
+    private TextView tmpidlelang, tmpidhewan, tmpidpelelang, tmpiduser,tmpidlelbrjalan,tmpimgtokenhw;
+    private Button btnDaftar, btnMulailel,btnLihatHewan,btnLihatSertif;
     private DatabaseReference rootRef;
+    private int hargaawaldetlel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +67,10 @@ public class DetailLelangActivity extends AppCompatActivity {
         tmpidpelelang = (TextView) findViewById(R.id.tmp_idpelelang);
         tmpiduser = (TextView) findViewById(R.id.tmp_iduser);
         tmpidlelbrjalan = (TextView) findViewById(R.id.tmp_idlelbrjalan);
+        tmpimgtokenhw = (TextView) findViewById(R.id.tmpimghwtoken);
         btnDaftar = (Button) findViewById(R.id.btn_daftarlel);
+        btnLihatHewan = (Button) findViewById(R.id.btn_detlelfotohewan);
+        btnLihatSertif = (Button) findViewById(R.id.btn_detlelfotosertif);
         btnDaftar.setVisibility(View.VISIBLE);
 
         rootRef = FirebaseDatabase.getInstance().getReference();
@@ -66,6 +81,8 @@ public class DetailLelangActivity extends AppCompatActivity {
 
         userid = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getId();
         tmpiduser.setText(userid);
+
+
 
     }
 
@@ -81,7 +98,130 @@ public class DetailLelangActivity extends AppCompatActivity {
             }
         });
 
+        btnLihatHewan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogfotohewan();
+
+//                String fotohewan = tmpimgtokenhw.getText().toString().trim();
+//                Intent intent = new Intent(DetailLelangActivity.this, FotohewanRetrieve.class);
+//                intent.putExtra("imgfotohw", fotohewan );
+//                startActivity(intent);
+            }
+        });
+
+        btnLihatSertif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogfotosertif();
+            }
+        });
+
+
+
     }
+
+    private void dialogfotohewan(){
+        dialoglihatfoto = new AlertDialog.Builder(DetailLelangActivity.this);
+        final View listfotohewanView = getLayoutInflater().inflate(R.layout.activity_fotohewan_retrieve,null);
+
+        tmpfotoHewankey = (TextView) listfotohewanView.findViewById(R.id.tmpkeyimghewan);
+        imageRvfotohewan = (RecyclerView) listfotohewanView.findViewById(R.id.RV_hewanfoto);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(
+                this, LinearLayoutManager.HORIZONTAL,false);
+        imageRvfotohewan.setLayoutManager(layoutManager);
+        imageRvfotohewan.setHasFixedSize(true);
+
+        dialoglihatfoto.setView(listfotohewanView);
+        dialogfoto = dialoglihatfoto.create();
+        dialogfoto.show();
+
+        getAllImage();
+    }
+    private void dialogfotosertif(){
+        dialoglihatfoto = new AlertDialog.Builder(DetailLelangActivity.this);
+        final View listfotosertifView = getLayoutInflater().inflate(R.layout.dialog_listpeserta,null);
+
+        tmpfotoSertifkey = (TextView) listfotosertifView.findViewById(R.id.tmpkeyimgsertif);
+        imageRvfotohewan = (RecyclerView) listfotosertifView.findViewById(R.id.RV_sertiffoto);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(
+                this, LinearLayoutManager.HORIZONTAL,false);
+        imageRvfotohewan.setLayoutManager(layoutManager);
+        imageRvfotohewan.setHasFixedSize(true);
+
+        dialoglihatfoto.setView(listfotosertifView);
+        dialogfoto = dialoglihatfoto.create();
+        dialogfoto.show();
+
+        getSertifImage();
+    }
+
+    public void getAllImage(){
+        String key = tmpfotoHewankey.getText().toString().trim();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(APIUrl.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        APIService service = retrofit.create(APIService.class);
+
+        Call<GetimgbyparentResponse> call = service.getimgbyparent(
+                key
+        );
+
+        call.enqueue(new Callback<GetimgbyparentResponse>() {
+            @Override
+            public void onResponse(Call<GetimgbyparentResponse> call, Response<GetimgbyparentResponse> response) {
+                if (response.isSuccessful()){
+                    HorizImageRVadapt horizImageRVadapt =  new HorizImageRVadapt(DetailLelangActivity.this,response.body()
+                            .getSuccess());
+                    horizImageRVadapt.notifyDataSetChanged();
+                    imageRvfotohewan.setAdapter(horizImageRVadapt);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetimgbyparentResponse> call, Throwable t) {
+                Toast.makeText(DetailLelangActivity.this, "gkkeget", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void getSertifImage(){
+        String key = tmpfotoSertifkey.getText().toString().trim();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(APIUrl.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        APIService service = retrofit.create(APIService.class);
+
+        Call<GetimgbyparentResponse> call = service.getimgbyparent(
+                key
+        );
+
+        call.enqueue(new Callback<GetimgbyparentResponse>() {
+            @Override
+            public void onResponse(Call<GetimgbyparentResponse> call, Response<GetimgbyparentResponse> response) {
+                if (response.isSuccessful()){
+                    HorizImageRVadapt horizImageRVadapt =  new HorizImageRVadapt(DetailLelangActivity.this,response.body()
+                            .getSuccess());
+                    horizImageRVadapt.notifyDataSetChanged();
+                    imageRvfotohewan.setAdapter(horizImageRVadapt);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetimgbyparentResponse> call, Throwable t) {
+                Toast.makeText(DetailLelangActivity.this, "gkkeget", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 
     private void getLelang(){
         String lkey = tmpidlelang.getText().toString().trim();
@@ -94,7 +234,7 @@ public class DetailLelangActivity extends AppCompatActivity {
         APIService service = retrofit.create(APIService.class);
 
         Call<GetlelangbyidResponse> call = service.getdetlelang(
-                lkey, lelcomment, lelhewan, lelpelelang, lelharga);
+                lkey, lelcomment, lelhewan, lelpelelang, lelharga,lelimgparent);
 
         call.enqueue(new Callback<GetlelangbyidResponse>() {
             @Override
@@ -103,7 +243,16 @@ public class DetailLelangActivity extends AppCompatActivity {
                     txtComment.setText(response.body().getSuccess().getComment());
                     tmpidhewan.setText(response.body().getSuccess().getHewanId());
                     tmpidpelelang.setText(response.body().getSuccess().getUserId());
-                    txtHarga.setText(response.body().getSuccess().getHarga());
+
+                    hargaawaldetlel = response.body().getSuccess().getHarga();
+
+                    Locale localID = new Locale("in","ID");
+
+                    NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localID);
+                    txtHarga.setText(formatRupiah.format((double)hargaawaldetlel));
+
+
+                    tmpimgtokenhw.setText(response.body().getSuccess().getImg_lelang());
                     getNamaHewan();
                     getNamaUser();
 

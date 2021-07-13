@@ -14,7 +14,7 @@ public class SuccessItem{
 	private String updatedAt;
 
 	@SerializedName("nilai_akhir")
-	private String nilaiAkhir;
+	private int nilaiAkhir;
 
 	@SerializedName("created_at")
 	private String createdAt;
@@ -61,11 +61,11 @@ public class SuccessItem{
 		return updatedAt;
 	}
 
-	public void setNilaiAkhir(String nilaiAkhir){
+	public void setNilaiAkhir(int nilaiAkhir){
 		this.nilaiAkhir = nilaiAkhir;
 	}
 
-	public String getNilaiAkhir(){
+	public int getNilaiAkhir(){
 		return nilaiAkhir;
 	}
 

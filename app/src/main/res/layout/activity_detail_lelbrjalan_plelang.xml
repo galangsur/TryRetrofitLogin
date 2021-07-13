@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.DetailLelbrjalanPlelang">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tmpmulailel_hewanid"
+                android:layout_width="1dp"
+                android:layout_height="1dp"/>
+            <TextView
+                android:id="@+id/tmpmulailel_lelid"
+                android:layout_width="1dp"
+                android:layout_height="1dp"/>
+            <TextView
+                android:id="@+id/tmpmulailel_gchattoken"
+                android:layout_width="1dp"
+                android:layout_height="1dp"/>
+            <TextView
+                android:id="@+id/tmpmulailel_pelelangid"
+                android:layout_width="1dp"
+                android:layout_height="1dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="405dp"
+                android:src="@drawable/detlelmulai"
+                android:scaleType="fitXY"/>
+
+            <Button
+                android:id="@+id/listpesertadialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btnasset"
+                android:layout_above="@id/RL_detmulailel1"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp"
+                android:text="list peserta"
+                android:padding="10dp"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/txtdetmulailel1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lelang"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:layout_marginBottom="70dp"
+                android:layout_marginLeft="15dp"
+                android:layout_above="@id/RL_detmulailel1"/>
+
+            <TextView
+                android:id="@+id/txtmulailel_namahewan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="40sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_above="@id/RL_detmulailel1"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="15dp"/>
+
+            <RelativeLayout
+                android:id="@+id/RL_detmulailel1"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/signasset_c">
+
+                <TextView
+                    android:id="@+id/txtdetmulailel2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:textSize="25dp"
+                    android:textColor="@color/oldbrownhome"
+                    android:text="Harga Mulai"/>
+                <TextView
+                    android:id="@+id/txtmulailel_harga"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:textSize="34dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/oldbrownhome"
+                    android:layout_below="@id/txtdetmulailel2"
+                    android:text="0"/>
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/coin"
+                    android:layout_toLeftOf="@id/txtmulailel_harga"
+                    android:layout_below="@id/txtdetmulailel2"/>
+                <Button
+                    android:id="@+id/btn_MulaiLelang"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_centerHorizontal="true"
+                    android:text="Mulai Lelang"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/btnasset"
+                    android:backgroundTint="@color/red6"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="20dp"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+</LinearLayout>

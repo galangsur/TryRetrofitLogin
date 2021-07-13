@@ -26,9 +26,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Random;
 
 import retrofit2.Call;
@@ -38,12 +40,13 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DetailLelbrjalan extends AppCompatActivity {
-    private String lelbrjalanid,userid,lelbrjalanhewan,lelbrjalangctoken,groupname,generategcid,bukaharga;
+    private String lelbrjalanid,userid,lelbrjalanhewan,lelbrjalangctoken,groupname,generategcid,bukaharga,username;
     private String hargaKeyref;
-    private EditText edTxtlelbrjlhewan,edTxtnilaiawal;
+    private TextView edTxtlelbrjlhewan,edTxtnilaiawal,detticektnamapeserta;
     private TextView tmpgctoken,tmpidlelbrjalan,tmplelbrjlniduser,tmplelbrjlnidhewan,tmppelelang,tmpgcgenerated;
     private Button btntogchat,btnmulailel;
     private DatabaseReference rootRef,groupRef,lelhargaref,lelhargaKeyref;
+    private int hargaawaldetlelber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +59,9 @@ public class DetailLelbrjalan extends AppCompatActivity {
         tmpidlelbrjalan = (TextView)findViewById(R.id.tmp_idlelbrjalan);
         tmplelbrjlniduser = (TextView)findViewById(R.id.tmplelbrjln_userId);
         tmplelbrjlnidhewan = (TextView)findViewById(R.id.tmplelbrjln_idhewan);
-        edTxtnilaiawal = (EditText)findViewById(R.id.edtxtlbrjln_nilaiawal);
-        edTxtlelbrjlhewan = (EditText) findViewById(R.id.edtxtlelbrjln_hewan);
+        edTxtnilaiawal = (TextView)findViewById(R.id.edtxtlbrjln_nilaiawal);
+        edTxtlelbrjlhewan = (TextView) findViewById(R.id.edtxtlelbrjln_hewan);
+        detticektnamapeserta = (TextView) findViewById(R.id.detticekt_namapeserta);
         btntogchat = (Button)findViewById(R.id.btnto_gchat);
         btnmulailel = (Button)findViewById(R.id.btn_mulailelang);
 
@@ -72,7 +76,9 @@ public class DetailLelbrjalan extends AppCompatActivity {
         tmpidlelbrjalan.setText(lelbrjalanid);
 
         userid = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getId();
+        username = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getName();
         tmplelbrjlniduser.setText(userid);
+        detticektnamapeserta.setText(username);
 
         getLelbrjalan();
 
@@ -121,10 +127,16 @@ public class DetailLelbrjalan extends AppCompatActivity {
             public void onResponse(Call<DetlelbrjalanbyidResponse> call, Response<DetlelbrjalanbyidResponse> response) {
                 if (response.isSuccessful()){
                     tmpgctoken.setText(response.body().getSuccess().getGchatId());
-                    edTxtnilaiawal.setText(response.body().getSuccess().getHarga());
+
+                    hargaawaldetlelber = response.body().getSuccess().getHarga();
+
+                    Locale localID = new Locale("in","ID");
+
+                    NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localID);
+                    edTxtnilaiawal.setText(formatRupiah.format((double)hargaawaldetlelber));
+
                     tmppelelang.setText(response.body().getSuccess().getUserId());
                     tmplelbrjlnidhewan.setText(response.body().getSuccess().getHewanId());
-                    edTxtnilaiawal.setText(response.body().getSuccess().getHarga());
                     getNamaHewan();
                     if (tmpgctoken.getText().toString().trim().equals("Belum Mulai") &&
                             (tmppelelang.getText().toString().trim().equals(userid))){

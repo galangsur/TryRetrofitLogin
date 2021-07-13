@@ -7,6 +7,13 @@
     android:orientation="vertical"
     tools:context=".activity.ListLelangayamActivity">
 
+    <TextView
+        android:id="@+id/txtuserIdayam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/green1"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="300dp"
@@ -16,45 +23,59 @@
         android:id="@+id/btn_backreqlist"
         android:layout_width="25dp"
         android:layout_height="35dp"
-        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
         android:layout_marginTop="23dp"
-        android:layout_alignParentRight="true"
-        android:src="@drawable/ic_round_arrow_forwardwhite_ios_24"/>
+        android:src="@drawable/ic_baseline_arrowwhite_24"/>
 
     <ImageView
         android:id="@+id/btn_pengajuanlel"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginLeft="20dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginRight="20dp"
         android:layout_marginTop="25dp"
-        android:src="@drawable/ic_outline_add_boxwhite_24"/>
-    <TextView
+        android:layout_alignParentRight="true"
+        android:src="@drawable/addbtn"/>
+
+    <Button
+        android:id="@+id/tosignup_lelayam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lelang  Ayam"
+        android:text="Sign Up"
+        android:textColor="@color/white"
+        android:background="@drawable/mainasset_c"
+        android:backgroundTint="@color/orange5"
+        android:layout_alignParentRight="true"
+        android:visibility="invisible"
+        android:layout_below="@id/btn_pengajuanlel"/>
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Lelang Ayam Aduan"
         android:layout_gravity="center"
         android:textSize="25sp"
         android:textStyle="bold"
         android:textColor="@color/white"
-        android:layout_toLeftOf="@id/btn_backreqlist"
+        android:layout_toRightOf="@id/btn_backreqlist"
         android:layout_marginTop="25dp"
-        android:layout_marginRight="60dp"/>
+        android:layout_marginLeft="50dp"
+        android:textAlignment="center"/>
 
     <TextView
         android:id="@+id/lelayam_filterkey"
         android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:textColor="@color/brown"/>
+        android:layout_height="1dp"
+        android:textColor="@color/green1"/>
     <TextView
         android:id="@+id/lelayam_userid"
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:textColor="@color/brown"/>
+        android:textColor="@color/green1"/>
     <TextView
         android:id="@+id/lelayam_saldofilter"
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:textColor="@color/brown"/>
+        android:textColor="@color/green1"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lelangayamRV"

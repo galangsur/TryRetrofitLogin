@@ -67,7 +67,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:text="Nominal Bayar"
+                    android:text="Kelengkapan Transaksi"
                     android:textColor="@color/green1"
                     android:textStyle="bold"
                     android:textSize="20dp"/>
@@ -76,17 +76,44 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
-                    android:text="Nilai Akhir :"
+                    android:text="Nominal Transaksi :"
                     android:textColor="@color/green1"
                     android:textStyle="bold"
                     android:textSize="16dp"/>
 
+                <ImageView
+                    android:id="@+id/smallwalleticoncpng"
+                    android:layout_width="31dp"
+                    android:layout_height="31dp"
+                    android:background="@drawable/coinrp"
+                    android:layout_toLeftOf="@id/rslt_nilaiakhir"
+                    android:layout_below="@id/txt_result2"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="10dp"/>
+
                 <EditText
                     android:id="@+id/rslt_nilaiakhir"
-                    android:layout_width="290dp"
+                    android:layout_width="264dp"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
                     android:inputType="none"
                     android:layout_below="@+id/txt_result2"/>
+
+                <Button
+                    android:id="@+id/btntobukti"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btnasset"
+                    android:backgroundTint="@color/white"
+                    android:layout_below="@+id/rslt_nilaiakhir"
+                    android:layout_marginTop="15dp"
+                    android:text="Cek Bukti transaksi"
+                    android:textColor="@color/green1"
+                    android:textStyle="bold"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:paddingLeft="50dp"
+                    android:drawableLeft="@drawable/ic_baseline_description_24"
+                    android:drawablePadding="-50dp"/>
             </RelativeLayout>
 
 
@@ -237,6 +264,7 @@
                 android:background="@drawable/btnasset"
                 android:textColor="@color/white"
                 android:text="Submit"/>
+
             <Button
                 android:id="@+id/leltrans_finishtrans"
                 android:layout_width="wrap_content"
@@ -250,6 +278,7 @@
                 android:background="@drawable/btnasset"
                 android:textColor="@color/white"
                 android:text="Transaksi Selesai"/>
+
             <ImageView
                 android:id="@+id/btn_backdettranslel"
                 android:layout_width="25dp"

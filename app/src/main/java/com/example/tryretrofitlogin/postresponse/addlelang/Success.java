@@ -22,6 +22,12 @@ public class Success{
 	@SerializedName("comment")
 	private String comment;
 
+	@SerializedName("req_nominalperbid")
+	private String reqNominalperbid;
+
+	@SerializedName("req_waktuperbid")
+	private String reqWaktuperbid;
+
 	@SerializedName("id")
 	private int id;
 

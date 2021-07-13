@@ -16,7 +16,7 @@ import com.example.tryretrofitlogin.activity.auth.SignupActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button buttonSignIn, buttonSignUp;
+    private Button buttonSignIn, buttonToLelang;
     private String ip;
 
     @Override
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 //        Toast.makeText(this, "hiya" + ip, Toast.LENGTH_SHORT).show();
 
         buttonSignIn = (Button) findViewById(R.id.buttonSignIn);
-        buttonSignUp = (Button) findViewById(R.id.buttonSignUp);
+        buttonToLelang = (Button) findViewById(R.id.buttontoLelang);
 
         buttonSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,10 +38,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        buttonSignUp.setOnClickListener(new View.OnClickListener() {
+        buttonToLelang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toSignup();
+                toLihatlelangasguest();
             }
         });
     }
@@ -51,11 +51,19 @@ public class MainActivity extends AppCompatActivity {
         startActivity(sigin);
         overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
-    private void toSignup(){
-        Intent sigup = new Intent(MainActivity.this, SignupActivity.class);
+    private void toLihatlelangasguest(){
+        Intent lihatlelangasguest = new Intent(MainActivity.this, PilihanlelActivity.class);
+        startActivity(lihatlelangasguest);
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+    }
+
+    private void tryrating(){
+        Intent sigup = new Intent(MainActivity.this, RatingnreviewinputActivity.class);
         startActivity(sigup);
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
     }
+
+
 
     @Override
     public void onBackPressed() {

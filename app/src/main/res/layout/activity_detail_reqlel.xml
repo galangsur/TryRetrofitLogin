@@ -38,7 +38,7 @@
                     android:id="@+id/txt_reqlelpengirim"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Agus Prayono"
+                    android:text=""
                     android:textSize="25dp"
                     android:textStyle="bold"
                     android:textColor="#000000"
@@ -116,7 +116,7 @@
                     android:layout_height="50dp"
                     android:background="@drawable/signasset_d"
                     android:layout_centerVertical="true"
-                    android:text="1"
+                    android:text="0"
                     android:textColor="#FFFFFF"
                     android:textStyle="bold"
                     android:textSize="25sp"
@@ -128,7 +128,7 @@
                     android:layout_toRightOf="@id/tmp_reqlel_idlelang"
                     android:layout_below="@id/reqlel_txt3"
                     android:layout_marginLeft="10dp"
-                    android:text="Harga Awal :"
+                    android:text="Mulai dari :"
                     android:textColor="#000000"
                     android:textStyle="bold"
                     android:textSize="15sp"/>
@@ -136,7 +136,7 @@
                     android:id="@+id/reqlel_hargalelang"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="500000"
+                    android:text="0"
                     android:textSize="15dp"
                     android:textStyle="bold"
                     android:layout_below="@id/reqlel_txt3"
@@ -148,25 +148,35 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/tmp_reqlel_idlelang"
-                    android:text="Sapi"
+                    android:text=""
                     android:textSize="30dp"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginLeft="15dp"
                     android:layout_marginTop="8dp"
                     android:textColor="#000000"
                     android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tmptokenfotohw"
+                    android:layout_width="1dp"
+                    android:layout_height="1dp"
+                    android:textColor="@color/green3"/>
+
                 <TextView
                     android:id="@+id/tmphewanidreqlel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="1dp"
+                    android:layout_height="1dp"
                     android:textColor="@color/green3"/>
-                <ImageView
-                    android:id="@+id/reqlel_todetlel"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:background="@drawable/ic_baseline_more_brown_24"
+                <Button
+                    android:id="@+id/reqlel_tofotohewan"
+                    android:layout_width="80dp"
+                    android:layout_height="30dp"
+                    android:text="cek hewan"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"/>
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/btnasset"/>
             </RelativeLayout>
 
             <ImageView

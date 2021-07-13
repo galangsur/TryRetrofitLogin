@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green1"
+    tools:context=".activity.RatingnreviewinputActivity">
+
+    <TextView
+        android:id="@+id/txt_reviewnratingtoken"
+        android:layout_width="1dp"
+        android:layout_height="1dp"/>
+
+    <TextView
+        android:id="@+id/txt_idlelberjalan"
+        android:layout_width="1dp"
+        android:layout_height="1dp"/>
+
+    <Button
+        android:id="@+id/btn_lihatrating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/btnasset"
+        android:text="lihat review"
+        android:textColor="@color/white"
+        android:padding="10dp"/>
+
+    <Button
+        android:id="@+id/btn_listpeserta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/btnasset"
+        android:text="lihat peserta"
+        android:textColor="@color/white"
+        android:padding="10dp"/>
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/green1"
+        android:layout_marginBottom="10dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:numStars="5"
+        android:theme="@style/RatingBar"/>
+
+    <RelativeLayout
+        android:id="@+id/rellayoutedtxtReview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/homeasset_e"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:padding="10dp"
+        android:layout_below="@+id/ratingBar">
+        <EditText
+            android:id="@+id/edtxt_review"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:maxHeight="300dp"
+            android:maxWidth="320dp"
+            android:textColor="@color/green1"
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/btn_ratingnreview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rellayoutedtxtReview"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/btnasset"
+        android:text="berikan review"
+        android:textColor="@color/white"
+        android:padding="10dp"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

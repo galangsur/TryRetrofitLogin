@@ -22,6 +22,9 @@ import com.example.tryretrofitlogin.responses.getlelangbyid.GetlelangbyidRespons
 import com.example.tryretrofitlogin.responses.getreqlelbyid.GetreqlelbyidResponse;
 import com.example.tryretrofitlogin.responses.getuserbyid.GetusernamebyidResponse;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,11 +34,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class DetailReqlelActivity extends AppCompatActivity {
 
     private String reqlelid,userid,namauser,namapendaftar;
-    private String lelcomment, lelhewan, lelpelelang, lelharga;
-    private TextView tmpReqlelid, tmpReqiduser, tmpReqidpendaftar,tmpReqlelidlelang,tmpHewanid;
-    private TextView txtLelang, txtUser, txtPendaftar, txtHewan;
-    private Button btnReqaccept, btnReqreject;
+    private String lelcomment, lelhewan, lelpelelang, lelharga,lelimgtokn;
+    private TextView tmpReqlelid, tmpReqiduser, tmpReqidpendaftar,tmpReqlelidlelang,tmpHewanid,tmpTokenImgHw;
+    private TextView txtLelang, txtUser, txtPendaftar, txtHewan, txtHargaLel;
+    private Button btnReqaccept, btnReqreject, btnCekhewan;
     private ImageView btnBack;
+    private int hargaDetreq;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +50,16 @@ public class DetailReqlelActivity extends AppCompatActivity {
         txtUser = (TextView) findViewById(R.id.txt_reqleluser);
         txtPendaftar = (TextView) findViewById(R.id.txt_reqlelpengirim);
         txtHewan = (TextView)findViewById(R.id.reqlel_txt3);
+        txtHargaLel = (TextView) findViewById(R.id.reqlel_hargalelang);
         tmpReqlelid = (TextView) findViewById(R.id.tmp_reqlelid);
+        tmpTokenImgHw = (TextView) findViewById(R.id.tmptokenfotohw);
         tmpReqiduser = (TextView) findViewById(R.id.tmp_reqlel_iduser);
         tmpReqidpendaftar = (TextView) findViewById(R.id.tmp_reqlel_idpendaftar);
         tmpReqlelidlelang = (TextView) findViewById(R.id.tmp_reqlel_idlelang);
         tmpHewanid = (TextView) findViewById(R.id.tmphewanidreqlel);
         btnReqaccept = (Button) findViewById(R.id.btn_reqlelaccept);
         btnReqreject = (Button) findViewById(R.id.btn_reqlelreject);
+        btnCekhewan = (Button) findViewById(R.id.reqlel_tofotohewan);
         btnBack = (ImageView)findViewById(R.id.btn_backdetreqlist);
 
         Intent reqintent = getIntent();
@@ -112,7 +119,7 @@ public class DetailReqlelActivity extends AppCompatActivity {
                     tmpReqlelidlelang.setText(response.body().getSuccess().getLelangId());
                     tmpReqidpendaftar.setText(response.body().getSuccess().getPengirimId());
                     getNamauser();
-                    getCommentlelang();
+                    getdetaillelang();
                 }
             }
 
@@ -152,7 +159,7 @@ public class DetailReqlelActivity extends AppCompatActivity {
         });
     }
 
-    private void getCommentlelang(){
+    private void getdetaillelang(){
         String lkey = tmpReqlelidlelang.getText().toString().trim();
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -163,7 +170,7 @@ public class DetailReqlelActivity extends AppCompatActivity {
         APIService service = retrofit.create(APIService.class);
 
         Call<GetlelangbyidResponse> call = service.getdetlelang(
-                lkey,lelcomment, lelhewan, lelpelelang, lelharga);
+                lkey,lelcomment, lelhewan, lelpelelang, lelharga,lelimgtokn);
 
         call.enqueue(new Callback<GetlelangbyidResponse>() {
             @Override
@@ -171,6 +178,25 @@ public class DetailReqlelActivity extends AppCompatActivity {
                 if (response.isSuccessful()){
                     txtLelang.setText(response.body().getSuccess().getComment());
                     tmpHewanid.setText(response.body().getSuccess().getHewanId());
+
+                    hargaDetreq = response.body().getSuccess().getHarga();
+                    //ubahformat Rp.
+                    Locale localID = new Locale("in","ID");
+
+                    NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localID);
+                    txtHargaLel.setText(formatRupiah.format((double)hargaDetreq));
+
+                    tmpTokenImgHw.setText(response.body().getSuccess().getImg_lelang());
+                    getNamaHewan();
+                    btnCekhewan.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            String reqlelfoto = tmpTokenImgHw.getText().toString().trim();
+                            Intent intent = new Intent(DetailReqlelActivity.this, FotohewanRetrieve.class);
+                            intent.putExtra("imgfotohw", reqlelfoto );
+                            startActivity(intent);
+                        }
+                    });
                 }
             }
 
@@ -185,6 +211,7 @@ public class DetailReqlelActivity extends AppCompatActivity {
         String lelkey = tmpReqlelidlelang.getText().toString().trim();
         String pesertakey = tmpReqidpendaftar.getText().toString().trim();
         String hewan = txtHewan.getText().toString().trim();
+        Toast.makeText(this, "test" + lelkey + pesertakey + hewan, Toast.LENGTH_SHORT).show();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(APIUrl.BASE_URL)
@@ -201,6 +228,7 @@ public class DetailReqlelActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<AddlelpsrtmanagerResponse> call, Response<AddlelpsrtmanagerResponse> response) {
                 if (response.isSuccessful()){
+                    Toast.makeText(DetailReqlelActivity.this, "sukses", Toast.LENGTH_SHORT).show();
                     deleteReq();
                     toMain();
                 }
@@ -208,7 +236,7 @@ public class DetailReqlelActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<AddlelpsrtmanagerResponse> call, Throwable t) {
-
+                Toast.makeText(DetailReqlelActivity.this, "sukses", Toast.LENGTH_SHORT).show();
             }
         });
     }

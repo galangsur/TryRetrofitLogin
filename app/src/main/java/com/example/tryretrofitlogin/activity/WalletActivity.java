@@ -2,6 +2,7 @@ package com.example.tryretrofitlogin.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,12 +12,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tryretrofitlogin.R;
+import com.example.tryretrofitlogin.activity.auth.SignupActivity;
 import com.example.tryretrofitlogin.api.APIService;
 import com.example.tryretrofitlogin.api.APIUrl;
 import com.example.tryretrofitlogin.helper.SharedPrefManager;
 import com.example.tryretrofitlogin.postresponse.addreqtopup.AddtopupreqResponse;
 import com.example.tryretrofitlogin.responses.getwallet.GetWalletInfoResponse;
 import com.example.tryretrofitlogin.responses.topupwallet.TopupResponse;
+
+import java.text.NumberFormat;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,6 +38,7 @@ public class WalletActivity extends AppCompatActivity {
     private String usersaldo;
     private String a,b,c;
     private String userid,usernama;
+    private int saldoWallet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,12 +151,24 @@ public class WalletActivity extends AppCompatActivity {
         call.enqueue(new Callback<GetWalletInfoResponse>() {
             @Override
             public void onResponse(Call<GetWalletInfoResponse> call, Response<GetWalletInfoResponse> response) {
-                    txtusersaldo.setText(response.body().getSaldo());
+
+                    saldoWallet = response.body().getSaldo();
+//                  txtusersaldo.setText(response.body().getSaldo());
+
+                    //ubahformat Rp.
+                    Locale localID = new Locale("in","ID");
+
+                    NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localID);
+                    txtusersaldo.setText(formatRupiah.format((double)saldoWallet));
+
                     if (response.body() !=null) {
 //                        Toast.makeText(WalletActivity.this, "idwallet" + response.body().getUserId()+
 //                                "wallet" + response.body().getSaldo(), Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getApplicationContext(), "Invalid get wallet info", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(WalletActivity.this, WalletCreateActivity.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                 }
             }
 

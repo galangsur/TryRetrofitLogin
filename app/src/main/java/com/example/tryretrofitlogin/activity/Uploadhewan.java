@@ -79,7 +79,11 @@ public class Uploadhewan extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(Uploadhewan.this, "tos", Toast.LENGTH_SHORT).show();
-                uploadImg(attachment);
+                if (imageDiplay.getDrawable() == null) {
+                    Toast.makeText(Uploadhewan.this, "Gambarkosong", Toast.LENGTH_SHORT).show();
+                }else {
+                    uploadImg(attachment);
+                }
             }
         });
 
@@ -132,6 +136,8 @@ public class Uploadhewan extends AppCompatActivity {
         MultipartBody.Part photo =  MultipartBody.Part.createFormData("photo",attachment.getName(),requestBody);
         RequestBody imgparent = RequestBody.create(MediaType.parse("multipart/form-data"),imgprtkey);
 
+        Toast.makeText(this, "test" +photo+imgparent, Toast.LENGTH_SHORT).show();
+
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(APIUrl.BASE_URL)
@@ -162,7 +168,7 @@ public class Uploadhewan extends AppCompatActivity {
     }
 
     private void touploadimg(){
-        Intent intent = new Intent(Uploadhewan.this, Uploadhewantwo.class);
+        Intent intent = new Intent(Uploadhewan.this, HomeActivity.class);
         intent.putExtra("imghw", imgprtkey);
         startActivity(intent);
     }

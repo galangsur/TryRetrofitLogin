@@ -3,6 +3,7 @@
     package="com.example.tryretrofitlogin">
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -12,16 +13,36 @@
         android:allowBackup="true"
         android:icon="@drawable/logob"
         android:label="Let&apos;s"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@drawable/logob"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.Uploadhewanthree"></activity>
+        <activity android:name=".activity.ImageUploadFinishtrans"></activity>
+        <activity android:name=".activity.UserprofileActivity" />
+        <activity android:name=".activity.RatingnreviewinputActivity" />
+        <activity android:name=".activity.AboutsignupActivity" />
+        <activity android:name=".activity.HomepelelangActivity" />
+        <activity android:name=".activity.TransactionComplaintActivity" />
+        <activity android:name=".activity.PilihanPendaftaranActivity" />
+        <activity android:name=".activity.AdmincomplaintActivity" />
+        <activity android:name=".activity.AboutthreeActivity" />
+        <activity android:name=".activity.AbouttwoActivity" />
+        <activity android:name=".activity.AboutoneActivity" />
+        <activity android:name=".activity.DetailLelbrjalanPlelang" />
+        <activity android:name=".activity.DetailProdukActivity" />
+        <activity android:name=".activity.FotohewanRetrieve" />
+        <activity android:name=".activity.ImageUploadhwtrans" />
+        <activity android:name=".activity.ImageUploadhwlelang" />
+        <activity android:name=".activity.ListLelangburungActivity" />
+        <activity android:name=".activity.PilihanlelActivity" />
+        <activity android:name=".activity.Uploadhewanthree" />
         <activity android:name=".activity.Uploadhewantwo" />
         <activity android:name=".activity.Uploadhewan" />
         <activity android:name=".activity.ListPrdkTransaksi" />
-        <activity android:name=".activity.DetailLelbrjalan"
-            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name=".activity.DetailLelbrjalan"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".activity.ListLelangAsPelelang" />
         <activity android:name=".activity.ListLelangAsPeserta" />
         <activity android:name=".activity.ListLelTransaksi" />
@@ -34,14 +55,16 @@
         <activity android:name=".activity.ListProdukActivity" />
         <activity android:name=".activity.ImageRetrieveTry" />
         <activity android:name=".activity.ListLelangayamActivity" />
-        <activity android:name=".activity.ListLelangsapiActivity" />
-        <activity android:name=".activity.LelangResultActivity"
-            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".activity.ListLelangcupangActivity" />
+        <activity
+            android:name=".activity.LelangResultActivity"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".activity.GroupchatActivity" />
         <activity android:name=".activity.DetailReqlelActivity" />
         <activity android:name=".activity.LelreqlistActivity" />
-        <activity android:name=".activity.DetailLelangActivity"
-            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name=".activity.DetailLelangActivity"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".activity.WalletCreateActivity" />
         <activity android:name=".activity.ListLelangActivity" />
         <activity android:name=".activity.AddLelangActivity" />

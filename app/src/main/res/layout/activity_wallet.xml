@@ -27,7 +27,7 @@
                 android:background="@drawable/homeasset_f">
                 <TextView
                     android:layout_width="match_parent"
-                    android:text="Saldo awal anda :"
+                    android:text="Saldo Wallet Point anda :"
                     android:textSize="15sp"
                     android:textColor="#000000"
                     android:textStyle="bold"
@@ -35,13 +35,14 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="50dp"/>
+
                 <TextView
                     android:id="@+id/tmpwlt_namauser"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="15sp"
+                    android:layout_width="1dp"
+                    android:layout_height="1dp"
                     android:textColor="@color/white"
-                    android:textStyle="bold"/>
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
 
             </RelativeLayout>
             <RelativeLayout
@@ -51,15 +52,26 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/homeasset_e">
+                <ImageView
+                    android:id="@+id/txt_rpsaldo"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:text="WP"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#000000"
+                    android:background="@drawable/coinrp"
+                    android:layout_centerHorizontal="true"/>
                 <TextView
                     android:id="@+id/txt_saldoawal"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
                     android:textSize="30sp"
                     android:textStyle="bold"
                     android:textColor="#000000"
-                    android:layout_centerVertical="true"
+                    android:layout_below="@id/txt_rpsaldo"
                     android:layout_centerHorizontal="true"
                     android:gravity="center_horizontal" />
             </RelativeLayout>
@@ -71,7 +83,7 @@
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="50dp"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/rellaySaldo"/>
             <RelativeLayout
@@ -85,48 +97,143 @@
                 android:layout_below="@id/rellaySaldo"/>
 
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/rvtopup1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/green1"
                 android:layout_below="@id/garis_topup">
-                <Button
-                    android:id="@+id/btntmbh_a"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_marginLeft="48dp"
-                    android:layout_marginTop="50dp"
-                    android:background="@drawable/homeasset_e"
-                    android:text="500.000"
-                    android:textStyle="bold"/>
-                <Button
-                    android:id="@+id/btntmbh_b"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_toRightOf="@id/btntmbh_a"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="50dp"
-                    android:background="@drawable/homeasset_e"
-                    android:text="1.000.000"
-                    android:textStyle="bold"/>
-                <Button
-                    android:id="@+id/btntmbh_c"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="50dp"
-                    android:layout_toRightOf="@id/btntmbh_b"
-                    android:background="@drawable/homeasset_e"
-                    android:text="1.500.000"
-                    android:textStyle="bold"/>
+
+                <RelativeLayout
+                    android:id="@+id/rvtopupA"
+                    android:layout_width="280dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/homeasset_f">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/coinrp"
+                        android:text="WP"
+                        android:textColor="#000000"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        android:layout_centerVertical="true"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="500.000"
+                        android:textColor="#000000"
+                        android:textStyle="bold"
+                        android:layout_toLeftOf="@id/btntmbh_a"
+                        android:layout_centerVertical="true"/>
+
+                    <Button
+                        android:id="@+id/btntmbh_a"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/homeasset_e"
+                        android:text="tambah"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rvtopupB"
+                    android:layout_width="280dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/homeasset_f"
+                    android:layout_below="@id/rvtopupA">
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="WP"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="15dp"
+                        android:textColor="#000000"
+                        android:layout_alignParentLeft="true"
+                        android:background="@drawable/coinrp"
+                        android:layout_centerVertical="true"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1.000.000"
+                        android:textColor="#000000"
+                        android:textStyle="bold"
+                        android:layout_toLeftOf="@id/btntmbh_b"
+                        android:layout_centerVertical="true"/>
+
+                    <Button
+                        android:id="@+id/btntmbh_b"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/homeasset_e"
+                        android:text="Tambah"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rvtopupC"
+                    android:layout_width="280dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/homeasset_f"
+                    android:layout_below="@id/rvtopupB">
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="WP"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="15dp"
+                        android:textColor="#000000"
+                        android:layout_alignParentLeft="true"
+                        android:background="@drawable/coinrp"
+                        android:layout_centerVertical="true"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1.500.000"
+                        android:textColor="#000000"
+                        android:textStyle="bold"
+                        android:layout_toLeftOf="@id/btntmbh_c"
+                        android:layout_centerVertical="true"/>
+                    <Button
+                        android:id="@+id/btntmbh_c"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/homeasset_e"
+                        android:text="tambah"
+                        android:textStyle="bold"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
+
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/rellaysalTambahan"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:layout_marginTop="550dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                android:layout_below="@id/rvtopup1"
                 android:background="@drawable/homeasset_f">
                 <TextView
                     android:layout_width="match_parent"
@@ -139,13 +246,26 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="50dp"/>
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
-                android:layout_marginTop="580dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="80dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                android:layout_below="@id/rvtopup1"
                 android:background="@drawable/homeasset_e">
+                <ImageView
+                    android:id="@+id/txt_rppsaldo"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:text="WP"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#000000"
+                    android:background="@drawable/coinrp"
+                    android:layout_centerHorizontal="true"/>
                 <EditText
                     android:id="@+id/edtxt_saldotambah"
                     android:layout_width="match_parent"
@@ -153,58 +273,59 @@
                     android:textSize="30sp"
                     android:textStyle="bold"
                     android:textColor="#000000"
+                    android:layout_below="@id/txt_rppsaldo"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true"
                     android:gravity="center_horizontal"/>
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/iconbtn_a"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginLeft="70dp"
-                android:background="@drawable/signasset_c"
-                android:layout_below="@id/garis_topup">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_topup_24"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"/>
-            </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/iconbtn_b"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginLeft="55dp"
-                android:background="@drawable/signasset_c"
-                android:layout_below="@id/garis_topup"
-                android:layout_toRightOf="@id/iconbtn_a">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_topup_24"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"/>
-            </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/iconbtn_c"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginLeft="55dp"
-                android:background="@drawable/signasset_c"
-                android:layout_below="@id/garis_topup"
-                android:layout_toRightOf="@id/iconbtn_b">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_topup_24"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"/>
-            </RelativeLayout>
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/iconbtn_a"-->
+<!--                android:layout_width="40dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:layout_marginTop="25dp"-->
+<!--                android:layout_marginLeft="70dp"-->
+<!--                android:background="@drawable/signasset_c"-->
+<!--                android:layout_below="@id/garis_topup">-->
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:src="@drawable/ic_topup_24"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_centerHorizontal="true"/>-->
+<!--            </RelativeLayout>-->
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/iconbtn_b"-->
+<!--                android:layout_width="40dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:layout_marginTop="25dp"-->
+<!--                android:layout_marginLeft="55dp"-->
+<!--                android:background="@drawable/signasset_c"-->
+<!--                android:layout_below="@id/garis_topup"-->
+<!--                android:layout_toRightOf="@id/iconbtn_a">-->
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:src="@drawable/ic_topup_24"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_centerHorizontal="true"/>-->
+<!--            </RelativeLayout>-->
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/iconbtn_c"-->
+<!--                android:layout_width="40dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:layout_marginTop="25dp"-->
+<!--                android:layout_marginLeft="55dp"-->
+<!--                android:background="@drawable/signasset_c"-->
+<!--                android:layout_below="@id/garis_topup"-->
+<!--                android:layout_toRightOf="@id/iconbtn_b">-->
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:src="@drawable/ic_topup_24"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_centerHorizontal="true"/>-->
+<!--            </RelativeLayout>-->
 
             <TextView
         android:id="@+id/txt_userid"

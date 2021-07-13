@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,11 +14,9 @@ import android.widget.Toast;
 import com.example.tryretrofitlogin.R;
 import com.example.tryretrofitlogin.api.APIService;
 import com.example.tryretrofitlogin.api.APIUrl;
+import com.example.tryretrofitlogin.helper.SharedPrefManager;
 import com.example.tryretrofitlogin.models.Message;
-import com.example.tryretrofitlogin.postresponse.addhasillelang.AddHasillelangResponse;
-import com.example.tryretrofitlogin.postresponse.addleltrans.AddleltransResponse;
 import com.example.tryretrofitlogin.postresponse.createleltrans.LeltransAddResponse;
-import com.example.tryretrofitlogin.responses.getlelangbyid.GetlelangbyidResponse;
 import com.example.tryretrofitlogin.responses.getlelbrjalanbygc.GetlelbrjalanbygcResponse;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,6 +24,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Random;
 
 import retrofit2.Call;
@@ -39,9 +38,10 @@ public class LelangResultActivity extends AppCompatActivity {
     private TextView resltMsgid, resltUserid,  resltPelelangid, resltPelelangname, lelbrjalankey;
     private TextView reslidlelbrjalan, reslidpeserta, statshlel,stathlelid, reslhewanid,reslimgparent;
     private EditText resltUsername, resltNilaiakhir, resltHargaawal ;
-    private Button resltBtntohome;
-    private String messageId,lbid,lbuserid,lbhewanid,lbharga,groupid,
+    private Button resltBtntohome, resltbtnNota;
+    private String messageId,lbid,lbuserid,lbhewanid,lbharga,groupid,userid,
             lbcomment,statushasilawal,statushasilawalid,pesrtaid,lelresimgparent;
+    private int hargaawalresult, hargaakhirresult, lbreqwaktu, lbreqnominal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +56,7 @@ public class LelangResultActivity extends AppCompatActivity {
         resltNilaiakhir = (EditText) findViewById(R.id.rslt_nilaiakhir);
         resltHargaawal = (EditText) findViewById(R.id.rslt_hargaawal);
         resltBtntohome = (Button) findViewById(R.id.reslt_tohome);
+        resltbtnNota = (Button) findViewById(R.id.reslt_buattrans);
         resltPelelangid = (TextView) findViewById(R.id.rsltidpelelang);
         reslidlelbrjalan = (TextView) findViewById(R.id.rsltidlelbrjalan);
         reslidpeserta = (TextView) findViewById(R.id.reslt_pesertaId);
@@ -71,10 +72,11 @@ public class LelangResultActivity extends AppCompatActivity {
         statshlel.setText("Belum Dibayarkan");
         reslimgparent.setText(lelresimgparent());
 
+        userid = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getId();
+
         Intent gcIntent = getIntent();
         groupid = gcIntent.getStringExtra("groupId");
         messageId = gcIntent.getStringExtra("messageId");
-
 
     }
 
@@ -89,14 +91,20 @@ public class LelangResultActivity extends AppCompatActivity {
 
         getresltdetail();
 
+        resltbtnNota.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addhasillelang();
+                Toast.makeText(LelangResultActivity.this, "Nota Transaksi Dibuat", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         resltBtntohome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addhasillelang();
+                tohome();
             }
         });
-
     }
 
     private void getresltdetail(){
@@ -107,19 +115,30 @@ public class LelangResultActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String winName = dataSnapshot.getValue(Message.class).getFromName();
                 pesrtaid = dataSnapshot.getValue(Message.class).getFromId();
-                String winNilai = dataSnapshot.getValue(Message.class).getMessage();
+
+                String hargaakhirresultstring = dataSnapshot.getValue(Message.class).getMessage();
+                hargaakhirresult = Integer.parseInt(hargaakhirresultstring);
+
                 String gckey = dataSnapshot.getValue(Message.class).getGcId();
+
                 resltUsername.setText(winName);
-                resltNilaiakhir.setText(winNilai);
+
+                Locale localID = new Locale("in","ID");
+                NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localID);
+                resltNilaiakhir.setText(formatRupiah.format((double)hargaakhirresult));
+
                 lelbrjalankey.setText(gckey);
                 reslidpeserta.setText(pesrtaid);
 
+                if (userid.equals(pesrtaid)) {
+                    resltBtntohome.setVisibility(View.INVISIBLE);
+                }else{
+                    resltbtnNota.setVisibility(View.INVISIBLE);
+                }
                 getlelbrjlnbygc();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
     }
@@ -135,19 +154,24 @@ public class LelangResultActivity extends AppCompatActivity {
         APIService service = retrofit.create(APIService.class);
 
         Call<GetlelbrjalanbygcResponse> call = service.getlelbrjalanbygc(
-                lbkey, lbuserid, lbhewanid, lbharga, lbcomment);
+                lbkey, lbuserid, lbhewanid, lbharga, lbcomment, lbreqwaktu, lbreqnominal);
 
         call.enqueue(new Callback<GetlelbrjalanbygcResponse>() {
             @Override
             public void onResponse(Call<GetlelbrjalanbygcResponse> call, Response<GetlelbrjalanbygcResponse> response) {
                 if (response.isSuccessful()){
-                    resltHargaawal.setText(response.body().getSuccess().getHarga());
+                    hargaawalresult = response.body().getSuccess().getHarga();
+
+                    Locale localID = new Locale("in","ID");
+
+                    NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localID);
+                    resltHargaawal.setText(formatRupiah.format((double)hargaawalresult));
+
                     reslidlelbrjalan.setText(response.body().getSuccess().getId());
                     resltPelelangid.setText(response.body().getSuccess().getUserId());
                     reslhewanid.setText(response.body().getSuccess().getHewanId());
                 }
             }
-
             @Override
             public void onFailure(Call<GetlelbrjalanbygcResponse> call, Throwable t) {
 
@@ -163,7 +187,7 @@ public class LelangResultActivity extends AppCompatActivity {
         String paramE = resltPelelangid.getText().toString().trim();
         String paramF = reslhewanid.getText().toString().trim();
         String paramG = resltHargaawal.getText().toString().trim();
-        String paramH = resltHargaawal.getText().toString().trim();
+        String paramH = resltNilaiakhir.getText().toString().trim();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(APIUrl.BASE_URL)
@@ -242,6 +266,4 @@ public class LelangResultActivity extends AppCompatActivity {
 
         return stringBuilder.toString();
     }
-
-
 }

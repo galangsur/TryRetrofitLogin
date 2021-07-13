@@ -1,15 +1,19 @@
 package com.example.tryretrofitlogin.api;
 
+import com.example.tryretrofitlogin.getresponse.getLelangbyHewanResponse.GetLelangbyHewanResponse;
+import com.example.tryretrofitlogin.postresponse.addReqlelangtoadmin.AddReqlelangtoadminResponse;
 import com.example.tryretrofitlogin.postresponse.addhasillelang.AddHasillelangResponse;
 import com.example.tryretrofitlogin.postresponse.addlelang.AddLelangResponse;
 import com.example.tryretrofitlogin.postresponse.addlelangberlangsung.AddlelbrlangsungResponse;
 import com.example.tryretrofitlogin.postresponse.addlelpesertamanager.AddlelpsrtmanagerResponse;
-import com.example.tryretrofitlogin.postresponse.addleltrans.AddleltransResponse;
 import com.example.tryretrofitlogin.postresponse.addlprdktrans.AddprdktransResponse;
 import com.example.tryretrofitlogin.postresponse.addphoto.PostphotoResponse;
 import com.example.tryretrofitlogin.postresponse.addproduk.AddprodukResponse;
+import com.example.tryretrofitlogin.postresponse.addratingnreview.Addratingnreview;
 import com.example.tryretrofitlogin.postresponse.addreqtopup.AddtopupreqResponse;
 import com.example.tryretrofitlogin.postresponse.addrequestlelang.AddreqlelangResponse;
+import com.example.tryretrofitlogin.postresponse.addrequestsignuptoadmin.AddreqsignuptoadminResponse;
+import com.example.tryretrofitlogin.postresponse.addtranscomp.ResponseAddtranscomp;
 import com.example.tryretrofitlogin.postresponse.addwallet.AddWalletResponse;
 import com.example.tryretrofitlogin.postresponse.createleltrans.LeltransAddResponse;
 import com.example.tryretrofitlogin.putresponse.kurangisaldo.KurangisaldoResponse;
@@ -18,18 +22,20 @@ import com.example.tryretrofitlogin.putresponse.putleltransstat.Updateleltransst
 import com.example.tryretrofitlogin.putresponse.putprdktransstat.UpdateprdktransstatResponse;
 import com.example.tryretrofitlogin.responses.deletereqlel.DeletereqlelResponse;
 import com.example.tryretrofitlogin.responses.detlelbrjalanbyid.DetlelbrjalanbyidResponse;
+import com.example.tryretrofitlogin.responses.getalasancomplaint.GetAlasanComplaintResponse;
 import com.example.tryretrofitlogin.responses.getalldatauserbyid.GetalldatauserbyidResponse;
 import com.example.tryretrofitlogin.responses.getallimage.GetAllImageResponse;
 import com.example.tryretrofitlogin.responses.getallproduk.GetallprodukResponse;
 import com.example.tryretrofitlogin.responses.gethewanbyid.GethewanbyidResponse;
 import com.example.tryretrofitlogin.responses.getimgbyparent.GetimgbyparentResponse;
 import com.example.tryretrofitlogin.responses.getlelang.GetlelangResponse;
-import com.example.tryretrofitlogin.responses.getlelangbyhewan.GetlelangbyhewanResponse;
 import com.example.tryretrofitlogin.responses.getlelangbyid.GetlelangbyidResponse;
 import com.example.tryretrofitlogin.responses.getlelbrjalanbygc.GetlelbrjalanbygcResponse;
 import com.example.tryretrofitlogin.responses.getlelbrjalanbyid.GetlelbrjalanbyidResponse;
 import com.example.tryretrofitlogin.responses.getlelbrjalanbyuser.GetlelbrjalanbyuserResponse;
+import com.example.tryretrofitlogin.responses.getlelpesertabyidlelberjalan.Getlelpesertabyidlelberjalan;
 import com.example.tryretrofitlogin.responses.getleltransbyid.GetleltransbyidResponse;
+import com.example.tryretrofitlogin.responses.getleltransbyimageparent.Getleltransbyimgparent;
 import com.example.tryretrofitlogin.responses.getleltransbypllg.GetleltransbypllgResponse;
 import com.example.tryretrofitlogin.responses.getleltransbypsrt.GetleltransbypsrtResponse;
 import com.example.tryretrofitlogin.responses.getlistleltransbypeserta.GetListLelbypesertaResponse;
@@ -37,10 +43,12 @@ import com.example.tryretrofitlogin.responses.getpesrtmanagerbyuser.Getpsrtmanag
 import com.example.tryretrofitlogin.responses.getprdktransbyid.GetprdktransbyidResponse;
 import com.example.tryretrofitlogin.responses.getprdktransbypmbl.GetprdktransbypmblResponse;
 import com.example.tryretrofitlogin.responses.getprdktransbypnjl.GetprdktransbypnjlResponse;
+import com.example.tryretrofitlogin.responses.getratingreviewbytoken.Getreviewratingbytoken;
 import com.example.tryretrofitlogin.responses.getreqlel.GetReqlelResponse;
 import com.example.tryretrofitlogin.responses.getreqlelbyid.GetreqlelbyidResponse;
 import com.example.tryretrofitlogin.responses.getreqlelbysender.GetreqlelbysenderResponse;
 import com.example.tryretrofitlogin.responses.getreqlelbyuser.GetreqlelbyuserResponse;
+import com.example.tryretrofitlogin.responses.getsolusicomplaint.GetSolusiComplaintResponse;
 import com.example.tryretrofitlogin.responses.getuserbyid.GetusernamebyidResponse;
 import com.example.tryretrofitlogin.responses.getuserbyname.GetuseridResponse;
 import com.example.tryretrofitlogin.responses.signup.AuthResponse;
@@ -74,6 +82,16 @@ public interface APIService {
     );
 
     @FormUrlEncoded
+    @POST("addsignupreq")
+    Call<AddreqsignuptoadminResponse> requestSignuptoAdmin(
+            @Field("name") String name,
+            @Field("email") String email,
+            @Field("tlp") String tlp,
+            @Field("password") String password,
+            @Field("nikktp") String nikktp
+    );
+
+    @FormUrlEncoded
     @POST("login")
     Call<LoginResponse> loginUser(
             @Field("email") String email,
@@ -86,8 +104,46 @@ public interface APIService {
             @Field("user_id") String user_id,
             @Field("hewan_id") int hewan_id,
             @Field("harga") String harga,
-            @Field("comment") String comment
+            @Field("comment") String comment,
+            @Field("img_lelang") String img_lelang,
+            @Field("imgparent_token") String imgparent_token,
+            @Field("sertifparent_token") String sertifparent_token,
+            @Field("req_waktuperbid") String req_waktuperbid,
+            @Field("req_nominalperbid") String req_nominalperbid
     );
+
+//    @Multipart
+//    @POST("imagepost")
+//    Call<PostpotoResponse> pos(
+//            @Part ("imgparent") RequestBody imgparent,
+//            @Part MultipartBody.Part map
+//    );
+
+    @Multipart
+    @POST("addlelangreq")
+    Call<AddReqlelangtoadminResponse> requestLelangtoAdmin(
+            @Part ("user_id") RequestBody user_id,
+            @Part ("hewan_id") RequestBody hewan_id,
+            @Part ("harga") RequestBody harga,
+            @Part ("comment") RequestBody comment,
+            @Part MultipartBody.Part img_lelang,
+            @Part ("imgparent_token") RequestBody imgparent_token,
+            @Part ("sertifparent_token") RequestBody sertifparent_token,
+            @Part ("req_waktuperbid") RequestBody req_waktuperbid,
+            @Part ("req_nominalperbid") RequestBody req_nominalperbid
+    );
+
+//    @FormUrlEncoded
+//    @POST("addlelangreq")
+//    Call<Addreqleltoadmin> req(
+//            @Field("user_id") String user_id,
+//            @Field("hewan_id") int hewan_id,
+//            @Field("harga") String harga,
+//            @Field("comment") String comment,
+//            @Field("img_lelang") String img_lelang,
+//            @Field("req_waktuperbid") String req_waktuperbid,
+//            @Field("req_nominalperbid") String req_nominalperbid
+//    );
 
     @FormUrlEncoded
     @POST("lelbrjalan")
@@ -161,6 +217,15 @@ public interface APIService {
     );
 
     @FormUrlEncoded
+    @POST("addreviewnrating")
+    Call<Addratingnreview> addratingnreview(
+            @Field("nama_reviewer") String nama_reviewer,
+            @Field("ratingnreview_token") String ratingnreview_token,
+            @Field("rating") float rating,
+            @Field("review") String review
+    );
+
+    @FormUrlEncoded
     @POST("hasillelang")
     Call<AddHasillelangResponse> hasilLelang(
             @Field("statushasil_id") String statushasil_id,
@@ -179,7 +244,17 @@ public interface APIService {
             @Field("peserta_id") String peserta_id,
             @Field("lelbrjalan_id") String lelbrjalan_id,
             @Field("hewan") String hewan
+    );
 
+    @FormUrlEncoded
+    @POST("addcompreq")
+    Call<ResponseAddtranscomp> uploadTranscomp(
+            @Field("transaksi_id") String transaksi_id,
+            @Field("idpengaju_complaint") String idpengaju_complaint,
+            @Field("namapengaju_complaint") String namapengaju_complaint,
+            @Field("alasan_complaint") int alasan_complaint,
+            @Field("solusi_complaint") int solusi_complaint,
+            @Field("img_complaint") String img_complaint
     );
 
     //jika mengirim file saja pakai cara ini
@@ -198,6 +273,9 @@ public interface APIService {
     );
     // walaupun tipe string atau int, tetap pakai RequestBody
 
+
+
+//---------------------PUT RESPONSE------------------------------------------------//
     @FormUrlEncoded
     @PUT("tambahsaldo/{id}")
     Call<TopupResponse> saldotambah(
@@ -216,8 +294,10 @@ public interface APIService {
     @PUT("ubahstatustrans/{id}")
     Call<UpdateleltransstatResponse> ubahstattrans(
             @Path("id") String id,
+            @Field("hasillelang_token") String hasillelang_token,
             @Field("statushasil_id") String statushasil_id,
             @Field("statushasil") String statushasil
+
     );
 
     @FormUrlEncoded
@@ -235,6 +315,8 @@ public interface APIService {
             @Field("gchat_id") String gchatId
     );
 
+
+//--------------------------GET RESPONSE----------------------------------------------------------//
     @GET("getwallet/{user_id}")
     Call<GetWalletInfoResponse> getinfosaldo(
             @Path("user_id") String user_id,
@@ -247,7 +329,9 @@ public interface APIService {
             @Query("user_id") String user_id,
             @Query("hewan_id") String hewan_id,
             @Query("harga") String harga,
-            @Query("comment") String comment
+            @Query("comment") String comment,
+            @Query("req_waktuperbid") int waktuperbid,
+            @Query("req_nominalperbid") int nominalperbid
     );
 
     @GET("getuserbyname/{name}")
@@ -259,6 +343,16 @@ public interface APIService {
     @GET("getreqlelbyuser/{user_id}")
     Call<GetreqlelbyuserResponse> getReqlelbyuser(
             @Path("user_id") String user_id
+    );
+
+    @GET("getallpesertabylelid/{lelbrjalan_id}")
+    Call<Getlelpesertabyidlelberjalan> getLelpesertabyidlelberjalan(
+            @Path("lelbrjalan_id") String lelbrjalan_id
+    );
+
+    @GET("getreviewnratingbytoken/{ratingnreview_token}")
+    Call<Getreviewratingbytoken> getreviewratingbytoken(
+            @Path("ratingnreview_token") String ratingnreview_token
     );
 
     @GET("getreqlelbypengirim/{pengirim_id}")
@@ -277,7 +371,7 @@ public interface APIService {
     );
 
     @GET("getlelangbyhewan/{id}")
-    Call<GetlelangbyhewanResponse> getLelbyhewan(
+    Call<GetLelangbyHewanResponse> getLelbyhewan(
             @Path("id") String id
     );
 
@@ -285,6 +379,8 @@ public interface APIService {
     Call<GetlelbrjalanbyuserResponse> getlelbrjlanbyuser(
             @Path("user_id") String id
     );
+
+
 
 
     //translel/////////////////////////////////////////////////
@@ -299,6 +395,19 @@ public interface APIService {
     @GET("getleltransbyid/{id}")
     Call<GetleltransbyidResponse> leltransbyid(
             @Path("id") String id
+    );
+
+    @GET("getleltransbyleltoken/{hasillelang_token}")
+    Call<Getleltransbyimgparent> leltransbyleltoken(
+            @Path("hasillelang_token") String hasillelang_token,
+            @Query("id") String id
+//            @Query("statushasil_id") String statushasil_id,
+//            @Query("statushasil") String statushasil,
+//            @Query("peserta_id") String peserta_id,
+//            @Query("pelelang_id") String pelelang_id,
+//            @Query("hewan") String hewan,
+//            @Query("harga_lelang") int harga_lelang,
+//            @Query("nilai_akhir") int nilai_akhir
     );
 
     //transprdk/////////////////////////////////////////////////
@@ -339,7 +448,8 @@ public interface APIService {
             @Query("user_id") String user_id,
             @Query("hewan_id") String hewan_id,
             @Query("comment") String comment,
-            @Query("harga") String harga
+            @Query("harga") String harga,
+            @Query("img_lelang") String img_lelang
     );
 
     @GET("getlelbrjalanbyid/{id}")
@@ -380,6 +490,14 @@ public interface APIService {
 
     @GET("hewan")
     Call<HewanResponse> gethewan(
+    );
+
+    @GET("alasancomplaint")
+    Call<GetAlasanComplaintResponse> getallalasan(
+    );
+
+    @GET("solusicomplaint")
+    Call<GetSolusiComplaintResponse> getallsolusi(
     );
 
     @GET("alllelang")

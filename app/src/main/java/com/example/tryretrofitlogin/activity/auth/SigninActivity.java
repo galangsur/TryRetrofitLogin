@@ -11,7 +11,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.tryretrofitlogin.R;
+import com.example.tryretrofitlogin.activity.AboutoneActivity;
 import com.example.tryretrofitlogin.activity.HomeActivity;
+import com.example.tryretrofitlogin.activity.MainActivity;
+import com.example.tryretrofitlogin.activity.PilihanlelActivity;
 import com.example.tryretrofitlogin.api.APIService;
 import com.example.tryretrofitlogin.api.APIUrl;
 import com.example.tryretrofitlogin.helper.SharedPrefManager;
@@ -27,7 +30,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class SigninActivity extends AppCompatActivity {
 
     private EditText editTextEmail, editTextPassword;
-    private Button buttonSignIn;
+    private Button buttonSignIn, buttonSignup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,15 +38,21 @@ public class SigninActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signin);
 
         buttonSignIn = (Button) findViewById(R.id.btn_signin);
-
+        buttonSignup = (Button) findViewById(R.id.btn_tosignup);
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
 
         buttonSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("error","error");
                 userLogin();
+            }
+        });
+
+        buttonSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tosignup();
             }
         });
 
@@ -54,6 +63,12 @@ public class SigninActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         SigninActivity.super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+    }
+
+    private void tosignup(){
+        Intent tosignup = new Intent(SigninActivity.this, AboutoneActivity.class);
+        startActivity(tosignup);
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
     }
 
@@ -76,7 +91,7 @@ public class SigninActivity extends AppCompatActivity {
         call.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                if (response.body() !=null) {
+                if (response.body() != null) {
                     SharedPrefManager.getInstance(getApplicationContext()).userLogin(
                             response.body().getSuccess().getId(),
                             response.body().getSuccess().getToken(),

@@ -10,7 +10,7 @@
             android:id="@+id/txt_fromname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
+            android:textSize="24sp"
             android:layout_marginLeft="12dp"
             android:textStyle="bold"
             android:textColor="@color/green1"/>
@@ -24,7 +24,7 @@
             android:layout_below="@id/txt_fromname"
             android:background="@drawable/reciever_message_layout"
             android:padding="10dp"
-            android:textSize="14sp"
+            android:textSize="24sp"
             android:textStyle="bold"/>
 
     <TextView
@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/txt_recievermsg"
-        android:textSize="12sp"
+        android:textSize="22sp"
         android:layout_marginLeft="5dp"
         android:textStyle="bold"
         android:textColor="@color/green1"/>
@@ -44,7 +44,7 @@
         android:layout_toRightOf="@id/txt_date"
         android:layout_below="@id/txt_recievermsg"
         android:layout_marginLeft="10dp"
-        android:textSize="11sp"
+        android:textSize="21sp"
         android:textStyle="bold"
         android:textColor="@color/green1"/>
 
@@ -58,7 +58,7 @@
         android:layout_marginRight="5dp"
         android:layout_alignParentTop="@+id/txt_recievermsg"
         android:background="@drawable/sender_message_layout"
-        android:textSize="14sp"
+        android:textSize="24sp"
         android:text="r"
         android:padding="10dp"
         android:textStyle="bold"/>

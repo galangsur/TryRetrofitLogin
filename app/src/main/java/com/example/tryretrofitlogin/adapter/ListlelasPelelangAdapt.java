@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tryretrofitlogin.R;
 import com.example.tryretrofitlogin.activity.DetailLelbrjalan;
+import com.example.tryretrofitlogin.activity.DetailLelbrjalanPlelang;
 import com.example.tryretrofitlogin.activity.GroupchatActivity;
 import com.example.tryretrofitlogin.responses.getlelbrjalanbyuser.SuccessItem;
 
@@ -45,7 +46,7 @@ public class ListlelasPelelangAdapt extends RecyclerView.Adapter<ListlelasPelela
         holder.btn_tolelroom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent aspelelang = new Intent(lelbrjalanContex, DetailLelbrjalan.class);
+                Intent aspelelang = new Intent(lelbrjalanContex, DetailLelbrjalanPlelang.class);
                 aspelelang.putExtra("idlelbrjalan",getlelbrjalan.get(position).getId());
                 lelbrjalanContex.startActivity(aspelelang);
             }

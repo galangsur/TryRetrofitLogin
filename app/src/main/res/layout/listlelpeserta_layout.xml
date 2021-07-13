@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="25dp"
+    android:layout_marginBottom="10dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+        <ImageView
+            android:id="@+id/listpeserta_img"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/usericon"/>
+
+        <TextView
+            android:id="@+id/txt_idpesertalistpeserta"
+            android:layout_width="1dp"
+            android:layout_height="1dp"/>
+
+        <TextView
+            android:id="@+id/txt_listpesertanama"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/green1"
+            android:textStyle="bold"
+            android:layout_toRightOf="@+id/listpeserta_img"/>
+
+        <Button
+            android:id="@+id/listpeserta_btnprofile"
+            android:layout_width="80dp"
+            android:layout_height="35dp"
+            android:background="@drawable/btnasset"
+            android:layout_alignParentRight="true"
+            android:text="profile"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

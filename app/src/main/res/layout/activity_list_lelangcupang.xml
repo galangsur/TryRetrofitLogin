@@ -5,7 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.ListLelangsapiActivity">
+    tools:context=".activity.ListLelangcupangActivity">
+    <TextView
+        android:id="@+id/txtuserIdcupang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/green1"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,31 +26,43 @@
         android:layout_marginTop="23dp"
         android:src="@drawable/ic_baseline_arrowwhite_24"/>
     <TextView
-        android:layout_width="140dp"
+        android:layout_width="170dp"
         android:layout_height="100dp"
-        android:text="Lelang Sapi"
+        android:text="Lelang Cupang"
         android:layout_gravity="center"
         android:textSize="25sp"
         android:textStyle="bold"
         android:textColor="@color/white"
         android:layout_toRightOf="@id/btn_backreqlist"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="55dp"/>
+        android:layout_marginLeft="50dp"/>
 
     <ImageView
         android:id="@+id/btn_pengajuanlel"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="25dp"
         android:layout_alignParentRight="true"
-        android:src="@drawable/ic_outline_add_boxwhite_24"/>
+        android:src="@drawable/addbtn"/>
+
+    <Button
+        android:id="@+id/tosignup_lelcupang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:textColor="@color/white"
+        android:background="@drawable/mainasset_c"
+        android:backgroundTint="@color/orange5"
+        android:layout_alignParentRight="true"
+        android:visibility="invisible"
+        android:layout_below="@id/btn_pengajuanlel"/>
 
     <TextView
         android:id="@+id/lelsapi_filterkey"
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:textColor="@color/brown"/>
+        android:textColor="@color/green1"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lelangsapiRV"

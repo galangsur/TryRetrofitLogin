@@ -8,9 +8,42 @@
     tools:context=".activity.LelreqlistActivity">
 
     <RelativeLayout
+        android:id="@+id/listfield"
         android:layout_width="match_parent"
         android:layout_height="330dp"
         android:background="@drawable/reqlelasset_a"/>
+
+    <ImageView
+        android:id="@+id/imgnoreqpendaftar"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/norequestilus"
+        android:visibility="invisible"/>
+    <TextView
+        android:id="@+id/textnoreqpendaftaran"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgnoreqpendaftar"
+        android:textAlignment="center"
+        android:textColor="@color/green1"
+        android:textStyle="italic"
+        android:visibility="invisible"
+        android:layout_centerHorizontal="true"
+        android:text="'Request pendaftaran anda kosong, ayo daftarkan lelang anda'"/>
+    <Button
+        android:id="@+id/btnnoreqpendataran"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textnoreqpendaftaran"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/btnasset"
+        android:text="Tambah Lelang"
+        android:textColor="@color/white"
+        android:padding="10dp"
+        android:visibility="invisible"
+        android:layout_marginTop="35dp"/>
 
     <ImageView
     android:id="@+id/btn_backreqlist"
@@ -35,7 +68,7 @@
         android:id="@+id/reqlel_filterkey"
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:textColor="@color/brown"/>
+        android:textColor="@color/green1"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/reqlelRV"

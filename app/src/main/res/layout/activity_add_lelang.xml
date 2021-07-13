@@ -22,6 +22,30 @@
             android:paddingBottom="10dp">
 
             <TextView
+                android:id="@+id/waktutruepick"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:textColor="@color/green1"/>
+
+            <TextView
+                android:id="@+id/lelimgtoken"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:textColor="@color/green1"/>
+
+            <TextView
+                android:id="@+id/lelsertifimgtoken"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:textColor="@color/green1"/>
+
+            <TextView
+                android:id="@+id/usersaldocek"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:textColor="@color/green1"/>
+
+            <TextView
                 android:id="@+id/txtTextuserId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -72,7 +96,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Hewan :"
+                    android:text="Kategori Hewan :"
                     android:textSize="20dp"
                     android:textStyle="bold"
                     android:textColor="@color/green1"/>
@@ -87,7 +111,56 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Tambahan Pelelang :"
+                    android:text="Umur Hewan :"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/green1"/>
+                <EditText
+                    android:id="@+id/editTextumur"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Tambahkan umur hewan"
+                    android:inputType="text"
+                    android:layout_marginBottom="20dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Jenis Kelamin Hewan :"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/green1"/>
+
+                <EditText
+                    android:id="@+id/editTextjeniskelamin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:hint="Tambahkan jenis kelamin hewan "
+                    android:inputType="text" />
+
+                <TextView
+                    android:id="@+id/titleTextwarnabulu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Deskripsi warna hewan :"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/green1"/>
+                <EditText
+                    android:id="@+id/editTextwarnabulu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Tambahkan deskripsi warna hewan"
+                    android:inputType="text"
+                    android:maxHeight="300dp"
+                    android:maxWidth="320dp"
+                    android:layout_marginBottom="20dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tambahan pelelang lainnya :"
                     android:textSize="20dp"
                     android:textStyle="bold"
                     android:textColor="@color/green1"/>
@@ -95,7 +168,7 @@
                     android:id="@+id/editTextcomment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter comment "
+                    android:hint="Informasi lain tentang lelang anda "
                     android:inputType="text"
                     android:layout_marginBottom="20dp"/>
 
@@ -106,49 +179,337 @@
                     android:textSize="20dp"
                     android:textStyle="bold"
                     android:textColor="@color/green1"/>
-                <EditText
-                    android:id="@+id/editTextharga"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Enter harga "
-                    android:inputType="phone"
-                    android:layout_marginBottom="30dp"/>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/smallwalleticoncpng"
+                        android:layout_width="31dp"
+                        android:layout_height="31dp"
+                        android:background="@drawable/coinrp"
+                        android:layout_toLeftOf="@id/editTextharga"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="10dp"/>
+                    <EditText
+                        android:id="@+id/editTextharga"
+                        android:layout_width="284dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Tambahkan nominal "
+                        android:inputType="phone"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginBottom="30dp"/>
+                </RelativeLayout>
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/lelang2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_below="@id/lelang1"
-                android:layout_marginTop="30dp"
-                android:padding="10dp"
                 android:orientation="vertical"
+                android:layout_marginTop="28dp"
+                android:padding="10dp"
                 android:background="@drawable/homeasset_e">
                 <TextView
+                    android:id="@+id/txtaddlelang_waktu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tentukan Waktu Bid :"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/green1"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/txt_waktubid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center_horizontal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="jam"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/txt_waktubid"
+                        android:gravity="center_horizontal" />
+
+                    <Button
+                        android:id="@+id/btn_waktu1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Setengah Hari"
+                        android:textSize="10sp"
+                        android:textColor="@color/white"
+                        android:layout_below="@+id/txt_waktubid"
+                        android:background="@drawable/btnasset"/>
+
+                    <Button
+                        android:id="@+id/btn_waktu2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="1 hari"
+                        android:textColor="@color/white"
+                        android:layout_below="@+id/txt_waktubid"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/btnasset"/>
+
+                    <Button
+                        android:id="@+id/btn_waktu3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="2 hari"
+                        android:textColor="@color/white"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/txt_waktubid"
+                        android:background="@drawable/btnasset"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lelang3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/lelang2"
+                android:orientation="vertical"
+                android:layout_marginTop="28dp"
+                android:padding="10dp"
+                android:background="@drawable/homeasset_e">
+                <TextView
+                    android:id="@+id/txtaddlelang_perbid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tentukan Jumlah Per Bid :"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/green1"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/txt_jmlhperbid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center_horizontal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@+id/txt_jmlhperbid"
+                        android:gravity="center_horizontal" />
+
+                    <Button
+                        android:id="@+id/btn_bid1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Rp. 25.000"
+                        android:textColor="@color/white"
+                        android:layout_below="@+id/txt_jmlhperbid"
+                        android:background="@drawable/btnasset"/>
+
+                    <Button
+                        android:id="@+id/btn_bid2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Rp. 50.000"
+                        android:textColor="@color/white"
+                        android:layout_below="@+id/txt_jmlhperbid"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/btnasset"/>
+
+                    <Button
+                        android:id="@+id/btn_bid3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Rp. 100.000"
+                        android:textColor="@color/white"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/txt_jmlhperbid"
+                        android:background="@drawable/btnasset"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lelang4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/lelang3"
+                android:orientation="vertical"
+                android:layout_marginTop="28dp"
+                android:padding="10dp"
+                android:background="@drawable/homeasset_e">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tambah Foto Iklan :"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/green1"/>
+                    <TextView
+                        android:id="@+id/fotoattachmenturi"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/fotodisplayhw"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"/>
+                    <ImageView
+                        android:id="@+id/btn_pickfotohw"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="70dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@id/imagedisplayhw"
+                        android:background="@drawable/ic_baseline_add_photo_alternate_24"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lelang5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/lelang4"
+                android:orientation="vertical"
+                android:layout_marginTop="28dp"
+                android:padding="10dp"
+                android:background="@drawable/homeasset_e">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tambahkan foto sertif jika ada :"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/green1"/>
+                    <TextView
+                        android:id="@+id/sertifattachmenturi"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/sertifdisplayhw"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"/>
+                    <ImageView
+                        android:id="@+id/btn_pickfotosertif"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="70dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@id/imagedisplayhw"
+                        android:background="@drawable/ic_baseline_add_photo_alternate_24"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_below="@id/lelang5"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/homeasset_e"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/addleltxt1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tentang Pengajuan Lelang :"
+                    android:textColor="@color/green1"
                     android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/green1"/>
+                    android:textStyle="bold" />
+
                 <TextView
+                    android:id="@+id/addleltxt2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Biaya pengajuan lelang per sekali lelangnya akan dikenakan biaya sebesar 50000 dan sudah termasuk biaya balik nama hewan."
-                    android:textSize="18sp"
-                    android:textColor="@color/green1"/>
+                    android:text="Biaya pengajuan lelang per sekali lelangnya akan dikenakan biaya sebesar 300000 dan sudah termasuk biaya balik nama hewan."
+                    android:textColor="@color/green1"
+                    android:layout_below="@id/addleltxt1"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/txtsaldokurang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Saldo anda tidak cukup untuk mengajukan lelang"
+                    android:background="@drawable/btnasset"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/red6"
+                    android:padding="5dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="40dp"
+                    android:layout_gravity="center"/>
+
                 <Button
                     android:id="@+id/btn_addlelang"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="60dp"
                     android:layout_marginRight="60dp"
-                    android:text="Ajukan Lelang"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
+                    android:layout_alignParentBottom="true"
                     android:background="@drawable/btnasset"
-                    android:layout_marginTop="50dp"/>
-            </LinearLayout>
+                    android:text="Ajukan Lelang"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
+                <Button
+                    android:id="@+id/btn_addfotosertif"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginRight="60dp"
+                    android:background="@drawable/btnasset"
+                    android:layout_above="@id/btn_addlelang"
+                    android:text="Ajukan Lelang"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+            </RelativeLayout>
 
         </RelativeLayout>
     </ScrollView>

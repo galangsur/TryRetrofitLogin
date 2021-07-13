@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -69,7 +70,8 @@ public class ListLelTransaksi extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-
+        Intent backhm = new Intent(ListLelTransaksi.this, HomeActivity.class);
+        startActivity(backhm);
     }
 
     public void getLeltrans(){

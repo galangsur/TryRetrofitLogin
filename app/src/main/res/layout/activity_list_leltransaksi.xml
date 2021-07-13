@@ -27,15 +27,14 @@
         android:textSize="25sp"
         android:textStyle="bold"
         android:textColor="@color/white"
-        android:layout_toRightOf="@id/btn_backleltranslist"
         android:layout_marginTop="15dp"
-        android:layout_marginLeft="10dp"/>
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         android:id="@+id/leltrans_filterkey"
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:textColor="@color/brown"/>
+        android:textColor="@color/green1"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/leltransaksiRV"

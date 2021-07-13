@@ -14,7 +14,7 @@ public class Success{
 	private String createdAt;
 
 	@SerializedName("saldo")
-	private String saldo;
+	private int saldo;
 
 	public void setUpdatedAt(String updatedAt){
 		this.updatedAt = updatedAt;
@@ -40,11 +40,11 @@ public class Success{
 		return createdAt;
 	}
 
-	public void setSaldo(String saldo){
+	public void setSaldo(int saldo){
 		this.saldo = saldo;
 	}
 
-	public String getSaldo(){
+	public int getSaldo(){
 		return saldo;
 	}
 
