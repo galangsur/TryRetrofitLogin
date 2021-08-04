@@ -1,8 +1,11 @@
-package com.example.tryretrofitlogin.responses.getpesrtmanagerbyuser;
+package com.example.tryretrofitlogin.responses.getleldiikutipeserta;
 
 import com.google.gson.annotations.SerializedName;
 
 public class SuccessItem{
+
+	@SerializedName("peserta_nama")
+	private String pesertaNama;
 
 	@SerializedName("peserta_id")
 	private String pesertaId;
@@ -21,6 +24,14 @@ public class SuccessItem{
 
 	@SerializedName("hewan")
 	private String hewan;
+
+	public void setPesertaNama(String pesertaNama){
+		this.pesertaNama = pesertaNama;
+	}
+
+	public String getPesertaNama(){
+		return pesertaNama;
+	}
 
 	public void setPesertaId(String pesertaId){
 		this.pesertaId = pesertaId;
@@ -74,7 +85,8 @@ public class SuccessItem{
  	public String toString(){
 		return 
 			"SuccessItem{" + 
-			"peserta_id = '" + pesertaId + '\'' + 
+			"peserta_nama = '" + pesertaNama + '\'' + 
+			",peserta_id = '" + pesertaId + '\'' + 
 			",updated_at = '" + updatedAt + '\'' + 
 			",lelbrjalan_id = '" + lelbrjalanId + '\'' + 
 			",created_at = '" + createdAt + '\'' + 

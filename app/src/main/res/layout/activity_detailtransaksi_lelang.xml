@@ -28,6 +28,17 @@
                 android:layout_marginRight="15dp"
                 android:padding="15dp"
                 android:background="@drawable/signasset_c">
+                <ImageView
+                    android:id="@+id/icondettrans1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_baseline_persongreen_24"/>
+                <ImageView
+                    android:id="@+id/icondettrans5"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_baseline_notes_24"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -35,16 +46,19 @@
                     android:text="Pemenang"
                     android:textColor="@color/green1"
                     android:textStyle="bold"
-                    android:textSize="20dp"/>
+                    android:textSize="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/icondettrans1"/>
                 <TextView
                     android:id="@+id/txt_result1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:text="Username :"
+                    android:layout_marginTop="20dp"
+                    android:text="Nama Pemenang :"
                     android:textColor="@color/green1"
                     android:textStyle="bold"
-                    android:textSize="16dp"/>
+                    android:textSize="16dp"
+                    android:layout_below="@id/icondettrans1"/>
                 <EditText
                     android:id="@+id/rslt_namapemenang"
                     android:layout_width="290dp"
@@ -63,24 +77,32 @@
                 android:layout_marginRight="15dp"
                 android:padding="15dp"
                 android:background="@drawable/signasset_c">
+                <ImageView
+                    android:id="@+id/icondettrans2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_baseline_logo_detailgreen_24"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:text="Kelengkapan Transaksi"
+                    android:text="Info Transaksi"
                     android:textColor="@color/green1"
                     android:textStyle="bold"
-                    android:textSize="20dp"/>
+                    android:textSize="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/icondettrans2"/>
+
                 <TextView
                     android:id="@+id/txt_result2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="20dp"
                     android:text="Nominal Transaksi :"
                     android:textColor="@color/green1"
                     android:textStyle="bold"
-                    android:textSize="16dp"/>
-
+                    android:textSize="16dp"
+                    android:layout_below="@+id/icondettrans2"/>
                 <ImageView
                     android:id="@+id/smallwalleticoncpng"
                     android:layout_width="31dp"
@@ -90,7 +112,6 @@
                     android:layout_below="@id/txt_result2"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="10dp"/>
-
                 <EditText
                     android:id="@+id/rslt_nilaiakhir"
                     android:layout_width="264dp"
@@ -99,21 +120,62 @@
                     android:inputType="none"
                     android:layout_below="@+id/txt_result2"/>
 
+                <TextView
+                    android:id="@+id/txt_result3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Status Transaksi :"
+                    android:textColor="@color/green1"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:layout_below="@+id/rslt_nilaiakhir"/>
+                <EditText
+                    android:id="@+id/rslt_statustransaksi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:inputType="none"
+                    android:layout_below="@+id/txt_result3"/>
+
                 <Button
                     android:id="@+id/btntobukti"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btnasset"
-                    android:backgroundTint="@color/white"
-                    android:layout_below="@+id/rslt_nilaiakhir"
+                    android:backgroundTint="@color/green1"
+                    android:layout_below="@+id/rslt_statustransaksi"
                     android:layout_marginTop="15dp"
                     android:text="Cek Bukti transaksi"
-                    android:textColor="@color/green1"
+                    android:textColor="@color/white"
                     android:textStyle="bold"
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:paddingLeft="50dp"
-                    android:drawableLeft="@drawable/ic_baseline_description_24"
+                    android:drawableLeft="@drawable/ic_baseline_descriptionwhite_24"
                     android:drawablePadding="-50dp"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/btnasset"
+                    android:backgroundTint="@color/white"
+                    android:layout_below="@id/btntobukti"
+                    android:padding="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sampaikan keluhan anda jika bukti transaksi tidak sesuai.."
+                        android:textColor="@color/green1"
+                        android:textStyle="bold"
+                        android:layout_toLeftOf="@id/icondettrans4"/>
+                    <ImageView
+                        android:id="@+id/icondettrans4"
+                        android:layout_width="31dp"
+                        android:layout_height="31dp"
+                        android:src="@drawable/ic_baseline_feedback_24"
+                        android:layout_alignParentRight="true"/>
+                </RelativeLayout>
             </RelativeLayout>
 
 
@@ -127,6 +189,17 @@
                 android:padding="15dp"
                 android:background="@drawable/signasset_c"
                 android:layout_below="@id/rellaydettrans">
+                <ImageView
+                    android:id="@+id/icondettrans3"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_baseline_persongreen_24"/>
+                <ImageView
+                    android:id="@+id/icondettrans6"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_baseline_notes_24"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -134,16 +207,19 @@
                     android:text="Pelelang"
                     android:textColor="@color/green1"
                     android:textStyle="bold"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@id/icondettrans3"
                     android:textSize="20dp"/>
                 <TextView
                     android:id="@+id/txt_result8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:text="Username :"
+                    android:layout_marginTop="20dp"
+                    android:text="Nama Pelelang :"
                     android:textColor="@color/green1"
                     android:textStyle="bold"
-                    android:textSize="16dp"/>
+                    android:textSize="16dp"
+                    android:layout_below="@+id/icondettrans3"/>
                 <EditText
                     android:id="@+id/rslt_namapelelang"
                     android:layout_width="290dp"

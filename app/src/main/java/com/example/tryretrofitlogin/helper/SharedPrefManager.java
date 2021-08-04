@@ -22,12 +22,17 @@ public class SharedPrefManager {
     private static final String KEY_USER_NAME = "keyusername";
     private static final String KEY_USER_EMAIL = "keyuseremail";
     private static final String KEY_USER_NIKKTP = "keyusernikktp";
+    private static final String KEY_USER_REVIEWNRATINGTOKEN = "keyuserrnr";
     private static final String KEY_USER_TLP = "keyuseretlp";
     private static final String KEY_USER_PASSWORD = "keyuserpassword";
     private static final String KEY_USER_CPASSWORD = "keyusercpassword";
     private static final String KEY_REQ_ID = "keyreqid";
     private static final String KEY_ID_PENGIRIM = "keyuserpengirim";
     private static final String KEY_LELANG_ID = "keylelangid";
+    private static final String KEY_STARTIMEINMILLIS = "mStartTimeInMillis";
+    private static final String KEY_TIMELEFTINMILLIS = "mTimeLeftInMillis";
+    private static final String KEY_TIMERRUNNING = "mTimerRunning";
+    private static final String KEY_ENDTIME = "mEndTime";
 
     private SharedPrefManager(Context context) {
         mCtx = context;
@@ -48,6 +53,17 @@ public class SharedPrefManager {
         editor.putString(KEY_USER_NAME, name);
         editor.putString(KEY_USER_EMAIL, email);
         editor.apply();
+        return true;
+    }
+
+    public boolean countdowntimerPref(long mStartTimeInMillis,long mTimeLeftInMillis,boolean mTimerRunning,long mEndTime){
+        SharedPreferences timersharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor timereditor = timersharedPreferences.edit();
+        timereditor.putLong(KEY_STARTIMEINMILLIS, mStartTimeInMillis);
+        timereditor.putLong(KEY_TIMELEFTINMILLIS, mTimeLeftInMillis);
+        timereditor.putBoolean(KEY_TIMERRUNNING, mTimerRunning);
+        timereditor.putLong(KEY_ENDTIME, mEndTime);
+        timereditor.apply();
         return true;
     }
 
@@ -104,7 +120,8 @@ public class SharedPrefManager {
                 sharedPreferences.getString(KEY_USER_TLP, null),
                 sharedPreferences.getString(KEY_USER_PASSWORD, null),
                 sharedPreferences.getString(KEY_USER_CPASSWORD,null),
-                sharedPreferences.getString(KEY_USER_NIKKTP,null)
+                sharedPreferences.getString(KEY_USER_NIKKTP,null),
+                sharedPreferences.getString(KEY_USER_REVIEWNRATINGTOKEN,null)
         );
     }
 
@@ -123,5 +140,4 @@ public class SharedPrefManager {
                 editor.apply();
         return sendwalletinfo(user_id,saldo);
     }
-
 }

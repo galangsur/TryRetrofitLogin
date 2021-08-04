@@ -27,6 +27,7 @@
             android:textColor="@color/white"
             android:textStyle="italic"
             android:padding="10dp"
+            android:fontFamily="@font/robotomedium"
             android:layout_above="@+id/backbtn_ab3"
             android:layout_centerHorizontal="true"/>
 
@@ -41,6 +42,7 @@
             android:backgroundTint="@color/orange5"
             android:layout_weight="1"
             android:text="Signup"
+            android:fontFamily="@font/robotomedium"
             android:textColor="@color/white"/>
 
         <Button
@@ -53,7 +55,8 @@
             android:backgroundTint="@color/orange5"
             android:layout_weight="1"
             android:text="Back"
-            android:layout_marginTop="50dp"
+            android:fontFamily="@font/robotomedium"
+            android:layout_marginTop="30dp"
             android:textColor="@color/white"/>
 
     </RelativeLayout>

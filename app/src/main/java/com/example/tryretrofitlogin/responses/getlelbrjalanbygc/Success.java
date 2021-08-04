@@ -29,10 +29,21 @@ public class Success{
 	private String id;
 
 	@SerializedName("req_waktuperbid")
-	private int reqWaktuperbid;
+	private String reqWaktuperbid;
 
 	@SerializedName("gchat_id")
 	private String gchatId;
+
+	@SerializedName("pesertaonline_token")
+	private String pesertaonline_token;
+
+	public void setPesertaonline_token(String pesertaonline_token) {
+		this.pesertaonline_token = pesertaonline_token;
+	}
+
+	public String getPesertaonline_token() {
+		return pesertaonline_token;
+	}
 
 	public void setReqNominalperbid(int reqNominalperbid){
 		this.reqNominalperbid = reqNominalperbid;
@@ -98,11 +109,11 @@ public class Success{
 		return id;
 	}
 
-	public void setReqWaktuperbid(int reqWaktuperbid){
+	public void setReqWaktuperbid(String reqWaktuperbid){
 		this.reqWaktuperbid = reqWaktuperbid;
 	}
 
-	public int getReqWaktuperbid(){
+	public String getReqWaktuperbid(){
 		return reqWaktuperbid;
 	}
 

@@ -18,7 +18,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.ImageUploadFinishtrans"></activity>
+        <activity android:name=".activity.ImageUploadTranscomplaintActivity"></activity>
+        <activity android:name=".activity.ChecklistPesertaOnlineActivity" /> <!-- [START firebase_service] -->
+        <service android:name=".fcmservices.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="android.intent.action.RESPOND_VIA_MESSAGE" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".activity.TryNotificationActivity" />
+        <activity android:name=".activity.ImageUploadFinishtrans" />
         <activity android:name=".activity.UserprofileActivity" />
         <activity android:name=".activity.RatingnreviewinputActivity" />
         <activity android:name=".activity.AboutsignupActivity" />
@@ -59,7 +68,9 @@
         <activity
             android:name=".activity.LelangResultActivity"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".activity.GroupchatActivity" />
+        <activity
+            android:name=".activity.GroupchatActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".activity.DetailReqlelActivity" />
         <activity android:name=".activity.LelreqlistActivity" />
         <activity
@@ -81,15 +92,7 @@
         </activity> <!-- [START fcm_default_channel] -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
-            android:value="@string/app_name" /> <!-- [END fcm_default_channel] -->
-        <!-- [START firebase_service] -->
-        <service
-            android:name=".fcmservices.MyFirebaseMessagingService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
+            android:value="@string/app_name" />
     </application>
 
 </manifest>

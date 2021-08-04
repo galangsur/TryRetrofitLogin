@@ -22,6 +22,12 @@
             android:paddingBottom="10dp">
 
             <TextView
+                android:id="@+id/tmpstringidhewan"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:textColor="@color/green1"/>
+
+            <TextView
                 android:id="@+id/waktutruepick"
                 android:layout_width="1dp"
                 android:layout_height="1dp"
@@ -35,6 +41,12 @@
 
             <TextView
                 android:id="@+id/lelsertifimgtoken"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:textColor="@color/green1"/>
+
+            <TextView
+                android:id="@+id/pesertaonlinetoken"
                 android:layout_width="1dp"
                 android:layout_height="1dp"
                 android:textColor="@color/green1"/>
@@ -58,16 +70,17 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
                 android:src="@drawable/ic_baseline_arrowwhite_24"/>
+
             <TextView
-                android:layout_width="240dp"
-                android:layout_height="100dp"
-                android:text="            Form
-                                    Pengajuan Lelang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textSize="25sp"
-                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:text="Pengajuan Lelang"
                 android:textColor="#FFFFFF"
-                android:layout_marginLeft="70dp"/>
+                android:textSize="25sp"
+                android:layout_marginTop="15dp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:id="@+id/lelang1"
@@ -77,12 +90,33 @@
                 android:padding="10dp"
                 android:orientation="vertical"
                 android:background="@drawable/homeasset_e">
+                <RelativeLayout
+                    android:id="@+id/addlelrellay1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/iconaddlel1"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_baseline_post_add_24"/>
+                    <TextView
+                        android:id="@+id/txtaddlel1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Lengkapi Form Pengajuan"
+                        android:textSize="22dp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@id/iconaddlel1"
+                        android:textColor="@color/green1"/>
+                </RelativeLayout>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Pelelang :"
                     android:textStyle="bold"
                     android:textSize="20dp"
+                    android:layout_marginTop="20dp"
                     android:textColor="@color/green1"/>
                 <TextView
                     android:id="@+id/txtTextuserNama"
@@ -115,13 +149,28 @@
                     android:textSize="20dp"
                     android:textStyle="bold"
                     android:textColor="@color/green1"/>
-                <EditText
-                    android:id="@+id/editTextumur"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Tambahkan umur hewan"
-                    android:inputType="text"
-                    android:layout_marginBottom="20dp"/>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/editTextumur"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Tambahkan umur hewan"
+                        android:inputType="text"
+                        android:layout_marginBottom="20dp"/>
+
+                    <Spinner
+                        android:id="@+id/spinumursatuanId"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_toRightOf="@id/editTextumur"
+                        android:entries="@array/satuanumurhewan"
+                        android:inputType="text" />
+                </RelativeLayout>
+
 
                 <TextView
                     android:layout_width="match_parent"
@@ -131,13 +180,13 @@
                     android:textStyle="bold"
                     android:textColor="@color/green1"/>
 
-                <EditText
-                    android:id="@+id/editTextjeniskelamin"
+                <Spinner
+                    android:id="@+id/spinjensikelaminId"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:hint="Tambahkan jenis kelamin hewan "
-                    android:inputType="text" />
+                    android:layout_height="45dp"
+                    android:entries="@array/jeniskelaminhewan"
+                    android:inputType="text"
+                    android:layout_marginBottom="20dp"/>
 
                 <TextView
                     android:id="@+id/titleTextwarnabulu"
@@ -170,6 +219,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Informasi lain tentang lelang anda "
                     android:inputType="text"
+                    android:maxHeight="300dp"
                     android:layout_marginBottom="20dp"/>
 
                 <TextView
@@ -210,17 +260,30 @@
                 android:layout_marginTop="28dp"
                 android:padding="10dp"
                 android:background="@drawable/homeasset_e">
-                <TextView
-                    android:id="@+id/txtaddlelang_waktu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Tentukan Waktu Bid :"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/green1"/>
+                <RelativeLayout
+                    android:id="@+id/addlelrellay2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/iconaddlel2"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_baseline_addwaktuperbid_24"/>
+                    <TextView
+                        android:id="@+id/txtaddlel2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tentukan Waktu Bid"
+                        android:textSize="22dp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@id/iconaddlel2"
+                        android:textColor="@color/green1"/>
+                </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp">
                     <TextView
                         android:id="@+id/txt_waktubid"
                         android:layout_width="wrap_content"
@@ -235,7 +298,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="jam"
+                        android:text="detik"
                         android:textSize="15sp"
                         android:textStyle="bold"
                         android:textColor="#000000"
@@ -248,19 +311,19 @@
                         android:id="@+id/btn_waktu1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Setengah Hari"
-                        android:textSize="10sp"
-                        android:textColor="@color/white"
                         android:layout_below="@+id/txt_waktubid"
-                        android:background="@drawable/btnasset"/>
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/btnasset"
+                        android:text="5 detik"
+                        android:textColor="@color/white"
+                        android:textSize="10sp" />
 
                     <Button
                         android:id="@+id/btn_waktu2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="1 hari"
+                        android:text="15 detik"
                         android:textColor="@color/white"
                         android:layout_below="@+id/txt_waktubid"
                         android:layout_centerHorizontal="true"
@@ -271,7 +334,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="2 hari"
+                        android:text="30 detik"
                         android:textColor="@color/white"
                         android:layout_alignParentRight="true"
                         android:layout_below="@+id/txt_waktubid"
@@ -288,14 +351,28 @@
                 android:layout_marginTop="28dp"
                 android:padding="10dp"
                 android:background="@drawable/homeasset_e">
-                <TextView
-                    android:id="@+id/txtaddlelang_perbid"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Tentukan Jumlah Per Bid :"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/green1"/>
+                <RelativeLayout
+                    android:id="@+id/addlelrellay3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/iconaddlel3"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_baseline_trending_up_24"
+                        android:background="@drawable/btnasset"
+                        android:backgroundTint="@color/green1"/>
+                    <TextView
+                        android:id="@+id/txtaddlel3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tentukan Kenaikan Per Bid"
+                        android:textSize="22dp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@id/iconaddlel3"
+                        android:textColor="@color/green1"/>
+                </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -368,36 +445,48 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
-                    <TextView
+                    <RelativeLayout
+                        android:id="@+id/addlelrellay4"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tambah Foto Iklan :"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:textColor="@color/green1"/>
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/iconaddlel4"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/ic_baseline_addimagetittle_24"/>
+                        <TextView
+                            android:id="@+id/txtaddlel4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Tambah Foto Iklan"
+                            android:textSize="22dp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="5dp"
+                            android:layout_toRightOf="@id/iconaddlel4"
+                            android:textColor="@color/green1"/>
+                    </RelativeLayout>
                     <TextView
                         android:id="@+id/fotoattachmenturi"
                         android:layout_width="0dp"
                         android:layout_height="0dp"/>
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp">
                     <ImageView
                         android:id="@+id/fotodisplayhw"
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"/>
+                        android:layout_width="230dp"
+                        android:layout_height="230dp"/>
                     <ImageView
                         android:id="@+id/btn_pickfotohw"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginTop="70dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_below="@id/imagedisplayhw"
-                        android:background="@drawable/ic_baseline_add_photo_alternate_24"/>
-                </LinearLayout>
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/ic_baseline_add_to_photosgreen_24"/>
+                </RelativeLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -409,6 +498,26 @@
                 android:layout_marginTop="28dp"
                 android:padding="10dp"
                 android:background="@drawable/homeasset_e">
+                <RelativeLayout
+                    android:id="@+id/addlelrellay5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/iconaddlel5"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_baseline_addimagetittle_24"/>
+                    <TextView
+                        android:id="@+id/txtaddlel5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tambah Foto Sertif"
+                        android:textSize="22dp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@id/iconaddlel5"
+                        android:textColor="@color/green1"/>
+                </RelativeLayout>
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
@@ -424,24 +533,25 @@
                         android:layout_width="0dp"
                         android:layout_height="0dp"/>
                 </LinearLayout>
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:paddingLeft="10dp">
                     <ImageView
                         android:id="@+id/sertifdisplayhw"
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"/>
+                        android:layout_width="230dp"
+                        android:layout_height="230dp"/>
                     <ImageView
                         android:id="@+id/btn_pickfotosertif"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginTop="70dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_below="@id/imagedisplayhw"
-                        android:background="@drawable/ic_baseline_add_photo_alternate_24"/>
-                </LinearLayout>
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/ic_baseline_add_to_photosgreen_24"/>
+                </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
 
             <RelativeLayout

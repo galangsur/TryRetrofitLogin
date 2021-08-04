@@ -31,6 +31,15 @@ public class Success{
 	@SerializedName("comment")
 	private String comment;
 
+	@SerializedName("umur_hewan")
+	private String umur_hewan;
+
+	@SerializedName("jeniskelamin_hewan")
+	private String jeniskelamin_hewan;
+
+	@SerializedName("warna_hewan")
+	private String warna_hewan;
+
 	@SerializedName("img_lelang")
 	private String imgLelang;
 
@@ -39,6 +48,41 @@ public class Success{
 
 	@SerializedName("id")
 	private int id;
+
+	@SerializedName("pesertaonline_token")
+	private String pesertaonline_token;
+
+	public String getPesertaonline_token() {
+		return pesertaonline_token;
+	}
+
+	public void setPesertaonline_token(String pesertaonline_token) {
+		this.pesertaonline_token = pesertaonline_token;
+	}
+
+	public String getUmur_hewan() {
+		return umur_hewan;
+	}
+
+	public void setUmur_hewan(String umur_hewan) {
+		this.umur_hewan = umur_hewan;
+	}
+
+	public String getJeniskelamin_hewan() {
+		return jeniskelamin_hewan;
+	}
+
+	public void setJeniskelamin_hewan(String jeniskelamin_hewan) {
+		this.jeniskelamin_hewan = jeniskelamin_hewan;
+	}
+
+	public String getWarna_hewan() {
+		return warna_hewan;
+	}
+
+	public void setWarna_hewan(String warna_hewan) {
+		this.warna_hewan = warna_hewan;
+	}
 
 	public void setSertifparentToken(String sertifparentToken){
 		this.sertifparentToken = sertifparentToken;

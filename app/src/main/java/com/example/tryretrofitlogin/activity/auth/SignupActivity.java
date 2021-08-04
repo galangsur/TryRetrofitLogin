@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tryretrofitlogin.R;
@@ -19,6 +20,8 @@ import com.example.tryretrofitlogin.postresponse.addrequestsignuptoadmin.Addreqs
 import com.example.tryretrofitlogin.responses.signup.AuthResponse;
 import com.example.tryretrofitlogin.models.User;
 
+import java.util.Random;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -27,8 +30,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SignupActivity extends AppCompatActivity {
 
-    private Button btnSignup;
+    private Button btnSignup,btnBackfromsignup;
     private EditText editTextName, editTextEmail, editTextPassword, editTextTlp,editTextNik;
+    private TextView tmpReveiwtoken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +40,14 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
         btnSignup = (Button) findViewById(R.id.btn_signup);
+        btnBackfromsignup = (Button) findViewById(R.id.backfromsignup);
 
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         editTextTlp = (EditText) findViewById(R.id.editTextTlp);
         editTextNik = (EditText) findViewById(R.id.editTextnikktp);
+        tmpReveiwtoken = (TextView) findViewById(R.id.tmpreviewtoken);
 
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,9 +57,10 @@ public class SignupActivity extends AppCompatActivity {
                 } else{
                     requestSignUptoAdmin();
                 }
-
             }
         });
+
+        tmpReveiwtoken.setText(ratingreviewtoken());
     }
 
     private void userSignUp() {
@@ -74,7 +81,7 @@ public class SignupActivity extends AppCompatActivity {
         APIService service = retrofit.create(APIService.class);
 
         //Defining the user object as we need to pass it with the call
-        User user = new User(name, email, tlp, password, password,nik);
+        User user = new User(name, email, tlp, password, password,nik,ratingreviewtoken());
 
         //defining the call
         Call<AuthResponse> call = service.createUser(
@@ -108,7 +115,7 @@ public class SignupActivity extends AppCompatActivity {
         String password = editTextPassword.getText().toString().trim();
         String tlp = editTextTlp.getText().toString().trim();
         String nik = editTextNik.getText().toString().trim();
-
+        String ratingnreviwtoken = tmpReveiwtoken.getText().toString().trim();
 
         //building retrofit object
         Retrofit retrofit = new Retrofit.Builder()
@@ -120,7 +127,7 @@ public class SignupActivity extends AppCompatActivity {
         APIService service = retrofit.create(APIService.class);
 
         //Defining the user object as we need to pass it with the call
-        User user = new User(name, email, tlp, password, password, nik);
+        User user = new User(name, email, tlp, password, password, nik, ratingnreviwtoken);
 
         //defining the call
         Call<AddreqsignuptoadminResponse> call = service.requestSignuptoAdmin(
@@ -128,7 +135,8 @@ public class SignupActivity extends AppCompatActivity {
                 user.getEmail(),
                 user.getTlp(),
                 user.getPassword(),
-                user.getNikktp()
+                user.getNikktp(),
+                user.getRatingnreviewtoken()
         );
 
         //calling the api
@@ -152,5 +160,17 @@ public class SignupActivity extends AppCompatActivity {
     public void onBackPressed() {
         SignupActivity.super.onBackPressed();
         overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+    }
+
+    private static final String ALLOWED_CHARACTERS ="0123456789qwertyuiopasdfghjklzxcvbnm";
+    private static String ratingreviewtoken(){
+        int targetStringLength = 5;
+        Random random = new Random();
+        StringBuilder stringBuilder = new StringBuilder(targetStringLength);
+        for (int i = 0; i < targetStringLength; i++){
+            stringBuilder.append(ALLOWED_CHARACTERS.charAt(random.nextInt(ALLOWED_CHARACTERS.length())));
+        }
+
+        return stringBuilder.toString();
     }
 }

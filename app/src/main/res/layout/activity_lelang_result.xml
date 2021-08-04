@@ -18,7 +18,8 @@
                 android:id="@+id/RL_lelres"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/reqlelasset_a">
+                android:background="@drawable/reqlelasset_a"
+                android:backgroundTint="@color/green1">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -29,106 +30,245 @@
                 android:id="@+id/rellayPemenang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
                 android:padding="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_below="@id/RL_lelres"
-                android:background="@drawable/detaillelasset_a">
+                android:background="@drawable/btnasset"
+                android:backgroundTint="@color/white">
+                <ImageView
+                    android:id="@+id/icondet1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_baseline_logo_detailgreen_24"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Detail Pemenang Lelang"
+                    android:textColor="@color/green1"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/icondet1"/>
+
                 <TextView
                     android:id="@+id/txt_result1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="20dp"
                     android:text="Nama Pemenang :"
                     android:textColor="@color/green1"
                     android:textStyle="bold"
-                    android:textSize="16dp"/>
+                    android:textSize="16dp"
+                    android:layout_below="@+id/icondet1"/>
                 <EditText
                     android:id="@+id/rslt_namapemenang"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="none"
-                    android:layout_below="@+id/txt_result1"/>
+                    android:layout_below="@+id/txt_result1" />
+
                 <TextView
                     android:id="@+id/txt_result2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:text="Harga Akhir Yang Dimenangkan :"
-                    android:textColor="@color/green1"
-                    android:textStyle="bold"
-                    android:textSize="16dp"
-                    android:layout_below="@id/rslt_namapemenang"/>
-                <EditText
-                    android:id="@+id/rslt_nilaiakhir"
-                    android:layout_width="292dp"
-                    android:layout_height="wrap_content"
-                    android:inputType="none"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@+id/txt_result2"/>
-                <ImageView
-                    android:id="@+id/smallwalleticoncpng"
-                    android:layout_width="31dp"
-                    android:layout_height="31dp"
-                    android:background="@drawable/coinrp"
-                    android:layout_below="@id/txt_result2"
-                    android:layout_toLeftOf="@id/rslt_nilaiakhir"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="10dp"/>
-
-                <TextView
-                    android:id="@+id/txt_result8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="30dp"
                     android:text="Harga Awal Lelang :"
-                    android:layout_below="@id/rslt_nilaiakhir"
+                    android:layout_below="@id/rslt_namapemenang"
                     android:textColor="@color/green1"
                     android:textStyle="bold"
                     android:textSize="16dp"/>
                 <EditText
                     android:id="@+id/rslt_hargaawal"
-                    android:layout_width="292dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="none"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@+id/txt_result8"/>
+                    android:layout_toRightOf="@id/smallwalleticoncpng1"
+                    android:layout_below="@+id/txt_result2"/>
                 <ImageView
                     android:id="@+id/smallwalleticoncpng1"
                     android:layout_width="31dp"
                     android:layout_height="31dp"
                     android:background="@drawable/coinrp"
-                    android:layout_below="@id/txt_result8"
-                    android:layout_toLeftOf="@id/rslt_hargaawal"
+                    android:layout_below="@id/txt_result2"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="10dp"/>
 
-                <Button
-                    android:id="@+id/reslt_tohome"
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="100dp"
-                    android:text="ke menu"
-                    android:layout_marginRight="50dp"
-                    android:layout_marginLeft="50dp"
-                    android:textColor="@color/white"
-                    android:layout_alignParentLeft="true"
-                    android:layout_below="@id/rslt_hargaawal"
-                    android:background="@drawable/btnasset"
-                    android:layout_centerHorizontal="true"/>
-
-                <Button
-                    android:id="@+id/reslt_buattrans"
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="100dp"
-                    android:text="Buat Nota"
-                    android:layout_marginRight="50dp"
-                    android:layout_alignParentRight="true"
-                    android:textColor="@color/white"
-                    android:layout_below="@id/rslt_hargaawal"
-                    android:background="@drawable/btnasset"
-                    android:layout_centerHorizontal="true"/>
+                <TextView
+                    android:id="@+id/txt_result3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="Harga Akhir Yang Dimenangkan :"
+                    android:textColor="@color/green1"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:layout_below="@id/rslt_hargaawal"/>
+                <EditText
+                    android:id="@+id/rslt_nilaiakhir"
+                    android:layout_width="292dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:layout_toRightOf="@id/smallwalleticoncpng2"
+                    android:layout_below="@+id/txt_result3"/>
+                <ImageView
+                    android:id="@+id/smallwalleticoncpng2"
+                    android:layout_width="31dp"
+                    android:layout_height="31dp"
+                    android:background="@drawable/coinrp"
+                    android:layout_below="@id/txt_result3"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="10dp"/>
             </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rellayHewandimenangkan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_below="@id/rellayPemenang"
+            android:background="@drawable/btnasset"
+            android:backgroundTint="@color/white">
+            <ImageView
+                android:id="@+id/icondet2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_baseline_logo_detailgreen_24"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Detail Hewan"
+                android:textColor="@color/green1"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/icondet2"/>
+
+            <TextView
+                android:id="@+id/txt_result8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Hewan yang dimenangkan :"
+                android:textColor="@color/green1"
+                android:layout_below="@id/icondet2"
+                android:textStyle="bold"
+                android:textSize="16dp"/>
+            <EditText
+                android:id="@+id/rslt_namahewan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:layout_below="@+id/txt_result8"/>
+
+            <TextView
+                android:id="@+id/txt_result9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Umur Hewan :"
+                android:textColor="@color/green1"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:layout_below="@id/rslt_namahewan"/>
+            <EditText
+                android:id="@+id/rslt_umurhewan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:layout_below="@+id/txt_result9"/>
+
+            <TextView
+                android:id="@+id/txt_result10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Jenis Kelamin Hewan :"
+                android:textColor="@color/green1"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:layout_below="@id/rslt_umurhewan"/>
+            <EditText
+                android:id="@+id/rslt_jeniskelaminhewan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:layout_below="@+id/txt_result10"/>
+
+            <TextView
+                android:id="@+id/txt_result11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Deskripsi Warna Hewan :"
+                android:textColor="@color/green1"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:layout_below="@id/rslt_jeniskelaminhewan"/>
+            <EditText
+                android:id="@+id/rslt_deskripsiwarnahewan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:layout_below="@+id/txt_result11"/>
+
+            <TextView
+                android:id="@+id/txt_result12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Deskripsi Tambahan Pelelang :"
+                android:textColor="@color/green1"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:layout_below="@id/rslt_deskripsiwarnahewan"/>
+            <EditText
+                android:id="@+id/rslt_deskripsitambahanpelelang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:layout_below="@+id/txt_result12"/>
+
+        </RelativeLayout>
+
+            <Button
+                android:id="@+id/reslt_tohome"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:padding="10dp"
+                android:text="ke menu"
+                android:layout_marginRight="50dp"
+                android:layout_marginLeft="50dp"
+                android:textColor="@color/white"
+                android:layout_alignParentLeft="true"
+                android:drawableLeft="@drawable/ic_baseline_home_24"
+                android:background="@drawable/btnasset"
+                android:layout_below="@id/rellayHewandimenangkan"
+                android:layout_centerHorizontal="true"/>
+            <Button
+                android:id="@+id/reslt_buattrans"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:padding="10dp"
+                android:text="Buat Nota"
+                android:layout_marginRight="50dp"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/white"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/ic_baseline_tambahcatatan_white_24"
+                android:layout_below="@id/rellayHewandimenangkan"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/btnasset"
+                android:layout_centerHorizontal="true"/>
+
+
+
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -140,67 +280,56 @@
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:layout_marginTop="25dp" />
-
             <TextView
                 android:id="@+id/reslelimgprnt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/green1"/>
-
             <TextView
                 android:id="@+id/reslt_messageId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/green1"/>
-
             <TextView
                 android:id="@+id/reslt_userId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/green1"/>
-
             <TextView
                 android:id="@+id/txtstatshasilawalid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/green1"/>
-
             <TextView
                 android:id="@+id/txtstatshasilawal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/green1"/>
-
             <TextView
                 android:id="@+id/reslt_hewanid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/green1"/>
-
             <TextView
                 android:id="@+id/reslt_userName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/green1"/>
-
             <TextView
                 android:id="@+id/reslt_pelelangId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/green1"/>
-
             <TextView
                 android:id="@+id/reslt_pesertaId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/green1"/>
-
             <TextView
                 android:id="@+id/lelbrjalankey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/green1"/>
-
             <TextView
                 android:id="@+id/reslt_pelelangName"
                 android:layout_width="wrap_content"
@@ -223,6 +352,16 @@
                 android:textColor="@color/green1"/>
             <TextView
                 android:id="@+id/rsltidlelbrjalan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/green1"/>
+            <TextView
+                android:id="@+id/rslthargaawaltmp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/green1"/>
+            <TextView
+                android:id="@+id/rslthargaakhirtmp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/green1"/>

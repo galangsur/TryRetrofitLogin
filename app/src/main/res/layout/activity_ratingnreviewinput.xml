@@ -25,6 +25,7 @@
         android:layout_marginTop="50dp"
         android:background="@drawable/btnasset"
         android:text="lihat review"
+        android:visibility="invisible"
         android:textColor="@color/white"
         android:padding="10dp"/>
 
@@ -35,6 +36,7 @@
         android:layout_marginTop="50dp"
         android:background="@drawable/btnasset"
         android:text="lihat peserta"
+        android:visibility="invisible"
         android:textColor="@color/white"
         android:padding="10dp"/>
 

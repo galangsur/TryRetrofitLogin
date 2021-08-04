@@ -6,23 +6,30 @@
     android:background="@drawable/backgroundsignup"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/tmpreviewtoken"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/green1"/>
+
     <RelativeLayout
-        android:id="@+id/rl_one"
+        android:id="@+id/rlsignup_one"
         android:layout_width="match_parent"
-        android:layout_height="99dp"
+        android:layout_height="110dp"
         android:layout_marginTop="20dp"
-        android:layout_marginRight="25dp"
-        android:background="@drawable/signupasset_a">
+        android:background="@color/green2">
         <TextView
             android:layout_width="250dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="60dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
             android:text="Buatlah password yang mudah anda ingat..."
+            android:fontFamily="@font/robotomedium"
             android:textSize="20sp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:layout_toRightOf="@id/backfromsignup"/>
         <Button
-            android:id="@+id/signup"
+            android:id="@+id/backfromsignup"
             android:layout_marginTop="20dp"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -30,47 +37,71 @@
             android:background="@drawable/ic_baseline_arrowwhite_24"
             android:textStyle="bold"/>
     </RelativeLayout>
+
     <RelativeLayout
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/signasset_c"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mainasset_c"
         android:backgroundTint="@color/green1"
-        android:layout_marginTop="105dp"
-        android:layout_marginLeft="20dp">
+        android:layout_marginTop="110dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:textSize="20dp"
-            android:text="Sign Up Page"
+            android:paddingTop="20dp"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:gravity="center_horizontal" />
+            android:gravity="center_horizontal"/>
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="250dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="270dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
         android:orientation="vertical"
         android:background="@drawable/signasset_c"
         android:backgroundTint="@color/green2"
         android:padding="20dp"
-        android:layout_marginLeft="50dp">
+        android:layout_centerHorizontal="true">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/iconsignuppage1"
+                android:layout_width="31dp"
+                android:layout_height="31dp"
+                android:src="@drawable/ic_baseline_personwhite_24"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign Up Here.."
+                android:textColor="@color/white"
+                android:textSize="22dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/robotobold"
+                android:layout_toRightOf="@id/iconsignuppage1"/>
+        </RelativeLayout>
         <EditText
             android:id="@+id/editTextName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter name "
+            android:textColorHint="@color/white"
+            android:fontFamily="@font/robotomedium"
             android:textColor="@color/white"
-            android:inputType="text" />
+            android:inputType="text"
+            android:layout_marginTop="10dp"/>
 
         <EditText
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter email "
+            android:textColorHint="@color/white"
+            android:fontFamily="@font/robotomedium"
             android:textColor="@color/white"
             android:inputType="textEmailAddress" />
 
@@ -79,6 +110,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter telephone "
+            android:textColorHint="@color/white"
+            android:fontFamily="@font/robotomedium"
             android:textColor="@color/white"
             android:inputType="phone" />
 
@@ -87,6 +120,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter password "
+            android:textColorHint="@color/white"
+            android:fontFamily="@font/robotomedium"
         android:textColor="@color/white"
         android:inputType="textPassword" />
 
@@ -95,6 +130,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter NIK "
+            android:textColorHint="@color/white"
+            android:fontFamily="@font/robotomedium"
             android:textColor="@color/white"
             android:inputType="number" />
 
@@ -106,6 +143,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="20dp"
             android:text="Sign up"
+            android:fontFamily="@font/robotomedium"
             android:textColor="@color/white"/>
 
     </LinearLayout>

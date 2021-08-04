@@ -244,8 +244,8 @@ public class TransactionComplaintActivity extends AppCompatActivity {
     }
 
     private void touploadimg(){
-        Intent intent = new Intent(TransactionComplaintActivity.this, Uploadhewan.class);
-        intent.putExtra("imghw", compimgparent);
+        Intent intent = new Intent(TransactionComplaintActivity.this, ImageUploadTranscomplaintActivity.class);
+        intent.putExtra("transactioncomp", compimgparent);
         startActivity(intent);
     }
 

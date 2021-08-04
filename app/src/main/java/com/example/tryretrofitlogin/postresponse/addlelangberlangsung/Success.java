@@ -28,6 +28,10 @@ public class Success{
 	@SerializedName("gchat_id")
 	private String gchatId;
 
+	@SerializedName("pesertaonline_token")
+	private String pesertaonline_token;
+
+
 	public void setHarga(String harga){
 		this.harga = harga;
 	}
@@ -92,6 +96,16 @@ public class Success{
 		return gchatId;
 	}
 
+	public void setPesertaonline_token(String pesertaonline_token) {
+		this.pesertaonline_token = pesertaonline_token;
+	}
+
+	public String getPesertaonline_token() {
+		return pesertaonline_token;
+	}
+
+
+
 	@Override
  	public String toString(){
 		return 
@@ -103,7 +117,8 @@ public class Success{
 			",created_at = '" + createdAt + '\'' + 
 			",comment = '" + comment + '\'' + 
 			",id = '" + id + '\'' + 
-			",gchat_id = '" + gchatId + '\'' + 
+			",gchat_id = '" + gchatId + '\'' +
+			",pesertaonline_token = '" + pesertaonline_token + '\'' +
 			"}";
 		}
 }

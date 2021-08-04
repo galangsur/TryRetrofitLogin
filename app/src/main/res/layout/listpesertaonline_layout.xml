@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="25dp"
+    android:layout_marginBottom="10dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+        <ImageView
+            android:id="@+id/listpesertaonline_img"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/usericon"/>
+
+        <TextView
+            android:id="@+id/txt_idpesertalistpesertaonline"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/tmp_onlinestatus"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/txt_listpesertanamaonline"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/green1"
+            android:textStyle="bold"
+            android:layout_toRightOf="@+id/listpesertaonline_img"/>
+
+        <TextView
+            android:id="@+id/pesertaonline_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="IN ROOM"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textStyle="bold"
+            android:textColor="@color/green1"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:visibility="invisible"
+            android:background="@drawable/usericonframegreen"/>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

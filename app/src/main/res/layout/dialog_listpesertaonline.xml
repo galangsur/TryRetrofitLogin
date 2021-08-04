@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+<!--        <TextView-->
+<!--            android:id="@+id/tmppesertaonline_token"-->
+<!--            android:layout_width="1dp"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:textColor="@color/green1"/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tmplelberjalan_id"-->
+<!--            android:layout_width="1dp"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:textColor="@color/green1"/>-->
+
+
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/RV_listpesertaonline"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:scrollbars="vertical"-->
+<!--        android:layout_below="@id/tmplelberjalan_id"-->
+<!--        android:background="@drawable/signasset_c"-->
+<!--        android:padding="10dp"/>-->
+    </RelativeLayout>
+
+</LinearLayout>

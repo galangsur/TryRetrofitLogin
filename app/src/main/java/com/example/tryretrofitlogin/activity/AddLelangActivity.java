@@ -56,10 +56,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AddLelangActivity extends AppCompatActivity {
 
-    private EditText edttxtcomment, edttxtharga,edttxtwarnabulu;
-    private TextView txtuserid,txtusernama, txtimgtokenlel,pilihtxthargaperbid,pilihtxtwktdisply,
+    private EditText edttxtcomment, edttxtharga,edttxtwarnabulu,edttxtumurhewan;
+    private TextView txtuserid,txtusernama, txtimgtokenlel,pilihtxthargaperbid,pilihtxtwktdisply,tmpidhewan,
             pilihtxtwkttrue,txtsaldocek,txtsaldokurang,txtsertiftokenlel,txtwarnabulu;
-    private Spinner spinhewanid;
+    private Spinner spinhewanid,spinsatuanumurid, spinjensikelaminid;
     private Button btnaddlelang, btnaddsertif, btn_bidwaktuA, btn_bidwaktuB, btn_bidwaktuC,
             btn_bidhargaA, btn_bidhargaB, btn_bidhargaC;
     private ImageView btnback;
@@ -73,7 +73,7 @@ public class AddLelangActivity extends AppCompatActivity {
     //untuk image picker
     private ImageView fotoDiplay, btnPickfoto, fotosertifDisplay, btnPickfotosertif;
     private File attachment,attachsertif;
-    private TextView eventAttachment,imgparent,sertifAttachment;
+    private TextView eventAttachment,imgparent,sertifAttachment,txtpesertaonlinetoken;
     private String imgparenthw,fotoprtkey;
 
     private String getRealPathFromURI(Uri contentURI) {
@@ -116,7 +116,12 @@ public class AddLelangActivity extends AppCompatActivity {
         txtsaldocek = (TextView) findViewById(R.id.usersaldocek);
         txtsaldokurang = (TextView) findViewById(R.id.txtsaldokurang);
         txtwarnabulu = (TextView) findViewById(R.id.titleTextwarnabulu);
+        txtpesertaonlinetoken = (TextView) findViewById(R.id.pesertaonlinetoken);
+        tmpidhewan = (TextView) findViewById(R.id.tmpstringidhewan);
         spinhewanid = (Spinner) findViewById(R.id.spinHewanId);
+        spinsatuanumurid = (Spinner) findViewById(R.id.spinumursatuanId);
+        spinjensikelaminid = (Spinner) findViewById(R.id.spinjensikelaminId);
+        edttxtumurhewan = (EditText) findViewById(R.id.editTextumur);
         edttxtcomment = (EditText) findViewById(R.id.editTextcomment);
         edttxtharga = (EditText) findViewById(R.id.editTextharga);
         edttxtwarnabulu = (EditText) findViewById(R.id.editTextwarnabulu);
@@ -132,12 +137,12 @@ public class AddLelangActivity extends AppCompatActivity {
         btn_bidhargaA = (Button)findViewById(R.id.btn_bid1);
         btn_bidhargaB = (Button)findViewById(R.id.btn_bid2);
         btn_bidhargaC = (Button)findViewById(R.id.btn_bid3);
-        displaywktA = "12";
-        displaywktB = "24";
-        displaywktC = "48";
-        truewktA = "7200000";
-        truewktB = "3600000";
-        truewktC = "1200000";
+        displaywktA = "5";
+        displaywktB = "15";
+        displaywktC = "30";
+        truewktA = "5000";
+        truewktB = "15000";
+        truewktC = "30000";
         harga_a = "25000";
         harga_b = "50000";
         harga_c = "100000";
@@ -158,6 +163,11 @@ public class AddLelangActivity extends AppCompatActivity {
         txtusernama.setText(usernama);
 
         //get randomkey id for image
+        txtimgtokenlel.setText(lelimgparent());
+        txtsertiftokenlel.setText(lelsertifparent());
+
+        //get randomkey id for pesertaonlinemanager
+        txtpesertaonlinetoken.setText(pesertaonlinetoken());
 
 
 //        lelsertifparent = txtsertiftokenlel.getText().toString().trim();
@@ -171,6 +181,8 @@ public class AddLelangActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedHewan = parent.getItemAtPosition(position).toString();
                 idhewan = hewans.get(position).getId();
+                String hewanid = String.valueOf(idhewan);
+                tmpidhewan.setText(hewanid);
                 jenishewan = hewans.get(position).getJenis();
                 Toast.makeText(AddLelangActivity.this, selectedHewan + "di pilih dengan id" + idhewan +"jenis " +jenishewan, Toast.LENGTH_SHORT).show();
             }
@@ -180,14 +192,19 @@ public class AddLelangActivity extends AppCompatActivity {
             }
         });
 
+        spinsatuanumurid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
         btnaddlelang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Toast.makeText(AddLelangActivity.this, "btntst", Toast.LENGTH_SHORT).show();
                 kurangisaldo();
                 uploadLelang(attachment);
 
-//                newGroup(groupname);
+//                newGroupFirebase(groupname);
             }
         });
 
@@ -307,13 +324,20 @@ public class AddLelangActivity extends AppCompatActivity {
     }
 
     private void uploadLelang(File attachment){
+        String umursatuan = spinsatuanumurid.getSelectedItem().toString().trim();
+        String umurinput = edttxtumurhewan.getText().toString().trim();
+        String umurHewangabung = umursatuan+umurinput;
         RequestBody requestBody = RequestBody.create(MediaType.parse("*/*"),attachment);
 
             RequestBody iduser = RequestBody.create(MediaType.parse("text/plain"),txtuserid.getText().toString());
-            RequestBody idhewan = RequestBody.create(MediaType.parse("text/plain"),txtuserid.getText().toString());
+            RequestBody idhewan = RequestBody.create(MediaType.parse("text/plain"),tmpidhewan.getText().toString());
             RequestBody lelharga = RequestBody.create(MediaType.parse("text/plain"),edttxtharga.getText().toString());
             RequestBody lelcomment = RequestBody.create(MediaType.parse("text/plain"),edttxtcomment.getText().toString().trim());
             MultipartBody.Part imgtoken =  MultipartBody.Part.createFormData("img_lelang",attachment.getName(),requestBody);
+            RequestBody umur_hewan = RequestBody.create(MediaType.parse("text/plain"),umurHewangabung);
+            RequestBody jeniskelamin_hewan = RequestBody.create(MediaType.parse("text/plain"),spinjensikelaminid.getSelectedItem().toString());
+            RequestBody warna_hewan = RequestBody.create(MediaType.parse("text/plain"),edttxtwarnabulu.getText().toString().trim());
+            RequestBody pesertaonline_token = RequestBody.create(MediaType.parse("text/plain"),txtpesertaonlinetoken.getText().toString().trim());
             RequestBody lelimgparent = RequestBody.create(MediaType.parse("text/plain"),txtimgtokenlel.getText().toString().trim());
             RequestBody lelsertifparent = RequestBody.create(MediaType.parse("text/plain"),txtsertiftokenlel.getText().toString().trim());
             RequestBody reqwaktuperbid = RequestBody.create(MediaType.parse("text/plain"),pilihtxtwkttrue.getText().toString().trim());
@@ -329,7 +353,8 @@ public class AddLelangActivity extends AppCompatActivity {
             APIService service = retrofit.create(APIService.class);
 
             Call<AddReqlelangtoadminResponse> call = service.requestLelangtoAdmin(
-                    iduser, idhewan, lelharga, lelcomment, imgtoken, lelimgparent, lelsertifparent, reqwaktuperbid, reqnominalperbid
+                    iduser, idhewan, lelharga, lelcomment, imgtoken,umur_hewan,jeniskelamin_hewan,warna_hewan, lelimgparent,
+                    pesertaonline_token,lelsertifparent, reqwaktuperbid, reqnominalperbid
             );
 
             call.enqueue(new Callback<AddReqlelangtoadminResponse>() {
@@ -345,7 +370,7 @@ public class AddLelangActivity extends AppCompatActivity {
 
                 }
             });
-        }
+    }
 
 //        String param1 = txtuserid.getText().toString().trim();
 //        String param2 = String.valueOf(idhewan);
@@ -357,6 +382,7 @@ public class AddLelangActivity extends AppCompatActivity {
     private void uploadLelbrjalan() {
 //        Toast.makeText(this, "fncttst", Toast.LENGTH_SHORT).show();
         groupname = "Belum Mulai";
+        String psrtonline_token = txtpesertaonlinetoken.getText().toString().trim();
         String lelbr_iduser = txtuserid.getText().toString().trim();
         String lelbr_lelcomment = edttxtcomment.getText().toString().trim();
         String lelbr_lelharga = edttxtharga.getText().toString().trim();
@@ -369,12 +395,13 @@ public class AddLelangActivity extends AppCompatActivity {
         APIService service = retrofit.create(APIService.class);
 
         Call<AddlelbrlangsungResponse> call = service.lelbrlngsung(
-                lelbr_iduser, idhewan, lelbr_lelcomment, lelbr_lelharga, groupname);
+                lelbr_iduser, idhewan, lelbr_lelcomment, lelbr_lelharga, groupname, psrtonline_token);
 
         call.enqueue(new Callback<AddlelbrlangsungResponse>() {
             @Override
             public void onResponse(Call<AddlelbrlangsungResponse> call, Response<AddlelbrlangsungResponse> response) {
                 if (response.isSuccessful()){
+
                 }
             }
 
@@ -385,7 +412,7 @@ public class AddLelangActivity extends AppCompatActivity {
         });
     }
 
-    private void newGroup(String groupname){
+    private void newGroupFirebase(String groupname){
 
         rootRef.child("Groups").child(groupname).setValue("")
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -414,7 +441,7 @@ public class AddLelangActivity extends AppCompatActivity {
         return stringBuilder.toString();
     }
 
-    private static final String ALLOWED_SERTIFCHARACTERS ="qwerty";
+    private static final String ALLOWED_SERTIFCHARACTERS ="qwertyuiopasdfghjklzxcvbnm";
     private static String lelsertifparent(){
         int targetStringLength = 5;
         Random random = new Random();
@@ -426,9 +453,24 @@ public class AddLelangActivity extends AppCompatActivity {
         return stringBuilder.toString();
     }
 
+    private static final String PESERTAONLINETOKEN_CHARACTERS ="qwertyuiopasdfghjklzxcvbnm0123456789";
+    private static String pesertaonlinetoken(){
+        int targetStringLength = 5;
+        Random random = new Random();
+        StringBuilder stringBuilder = new StringBuilder(targetStringLength);
+        for (int i = 0; i < targetStringLength; i++){
+            stringBuilder.append(PESERTAONLINETOKEN_CHARACTERS.charAt(random.nextInt(PESERTAONLINETOKEN_CHARACTERS.length())));
+        }
+
+        return stringBuilder.toString();
+    }
+
     private void touploadimg(){
         Intent intent = new Intent(AddLelangActivity.this, Uploadhewan.class);
+        lelimgparent = txtimgtokenlel.getText().toString().trim();
+
         intent.putExtra("imghw", lelimgparent);
+        intent.putExtra("sertifhw", lelsertifparent);
         startActivity(intent);
     }
 
@@ -535,7 +577,7 @@ public class AddLelangActivity extends AppCompatActivity {
                                 .into(fotoDiplay);
 
                         Toast.makeText(AddLelangActivity.this, "namafile"+eventAttachment+attachment, Toast.LENGTH_SHORT).show();
-                        txtimgtokenlel.setText(lelimgparent());
+
                     }
                 });
     }
@@ -555,7 +597,7 @@ public class AddLelangActivity extends AppCompatActivity {
                                 .into(fotosertifDisplay);
 
                         Toast.makeText(AddLelangActivity.this, "namafile"+sertifAttachment+attachsertif, Toast.LENGTH_SHORT).show();
-                        txtsertiftokenlel.setText(lelsertifparent());
+
                     }
                 });
     }

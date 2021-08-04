@@ -20,9 +20,12 @@ import com.example.tryretrofitlogin.responses.deletereqlel.DeletereqlelResponse;
 import com.example.tryretrofitlogin.responses.gethewanbyid.GethewanbyidResponse;
 import com.example.tryretrofitlogin.responses.getlelangbyid.GetlelangbyidResponse;
 import com.example.tryretrofitlogin.responses.getreqlelbyid.GetreqlelbyidResponse;
-import com.example.tryretrofitlogin.responses.getuserbyid.GetusernamebyidResponse;
+import com.example.tryretrofitlogin.responses.getusernamebyid.GetusernamebyidResponse;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.NumberFormat;
+import java.util.HashMap;
 import java.util.Locale;
 
 import retrofit2.Call;
@@ -40,6 +43,7 @@ public class DetailReqlelActivity extends AppCompatActivity {
     private Button btnReqaccept, btnReqreject, btnCekhewan;
     private ImageView btnBack;
     private int hargaDetreq;
+    private DatabaseReference pesertamanagerRef,pesertakeyRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +74,8 @@ public class DetailReqlelActivity extends AppCompatActivity {
         userid = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getId();
         tmpReqiduser.setText(userid);
         namauser = SharedPrefManager.getInstance(getApplicationContext()).getUserProfile().getName();
+
+        pesertamanagerRef = FirebaseDatabase.getInstance().getReference().child("PesertaOnlineManager").child("qwerty");
     }
 
     @Override
@@ -81,7 +87,8 @@ public class DetailReqlelActivity extends AppCompatActivity {
         btnReqaccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                acceptReq();
+//                acceptReq();
+                addstatuspesertaonlineFirebase();
             }
         });
 
@@ -116,7 +123,7 @@ public class DetailReqlelActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<GetreqlelbyidResponse> call, Response<GetreqlelbyidResponse> response) {
                 if (response.isSuccessful()){
-                    tmpReqlelidlelang.setText(response.body().getSuccess().getLelangId());
+                    tmpReqlelidlelang.setText(response.body().getSuccess().getLelbrjalanId());
                     tmpReqidpendaftar.setText(response.body().getSuccess().getPengirimId());
                     getNamauser();
                     getdetaillelang();
@@ -241,6 +248,17 @@ public class DetailReqlelActivity extends AppCompatActivity {
         });
     }
 
+    private void addstatuspesertaonlineFirebase(){
+        String idpeserta = tmpReqidpendaftar.getText().toString().trim();
+        pesertakeyRef = pesertamanagerRef.child("peserta"+idpeserta);
+
+        HashMap<String, Object> pesertastatusinfo = new HashMap<>();
+        pesertastatusinfo.put("peserta_id",idpeserta);
+        pesertastatusinfo.put("peserta_token","qwerty");
+        pesertastatusinfo.put("status","offline");
+        pesertakeyRef.updateChildren(pesertastatusinfo);
+    }
+
     private void deleteReq(){
         String reqkey = tmpReqlelid.getText().toString().trim();
 
@@ -307,4 +325,6 @@ public class DetailReqlelActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
     }
+
+
 }

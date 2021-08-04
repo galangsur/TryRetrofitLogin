@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tryretrofitlogin.R;
 import com.example.tryretrofitlogin.activity.DetailLelbrjalan;
-import com.example.tryretrofitlogin.responses.getpesrtmanagerbyuser.SuccessItem;
+import com.example.tryretrofitlogin.responses.getleldiikutipeserta.SuccessItem;
 
 import java.util.ArrayList;
 
@@ -39,7 +39,7 @@ public class ListlelasPesertaAdapt extends RecyclerView.Adapter<ListlelasPeserta
     public void onBindViewHolder(@NonNull LelAsPesertaViewHolder holder, final int position) {
         holder.psrtmanager_id.setText(getpsrtmanager.get(position).getId());
         holder.peserta_id.setText(getpsrtmanager.get(position).getPesertaId());
-        holder.lelbrjalan_id.setText(getpsrtmanager.get(position).getHewan());
+        holder.lelbrjalan_id.setText(getpsrtmanager.get(position).getLelbrjalanId());
 
         holder.btndettolelbrjalan.setOnClickListener(new View.OnClickListener() {
             @Override

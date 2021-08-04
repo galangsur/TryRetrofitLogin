@@ -1,24 +1,24 @@
-package com.example.tryretrofitlogin.responses.getuserbyid;
+package com.example.tryretrofitlogin.postresponse.addhasillelang;
 
 import com.google.gson.annotations.SerializedName;
 
-public class GetusernamebyidResponse{
+public class AddHasilLelangResponse{
 
 	@SerializedName("success")
-	private String success;
+	private Success success;
 
-	public void setSuccess(String success){
+	public void setSuccess(Success success){
 		this.success = success;
 	}
 
-	public String getSuccess(){
+	public Success getSuccess(){
 		return success;
 	}
 
 	@Override
  	public String toString(){
 		return 
-			"GetusernamebyidResponse{" + 
+			"AddHasilLelangResponse{" + 
 			"success = '" + success + '\'' + 
 			"}";
 		}

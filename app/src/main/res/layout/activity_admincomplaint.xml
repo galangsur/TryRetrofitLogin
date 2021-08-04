@@ -19,6 +19,7 @@
         android:backgroundTint="@color/orange5"/>
 
     <ImageView
+        android:id="@+id/complaintimg1"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_centerHorizontal="true"
@@ -29,7 +30,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:background="@drawable/signasset_c">
+        android:background="@drawable/signasset_c"
+        android:layout_below="@id/complaintimg1">
 
         <TextView
             android:layout_width="wrap_content"

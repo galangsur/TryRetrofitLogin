@@ -55,9 +55,6 @@ public class SigninActivity extends AppCompatActivity {
                 tosignup();
             }
         });
-
-
-
     }
 
     @Override

@@ -45,10 +45,10 @@ public class ImageUploadActivity extends AppCompatActivity {
 
     private Button btnUploadimg;
     private ImageView imageDiplay, btnPickgallery;
-    private TextView eventAttachment,txt_pickcount,imgparentgetintent;
+    private TextView eventAttachment,txt_pickcount,txtimgparentgetintent,txtidpelelangforrating;
     private File attachment;
     public static final int REQUEST_IMAGE_CAPTURE = 1;
-    private String imgparentid;
+    private String imgparentid,idPelelangforrating;
 
     private String getRealPathFromURI(Uri contentURI) {
         String result;
@@ -73,15 +73,18 @@ public class ImageUploadActivity extends AppCompatActivity {
         btnPickgallery = (ImageView)findViewById(R.id.btn_pickgallery);
         imageDiplay = (ImageView) findViewById(R.id.imagedisplay);
         eventAttachment = (TextView) findViewById(R.id.imageUri);
-        imgparentgetintent = (TextView) findViewById(R.id.imagePrnt);
+        txtimgparentgetintent = (TextView) findViewById(R.id.imagePrnt);
+        txtidpelelangforrating = (TextView) findViewById(R.id.idpelelangforRating);
 
         txt_pickcount = (TextView)findViewById(R.id.pickcount);
 
         Intent lelintent = getIntent();
         imgparentid = lelintent.getStringExtra("imgbuktitrans");
-        imgparentgetintent.setText(imgparentid);
-        Toast.makeText(this, imgparentid, Toast.LENGTH_SHORT).show();
+        idPelelangforrating = lelintent.getStringExtra("idpelelangforrating");
+        txtimgparentgetintent.setText(imgparentid);
+        txtidpelelangforrating.setText(idPelelangforrating);
 
+        Toast.makeText(this, imgparentid, Toast.LENGTH_SHORT).show();
 
 
         btnUploadimg.setOnClickListener(new View.OnClickListener() {
@@ -130,7 +133,7 @@ public class ImageUploadActivity extends AppCompatActivity {
         RequestBody requestBody = RequestBody.create(MediaType.parse("*/*"),attachment);
         String a = "3";
         String b = "5";
-        final String Imgparent = imgparentgetintent.getText().toString().trim();
+        final String Imgparent = txtimgparentgetintent.getText().toString().trim();
 
 
         MultipartBody.Part photo =  MultipartBody.Part.createFormData("photo",attachment.getName(),requestBody);
@@ -155,6 +158,9 @@ public class ImageUploadActivity extends AppCompatActivity {
                     Toast.makeText(ImageUploadActivity.this, "berhasil" + Imgparent, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(ImageUploadActivity.this, ListLelTransaksi.class);
                     startActivity(intent);
+                } else if (response.isSuccessful()&&(imgparentid.equals("4"))){
+                    Toast.makeText(ImageUploadActivity.this, "rating" + Imgparent, Toast.LENGTH_SHORT).show();
+                    toRatingavtivity();
                 }
             }
 
@@ -167,9 +173,11 @@ public class ImageUploadActivity extends AppCompatActivity {
 
     }
 
-    private void pickcountthree(){
-        txt_pickcount.setText("2");
+    private void toRatingavtivity(){
+        String idpelelangforrating = txtidpelelangforrating.getText().toString().trim();
+
+        Intent intentRating = new Intent(ImageUploadActivity.this, RatingnreviewinputActivity.class);
+        intentRating.putExtra("idberjalanfromimgupload",idpelelangforrating);
+        startActivity(intentRating);
     }
-
-
 }

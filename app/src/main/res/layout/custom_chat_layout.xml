@@ -24,7 +24,7 @@
             android:layout_below="@id/txt_fromname"
             android:background="@drawable/reciever_message_layout"
             android:padding="10dp"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:textStyle="bold"/>
 
     <TextView
@@ -58,7 +58,7 @@
         android:layout_marginRight="5dp"
         android:layout_alignParentTop="@+id/txt_recievermsg"
         android:background="@drawable/sender_message_layout"
-        android:textSize="24sp"
+        android:textSize="22sp"
         android:text="r"
         android:padding="10dp"
         android:textStyle="bold"/>

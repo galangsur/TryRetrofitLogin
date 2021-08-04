@@ -18,7 +18,6 @@ import com.example.tryretrofitlogin.helper.SharedPrefManager;
 import com.example.tryretrofitlogin.putresponse.putleltransstat.UpdateleltransstatResponse;
 import com.example.tryretrofitlogin.responses.getalldatauserbyid.GetalldatauserbyidResponse;
 import com.example.tryretrofitlogin.responses.getleltransbyid.GetleltransbyidResponse;
-import com.example.tryretrofitlogin.responses.getuserbyid.GetusernamebyidResponse;
 import com.example.tryretrofitlogin.responses.topupwallet.TopupResponse;
 
 import retrofit2.Call;
@@ -32,9 +31,9 @@ public class DetailTransaksiLelang extends AppCompatActivity {
     private String idtranslel,userid,psrtusera,pllguserb;
     private TextView tmpiddettranslel,tmpoldstatid,tmpoldstat,tmpnewstatid,tmpnewstat;
     private TextView tmpidusernow,tmpidpsrt,tmpidpllg,tmpimgparenttoken;
-    private EditText nilaiakhir,usrnamepllg,usrnamepemenang;
+    private EditText nilaiakhir,usrnamepllg,usrnamepemenang,statustransaksi;
     private Button submittrans,submitfinish,tobukti;
-    private ImageView btnback;
+    private ImageView btnback,imgtopelelangprofile,imgtopemenangprofile,imgtocomplaint;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,14 +52,19 @@ public class DetailTransaksiLelang extends AppCompatActivity {
         nilaiakhir = (EditText) findViewById(R.id.rslt_nilaiakhir);
         usrnamepllg = (EditText) findViewById(R.id.rslt_namapelelang);
         usrnamepemenang = (EditText) findViewById(R.id.rslt_namapemenang);
+        statustransaksi = (EditText) findViewById(R.id.rslt_statustransaksi);
         submittrans = (Button)findViewById(R.id.leltrans_submit);
         submitfinish = (Button)findViewById(R.id.leltrans_finishtrans);
         tobukti = (Button)findViewById(R.id.btntobukti);
         btnback = (ImageView) findViewById(R.id.btn_backdettranslel);
+        imgtopemenangprofile = (ImageView) findViewById(R.id.icondettrans5);
+        imgtopelelangprofile = (ImageView) findViewById(R.id.icondettrans6);
+        imgtocomplaint = (ImageView) findViewById(R.id.icondettrans4);
 
         nilaiakhir.setKeyListener(null);
         usrnamepllg.setKeyListener(null);
         usrnamepemenang.setKeyListener(null);
+        statustransaksi.setKeyListener(null);
 
         Intent lelintent = getIntent();
         idtranslel = lelintent.getStringExtra("idtranslel");
@@ -70,7 +74,6 @@ public class DetailTransaksiLelang extends AppCompatActivity {
         tmpidusernow.setText(userid);
 
         getleltransbyid();
-
 
         submittrans.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,6 +105,30 @@ public class DetailTransaksiLelang extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        imgtopemenangprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String idpemenang_detrans = tmpidpsrt.getText().toString().trim();
+                Intent intenttoprofpemenang = new Intent(DetailTransaksiLelang.this, UserprofileActivity.class);
+                intenttoprofpemenang.putExtra("useridfrom_dettrans", idpemenang_detrans );
+                startActivity(intenttoprofpemenang);
+                overridePendingTransition(R.anim.slide_in_up,R.anim.slide_out_up);
+            }
+        });
+
+        imgtopelelangprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String idpelelang_detrans = tmpidpllg.getText().toString().trim();
+                Intent intenttoprofpelelang = new Intent(DetailTransaksiLelang.this, UserprofileActivity.class);
+                intenttoprofpelelang.putExtra("useridfrom_dettrans", idpelelang_detrans );
+                startActivity(intenttoprofpelelang);
+                overridePendingTransition(R.anim.slide_in_up,R.anim.slide_out_up);
+            }
+        });
+
+
     }
 
     @Override
@@ -135,6 +162,7 @@ public class DetailTransaksiLelang extends AppCompatActivity {
                 if (response.isSuccessful()){
                     tmpoldstatid.setText(response.body().getSuccess().getStatushasilId());
                     tmpoldstat.setText(response.body().getSuccess().getStatushasil());
+                    statustransaksi.setText(response.body().getSuccess().getStatushasil());
                     tmpidpsrt.setText(response.body().getSuccess().getPesertaId());
                     tmpidpllg.setText(response.body().getSuccess().getPelelangId());
                     nilaiakhir.setText(response.body().getSuccess().getNilaiAkhir());
@@ -177,6 +205,8 @@ public class DetailTransaksiLelang extends AppCompatActivity {
         }else if (tmpidpsrt.getText().toString().equals(userid) && (tmpoldstatid.getText().toString().equals("3"))) {
             submittrans.setVisibility(View.INVISIBLE);
             submitfinish.setVisibility(View.VISIBLE);
+        }else if (tmpoldstatid.getText().toString().equals("4")){
+            submitfinish.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -291,9 +321,12 @@ public class DetailTransaksiLelang extends AppCompatActivity {
     private void touploadbuktitrans(){
         String imgparenta = tmpimgparenttoken.getText().toString().trim();
         String imgparnetb = tmpoldstatid.getText().toString().trim();
+        String idpelelangforrating = tmpidpllg.getText().toString().trim();
         String imgparentbuktitrans = imgparenta+imgparnetb;
+
         Intent intent = new Intent(DetailTransaksiLelang.this, ImageUploadActivity.class);
         intent.putExtra("imgbuktitrans", imgparentbuktitrans );
+        intent.putExtra("idpelelangforrating",idpelelangforrating );
         startActivity(intent);
     }
 

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green1"
+    android:background="@drawable/backgroundabout3"
     tools:context=".activity.UserprofileActivity">
 
     <TextView
@@ -15,13 +15,148 @@
         android:layout_alignParentRight="true"
         android:textColor="@color/green1"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/userreviewRV"
-        android:layout_marginTop="130dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+    <RelativeLayout
+        android:id="@+id/rellayprofile1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="wrap_content"
+        android:background="@drawable/signupasset_b"
+        android:backgroundTint="@color/green1">
+        <RelativeLayout
+            android:id="@+id/imageFrame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/signasset_c"
+            android:layout_marginTop="35dp"
+            android:padding="5dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true">
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:background="@drawable/usericon"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rellayuserinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/homeasset_e"
+        android:backgroundTint="@color/green3"
+        android:layout_below="@id/rellayprofile1"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingLeft="15dp"
+        android:paddingBottom="15dp">
+        <RelativeLayout
+            android:id="@+id/airdropprofile"
+            android:layout_width="100dp"
+            android:layout_height="45dp"
+            android:background="@drawable/bg_airdrop"
+            android:backgroundTint="@color/green1"
+            android:layout_centerHorizontal="true">
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="45dp"
+                android:src="@drawable/ic_baseline_personwhite_24"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/txtprofile_namauser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User Name"
+            android:fontFamily="@font/robotobold"
+            android:textSize="37dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/green1"
+            android:layout_below="@id/airdropprofile"/>
+
+        <ImageView
+            android:id="@+id/iconprofile1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/ic_baseline_emailgreen_24"
+            android:layout_below="@+id/txtprofile_namauser"/>
+        <TextView
+            android:id="@+id/txtprofile_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email user"
+            android:textSize="17dp"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/green1"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/iconprofile1"
+            android:layout_below="@id/txtprofile_namauser"/>
+
+        <ImageView
+            android:id="@+id/iconprofile2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_baseline_phonegreen_24"
+            android:layout_below="@id/txtprofile_email"/>
+        <TextView
+            android:id="@+id/txtprofile_notlp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Telephone Number"
+            android:textSize="17dp"
+            android:textColor="@color/green1"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/iconprofile2"
+            android:layout_below="@id/txtprofile_email"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rellaylistreviewuser"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rellayuserinfo"
+        android:layout_marginTop="15dp"
+        android:padding="15dp"
+        android:background="@drawable/detaillelasset_a"
+        android:backgroundTint="@color/green3">
+        <ImageView
+            android:id="@+id/iconprofile3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_reviewtentanguser_ind_24"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Review Tentang User"
+            android:textSize="17dp"
+            android:textColor="@color/green1"
+            android:textStyle="bold"
+            android:layout_toRightOf="@id/iconprofile3"
+            android:layout_marginLeft="5dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/userprofilereviewRV"
+            android:layout_below="@+id/iconprofile3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </androidx.recyclerview.widget.RecyclerView>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tmpuserprof_iduser"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:textColor="@color/green1"/>
+    <TextView
+        android:id="@+id/tmpuserprof_ratingtoken"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:textColor="@color/green1"/>
 
 </RelativeLayout>

@@ -25,7 +25,7 @@ import com.example.tryretrofitlogin.putresponse.putgchatid.UpdategchatResponse;
 import com.example.tryretrofitlogin.responses.gethewanbyid.GethewanbyidResponse;
 import com.example.tryretrofitlogin.responses.getimgbyparent.GetimgbyparentResponse;
 import com.example.tryretrofitlogin.responses.getlelangbyid.GetlelangbyidResponse;
-import com.example.tryretrofitlogin.responses.getuserbyid.GetusernamebyidResponse;
+import com.example.tryretrofitlogin.responses.getusernamebyid.GetusernamebyidResponse;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -117,8 +117,6 @@ public class DetailLelangActivity extends AppCompatActivity {
             }
         });
 
-
-
     }
 
     private void dialogfotohewan(){
@@ -141,7 +139,7 @@ public class DetailLelangActivity extends AppCompatActivity {
     }
     private void dialogfotosertif(){
         dialoglihatfoto = new AlertDialog.Builder(DetailLelangActivity.this);
-        final View listfotosertifView = getLayoutInflater().inflate(R.layout.dialog_listpeserta,null);
+        final View listfotosertifView = getLayoutInflater().inflate(R.layout.dialogfotosertif_retrieve,null);
 
         tmpfotoSertifkey = (TextView) listfotosertifView.findViewById(R.id.tmpkeyimgsertif);
         imageRvfotohewan = (RecyclerView) listfotosertifView.findViewById(R.id.RV_sertiffoto);
@@ -221,7 +219,6 @@ public class DetailLelangActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private void getLelang(){
         String lkey = tmpidlelang.getText().toString().trim();

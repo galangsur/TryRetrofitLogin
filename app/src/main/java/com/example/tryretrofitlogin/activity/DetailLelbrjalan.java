@@ -45,7 +45,7 @@ public class DetailLelbrjalan extends AppCompatActivity {
     private TextView edTxtlelbrjlhewan,edTxtnilaiawal,detticektnamapeserta;
     private TextView tmpgctoken,tmpidlelbrjalan,tmplelbrjlniduser,tmplelbrjlnidhewan,tmppelelang,tmpgcgenerated;
     private Button btntogchat,btnmulailel;
-    private DatabaseReference rootRef,groupRef,lelhargaref,lelhargaKeyref;
+    private DatabaseReference rootRef,groupRef,lelhargaref,lelhargaKeyref,pesertamanagerRef;
     private int hargaawaldetlelber;
 
     @Override
@@ -70,6 +70,7 @@ public class DetailLelbrjalan extends AppCompatActivity {
 
         rootRef = FirebaseDatabase.getInstance().getReference().child("Groups");
         lelhargaref = FirebaseDatabase.getInstance().getReference().child("LelHargaMng");
+        pesertamanagerRef = FirebaseDatabase.getInstance().getReference().child("PesertaOnlineManager").child("qwerty");
 
         Intent lelintent = getIntent();
         lelbrjalanid = lelintent.getStringExtra("idlelbrjalan");
@@ -93,17 +94,16 @@ public class DetailLelbrjalan extends AppCompatActivity {
             }
         });
 
-
         btntogchat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (tmpgctoken.getText().toString().trim().equals("Belum Mulai")){
                     Toast.makeText(DetailLelbrjalan.this, "Belum Mulai", Toast.LENGTH_SHORT).show();
                 } else {
-//                    Toast.makeText(DetailLelbrjalan.this, "gc" + tmpgctoken, Toast.LENGTH_SHORT).show();
                     Intent lelaspelelang = new Intent(DetailLelbrjalan.this,GroupchatActivity.class);
                     lelaspelelang.putExtra("gchattoken",tmpgctoken.getText());
                     DetailLelbrjalan.this.startActivity(lelaspelelang);
+//                    ubahstatuspesertaonlineFirebase();
                 }
             }
         });
@@ -239,5 +239,9 @@ public class DetailLelbrjalan extends AppCompatActivity {
         lelhargaKeyref.updateChildren(msgInfomap);
 
         //untukisivaluemsg
+    }
+
+    private void ubahstatuspesertaonlineFirebase(){
+        pesertamanagerRef.child("peserta"+userid).child("status").setValue("online");
     }
 }

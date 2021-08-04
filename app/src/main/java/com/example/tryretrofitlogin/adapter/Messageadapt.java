@@ -52,7 +52,7 @@ public class Messageadapt extends RecyclerView.Adapter<Messageadapt.MessageViewH
         String userRef = currentUserId.trim();
 
         holder.recieverMessagetxt.setBackgroundResource(R.drawable.reciever_message_layout);
-        holder.recieverMessagetxt.setText("Melakukan penawaran menjadi " + message.getMessage());
+        holder.recieverMessagetxt.setText("Melakukan penawaran menjadi Rp." + message.getMessage());
         holder.fromMessagetxt.setText(message.getFromName());
         holder.dateMessagetxt.setText(message.getDate());
         holder.timeMessagetxt.setText(message.getTime());

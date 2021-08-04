@@ -10,6 +10,9 @@ public class SuccessItem{
 	@SerializedName("peserta_nama")
 	private String pesertaNama;
 
+	@SerializedName("pesertaonline_token")
+	private String pesertaonline_token;
+
 	@SerializedName("updated_at")
 	private String updatedAt;
 
@@ -81,12 +84,21 @@ public class SuccessItem{
 		return hewan;
 	}
 
+	public void setPesertaonline_token(String pesertaonline_token) {
+		this.pesertaonline_token = pesertaonline_token;
+	}
+
+	public String getPesertaonline_token() {
+		return pesertaonline_token;
+	}
+
 	@Override
  	public String toString(){
 		return 
 			"SuccessItem{" + 
 			"peserta_id = '" + pesertaId + '\'' +
 			"peserta_nama = '" + pesertaNama + '\'' +
+			"pesertaonline_token = '" + pesertaonline_token + '\'' +
 			",updated_at = '" + updatedAt + '\'' + 
 			",lelbrjalan_id = '" + lelbrjalanId + '\'' + 
 			",created_at = '" + createdAt + '\'' + 

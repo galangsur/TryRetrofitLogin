@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.TryNotificationActivity">
+
+    <Button
+        android:id="@+id/btnnotif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="push"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/subcribepublish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="publsih"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"/>
+
+    <Button
+        android:id="@+id/unsubpublish"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="50dp"
+        android:text="unpublsih"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tokentext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/tittlemsg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="tittle"/>
+
+    <EditText
+        android:id="@+id/contentmsg"
+        android:layout_below="@id/tittlemsg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="content"/>
+
+</RelativeLayout>

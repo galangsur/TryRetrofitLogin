@@ -20,8 +20,6 @@ import com.example.tryretrofitlogin.helper.SharedPrefManager;
 import com.example.tryretrofitlogin.models.Wallet;
 import com.example.tryretrofitlogin.responses.getwallet.GetWalletInfoResponse;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -171,14 +169,14 @@ public class HomeActivity extends AppCompatActivity {
 //            }
 //        });
 
-        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(HomeActivity.this, new OnSuccessListener<InstanceIdResult>() {
-            @Override
-            public void onSuccess(InstanceIdResult instanceIdResult) {
-                String newToken = instanceIdResult.getToken();
-//                Toast.makeText(HomeActivity.this, "token" + newToken, Toast.LENGTH_SHORT).show();
-                Log.d("token",newToken);
-            }
-        });
+//        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(HomeActivity.this, new OnSuccessListener<InstanceIdResult>() {
+//            @Override
+//            public void onSuccess(InstanceIdResult instanceIdResult) {
+//                String newToken = instanceIdResult.getToken();
+////                Toast.makeText(HomeActivity.this, "token" + newToken, Toast.LENGTH_SHORT).show();
+//                Log.d("token",newToken);
+//            }
+//        });
     }
 
     @Override

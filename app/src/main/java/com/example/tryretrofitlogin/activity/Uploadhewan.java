@@ -41,7 +41,7 @@ public class Uploadhewan extends AppCompatActivity {
     private ImageView imageDiplay, btnPickgallery;
     private TextView eventAttachment,txt_pickcount,imgparent;
     private File attachment;
-    private String imgparenthw,imgprtkey;
+    private String imgparenthw,imgprtkey,sertifparenthw;
     public static final int REQUEST_IMAGE_CAPTURE = 1;
 
     private String getRealPathFromURI(Uri contentURI) {
@@ -72,6 +72,7 @@ public class Uploadhewan extends AppCompatActivity {
 
         Intent intenthewan = getIntent();
         imgparenthw = intenthewan.getStringExtra("imghw");
+        sertifparenthw = intenthewan.getStringExtra("sertifhw");
         imgparent.setText(imgparenthw);
         imgprtkey = imgparent.getText().toString().trim();
 
@@ -170,6 +171,7 @@ public class Uploadhewan extends AppCompatActivity {
     private void touploadimg(){
         Intent intent = new Intent(Uploadhewan.this, HomeActivity.class);
         intent.putExtra("imghw", imgprtkey);
+        Toast.makeText(this, "sertifkey" + sertifparenthw, Toast.LENGTH_SHORT).show();
         startActivity(intent);
     }
 }

@@ -82,7 +82,6 @@ public class RatingnreviewinputActivity extends AppCompatActivity {
         btnLihatlistpeserta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialoglistpeserta();
             }
         });
 

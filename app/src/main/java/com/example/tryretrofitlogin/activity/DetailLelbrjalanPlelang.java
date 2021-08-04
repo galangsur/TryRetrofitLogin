@@ -2,6 +2,8 @@ package com.example.tryretrofitlogin.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -13,11 +15,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tryretrofitlogin.R;
+import com.example.tryretrofitlogin.adapter.ListlelpesertaAdapt;
 import com.example.tryretrofitlogin.api.APIService;
 import com.example.tryretrofitlogin.api.APIUrl;
 import com.example.tryretrofitlogin.putresponse.putgchatid.UpdategchatResponse;
 import com.example.tryretrofitlogin.responses.detlelbrjalanbyid.DetlelbrjalanbyidResponse;
 import com.example.tryretrofitlogin.responses.gethewanbyid.GethewanbyidResponse;
+import com.example.tryretrofitlogin.responses.getlelpesertabyidlelberjalan.Getlelpesertabyidlelberjalan;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -36,14 +40,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DetailLelbrjalanPlelang extends AppCompatActivity {
 
-    private AlertDialog.Builder dialogblistpeserta;
-    private AlertDialog dialog;
+    private AlertDialog.Builder dialoglistpesertalelang;
+    private AlertDialog dialogpesertalelang;
     private String lelbrjalanid,userid,lelbrjalanhewan,lelbrjalangctoken,groupname,generategcid,bukaharga,username;
     private String hargaKeyref;
-    private TextView edTxtlelbrjlhewan,edTxtnilaiawal,detticektnamapeserta,tmpdialogpeserta,textdialog;
+    private TextView edTxtlelbrjlhewan,edTxtnilaiawal,detticektnamapeserta,tmpdialogpeserta,textdialog,tmpKeyidberjalan;
     private TextView tmpgctoken,tmpidlelbrjalan,tmplelbrjlniduser,tmplelbrjlnidhewan,tmppelelang,tmpgcgenerated;
     private DatabaseReference rootRef,groupRef,lelhargaref,lelhargaKeyref;
     private Button btntogchat,btnmulailel,btnlistpesertadialog;
+    private RecyclerView rvListpesertalelang;
     private int hargaawaldetlelberpelelang;
 
 
@@ -87,18 +92,54 @@ public class DetailLelbrjalanPlelang extends AppCompatActivity {
             public void onClick(View v) {
                 dialoglistpeserta();
             }
+
         });
     }
 
     private void dialoglistpeserta(){
-        dialogblistpeserta = new AlertDialog.Builder(DetailLelbrjalanPlelang.this);
-        final View listpesertaView = getLayoutInflater().inflate(R.layout.dialog_listpeserta,null);
+        dialoglistpesertalelang = new AlertDialog.Builder(DetailLelbrjalanPlelang.this);
+        final View listpesertalelangView = getLayoutInflater().inflate(R.layout.dialog_listpeserta,null);
 
-        dialogblistpeserta.setView(listpesertaView);
-        dialog = dialogblistpeserta.create();
-        dialog.show();
+        tmpKeyidberjalan = (TextView) listpesertalelangView.findViewById(R.id.tmpkeyidberjalantoken);
+        rvListpesertalelang = (RecyclerView) listpesertalelangView.findViewById(R.id.RV_listpeserta);
 
-        getNamaHewandialog();
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(
+                this, LinearLayoutManager.VERTICAL, false);
+        rvListpesertalelang.setLayoutManager(layoutManager);
+        rvListpesertalelang.setHasFixedSize(true);
+
+        dialoglistpesertalelang.setView(listpesertalelangView);
+        dialogpesertalelang = dialoglistpesertalelang.create();
+        dialogpesertalelang.show();
+
+        getlistpesertalelang();
+    }
+
+    private void getlistpesertalelang(){
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(APIUrl.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        APIService service = retrofit.create(APIService.class);
+
+        Call<Getlelpesertabyidlelberjalan> call = service.getLelpesertabyidlelberjalan(
+                lelbrjalanid);
+
+        call.enqueue(new Callback<Getlelpesertabyidlelberjalan>() {
+            @Override
+            public void onResponse(Call<Getlelpesertabyidlelberjalan> call, Response<Getlelpesertabyidlelberjalan> response) {
+                ListlelpesertaAdapt listlelpesertaAdapt = new ListlelpesertaAdapt(DetailLelbrjalanPlelang.this,response.body().getSuccess());
+                listlelpesertaAdapt.notifyDataSetChanged();
+                rvListpesertalelang.setAdapter(listlelpesertaAdapt);
+            }
+
+            @Override
+            public void onFailure(Call<Getlelpesertabyidlelberjalan> call, Throwable t) {
+
+            }
+        });
     }
 
     private void getLelbrjalan(){
@@ -234,6 +275,9 @@ public class DetailLelbrjalanPlelang extends AppCompatActivity {
             public void onResponse(Call<UpdategchatResponse> call, Response<UpdategchatResponse> response) {
                 if(response.isSuccessful()){
                     Toast.makeText(DetailLelbrjalanPlelang.this, "Lelang Dibuka", Toast.LENGTH_SHORT).show();
+                    Intent refresh = getIntent();
+                    finish();
+                    startActivity(refresh);
 
                 }
             }

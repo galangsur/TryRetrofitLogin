@@ -1,10 +1,10 @@
-package com.example.tryretrofitlogin.responses.getpesrtmanagerbyuser;
+package com.example.tryretrofitlogin.responses.getleldiikutipeserta;
 
 import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class GetpsrtmanagerbyuserResponse{
+public class GetleldiikutipesertaResponse{
 
 	@SerializedName("success")
 	private ArrayList<SuccessItem> success;
@@ -20,7 +20,7 @@ public class GetpsrtmanagerbyuserResponse{
 	@Override
  	public String toString(){
 		return 
-			"GetpsrtmanagerbyuserResponse{" + 
+			"GetleldiikutipesertaResponse{" + 
 			"success = '" + success + '\'' + 
 			"}";
 		}

@@ -10,14 +10,16 @@ public class User implements Serializable {
     private String password;
     private String c_password;
     private String nikktp;
+    private String ratingnreview_token;
 
-    public User(String name, String email,String tlp, String password, String c_password,String nikktp) {
+    public User(String name, String email,String tlp, String password, String c_password,String nikktp, String ratingnreview_token) {
         this.name = name;
         this.email = email;
         this.tlp = tlp;
         this.password = password;
         this.c_password = c_password;
         this.nikktp = nikktp;
+        this.ratingnreview_token = ratingnreview_token;
     }
 
     public User(String id, String name, String email) {
@@ -80,5 +82,13 @@ public class User implements Serializable {
 
     public void setNikktp(String nikktp) {
         this.nikktp = nikktp;
+    }
+
+    public String getRatingnreviewtoken() {
+        return ratingnreview_token;
+    }
+
+    public void setRatingnreviewtoken(String ratingnreview_token) {
+        this.ratingnreview_token = ratingnreview_token;
     }
 }

@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
     private void toLihatlelangasguest(){
-        Intent lihatlelangasguest = new Intent(MainActivity.this, PilihanlelActivity.class);
+        Intent lihatlelangasguest = new Intent(MainActivity.this, TryNotificationActivity.class);
         startActivity(lihatlelangasguest);
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
     }

@@ -28,6 +28,17 @@ public class Success{
 	@SerializedName("nikktp")
 	private String nikktp;
 
+	@SerializedName("ratingnreview_token")
+	private String ratingnreview_token;
+
+	public void setRatingnreview_token(String ratingnreview_token) {
+		this.ratingnreview_token = ratingnreview_token;
+	}
+
+	public String getRatingnreview_token() {
+		return ratingnreview_token;
+	}
+
 	public void setPassword(String password){
 		this.password = password;
 	}
@@ -104,6 +115,7 @@ public class Success{
 			",id = '" + id + '\'' + 
 			",email = '" + email + '\'' +
 			",nikktp = '" + nikktp + '\'' +
+			",ratingnreview_token = '" + ratingnreview_token + '\'' +
 			"}";
 		}
 }

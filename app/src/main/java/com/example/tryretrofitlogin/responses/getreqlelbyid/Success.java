@@ -13,8 +13,8 @@ public class Success{
 	@SerializedName("pengirim_id")
 	private String pengirimId;
 
-	@SerializedName("lelang_id")
-	private String lelangId;
+	@SerializedName("lelbrjalan_id")
+	private String lelbrjalan_id;
 
 	@SerializedName("created_at")
 	private String createdAt;
@@ -46,12 +46,12 @@ public class Success{
 		return pengirimId;
 	}
 
-	public void setLelangId(String lelangId){
-		this.lelangId = lelangId;
+	public void setLelbrjalanId(String lelangId){
+		this.lelbrjalan_id = lelangId;
 	}
 
-	public String getLelangId(){
-		return lelangId;
+	public String getLelbrjalanId(){
+		return lelbrjalan_id;
 	}
 
 	public void setCreatedAt(String createdAt){
@@ -77,7 +77,7 @@ public class Success{
 			"updated_at = '" + updatedAt + '\'' + 
 			",user_id = '" + userId + '\'' + 
 			",pengirim_id = '" + pengirimId + '\'' + 
-			",lelang_id = '" + lelangId + '\'' + 
+			",lelang_id = '" + lelbrjalan_id + '\'' +
 			",created_at = '" + createdAt + '\'' + 
 			",id = '" + id + '\'' + 
 			"}";

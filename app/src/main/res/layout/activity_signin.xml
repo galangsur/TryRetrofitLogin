@@ -9,28 +9,45 @@
     tools:context=".activity.auth.SigninActivity">
 
     <RelativeLayout
-        android:id="@+id/rl_one"
+        android:id="@+id/rlsignin_one"
         android:layout_width="match_parent"
-        android:layout_height="99dp"
+        android:layout_height="110dp"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="25dp"
-        android:background="@drawable/signasset_a">
+        android:background="@color/green2">
         <TextView
-            android:layout_width="250dp"
+            android:layout_width="220dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="30dp"
+            android:layout_toLeftOf="@id/backfromsignin"
             android:layout_marginTop="20dp"
             android:text="Ingat selalu email dan password anda ya..."
+            android:fontFamily="@font/robotomedium"
             android:textSize="20sp"
             android:textColor="@color/white"/>
         <Button
-            android:id="@+id/signup"
+            android:id="@+id/backfromsignin"
             android:layout_marginTop="20dp"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="280dp"
+            android:layout_marginRight="20dp"
+            android:layout_alignParentRight="true"
             android:background="@drawable/ic_round_arrow_forwardwhite_ios_24"
             android:textStyle="bold"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mainasset_b"
+        android:backgroundTint="@color/green1"
+        android:layout_marginTop="110dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -54,14 +71,33 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="250dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
         android:orientation="vertical"
         android:background="@drawable/signasset_c"
         android:backgroundTint="@color/green2"
         android:padding="20dp"
-        android:layout_marginLeft="50dp">
+        android:layout_marginBottom="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/iconsigninpage1"
+                android:layout_width="31dp"
+                android:layout_height="31dp"
+                android:src="@drawable/ic_baseline_personwhite_24"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign In Here.."
+                android:textColor="@color/white"
+                android:textSize="22dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/robotobold"
+                android:layout_toRightOf="@id/iconsigninpage1"/>
+        </RelativeLayout>
 
         <EditText
             android:id="@+id/editTextEmail"
@@ -69,6 +105,9 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:hint="Enter email "
+            android:layout_marginTop="10dp"
+            android:textColorHint="@color/white"
+            android:fontFamily="@font/robotomedium"
             android:inputType="textEmailAddress"/>
 
         <EditText
@@ -76,6 +115,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter password "
+            android:fontFamily="@font/robotomedium"
+            android:textColorHint="@color/white"
             android:textColor="@color/white"
             android:inputType="textPassword"
             android:layout_marginTop="20dp"/>
@@ -87,6 +128,7 @@
             android:layout_marginLeft="5dp"
             android:background="@drawable/signasset_d"
             android:text="Sign In"
+            android:fontFamily="@font/robotomedium"
             android:textColor="@color/white"
             android:layout_marginTop="50dp"/>
     </LinearLayout>
@@ -101,6 +143,7 @@
         android:backgroundTint="@color/orange5"
         android:layout_weight="1"
         android:text="Sign Up"
+        android:fontFamily="@font/robotomedium"
         android:textColor="@color/white"/>
 
 </RelativeLayout>

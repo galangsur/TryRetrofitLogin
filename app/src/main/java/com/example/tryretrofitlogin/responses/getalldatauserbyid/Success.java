@@ -25,6 +25,12 @@ public class Success{
 	@SerializedName("email")
 	private String email;
 
+	@SerializedName("nikktp")
+	private String nikktp;
+
+	@SerializedName("ratingnreview_token")
+	private String ratingnreview_token;
+
 	public void setUpdatedAt(String updatedAt){
 		this.updatedAt = updatedAt;
 	}
@@ -81,6 +87,23 @@ public class Success{
 		return email;
 	}
 
+	public void setNikktp(String nikktp) {
+		this.nikktp = nikktp;
+	}
+
+	public String getNikktp() {
+		return nikktp;
+	}
+
+	public void setRatingnreview_token(String ratingnreview_token) {
+		this.ratingnreview_token = ratingnreview_token;
+	}
+
+	public String getRatingnreview_token() {
+		return ratingnreview_token;
+	}
+
+
 	@Override
  	public String toString(){
 		return 
@@ -91,7 +114,9 @@ public class Success{
 			",created_at = '" + createdAt + '\'' + 
 			",email_verified_at = '" + emailVerifiedAt + '\'' + 
 			",id = '" + id + '\'' + 
-			",email = '" + email + '\'' + 
+			",email = '" + email + '\'' +
+			",nikktp = '" + nikktp + '\'' +
+			",ratingnreview_token = '" + ratingnreview_token + '\'' +
 			"}";
 		}
 }

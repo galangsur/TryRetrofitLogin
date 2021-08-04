@@ -28,7 +28,9 @@
             android:textColor="@color/white"
             android:textStyle="italic"
             android:padding="10dp"
-            android:layout_above="@+id/backbtn_ab3"
+            android:fontFamily="@font/robotomedium"
+            android:layout_marginBottom="30dp"
+            android:layout_above="@+id/nextbtn_absignup"
             android:layout_centerHorizontal="true"/>
 
         <Button

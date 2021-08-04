@@ -27,6 +27,7 @@
             android:textColor="@color/white"
             android:textStyle="italic"
             android:padding="10dp"
+            android:fontFamily="@font/robotomedium"
             android:layout_above="@+id/backbtn_ab1"
             android:layout_centerHorizontal="true"/>
 
